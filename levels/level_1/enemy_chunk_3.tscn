@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv2iye5c1uo01"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_5b66g"]
+[ext_resource type="PackedScene" uid="uid://cpmgkh4ooe0w1" path="res://scenes/enemies/enemy_2.tscn" id="2_p4m4v"]
+
+[node name="Enemy_Chunk" instance=ExtResource("1_5b66g")]
+
+[node name="Enemy2" parent="." index="0" instance=ExtResource("2_p4m4v")]
+position = Vector2(67, 29)
+
+[node name="Enemy3" parent="." index="1" instance=ExtResource("2_p4m4v")]
+position = Vector2(87, 29)
+
+[node name="Enemy4" parent="." index="2" instance=ExtResource("2_p4m4v")]
+position = Vector2(106, 29)
+zigzag = true

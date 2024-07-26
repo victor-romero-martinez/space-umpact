@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpmgkh4ooe0w1"]
+
+[ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_0yv0j"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="2_psruq"]
+[ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="3_c27mm"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_im4p6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahlic"]
+atlas = ExtResource("3_c27mm")
+region = Rect2(0, 13, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytahu"]
+atlas = ExtResource("3_c27mm")
+region = Rect2(16, 13, 16, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jc3ts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahlic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytahu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tldru"]
+radius = 3.16228
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bc844"]
+radius = 3.16228
+
+[node name="Enemy2" instance=ExtResource("1_0yv0j")]
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("2_psruq")
+explotion_scene = ExtResource("3_im4p6")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_jc3ts")
+frame = 1
+frame_progress = 0.78976
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_tldru")
+debug_color = Color(0.90718, 0.217955, 0.529591, 0.42)
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_bc844")
+debug_color = Color(0.899156, 0.203088, 0.598305, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

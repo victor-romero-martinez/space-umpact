@@ -2,4 +2,4 @@
 .godot/
 /temp
 
-.import
+*.import

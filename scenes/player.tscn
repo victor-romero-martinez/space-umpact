@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://ncfavua7kjnn"]
+
+[ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_oct7a"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_c5j55"]
+[ext_resource type="Texture2D" uid="uid://bc7h6qwx3d7bi" path="res://assets/ship.png" id="2_wxiv3"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_lue58"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="4_gyihd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0jf1"]
+atlas = ExtResource("2_wxiv3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h7sk"]
+atlas = ExtResource("2_wxiv3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_456yh"]
+atlas = ExtResource("2_wxiv3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfygm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0jf1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h7sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_456yh")
+}],
+"loop": true,
+"name": &"respawn",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_af115"]
+radius = 3.99993
+height = 11.9998
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5rnhh"]
+radius = 4.0
+height = 12.0
+
+[node name="Player" instance=ExtResource("1_oct7a")]
+script = ExtResource("2_c5j55")
+bullet_scene = ExtResource("3_lue58")
+explotion_scene = ExtResource("4_gyihd")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(6, 5)
+sprite_frames = SubResource("SpriteFrames_gfygm")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+position = Vector2(5, 4)
+rotation = 1.56509
+shape = SubResource("CapsuleShape2D_af115")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+visible = false
+position = Vector2(5, 4)
+rotation = 1.57069
+shape = SubResource("CapsuleShape2D_5rnhh")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

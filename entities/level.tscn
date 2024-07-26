@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dm5gcd3osutb1"]
+
+[node name="Level" type="Node2D"]
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="Hud" type="Node2D" parent="."]
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Enemy" type="Node2D" parent="."]
