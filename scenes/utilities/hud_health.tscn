@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://73nbxcjdyc8b"]
 
-[ext_resource type="Script" path="res://scripts/HudHeart.gd" id="1_qu87b"]
+[ext_resource type="Script" path="res://scripts/hud_heart.gd" id="1_qu87b"]
 [ext_resource type="PackedScene" uid="uid://deoykf3r15ooe" path="res://scenes/utilities/heart.tscn" id="2_m5vd4"]
 
 [node name="HudHealth" type="Node2D"]

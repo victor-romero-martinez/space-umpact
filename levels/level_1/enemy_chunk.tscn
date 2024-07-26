@@ -2,32 +2,38 @@
 
 [ext_resource type="PackedScene" uid="uid://bi5ybcjsks1j8" path="res://scenes/enemies/enemy_1.tscn" id="1_qjpef"]
 [ext_resource type="Script" path="res://scripts/chunk-enemy.gd" id="1_tphy8"]
-[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_iaxbs"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_f1bc2"]
 
 [node name="Chunk" type="Node2D"]
 script = ExtResource("1_tphy8")
 
 [node name="Enemy1" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(6, 10)
+position = Vector2(13, 16)
 
 [node name="Enemy2" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(124, 18)
+position = Vector2(60, 41)
+zigzag_speed = 0.0
 
 [node name="Enemy3" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(142, 34)
-speed = 8.0
+position = Vector2(39, 29)
 
 [node name="Enemy4" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(58, 35)
+position = Vector2(70, 7)
 
 [node name="Enemy5" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(70, 24)
-speed = 10.0
+position = Vector2(103, 21)
+speed = 2.0
 
 [node name="Enemy6" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(33, 45)
+position = Vector2(114, 45)
 
 [node name="Enemy7" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(163, 40)
+position = Vector2(151, 30)
+speed = 2.0
 shoot = true
-bullet_scene = ExtResource("3_iaxbs")
+bullet_scene = ExtResource("3_f1bc2")
+
+[node name="Enemy8" parent="." instance=ExtResource("1_qjpef")]
+position = Vector2(168, 50)
+speed = 2.0
+zigzag_speed = 0.0

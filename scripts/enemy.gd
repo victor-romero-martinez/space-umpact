@@ -1,12 +1,10 @@
 extends CharacterBody2D
-class_name Enemy
 
 ''' This script is only for Enemy node.
 	- Use actors.tscn to inherited scene located in res://entities/actors.tscn
 	- Attach dragging in your Enemy node.
 '''
 
-@export var healt: int = 1
 @export var speed: float = 0.0
 @export var shoot: bool = false
 @export var zigzag: bool = false
@@ -17,14 +15,14 @@ class_name Enemy
 #WARNING: must be initialite before use on _make_bullets
 @onready var screen_size: Vector2 = Global.screen_size
 
-var _open_fire = screen_size.x - 60
+var _open_fire: float
+
+
+func _ready():
+	_open_fire = screen_size.x - 60
 
 
 func _physics_process(_delta):
-	if healt == 0:
-		_make_boom()
-		queue_free()
-	
 	if global_position.x < 0:
 		queue_free()
 	
@@ -43,13 +41,15 @@ func _apply_movement():
 		
 	
 
-func _make_boom():
+func make_boom():
 	if not explotion_scene:
 		push_error('Explotion PackScene is missing')
 	else:
 		var boom = explotion_scene.instantiate()
 		boom.position = position
 		add_sibling(boom)
+		
+		queue_free()
 
 
 func _make_bullets():
@@ -62,6 +62,7 @@ func _make_bullets():
 			bullet.go_negative()
 			bullet.position = position + Vector2(-8.0, 0)
 			add_sibling(bullet)
+			
 			
 			shoot = false
 
@@ -77,5 +78,7 @@ func _move_on_zigszag():
 
 
 #WARNING: don't forget to connected by signal for each instantiation
-func _on_area_2d_body_entered(_body):
-	healt -= 1
+#WARNING: don't forget to select Collitions layer
+#func _on_enemy_hit_box_area_entered(area):
+	#if area is PlayerHitBox or area is BulletHitBox:
+		#healt -= 1

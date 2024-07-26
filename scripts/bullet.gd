@@ -18,5 +18,8 @@ func go_negative(spd: float = 20.0):
 	speed = spd
 
 
-func _on_area_2d_area_entered(_area):
+func _on_area_2d_area_entered(area):
+	if area is EnemyHealthBox or area is PlayerHealthBox:
+		area.take_damage()
+	
 	queue_free()

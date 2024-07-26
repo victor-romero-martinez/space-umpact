@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfew3tjdbt8e5"]
+
+[ext_resource type="Script" path="res://scripts/player_healt_box.gd" id="1_j8jmh"]
+
+[node name="PlayerHealthBox" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_j8jmh")

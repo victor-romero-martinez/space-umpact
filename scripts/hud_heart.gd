@@ -4,15 +4,15 @@ class_name HudHealth
 @export var heart_compnent: PackedScene
 @export var initial_position: Vector2 = Vector2(8.0, 0)
 
-var global_settings = Global
+var player_heart = Global.player_heart
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if heart_compnent:
-		for health in global_settings.player_health:
+		for h in player_heart:
 			var heart = heart_compnent.instantiate()
-			heart.position = initial_position * health #NOTE: (x * i, y * i)
+			heart.position = initial_position * h #NOTE: (x * i, y * i)
 			add_child(heart)
 	else:
 		push_error('PackedScene is missing')
@@ -20,4 +20,4 @@ func _ready():
 
 func remove_heart():
 	if get_child_count() > 0:
-		get_child(global_settings.player_health).queue_free()
+		get_child(-1).queue_free()

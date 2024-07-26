@@ -16,7 +16,7 @@ extends CharacterBody2D
 
 @onready var hud_health = $"../../Hud/HudHealth" as HudHealth
 
-var global_settings = Global
+var global
 const RESPAWN = Vector2(6, 38)
 var _can_shoot: bool = true
 
@@ -27,6 +27,7 @@ func _ready():
 		push_error('Some PackedScene is missing')
 		return
 	
+	global = Global
 	global_position = RESPAWN
 	_animation_spawn()
 
@@ -36,7 +37,7 @@ func _physics_process(delta):
 	
 	#INFO: received damage and restart initioal position
 	if is_on_wall() or is_on_floor():
-		_recieved_damage()
+		make_boom()
 
 	if Input.is_action_just_pressed("ui_accept"):
 		_fire()
@@ -51,13 +52,13 @@ func _move(delta):
 	position = position.clamp(Vector2.ZERO, (Global.screen_size - Vector2(21.0, 15.0)))
 	
 # apply damage and reset position
-func _recieved_damage():
+func make_boom():
 	_apply_explotion()
 	_animation_spawn()
 	
 	global_position = RESPAWN
 	
-	global_settings.player_damage() #NOTE: base 1
+	global.take_damage() #NOTE: base 1
 	hud_health.remove_heart() #NOTE: base index 0
 
 
@@ -77,7 +78,7 @@ func _fire():
 			add_sibling(bullet)
 			
 			await get_tree().create_timer(0.03).timeout #WARNING: no estoy seguro de esto
-		
+			
 		_shoot_handle()
 
 
@@ -94,7 +95,7 @@ func _shoot_handle():
 	_can_shoot = true
 
 
-func _on_area_2d_area_entered(_area):
-	_recieved_damage()
-
-
+#WARNING: don't forget to select Collitions layer
+#func _on_player_hit_box_area_entered(area):
+	#if area is EnemyHitBox or area is BulletHitBox:
+		#make_boom()
