@@ -79,7 +79,7 @@ func _shooting():
 		_make_bullets()
 
 
-func handle_zigzag_direction():
+func handler_zigzag_direction():
 	to_down = not to_down
 
 func _apply_zigzag():

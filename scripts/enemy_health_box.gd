@@ -25,4 +25,4 @@ func apply_move_zigzag():
 	get_parent().start_move_on_zigszag()
 
 func change_zigzag_direction():
-	get_parent().handle_zigzag_direction()
+	get_parent().handler_zigzag_direction()
