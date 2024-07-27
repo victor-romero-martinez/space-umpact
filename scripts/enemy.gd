@@ -8,7 +8,8 @@ extends CharacterBody2D
 @export var speed: float = 0.0
 @export var shoot: bool = false
 @export var zigzag: bool = false
-@export var zigzag_speed: float = 20.0
+@export var to_down: bool = false
+@export var zigzag_speed: float = 8.0
 @export var explotion_scene: PackedScene
 @export var bullet_scene: PackedScene
 
@@ -16,6 +17,7 @@ extends CharacterBody2D
 @onready var screen_size: Vector2 = Global.screen_size
 
 var _open_fire: float
+var _is_on_zigzag: bool = false
 
 
 func _ready():
@@ -31,15 +33,13 @@ func _physics_process(_delta):
 	_shooting()
 	
 	
-func _apply_movement():
-	if speed > 0:
-		velocity.x = -speed
-		move_and_slide()
-	elif zigzag:
-		_move_on_zigszag()
-		move_and_slide()
-		
 	
+func _apply_movement():
+	if speed > 0: velocity.x = -speed
+	if _is_on_zigzag: _apply_zigzag()
+	
+	move_and_slide()
+
 
 func make_boom():
 	if not explotion_scene:
@@ -72,13 +72,18 @@ func _shooting():
 		_make_bullets()
 
 
-func _move_on_zigszag():
+func handle_zigzag_direction():
+	to_down = not to_down
+
+func _apply_zigzag():
+	# switch direction on up or down
+	var dir = 1 if to_down else -1
+	velocity.y = zigzag_speed * dir
+	
+
+
+func start_move_on_zigszag():
 	if zigzag:
-		velocity.y = zigzag_speed
+		_is_on_zigzag = true
 
 
-#WARNING: don't forget to connected by signal for each instantiation
-#WARNING: don't forget to select Collitions layer
-#func _on_enemy_hit_box_area_entered(area):
-	#if area is PlayerHitBox or area is BulletHitBox:
-		#healt -= 1

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://12i2qachdu1p"]
+[gd_scene load_steps=3 format=3 uid="uid://12i2qachdu1p"]
 
 [ext_resource type="Script" path="res://scripts/enemy_manager.gd" id="1_sf312"]
+[ext_resource type="PackedScene" uid="uid://dpgv2kbkcbjce" path="res://scenes/utilities/enemy_action.tscn" id="2_u44cr"]
 
 [node name="EnemyManagertest" type="Node2D"]
 script = ExtResource("1_sf312")
+
+[node name="EnemyAction" parent="." instance=ExtResource("2_u44cr")]
+collision_layer = 0
+collision_mask = 4

@@ -37,7 +37,7 @@ radius = 2.99321
 height = 5.9996
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xq43l"]
-radius = 2.99996
+radius = 2.99995
 height = 5.99991
 
 [node name="Enemy2" instance=ExtResource("1_0yv0j")]

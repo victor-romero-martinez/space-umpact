@@ -6,13 +6,13 @@
 [node name="Chunk" instance=ExtResource("1_8n3uc")]
 
 [node name="Enemy1" parent="." index="0" instance=ExtResource("2_rid12")]
-position = Vector2(7, 29)
+position = Vector2(18, 34)
 
 [node name="Enemy2" parent="." index="1" instance=ExtResource("2_rid12")]
-position = Vector2(21, 29)
+position = Vector2(32, 34)
 
 [node name="Enemy3" parent="." index="2" instance=ExtResource("2_rid12")]
-position = Vector2(33, 29)
+position = Vector2(44, 34)
 
 [node name="Enemy4" parent="." index="3" instance=ExtResource("2_rid12")]
 position = Vector2(63, 9)
@@ -27,13 +27,13 @@ position = Vector2(89, 9)
 position = Vector2(104, 9)
 
 [node name="Enemy8" parent="." index="7" instance=ExtResource("2_rid12")]
-position = Vector2(48, 29)
+position = Vector2(59, 34)
 
 [node name="Enemy9" parent="." index="8" instance=ExtResource("2_rid12")]
-position = Vector2(140, 40)
+position = Vector2(127, 45)
 
 [node name="Enemy10" parent="." index="9" instance=ExtResource("2_rid12")]
-position = Vector2(153, 40)
+position = Vector2(140, 45)
 
 [node name="Enemy11" parent="." index="10" instance=ExtResource("2_rid12")]
-position = Vector2(166, 40)
+position = Vector2(153, 45)

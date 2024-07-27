@@ -11,29 +11,29 @@ script = ExtResource("1_tphy8")
 position = Vector2(13, 16)
 
 [node name="Enemy2" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(60, 41)
+position = Vector2(55, 43)
 zigzag_speed = 0.0
 
 [node name="Enemy3" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(39, 29)
+position = Vector2(36, 31)
 
 [node name="Enemy4" parent="." instance=ExtResource("1_qjpef")]
 position = Vector2(70, 7)
 
 [node name="Enemy5" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(103, 21)
+position = Vector2(95, 27)
 speed = 2.0
 
 [node name="Enemy6" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(114, 45)
+position = Vector2(114, 46)
 
 [node name="Enemy7" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(151, 30)
+position = Vector2(152, 20)
 speed = 2.0
 shoot = true
 bullet_scene = ExtResource("3_f1bc2")
 
 [node name="Enemy8" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(168, 50)
+position = Vector2(168, 43)
 speed = 2.0
 zigzag_speed = 0.0
