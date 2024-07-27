@@ -1,6 +1,8 @@
 extends Area2D
 class_name EnemyHitBox
 
+#NOTE: Drag and drop as a child of Enemy node
+#DANGER: Be sure to set the collisions as follows: Layer unassigned and Mask assigned to player
 
 
 func _ready():

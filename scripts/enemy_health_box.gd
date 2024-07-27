@@ -1,6 +1,9 @@
 extends Area2D
 class_name EnemyHealthBox
 
+#NOTE: Drag and drop as a child of Enemy node
+#DANGER: Be sure to set the collisions as follows: Layer assigned to enemy and Mask  unassigned
+
 @export var max_health: int = 1
 
 
