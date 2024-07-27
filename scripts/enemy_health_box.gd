@@ -4,7 +4,14 @@ class_name EnemyHealthBox
 #NOTE: Drag and drop as a child of Enemy node
 #DANGER: Be sure to set the collisions as follows: Layer assigned to enemy and Mask  unassigned
 
-@export var max_health: int = 1
+var max_health: int
+
+
+func _ready():
+	max_health = get_parent().health
+	
+	if max_health:
+		push_error('Health value is undefined')
 
 
 func take_damage():

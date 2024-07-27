@@ -5,10 +5,17 @@ extends CharacterBody2D
 	- Attach dragging in your Enemy node.
 '''
 
+## initial health
+@export var health: int = 1
+## positive value in float
 @export var speed: float = 0.0
+## active for shoot mode
 @export var shoot: bool = false
+## active for move up and down
 @export var zigzag: bool = false
+## initial direction by default is up
 @export var to_down: bool = false
+## positive value in float
 @export var zigzag_speed: float = 8.0
 @export var explotion_scene: PackedScene
 @export var bullet_scene: PackedScene
@@ -80,7 +87,6 @@ func _apply_zigzag():
 	var dir = 1 if to_down else -1
 	velocity.y = zigzag_speed * dir
 	
-
 
 func start_move_on_zigszag():
 	if zigzag:
