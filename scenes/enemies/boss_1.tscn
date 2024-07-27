@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://c88ev1so4wvv1"]
+
+[ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_ulolt"]
+[ext_resource type="Script" path="res://scripts/boss.gd" id="2_fcshl"]
+[ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_pqo2t"]
+[ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="3_yd4ll"]
+[ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="4_6iuw8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k34ol"]
+atlas = ExtResource("2_pqo2t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojxvd"]
+atlas = ExtResource("2_pqo2t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ip5n"]
+atlas = ExtResource("2_pqo2t")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ljhw"]
+atlas = ExtResource("2_pqo2t")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_on6vi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k34ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojxvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ip5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ljhw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2b4aq"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krlev"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s5r1f"]
+radius = 12.0
+height = 28.0
+
+[node name="Boss1" instance=ExtResource("1_ulolt")]
+script = ExtResource("2_fcshl")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_on6vi")
+frame = 1
+frame_progress = 0.285806
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+position = Vector2(2, -2)
+shape = SubResource("CapsuleShape2D_2b4aq")
+debug_color = Color(0.679218, 0.327654, 0.955027, 0.42)
+
+[node name="EnemyHealthBox" parent="." index="2" instance=ExtResource("3_yd4ll")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
+position = Vector2(3, -2)
+shape = SubResource("CapsuleShape2D_krlev")
+debug_color = Color(0.59863, 0.376395, 0.987965, 0.42)
+
+[node name="EnemyHitBox" parent="." index="3" instance=ExtResource("4_6iuw8")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
+shape = SubResource("CapsuleShape2D_s5r1f")
