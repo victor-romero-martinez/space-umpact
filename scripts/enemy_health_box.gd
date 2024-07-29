@@ -1,4 +1,4 @@
-@icon("res://assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/armor_01e.png")
+@icon("res://assets/icons/heavy-black-heart.svg")
 extends Area2D
 class_name EnemyHealthBox
 

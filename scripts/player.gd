@@ -1,3 +1,4 @@
+@icon("res://assets/icons/gamepad.svg")
 extends CharacterBody2D
 
 ''' This script is only for Player node.

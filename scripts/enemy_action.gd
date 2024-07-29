@@ -1,3 +1,4 @@
+@icon("res://assets/icons/tools.svg")
 extends Area2D
 class_name EnemyAction
 
