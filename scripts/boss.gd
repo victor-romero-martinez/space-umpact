@@ -15,7 +15,6 @@ extends CharacterBody2D
 @export var bullet_by_shots: int = 1
 @export var explotion_scene: PackedScene
 
-@onready var boss_collision = $CollisionShape2D
 
 var _screen_size: Vector2
 var _on_viewport: Vector2 = Vector2(155.0, 42.0)
@@ -32,13 +31,12 @@ func _ready():
 	position = _offset_vieport
 	_screen_size = Global.screen_size + Vector2(0, 20.0) # a little higher than the initial
 	
-	var timer = Timer.new()
-	add_child(timer)
-	timer.one_shot = false
-	timer.wait_time = timer_shots # this is 2.0s
-	timer.connect('timeout', Callable(self, '_on_special_action'))
-	timer.start()
-
+	var spetial_timer = Timer.new()
+	add_child(spetial_timer)
+	spetial_timer.one_shot = false
+	spetial_timer.wait_time = timer_shots # this is 2.0s
+	spetial_timer.connect('timeout', Callable(self, '_on_special_action'))
+	spetial_timer.start()
 
 
 func _physics_process(_delta):
@@ -92,23 +90,44 @@ func _make_bullets():
 
 func _on_special_action():
 	if _can_shoot:
-		print(_can_shoot)
 		_make_bullets()
 
 
+func _rand_explotion():
+	var _rand_position = randf_range(-10.0, 10.0)
+	var boom = explotion_scene.instantiate()
+	boom.position = position + Vector2(_rand_position, _rand_position)
+	
+	add_sibling(boom)
+
+
 func _dead():
-	boss_collision.disabled = true
+	$CollisionShape2D.disabled = true
 	velocity.y = zigzag_speed * 1
 	
 	if global_position.y > _screen_size.y:
 		queue_free()
 
+
+func _set_blinking():
+	var _tween_timer: float = 0.25
+	var tween: Tween = create_tween()
+	
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.2, _tween_timer)
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, _tween_timer).from(_tween_timer)
+
+
+func apply_damge():
+	if not immunity: _set_blinking()
+
+
 func make_boom():
 	immunity = true
 	_is_dead = true
 	_can_shoot = false
-
+	_rand_explotion()
+	%ExploitTrigger.start()
 	
-	
 
-
+func _on_timer_timeout():
+	_rand_explotion()

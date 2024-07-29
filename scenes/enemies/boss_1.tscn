@@ -58,6 +58,7 @@ height = 28.0
 
 [node name="Boss1" instance=ExtResource("1_ulolt")]
 script = ExtResource("2_fcshl")
+health = 6
 bullet_scene = ExtResource("3_23eqv")
 explotion_scene = ExtResource("4_7o8cd")
 
@@ -85,3 +86,9 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
 shape = SubResource("CapsuleShape2D_s5r1f")
+
+[node name="ExploitTrigger" type="Timer" parent="." index="4"]
+unique_name_in_owner = true
+wait_time = 0.25
+
+[connection signal="timeout" from="ExploitTrigger" to="." method="_on_timer_timeout"]
