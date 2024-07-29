@@ -2,7 +2,16 @@
 extends Area2D
 class_name EnemyHealthBox
 
-#NOTE: Drag and drop as a child of Enemy node
+''' Instrunctions
+	- Drag and drop on enemy node
+	- Inside the enemy script create the following methods:
+		- start_move_on_zigszag()
+		- handler_zigzag_direction()
+	- Configure collisions as follows:
+		- Layer assigned to enemy
+		- Mask unassigned
+'''
+
 #DANGER: Be sure to set the collisions as follows: Layer assigned to enemy and Mask  unassigned
 
 var max_health: int

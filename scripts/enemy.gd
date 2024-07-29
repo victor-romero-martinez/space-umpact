@@ -1,3 +1,4 @@
+@icon("res://assets/icons/skull-and-crossbones.svg")
 extends CharacterBody2D
 
 ''' This script is only for Enemy node.

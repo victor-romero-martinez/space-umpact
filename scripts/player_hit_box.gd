@@ -2,7 +2,13 @@
 extends Area2D
 class_name PlayerHitBox
 
-#NOTE: Drag and drop as a child of Player node
+''' Instrunctions
+	- Drag and drop on enemy node
+	- Configure collisions as follows:
+		- Layer unassigned
+		- Mask assigned to enemy
+'''
+
 #DANGER: Be sure to set the collisions as follows: Layer unassigned and Mask assigned to enemy
 
 
