@@ -8,7 +8,7 @@ var direction: int = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x += (speed * direction) * delta
-	if position.x > limit.x or position.x < 0:
+	if global_position.x > limit.x or global_position.x < 0:
 		queue_free()
 
 
