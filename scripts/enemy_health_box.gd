@@ -5,6 +5,7 @@ class_name EnemyHealthBox
 ''' Instrunctions
 	- Drag and drop on enemy node
 	- Inside the enemy script create the following methods:
+		- apply_damge()
 		- start_move_on_zigszag()
 		- handler_zigzag_direction()
 	- Configure collisions as follows:
@@ -22,7 +23,9 @@ func _ready():
 
 
 func take_damage():
-	max_health -= 1
+	if max_health > 0:
+		max_health -= 1
+		get_parent().apply_damge()
 	
 	if max_health == 0:
 		get_parent().make_boom()

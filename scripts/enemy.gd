@@ -49,6 +49,18 @@ func _apply_movement():
 	move_and_slide()
 
 
+func _set_blinking():
+	var _tween_timer: float = 0.25
+	var tween: Tween = create_tween()
+	
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.2, _tween_timer)
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, _tween_timer).from(_tween_timer)
+
+
+func apply_damge():
+	_set_blinking()
+
+
 func make_boom():
 	if not explotion_scene:
 		push_error('Explotion PackScene is missing')
@@ -82,6 +94,7 @@ func _shooting():
 
 func handler_zigzag_direction():
 	to_down = not to_down
+
 
 func _apply_zigzag():
 	# switch direction on up or down
