@@ -3,21 +3,47 @@ extends Node2D
 
 @export_group('enemies_collections List')
 @export var enemies_chunk: Array[PackedScene] = []
+@export var boss_chunk:PackedScene
 
 
-@onready var screen_size = Global.screen_size.x
+var _screen_width: float
+var _add_boss: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_make_chunk()
+	_screen_width = Global.screen_size.x
+	_make_enemy_chunk()
+	#print(get_child_count())
 
 
-func _make_chunk():
+func _process(_delta):
+	if not _add_boss: _append_boss()
+	
+
+func _make_enemy_chunk():
 	if enemies_chunk.size() == 0:
-		push_error('Enemy chunk scene is missig')
+		push_error('Enemy chunk scene is missing')
 	else:
 		for i in enemies_chunk.size():
 			var chunk = enemies_chunk[i].instantiate()
-			chunk.position.x = screen_size * (i + 1)
+			chunk.position.x = _screen_width * (i + 1)
 			add_child(chunk)
+
+
+func _make_boos_chunk():
+	if not boss_chunk:
+		push_error('Boss chunk scene is missing')
+	else:
+		var boss = boss_chunk.instantiate()
+		boss.position = position
+		add_child(boss)
+			 
+
+func _append_boss():
+	#INFO: if c < 2 because there is still the EnemyAction area
+	#DANGER: base index 1
+	if get_child_count() < 2:
+		_make_boos_chunk()
+		_add_boss = true
+	

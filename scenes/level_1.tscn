@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://hs2qvsb6w8tj"]
+[gd_scene load_steps=12 format=3 uid="uid://hs2qvsb6w8tj"]
 
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_dr20p"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="2_do623"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://2empk7mtmylg" path="res://levels/level_1/enemy_chunk_1.tscn" id="8_dcy32"]
 [ext_resource type="PackedScene" uid="uid://bsewqcenmlwa3" path="res://levels/level_1/enemy_chunk_2.tscn" id="9_cq6gh"]
 [ext_resource type="PackedScene" uid="uid://bv2iye5c1uo01" path="res://levels/level_1/enemy_chunk_3.tscn" id="10_486us"]
+[ext_resource type="PackedScene" uid="uid://dxdtonhgxyoh8" path="res://levels/level_1/boss_chunk.tscn" id="11_y36ey"]
 
 [node name="Level-1" instance=ExtResource("1_dr20p")]
 script = ExtResource("2_yp15v")
@@ -25,3 +26,4 @@ metadata/_edit_lock_ = true
 
 [node name="EnemyManagertest" parent="Enemy" index="0" instance=ExtResource("6_8w0a2")]
 enemies_chunk = Array[PackedScene]([ExtResource("7_h7mse"), ExtResource("8_dcy32"), ExtResource("9_cq6gh"), ExtResource("10_486us")])
+boss_chunk = ExtResource("11_y36ey")

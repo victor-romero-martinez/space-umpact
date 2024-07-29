@@ -13,3 +13,4 @@ func _process(delta):
 	
 	if position.x < screen_size:
 		queue_free()
+	

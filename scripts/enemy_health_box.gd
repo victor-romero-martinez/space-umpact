@@ -9,9 +9,6 @@ var max_health: int
 
 func _ready():
 	max_health = get_parent().health
-	
-	if max_health:
-		push_error('Health value is undefined')
 
 
 func take_damage():

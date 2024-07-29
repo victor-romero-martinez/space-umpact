@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://c88ev1so4wvv1"]
+[gd_scene load_steps=16 format=3 uid="uid://c88ev1so4wvv1"]
 
 [ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_ulolt"]
 [ext_resource type="Script" path="res://scripts/boss.gd" id="2_fcshl"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_pqo2t"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_23eqv"]
 [ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="3_yd4ll"]
 [ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="4_6iuw8"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="4_7o8cd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k34ol"]
 atlas = ExtResource("2_pqo2t")
@@ -56,6 +58,9 @@ height = 28.0
 
 [node name="Boss1" instance=ExtResource("1_ulolt")]
 script = ExtResource("2_fcshl")
+health = 3
+bullet_scene = ExtResource("3_23eqv")
+explotion_scene = ExtResource("4_7o8cd")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_on6vi")
