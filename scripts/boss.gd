@@ -1,3 +1,4 @@
+@icon("res://assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/helmet_02e.png")
 extends CharacterBody2D
 
 @export var health: int = 60

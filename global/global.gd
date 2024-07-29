@@ -1,3 +1,4 @@
+@icon("res://assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/book_01g.png")
 extends Node2D
 
 var screen_size: Vector2

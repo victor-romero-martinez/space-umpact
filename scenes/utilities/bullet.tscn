@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwj4d2ay65k5w"]
+[gd_scene load_steps=5 format=3 uid="uid://cwj4d2ay65k5w"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_rlf4v"]
 [ext_resource type="Texture2D" uid="uid://4txxjkpo453e" path="res://assets/bullet.png" id="2_vqrpj"]
-[ext_resource type="Script" path="res://scripts/bullet_hit_box.gd" id="3_sgtuh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr26n"]
 size = Vector2(2, 1)
@@ -25,7 +24,6 @@ shape = SubResource("RectangleShape2D_vr26n")
 [node name="BulletHitBox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 14
-script = ExtResource("3_sgtuh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHitBox"]
 shape = SubResource("RectangleShape2D_vhig7")

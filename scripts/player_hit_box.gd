@@ -1,3 +1,4 @@
+@icon("res://assets/Kyrise's 16x16 RPG Icon Pack - V1.3/icons/16x16/sword_03c.png")
 extends Area2D
 class_name PlayerHitBox
 
