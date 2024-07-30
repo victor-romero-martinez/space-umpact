@@ -28,3 +28,7 @@ position = Vector2(189, 34)
 
 [node name="FinalPosition" type="Marker2D" parent="."]
 position = Vector2(143, 34)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
