@@ -14,11 +14,13 @@ extends CharacterBody2D
 @export var timer_shots: float = 2.0
 @export var bullet_by_shots: int = 1
 @export var explotion_scene: PackedScene
+## initial position
+@export var initial_position: Marker2D
+## position on game
+@export var final_position: Marker2D
 
 
 var _screen_size: Vector2
-var _on_viewport: Vector2 = Vector2(155.0, 42.0)
-var _offset_vieport: Vector2 = Vector2(197.0, 42.0)
 var _can_shoot: bool = false
 var _is_dead: bool = false
 
@@ -26,9 +28,13 @@ var _is_dead: bool = false
 func _ready():
 	if not bullet_scene or not explotion_scene:
 		push_error('Some PackedScene is missing')
+		
+	if initial_position and final_position:
+		_enter_the_stage()
+	else:
+		printerr('Initial or final position is undefined')
 	
 	$AnimatedSprite2D.play("default")
-	position = _offset_vieport
 	_screen_size = Global.screen_size + Vector2(0, 20.0) # a little higher than the initial
 	
 	var spetial_timer = Timer.new()
@@ -43,13 +49,16 @@ func _physics_process(_delta):
 	_apply_movement()
 	
 
+func _enter_the_stage():
+	global_position = initial_position.position
+	var t = create_tween()
+	t.tween_property(self, 'global_position', final_position.position, 3.5)\
+		.set_trans(Tween.TRANS_EXPO)\
+		.set_ease(Tween.EASE_OUT)
+	t.tween_callback(func (): immunity = false)
+
+
 func _apply_movement():
-	if global_position.x > _on_viewport.x:
-		velocity.x = -speed
-	else:
-		velocity.x = 0
-		immunity = false
-		
 	if not immunity and not _is_dead:
 		start_move_on_zigszag()
 		_can_shoot = true
