@@ -1,6 +1,10 @@
 @icon("res://assets/icons/skull-and-crossbones.svg")
 extends CharacterBody2D
 
+signal hit(val: int)
+signal activate_fight()
+signal set_health(val: int)
+
 @export var health: int = 60
 ## invincibility when in transition
 @export var immunity: bool = true
@@ -26,13 +30,14 @@ var _is_dead: bool = false
 
 
 func _ready():
-	if not bullet_scene or not explotion_scene:
+	if not bullet_scene\
+		or not explotion_scene:
 		push_error('Some PackedScene is missing')
 		
 	if initial_position and final_position:
 		_enter_the_stage()
 	else:
-		printerr('Initial or final position is undefined')
+		printerr('Boss initial or final position is undefined')
 	
 	$AnimatedSprite2D.play("default")
 	_screen_size = Global.screen_size + Vector2(0, 20.0) # a little higher than the initial
@@ -43,6 +48,8 @@ func _ready():
 	spetial_timer.wait_time = timer_shots # this is 2.0s
 	spetial_timer.connect('timeout', Callable(self, '_on_special_action'))
 	spetial_timer.start()
+	
+	set_health.emit(health)
 
 
 func _physics_process(_delta):
@@ -56,6 +63,8 @@ func _enter_the_stage():
 		.set_trans(Tween.TRANS_EXPO)\
 		.set_ease(Tween.EASE_OUT)
 	t.tween_callback(func (): immunity = false)
+	
+	activate_fight.emit()
 
 
 func _apply_movement():
@@ -138,6 +147,7 @@ func apply_damge():
 	if not immunity:
 		health -= 1
 		_set_blinking()
+		hit.emit(1)
 		if health == 0:
 			_make_boom()
 

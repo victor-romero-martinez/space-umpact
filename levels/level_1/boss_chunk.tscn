@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxdtonhgxyoh8"]
+[gd_scene load_steps=5 format=3 uid="uid://dxdtonhgxyoh8"]
 
 [ext_resource type="PackedScene" uid="uid://c88ev1so4wvv1" path="res://scenes/enemies/boss_1.tscn" id="1_6kwli"]
+[ext_resource type="PackedScene" uid="uid://d175njosf45c7" path="res://scenes/utilities/health_bar.tscn" id="1_8wj5q"]
 [ext_resource type="PackedScene" uid="uid://dpgv2kbkcbjce" path="res://scenes/utilities/enemy_action.tscn" id="2_cmg2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jsmrg"]
-size = Vector2(44, 16)
+size = Vector2(44, 13)
 
 [node name="BossChunk" type="Node2D"]
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("pos_in_game") instance=ExtResource("1_8wj5q")]
+position = Vector2(140, -7)
+pos_in_game = NodePath("../HealthFinalPos")
+metadata/_edit_lock_ = true
 
 [node name="Boss1" parent="." node_paths=PackedStringArray("initial_position", "final_position") instance=ExtResource("1_6kwli")]
 position = Vector2(197, -2)
@@ -18,17 +24,23 @@ collision_mask = 4
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyAction"]
-position = Vector2(154, 33)
+position = Vector2(154, 34.5)
 shape = SubResource("RectangleShape2D_jsmrg")
 debug_color = Color(0.312419, 0.619569, 0.268772, 0.42)
 metadata/_edit_lock_ = true
 
 [node name="InitialPosition" type="Marker2D" parent="."]
 position = Vector2(189, 34)
+metadata/_edit_lock_ = true
 
 [node name="FinalPosition" type="Marker2D" parent="."]
 position = Vector2(143, 34)
+metadata/_edit_lock_ = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HealthFinalPos" type="Marker2D" parent="."]
+position = Vector2(140, 0)
+metadata/_edit_lock_ = true
+
+[connection signal="activate_fight" from="Boss1" to="HealthBar" method="_on_boss_1_activate_fight"]
+[connection signal="hit" from="Boss1" to="HealthBar" method="_on_boss_1_hit"]
+[connection signal="set_health" from="Boss1" to="HealthBar" method="_on_boss_1_set_health"]
