@@ -1,3 +1,4 @@
+@icon("res://assets/icons/gear.svg")
 extends Node2D
 
 @onready var screen_size = Global.screen_size.x
