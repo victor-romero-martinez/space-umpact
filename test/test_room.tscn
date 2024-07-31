@@ -10,12 +10,24 @@ script = ExtResource("1_odhxs")
 
 [node name="Hud" type="Node2D" parent="."]
 
-[node name="HudHealth" parent="Hud" instance=ExtResource("1_qhkwd")]
-position = Vector2(3, 3)
+[node name="HudHealth" parent="Hud" node_paths=PackedStringArray("position_in_game") instance=ExtResource("1_qhkwd")]
+position = Vector2(4, -3)
+position_in_game = NodePath("../PlayerHealthPosition")
+metadata/_edit_lock_ = true
+
+[node name="PlayerHealthPosition" type="Marker2D" parent="Hud"]
+position = Vector2(4, 4)
 metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="."]
 
-[node name="Player" parent="Player" instance=ExtResource("2_b2s5v")]
+[node name="Player" parent="Player" node_paths=PackedStringArray("respawn") instance=ExtResource("2_b2s5v")]
+position = Vector2(-13, 41)
+respawn = NodePath("../PlayerRespawn")
+metadata/_edit_lock_ = true
+
+[node name="PlayerRespawn" type="Marker2D" parent="Player"]
+position = Vector2(4, 41)
+metadata/_edit_lock_ = true
 
 [node name="BossChunk" parent="." instance=ExtResource("4_fsf2b")]

@@ -18,11 +18,23 @@ script = ExtResource("2_yp15v")
 [node name="MapManager" parent="BG" index="0" instance=ExtResource("3_bacip")]
 metadata/_edit_lock_ = true
 
-[node name="HudHealth" parent="Hud" index="0" instance=ExtResource("3_ks5nd")]
-position = Vector2(3, 3)
+[node name="HudHealth" parent="Hud" index="0" node_paths=PackedStringArray("position_in_game") instance=ExtResource("3_ks5nd")]
+position = Vector2(4, -3)
+position_in_game = NodePath("../PlayerHealthPosition")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="Player" index="0" instance=ExtResource("2_do623")]
+[node name="PlayerHealthPosition" type="Marker2D" parent="Hud" index="1"]
+position = Vector2(4, 4)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="Player" index="0" node_paths=PackedStringArray("respawn") instance=ExtResource("2_do623")]
+position = Vector2(-14, 41)
+respawn = NodePath("../PlayerRespawn")
+metadata/_edit_lock_ = true
+
+[node name="PlayerRespawn" type="Marker2D" parent="Player" index="1"]
+position = Vector2(4, 41)
+metadata/_edit_lock_ = true
 
 [node name="EnemyManagertest" parent="Enemy" index="0" instance=ExtResource("6_8w0a2")]
 enemies_chunk = Array[PackedScene]([ExtResource("7_h7mse"), ExtResource("8_dcy32"), ExtResource("9_cq6gh"), ExtResource("10_486us")])
