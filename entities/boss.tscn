@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://2s814b5rdr10"]
+
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_l86ic"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="2_smons"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_jh1xv"]
+[ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="4_0xqel"]
+[ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="5_y41on"]
+
+[node name="Boss1" type="CharacterBody2D"]
+script = ExtResource("1_l86ic")
+bullet_scene = ExtResource("2_smons")
+explotion_scene = ExtResource("3_jh1xv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2)
+debug_color = Color(0.679218, 0.327654, 0.955027, 0.42)
+
+[node name="EnemyHealthBox" parent="." instance=ExtResource("4_0xqel")]
+visible = false
+
+[node name="EnemyHitBox" parent="." instance=ExtResource("5_y41on")]
+visible = false
+
+[node name="ExploitTrigger" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+
+[connection signal="timeout" from="ExploitTrigger" to="." method="_on_timer_timeout"]
