@@ -9,16 +9,6 @@ size = Vector2(44, 13)
 
 [node name="BossChunk" type="Node2D"]
 
-[node name="HealthBar" parent="." node_paths=PackedStringArray("pos_in_game") instance=ExtResource("1_8wj5q")]
-position = Vector2(140, -7)
-pos_in_game = NodePath("../HealthFinalPos")
-metadata/_edit_lock_ = true
-
-[node name="Boss1" parent="." node_paths=PackedStringArray("initial_position", "final_position") instance=ExtResource("1_6kwli")]
-position = Vector2(197, -2)
-initial_position = NodePath("../InitialPosition")
-final_position = NodePath("../FinalPosition")
-
 [node name="EnemyAction" parent="." instance=ExtResource("2_cmg2v")]
 collision_mask = 4
 metadata/_edit_lock_ = true
@@ -41,6 +31,12 @@ metadata/_edit_lock_ = true
 position = Vector2(140, 0)
 metadata/_edit_lock_ = true
 
-[connection signal="activate_fight" from="Boss1" to="HealthBar" method="_on_boss_1_activate_fight"]
-[connection signal="hit" from="Boss1" to="HealthBar" method="_on_boss_1_hit"]
-[connection signal="set_health" from="Boss1" to="HealthBar" method="_on_boss_1_set_health"]
+[node name="HealthBar" parent="." node_paths=PackedStringArray("pos_in_game") instance=ExtResource("1_8wj5q")]
+position = Vector2(140, -7)
+pos_in_game = NodePath("../HealthFinalPos")
+metadata/_edit_lock_ = true
+
+[node name="Boss1" parent="." node_paths=PackedStringArray("initial_position", "final_position") instance=ExtResource("1_6kwli")]
+position = Vector2(220, 39)
+initial_position = NodePath("../InitialPosition")
+final_position = NodePath("../FinalPosition")

@@ -1,5 +1,6 @@
 @icon("res://assets/icons/skull-and-crossbones.svg")
 extends CharacterBody2D
+class_name BossEenemy
 
 signal hit(val: int)
 signal activate_fight()

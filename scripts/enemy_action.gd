@@ -1,6 +1,5 @@
 @icon("res://assets/icons/tools.svg")
 extends Area2D
-class_name EnemyAction
 
 #NOTE: use EnemyHealthBox area because is the only visible by other Area2D collision
 
