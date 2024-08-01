@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://culrxypygkbve"]
+
+[ext_resource type="Script" path="res://scripts/map_chunk.gd" id="1_g8xgd"]
+[ext_resource type="TileSet" uid="uid://dd6v307sx0r6h" path="res://levels/level_2/level_2_sky.tres" id="1_yduqe"]
+
+[node name="TileMap" type="TileMap"]
+tile_set = ExtResource("1_yduqe")
+format = 2
+layer_0/tile_data = PackedInt32Array(327680, 131072, 1, 327681, 589824, 0, 327682, 327680, 0, 327683, 65536, 2, 327684, 393216, 0, 327685, 458752, 0, 327686, 0, 3, 327687, 196608, 3, 327688, 0, 3, 327689, 196608, 3, 327690, 327680, 3, 262144, 0, 3, 262145, 65536, 3, 262150, 0, 2, 262151, 196608, 2, 262152, 0, 2, 262153, 131072, 2, 196608, 0, 2, 196609, 65536, 2, 262148, 327680, 2, 196618, 327680, 2)
+script = ExtResource("1_g8xgd")

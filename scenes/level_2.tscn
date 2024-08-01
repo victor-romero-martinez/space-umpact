@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bse3clbf784ak"]
+
+[ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_ouc7a"]
+[ext_resource type="PackedScene" uid="uid://dvccawcbgcnj7" path="res://levels/level_2/background_manager.tscn" id="2_3wt1b"]
+[ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="2_jj21j"]
+[ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="3_vard1"]
+[ext_resource type="PackedScene" uid="uid://12i2qachdu1p" path="res://levels/level_1/enemy_manager.tscn" id="4_whtcc"]
+
+[node name="Level-2" instance=ExtResource("1_ouc7a")]
+
+[node name="BackgroundManager" parent="BG" index="0" instance=ExtResource("2_3wt1b")]
+
+[node name="HudHealth" parent="Hud" index="0" node_paths=PackedStringArray("position_in_game") instance=ExtResource("2_jj21j")]
+position = Vector2(4, -3)
+position_in_game = NodePath("../PlayerHealthPosition")
+metadata/_edit_lock_ = true
+
+[node name="PlayerHealthPosition" type="Marker2D" parent="Hud" index="1"]
+position = Vector2(4, 4)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="Player" index="0" node_paths=PackedStringArray("respawn") instance=ExtResource("3_vard1")]
+position = Vector2(-14, 41)
+respawn = NodePath("../PlayerRespawn")
+metadata/_edit_lock_ = true
+
+[node name="PlayerRespawn" type="Marker2D" parent="Player" index="1"]
+position = Vector2(4, 41)
+metadata/_edit_lock_ = true
+
+[node name="EnemyManagertest" parent="Enemy" index="0" instance=ExtResource("4_whtcc")]

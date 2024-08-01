@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvccawcbgcnj7"]
+
+[ext_resource type="PackedScene" uid="uid://c753l0wm3rxlq" path="res://entities/background_manager.tscn" id="1_5wjbr"]
+[ext_resource type="PackedScene" uid="uid://dt3xkmptd0jxl" path="res://levels/level_2/tile_map.tscn" id="2_tfsao"]
+[ext_resource type="PackedScene" uid="uid://culrxypygkbve" path="res://levels/level_2/tile_map_1.tscn" id="3_0rivb"]
+[ext_resource type="PackedScene" uid="uid://ctkub4l1p7ki7" path="res://levels/level_2/tile_map2.tscn" id="4_v3b5j"]
+
+[node name="BackgroundManager" node_paths=PackedStringArray("list_map") instance=ExtResource("1_5wjbr")]
+list_map = [NodePath("TileMap"), NodePath("TileMap2"), NodePath("TileMap3")]
+
+[node name="TileMap" parent="." index="0" instance=ExtResource("2_tfsao")]
+position = Vector2(0, 3)
+metadata/_edit_lock_ = true
+
+[node name="TileMap2" parent="." index="1" instance=ExtResource("3_0rivb")]
+position = Vector2(0, 3)
+metadata/_edit_lock_ = true
+
+[node name="TileMap3" parent="." index="2" instance=ExtResource("4_v3b5j")]
+position = Vector2(0, 3)
+metadata/_edit_lock_ = true
