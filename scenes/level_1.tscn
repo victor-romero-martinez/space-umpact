@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_dr20p"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="2_do623"]
 [ext_resource type="Script" path="res://scripts/level_settings.gd" id="2_yp15v"]
-[ext_resource type="PackedScene" uid="uid://hltqg6y24yxi" path="res://levels/level_1/map_manager.tscn" id="3_bacip"]
+[ext_resource type="PackedScene" uid="uid://hltqg6y24yxi" path="res://levels/level_1/background_manager.tscn" id="3_bacip"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="3_ks5nd"]
 [ext_resource type="PackedScene" uid="uid://12i2qachdu1p" path="res://levels/level_1/enemy_manager.tscn" id="6_8w0a2"]
 [ext_resource type="PackedScene" uid="uid://dvhb412hqr1q3" path="res://levels/level_1/enemy_chunk.tscn" id="7_h7mse"]
