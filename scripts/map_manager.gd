@@ -1,27 +1,30 @@
 @icon("res://assets/icons/gear.svg")
 extends Node2D
 
+''' Instructions
+	- add tilemap components as children
+	- add tiles in List Map on Inspector
+'''
+
+@export var list_map: Array[MapChunk] = []
+
 @onready var screen_size = Global.screen_size.x
 
 var total_size:float
 var counter: int = 0
 
 func _ready():
-	counter = get_child_count()
-	
-	for i in counter:
-		total_size = screen_size * i
-		var c = get_child(i)
-		c.position.x = total_size
-
-
+	if not list_map.is_empty():
+		for child in list_map:
+			total_size = screen_size * counter
+			child.position.x = total_size
+			child.off_screen.connect(_on_exit_screen)
+			counter += 1
+	else:
+		push_error('List map is empty')
+#
+#
 #NOTE: no se si esta sea lo mas optimo
-func _on_tile_map_screen_out(body):
+func _on_exit_screen(body):
 	body.position.x = total_size
-
-func _on_tile_map_1_screen_out(body):
-	body.position.x = total_size
-
-
-func _on_tile_map_2_screen_out(body):
-	body.position.x = total_size
+#
