@@ -21,8 +21,8 @@ func _ready():
 		push_error('Leveld PackedScene is missing')
 
 
-func on_emit_level(v: int):
-	print(v)
+func on_emit_level(index: int):
+	get_tree().change_scene_to_packed(levels[index])
 
 
 func _on_back_pressed():
