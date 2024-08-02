@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://culrxypygkbve"]
 
-[ext_resource type="Script" path="res://scripts/map_chunk.gd" id="1_g8xgd"]
+[ext_resource type="Script" path="res://scripts/utils/map_chunk.gd" id="1_g8xgd"]
 [ext_resource type="TileSet" uid="uid://dd6v307sx0r6h" path="res://levels/level_2/level_2_sky.tres" id="1_yduqe"]
 
 [node name="TileMap" type="TileMap"]

@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="space impact"
-run/main_scene="res://scenes/main.tscn"
+config/version="0.1"
+run/main_scene="res://control/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -35,6 +37,10 @@ folder_colors={
 "res://temp/": "gray",
 "res://test/": "teal"
 }
+
+[gui]
+
+theme/custom_font="res://assets/PublicPixel.ttf"
 
 [layer_names]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c753l0wm3rxlq"]
 
-[ext_resource type="Script" path="res://scripts/map_manager.gd" id="1_0o0wb"]
+[ext_resource type="Script" path="res://scripts/utils/map_manager.gd" id="1_0o0wb"]
 
 [node name="BackgroundManager" type="Node2D"]
 script = ExtResource("1_0o0wb")

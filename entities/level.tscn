@@ -2,10 +2,20 @@
 
 [node name="Level" type="Node2D"]
 
-[node name="BG" type="Node2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Hud" type="Node2D" parent="."]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0.113725, 0.141176, 1)
 
-[node name="Player" type="Node2D" parent="."]
+[node name="BG" type="Node2D" parent="CanvasLayer"]
 
-[node name="Enemy" type="Node2D" parent="."]
+[node name="Hud" type="Node2D" parent="CanvasLayer"]
+
+[node name="Player" type="Node2D" parent="CanvasLayer"]
+
+[node name="Enemy" type="Node2D" parent="CanvasLayer"]

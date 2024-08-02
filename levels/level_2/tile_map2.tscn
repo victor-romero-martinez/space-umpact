@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctkub4l1p7ki7"]
 
 [ext_resource type="TileSet" uid="uid://dd6v307sx0r6h" path="res://levels/level_2/level_2_sky.tres" id="1_sewbm"]
-[ext_resource type="Script" path="res://scripts/map_chunk.gd" id="2_tank4"]
+[ext_resource type="Script" path="res://scripts/utils/map_chunk.gd" id="2_tank4"]
 
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource("1_sewbm")

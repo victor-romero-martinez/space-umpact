@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://12i2qachdu1p"]
 
-[ext_resource type="Script" path="res://scripts/enemy_manager.gd" id="1_sf312"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_manager.gd" id="1_sf312"]
 [ext_resource type="PackedScene" uid="uid://dpgv2kbkcbjce" path="res://scenes/utilities/enemy_action.tscn" id="2_u44cr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nc8k7"]

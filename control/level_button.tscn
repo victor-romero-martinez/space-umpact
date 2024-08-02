@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://t11e1j1uheum"]
+
+[ext_resource type="Script" path="res://scripts/control/level_button.gd" id="1_mgw7j"]
+
+[node name="LevelButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 8
+script = ExtResource("1_mgw7j")

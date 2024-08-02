@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt3xkmptd0jxl"]
 
 [ext_resource type="TileSet" uid="uid://dd6v307sx0r6h" path="res://levels/level_2/level_2_sky.tres" id="1_4lsdv"]
-[ext_resource type="Script" path="res://scripts/map_chunk.gd" id="2_1tjun"]
+[ext_resource type="Script" path="res://scripts/utils/map_chunk.gd" id="2_1tjun"]
 
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource("1_4lsdv")

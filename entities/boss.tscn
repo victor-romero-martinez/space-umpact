@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://2s814b5rdr10"]
 
-[ext_resource type="Script" path="res://scripts/boss.gd" id="1_l86ic"]
+[ext_resource type="Script" path="res://scripts/enemy/boss.gd" id="1_l86ic"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="2_smons"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_jh1xv"]
 [ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="4_0xqel"]
