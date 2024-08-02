@@ -4,20 +4,25 @@ extends Node2D
 @export var pos_in_game: Marker2D
 @onready var health_bar = %Health
 
-var boss: BossEenemy
-var status_health_bar: int = 0
+var _boss: BossEenemy
+var _status_health_bar: int = 0
+var _initial_position: Vector2
 
 
 func _ready():
+	_initial_position = position # set position to hide
+	#DANGER: _boss must be the last child
 	var target = get_parent().get_child(-1)
 	
 	if target is BossEenemy:
-		boss = target
-		boss.set_health.connect(_on_set_health_bar)
-		boss.activate_fight.connect(_on_activate_fight)
-		boss.hit.connect(_on_hit)
+		_boss = target
+		_boss.set_health.connect(_on_set_health_bar)
+		_boss.activate_fight.connect(_on_activate_fight)
+		_boss.hit.connect(_on_hit)
+		_boss.defeated.connect(_hide_health_bar)
 	else:
-		push_warning('The last component should be bossenemy')
+		push_warning('The last component should be _bossenemy')
+
 
 func _show_health_bar():
 	var t = create_tween()
@@ -26,17 +31,24 @@ func _show_health_bar():
 		.set_ease(Tween.EASE_OUT)
 
 
+func _hide_health_bar():
+	var t = create_tween()
+	t.tween_property(self, 'position', _initial_position, .45)\
+		.set_trans(Tween.TRANS_LINEAR)\
+		.set_ease(Tween.EASE_IN)
+
+
 func _on_set_health_bar(val: int):
-	status_health_bar = val
+	_status_health_bar = val
 	
-	health_bar.max_value = status_health_bar
-	health_bar.value = status_health_bar
+	health_bar.max_value = _status_health_bar
+	health_bar.value = _status_health_bar
 
 
 func _on_hit(val: int):
-	status_health_bar -= val
+	_status_health_bar -= val
 	
-	health_bar.value = status_health_bar
+	health_bar.value = _status_health_bar
 	
 
 func _on_activate_fight():

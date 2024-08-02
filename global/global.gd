@@ -2,7 +2,8 @@
 extends Node2D
 
 var screen_size: Vector2
-var player_heart:int = 3
+var player_heart: int = 3
+var defeated_boss: bool = false
 
 
 #TODO: implementar animacion de spawn
@@ -17,3 +18,4 @@ func take_damage():
 
 func is_game_over() -> bool:
 	return player_heart == 0
+

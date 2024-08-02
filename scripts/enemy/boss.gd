@@ -5,6 +5,7 @@ class_name BossEenemy
 signal hit(val: int)
 signal activate_fight()
 signal set_health(val: int)
+signal defeated
 
 @export var health: int = 60
 ## invincibility when in transition
@@ -25,6 +26,7 @@ signal set_health(val: int)
 @export var final_position: Marker2D
 
 
+var global = Global
 var _screen_size: Vector2
 var _can_shoot: bool = false
 var _is_dead: bool = false
@@ -41,7 +43,7 @@ func _ready():
 		printerr('Boss initial or final position is undefined')
 	
 	$AnimatedSprite2D.play("default")
-	_screen_size = Global.screen_size + Vector2(0, 20.0) # a little higher than the initial
+	_screen_size = global.screen_size + Vector2(0, 20.0) # a little higher than the initial
 	
 	var spetial_timer = Timer.new()
 	add_child(spetial_timer)
@@ -121,8 +123,10 @@ func _rand_explotion():
 
 
 func _dead():
+	global.defeated_boss = true
 	$CollisionShape2D.disabled = true
 	velocity.y = zigzag_speed * 1
+	defeated.emit()
 	
 	if global_position.y > _screen_size.y:
 		queue_free()
