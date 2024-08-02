@@ -36,25 +36,25 @@ size_flags_vertical = 4
 [node name="NewGame" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 4
 text = "New game"
 
 [node name="Continue" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 4
 text = "Continue"
 
 [node name="Level" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 4
 text = "Level"
 
 [node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 4
 text = "Quit
 "
 

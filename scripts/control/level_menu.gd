@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 
@@ -11,7 +12,7 @@ func _ready():
 		for i in range(levels.size()):
 			var button = Button.new()
 			button.text = str(i + 1)
-			button.add_theme_font_size_override("font_size", 8)
+			button.add_theme_font_size_override("font_size", 4)
 			button.focus_mode = FOCUS_NONE
 
 			button.pressed.connect(func (): self.on_emit_level(i))

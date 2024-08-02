@@ -40,7 +40,7 @@ folder_colors={
 
 [gui]
 
-theme/custom_font="res://assets/PublicPixel.ttf"
+theme/custom_font="res://assets/fonts/PublicPixel.ttf"
 
 [layer_names]
 
