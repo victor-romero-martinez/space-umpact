@@ -10,8 +10,8 @@ extends CharacterBody2D
 @export var health: int = 1
 ## positive value in float
 @export var speed: float = 0.0
-## active for shoot mode
-@export var shoot: bool = false
+## active for can_shoot mode
+@export var can_shoot: bool = false
 ## active for move up and down
 @export var zigzag: bool = false
 ## initial direction by default is up
@@ -29,7 +29,11 @@ var _is_on_zigzag: bool = false
 
 
 func _ready():
-	_open_fire = screen_size.x - 60
+	if can_shoot:
+		var rand_pos = randf_range(20.0, 120.0)
+		_open_fire = screen_size.x - rand_pos
+		print(_open_fire)
+
 
 
 func _physics_process(_delta):
@@ -38,8 +42,7 @@ func _physics_process(_delta):
 	
 	$AnimatedSprite2D.play("default")
 	_apply_movement()
-	_shooting()
-	
+	_shooting_up()
 	
 	
 func _apply_movement():
@@ -78,19 +81,18 @@ func _make_bullets():
 	if global_position.x < _open_fire:
 		if not bullet_scene:
 			push_error('Bullet PackScene is missing')
-			shoot = false
+			can_shoot = false
 		else:
 			var bullet = bullet_scene.instantiate()
 			bullet.go_negative()
 			bullet.position = position + Vector2(-8.0, 0)
 			add_sibling(bullet)
 			
+			can_shoot = false
 			
-			shoot = false
 
-
-func _shooting():
-	if shoot:
+func _shooting_up():
+	if can_shoot:
 		_make_bullets()
 
 
@@ -102,6 +104,7 @@ func _apply_zigzag():
 	# switch direction on up or down
 	var dir = 1 if to_down else -1
 	velocity.y = zigzag_speed * dir
+	
 	
 
 func start_move_on_zigszag():
