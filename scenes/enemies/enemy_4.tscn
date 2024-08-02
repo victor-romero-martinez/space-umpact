@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://owst6smqhoks"]
+
+[ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_w30q5"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="2_wdqa7"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_rdwu4"]
+[ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="4_lw8cc"]
+[ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="5_6lla0"]
+[ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="6_by1eg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycs32"]
+atlas = ExtResource("4_lw8cc")
+region = Rect2(0, 39, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h41t5"]
+atlas = ExtResource("4_lw8cc")
+region = Rect2(16, 39, 16, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8int"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycs32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h41t5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0wig"]
+radius = 2.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vknv7"]
+radius = 2.9998
+height = 7.99947
+
+[node name="Enemy4" instance=ExtResource("1_w30q5")]
+script = ExtResource("2_wdqa7")
+health = 2
+explotion_scene = ExtResource("3_rdwu4")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_c8int")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+shape = SubResource("CircleShape2D_r0wig")
+
+[node name="EnemyHealthBox" parent="." index="2" instance=ExtResource("5_6lla0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
+rotation = 1.58233
+shape = SubResource("CapsuleShape2D_vknv7")
+debug_color = Color(0.888047, 0.206112, 0.638533, 0.42)
+
+[node name="EnemyHitBox" parent="." index="3" instance=ExtResource("6_by1eg")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
+rotation = 1.58233
+shape = SubResource("CapsuleShape2D_vknv7")
+debug_color = Color(0.888047, 0.206112, 0.638533, 0.42)

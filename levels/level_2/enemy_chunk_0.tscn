@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1bcxhijj1cwo"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_sitfv"]
+[ext_resource type="PackedScene" uid="uid://bi5ybcjsks1j8" path="res://scenes/enemies/enemy_1.tscn" id="2_8jggn"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_xfn7v"]
+
+[node name="Enemy_Chunk" instance=ExtResource("1_sitfv")]
+
+[node name="Enemy1" parent="." index="0" instance=ExtResource("2_8jggn")]
+position = Vector2(13, 12)
+can_shoot = true
+zigzag = true
+to_down = true
+bullet_scene = ExtResource("3_xfn7v")
+
+[node name="Enemy2" parent="." index="1" instance=ExtResource("2_8jggn")]
+position = Vector2(38, 52)
+zigzag = true
+bullet_scene = ExtResource("3_xfn7v")
+
+[node name="Enemy3" parent="." index="2" instance=ExtResource("2_8jggn")]
+position = Vector2(67, 12)
+can_shoot = true
+zigzag = true
+to_down = true
+bullet_scene = ExtResource("3_xfn7v")
+
+[node name="Enemy4" parent="." index="3" instance=ExtResource("2_8jggn")]
+position = Vector2(98, 52)
+zigzag = true
+bullet_scene = ExtResource("3_xfn7v")
+
+[node name="Enemy5" parent="." index="4" instance=ExtResource("2_8jggn")]
+position = Vector2(125, 12)
+can_shoot = true
+zigzag = true
+to_down = true
+bullet_scene = ExtResource("3_xfn7v")
+
+[node name="Enemy6" parent="." index="5" instance=ExtResource("2_8jggn")]
+position = Vector2(159, 52)
+zigzag = true
+bullet_scene = ExtResource("3_xfn7v")
