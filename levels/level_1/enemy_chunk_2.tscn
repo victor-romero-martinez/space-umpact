@@ -20,7 +20,6 @@ health = 2
 [node name="Enemy5" parent="." index="3" instance=ExtResource("2_gxvia")]
 position = Vector2(58, 29)
 health = 2
-speed = 4.0
 
 [node name="Enemy6" parent="." index="4" instance=ExtResource("2_gxvia")]
 position = Vector2(125, 20)
@@ -37,7 +36,6 @@ health = 2
 [node name="Enemy9" parent="." index="7" instance=ExtResource("2_gxvia")]
 position = Vector2(123, 12)
 health = 2
-speed = 4.0
 
 [node name="Enemy10" parent="." index="8" instance=ExtResource("2_gxvia")]
 position = Vector2(157, 44)

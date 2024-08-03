@@ -57,6 +57,7 @@ height = 28.0
 
 [node name="Boss1" type="CharacterBody2D"]
 script = ExtResource("2_fcshl")
+health = 6
 bullet_scene = ExtResource("3_23eqv")
 explotion_scene = ExtResource("4_7o8cd")
 

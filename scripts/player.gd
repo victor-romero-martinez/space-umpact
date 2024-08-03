@@ -16,11 +16,12 @@ extends CharacterBody2D
 @export_group('Settings')
 @export var speed = 40.0
 @export var respawn: Marker2D
+@export var exit_screen: Marker2D
 @export var explotion_scene: PackedScene
 
 @onready var hud_health = $"../../Hud/HudHealth" as HudHealth
 
-var global
+var global # need set on ready
 var _can_shoot: bool = true
 var _immunity = true
 var _can_move = false
@@ -29,7 +30,8 @@ var _can_move = false
 func _ready():
 	if not bullet_scene\
 	or not explotion_scene\
-	or not respawn:
+	or not respawn\
+	or not exit_screen:
 		push_error('Some PackedScene is missing')
 		return
 	
@@ -37,17 +39,16 @@ func _ready():
 	_animation_spawn()
 	_start_combat()
 
+
 func _physics_process(delta):
 	if _can_move:
 		_move(delta)
 		move_and_slide()
 	
 	#INFO: received damage and restart initioal position
-	if is_on_wall() or is_on_floor():
-		make_boom()
-
-	if Input.is_action_just_pressed("ui_accept"):
-		_fire()
+	if is_on_wall() or is_on_floor(): make_boom()
+	if Input.is_action_just_pressed("ui_accept"): _fire()
+	if global.queue_boss: _finish_combat()
 
 
 func _move(delta):
@@ -68,6 +69,15 @@ func _start_combat():
 		.set_ease(Tween.EASE_OUT)
 	t.tween_callback(func (): _can_move = true)
 	
+	
+func _finish_combat():
+	_can_move = false
+	_immunity = true
+	$CollisionShape2D.disabled = true
+	var t = create_tween()
+	t.tween_property(self, 'global_position', exit_screen.position, 1.5)
+	t.tween_callback(func (): global.hidden_player = true)
+		
 	
 # apply damage and reset position when not immunity
 func make_boom():

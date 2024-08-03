@@ -39,13 +39,18 @@ metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="CanvasLayer"]
 
-[node name="Player" parent="CanvasLayer/Player" node_paths=PackedStringArray("respawn") instance=ExtResource("3_vard1")]
+[node name="Player" parent="CanvasLayer/Player" node_paths=PackedStringArray("respawn", "exit_screen") instance=ExtResource("3_vard1")]
 position = Vector2(-14, 41)
 respawn = NodePath("../PlayerRespawn")
+exit_screen = NodePath("../ExitScreen")
 metadata/_edit_lock_ = true
 
 [node name="PlayerRespawn" type="Marker2D" parent="CanvasLayer/Player"]
 position = Vector2(4, 41)
+metadata/_edit_lock_ = true
+
+[node name="ExitScreen" type="Marker2D" parent="CanvasLayer/Player"]
+position = Vector2(253, 44)
 metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="CanvasLayer"]

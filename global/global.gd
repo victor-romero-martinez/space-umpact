@@ -2,8 +2,14 @@
 extends Node2D
 
 var screen_size: Vector2
+var total_level: int = 2
+var current_level: int = 1
 var player_heart: int = 3
 var defeated_boss: bool = false
+## call after hiding boss
+var queue_boss: bool = false
+## call after hiding player
+var hidden_player: bool = false
 
 
 #TODO: implementar animacion de spawn
@@ -14,7 +20,7 @@ func _ready():
 func take_damage():
 	if player_heart > 0:
 		player_heart -= 1
-
+	
 
 func is_game_over() -> bool:
 	return player_heart == 0

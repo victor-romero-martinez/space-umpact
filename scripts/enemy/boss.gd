@@ -129,6 +129,7 @@ func _dead():
 	defeated.emit()
 	
 	if global_position.y > _screen_size.y:
+		global.queue_boss = true
 		queue_free()
 
 

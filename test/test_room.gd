@@ -5,13 +5,20 @@ extends Node2D
 @onready var menu_pause = $MenuPause
 
 
+var global = Global
 var paused: bool = false
 
 
 func _process(_delta):
 	if Input.is_action_just_pressed('ui_pause'):
 		_pause_menu()
+		
+	if global.hidden_player:
+		close_room()
 
+
+func close_room():
+	get_tree().quit()
 
 func _pause_menu():
 	if paused:
