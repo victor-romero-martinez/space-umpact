@@ -11,17 +11,17 @@ var _initial_position: Vector2
 
 func _ready():
 	_initial_position = position # set position to hide
-	#DANGER: _boss must be the last child
-	var target = get_parent().get_child(-1)
 	
-	if target is BossEenemy:
-		_boss = target
-		_boss.set_health.connect(_on_set_health_bar)
-		_boss.activate_fight.connect(_on_activate_fight)
-		_boss.hit.connect(_on_hit)
-		_boss.defeated.connect(_hide_health_bar)
+	var boss = get_parent().get_children().filter(func (c): return c is BossEenemy)[0]
+	
+	if boss:
+		boss.set_health.connect(_on_set_health_bar)
+		boss.activate_fight.connect(_on_activate_fight)
+		boss.hit.connect(_on_hit)
+		boss.defeated.connect(_hide_health_bar)
 	else:
-		push_warning('The last component should be _bossenemy')
+		push_warning('Boss is missing')
+
 
 
 func _show_health_bar():
