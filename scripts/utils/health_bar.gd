@@ -11,7 +11,14 @@ var _initial_position: Vector2
 func _ready():
 	_initial_position = position # set position to hide
 	
-	var boss = get_parent().get_children().filter(func (c): return c is BossEenemy)[0]
+	#var boss = get_parent().get_children().filter(func (c): return c is BossEenemy)[0]
+	var boss: BossEenemy
+	var children = get_parent().get_children()
+	
+	for c in children:
+		if c is BossEenemy:
+			boss = c
+			break
 	
 	if boss:
 		boss.set_health.connect(_on_set_health_bar)
