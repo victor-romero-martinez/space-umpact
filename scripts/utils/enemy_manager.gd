@@ -15,7 +15,6 @@ var _add_boss: bool = false
 func _ready():
 	_screen_width = Global.screen_size.x
 	_make_enemy_chunk()
-	#print(get_child_count())
 
 
 func _process(_delta):

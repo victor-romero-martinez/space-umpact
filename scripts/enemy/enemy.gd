@@ -32,7 +32,6 @@ func _ready():
 	if can_shoot:
 		var rand_pos = randf_range(20.0, 120.0)
 		_open_fire = screen_size.x - rand_pos
-		print(_open_fire)
 
 
 

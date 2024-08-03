@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://dm5gcd3osutb1"]
+[gd_scene load_steps=3 format=3 uid="uid://dm5gcd3osutb1"]
+
+[ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_y4lnm"]
+[ext_resource type="PackedScene" uid="uid://dmb1acg6lojr5" path="res://control/menu_pause.tscn" id="2_vb0de"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_y4lnm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -19,3 +23,8 @@ color = Color(0.12549, 0.113725, 0.141176, 1)
 [node name="Player" type="Node2D" parent="CanvasLayer"]
 
 [node name="Enemy" type="Node2D" parent="CanvasLayer"]
+
+[node name="MenuPause" parent="CanvasLayer" instance=ExtResource("2_vb0de")]
+visible = false
+
+[connection signal="resume" from="CanvasLayer/MenuPause" to="." method="_on_menu_pause_resume"]
