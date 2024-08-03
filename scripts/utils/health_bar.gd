@@ -4,7 +4,6 @@ extends Node2D
 @export var pos_in_game: Marker2D
 @onready var health_bar = %Health
 
-var _boss: BossEenemy
 var _status_health_bar: int = 0
 var _initial_position: Vector2
 
