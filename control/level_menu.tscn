@@ -14,9 +14,8 @@ grow_vertical = 2
 script = ExtResource("1_n7du3")
 levels = Array[PackedScene]([ExtResource("2_meudv"), ExtResource("3_o7u8i")])
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,7 +23,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12549, 0.113725, 0.141176, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -35,30 +35,30 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelContainer" type="GridContainer" parent="CanvasLayer/MarginContainer"]
+[node name="LevelContainer" type="GridContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 7
 
-[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Restart" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
 theme_override_font_sizes/font_size = 4
 text = "Restart"
 
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Back" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
@@ -66,5 +66,5 @@ theme_override_font_sizes/font_size = 4
 text = "Back
 "
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
