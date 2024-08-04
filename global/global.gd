@@ -2,9 +2,9 @@
 extends Node2D
 
 var screen_size: Vector2
-var total_level: int = 2
 var current_level: int = 1
 var player_heart: int = 3
+
 var defeated_boss: bool = false
 ## call after hiding boss
 var queue_boss: bool = false

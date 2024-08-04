@@ -45,8 +45,7 @@ func _physics_process(delta):
 		_move(delta)
 		move_and_slide()
 	
-	#INFO: received damage and restart initioal position
-	if is_on_wall() or is_on_floor(): make_boom()
+	if is_on_wall() or is_on_floor(): make_boom() #INFO: received damage and restart initioal position
 	if Input.is_action_just_pressed("ui_accept"): _fire()
 	if global.queue_boss: _finish_combat()
 

@@ -8,9 +8,6 @@ var _paused: bool = false
 func _ready():
 	# level settings
 	global.current_level = self.name.split('-')[-1].to_int()
-	global.defeated_boss = false
-	global.queue_boss = false
-	global.hidden_player = false
 
 	if not global.current_level:
 		push_error('Make sure the node is named as follows Node-1')
@@ -26,14 +23,22 @@ func _process(_delta):
 		_pause_menu()
 			
 	# call after hiding player
-	if global.hidden_player:
-		_next_level()
+	if global.hidden_player: _next_level()
+
+
+# resets default values ​​for next level
+func _restore_global_var():
+	global.defeated_boss = false
+	global.queue_boss = false
+	global.hidden_player = false
 
 
 func _next_level():
-	if global.current_level < global.total_level:
-		var next_level = global.current_level + 1
-		get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %next_level)
+	_restore_global_var()
+	var next_level = 'res://scenes/level_%d.tscn' %(global.current_level + 1)
+	
+	if FileAccess.file_exists(next_level):
+		get_tree().change_scene_to_file(next_level)
 	else:
 		print_debug('TODO: poner creditos aqui')
 		get_tree().change_scene_to_file("res://control/main_menu.tscn")

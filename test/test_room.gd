@@ -18,6 +18,7 @@ func _process(_delta):
 
 
 func close_room():
+	print_rich("[color=green][b]Finished test![/b][/color]")
 	get_tree().quit()
 
 func _pause_menu():
