@@ -11,6 +11,8 @@ func _ready():
 
 	if not global.current_level:
 		push_error('Make sure the node is named as follows Node-1')
+		
+	connect('tree_exited', _on_tree_exited)
 
 
 func _process(_delta):
@@ -59,3 +61,7 @@ func _pause_menu():
 
 func _on_menu_pause_resume():
 	_pause_menu()
+
+
+func _on_tree_exited():
+	Engine.time_scale = 1

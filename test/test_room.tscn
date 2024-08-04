@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="1_qhkwd"]
 [ext_resource type="PackedScene" uid="uid://dmb1acg6lojr5" path="res://control/menu_pause.tscn" id="2_51vey"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="2_b2s5v"]
-[ext_resource type="PackedScene" uid="uid://dxdtonhgxyoh8" path="res://levels/level_1/boss_chunk.tscn" id="4_fsf2b"]
+[ext_resource type="PackedScene" uid="uid://bfmnrjbxb6qq4" path="res://temp/enemy_4.tscn" id="5_b7x2d"]
 
 [node name="TestRoom" type="Node2D"]
 script = ExtResource("1_odhxs")
@@ -14,8 +14,6 @@ offset_right = 176.0
 offset_bottom = 99.0
 color = Color(0.12549, 0.113725, 0.141176, 1)
 metadata/_edit_lock_ = true
-
-[node name="BossChunk" parent="." instance=ExtResource("4_fsf2b")]
 
 [node name="Hud" type="Node2D" parent="."]
 
@@ -46,5 +44,8 @@ metadata/_edit_lock_ = true
 
 [node name="MenuPause" parent="." instance=ExtResource("2_51vey")]
 visible = false
+
+[node name="Enemy4" parent="." instance=ExtResource("5_b7x2d")]
+position = Vector2(129, 39)
 
 [connection signal="resume" from="MenuPause" to="." method="_on_menu_pause_resume"]

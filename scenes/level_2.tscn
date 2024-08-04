@@ -12,55 +12,50 @@
 [node name="Level-2" type="Node2D"]
 script = ExtResource("1_4iprt")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 176.0
+offset_bottom = 99.0
 color = Color(0.12549, 0.113725, 0.141176, 1)
 
-[node name="BG" type="Node2D" parent="CanvasLayer"]
+[node name="BG" type="Node2D" parent="."]
 
-[node name="BackgroundManager" parent="CanvasLayer/BG" instance=ExtResource("2_3wt1b")]
+[node name="BackgroundManager" parent="BG" instance=ExtResource("2_3wt1b")]
 
-[node name="Hud" type="Node2D" parent="CanvasLayer"]
+[node name="Hud" type="Node2D" parent="."]
 
-[node name="HudHealth" parent="CanvasLayer/Hud" node_paths=PackedStringArray("position_in_game") instance=ExtResource("2_jj21j")]
+[node name="HudHealth" parent="Hud" node_paths=PackedStringArray("position_in_game") instance=ExtResource("2_jj21j")]
 position = Vector2(4, -3)
 position_in_game = NodePath("../PlayerHealthPosition")
 metadata/_edit_lock_ = true
 
-[node name="PlayerHealthPosition" type="Marker2D" parent="CanvasLayer/Hud"]
+[node name="PlayerHealthPosition" type="Marker2D" parent="Hud"]
 position = Vector2(4, 4)
 metadata/_edit_lock_ = true
 
-[node name="Player" type="Node2D" parent="CanvasLayer"]
+[node name="Player" type="Node2D" parent="."]
 
-[node name="Player" parent="CanvasLayer/Player" node_paths=PackedStringArray("respawn", "exit_screen") instance=ExtResource("3_vard1")]
+[node name="Player" parent="Player" node_paths=PackedStringArray("respawn", "exit_screen") instance=ExtResource("3_vard1")]
 position = Vector2(-14, 41)
 respawn = NodePath("../PlayerRespawn")
 exit_screen = NodePath("../ExitScreen")
 metadata/_edit_lock_ = true
 
-[node name="PlayerRespawn" type="Marker2D" parent="CanvasLayer/Player"]
+[node name="PlayerRespawn" type="Marker2D" parent="Player"]
 position = Vector2(4, 41)
 metadata/_edit_lock_ = true
 
-[node name="ExitScreen" type="Marker2D" parent="CanvasLayer/Player"]
+[node name="ExitScreen" type="Marker2D" parent="Player"]
 position = Vector2(253, 44)
 metadata/_edit_lock_ = true
 
-[node name="Enemy" type="Node2D" parent="CanvasLayer"]
+[node name="Enemy" type="Node2D" parent="."]
 
-[node name="EnemyManagertest" parent="CanvasLayer/Enemy" instance=ExtResource("4_whtcc")]
+[node name="EnemyManagertest" parent="Enemy" instance=ExtResource("4_whtcc")]
 enemies_chunk = Array[PackedScene]([ExtResource("5_ogfs4"), ExtResource("5_xni45")])
 
-[node name="MenuPause" parent="CanvasLayer" instance=ExtResource("8_7xj5j")]
+[node name="MenuPause" parent="." instance=ExtResource("8_7xj5j")]
 unique_name_in_owner = true
 visible = false
 metadata/_edit_lock_ = true
 
-[connection signal="resume" from="CanvasLayer/MenuPause" to="." method="_on_menu_pause_resume"]
+[connection signal="resume" from="MenuPause" to="." method="_on_menu_pause_resume"]
