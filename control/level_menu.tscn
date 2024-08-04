@@ -42,16 +42,29 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 7
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="Restart" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 4
+text = "Restart"
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Back" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 focus_mode = 0
 theme_override_font_sizes/font_size = 4
 text = "Back
 "
 
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

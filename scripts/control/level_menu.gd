@@ -28,3 +28,7 @@ func on_emit_level(index: int):
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://control/main_menu.tscn")
+
+
+func _on_restart_pressed():
+	Global.update_save_data(1)
