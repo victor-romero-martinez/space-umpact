@@ -39,7 +39,8 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 4
 text = "New game"
 
-[node name="Continue" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="ContinueBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 4
@@ -59,6 +60,6 @@ text = "Quit
 "
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Level" to="." method="_on_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -35,7 +35,9 @@ func _restore_global_var():
 
 func _next_level():
 	_restore_global_var()
-	var next_level = 'res://scenes/level_%d.tscn' %(global.current_level + 1)
+	var next_value = global.current_level + 1
+	var next_level = 'res://scenes/level_%d.tscn' %next_value
+	global.update_save_data(next_value)
 	
 	if FileAccess.file_exists(next_level):
 		get_tree().change_scene_to_file(next_level)
