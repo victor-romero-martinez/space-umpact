@@ -12,11 +12,11 @@ func _ready():
 	_initial_position = position # set position to hide
 	
 	#var boss = get_parent().get_children().filter(func (c): return c is BossEenemy)[0]
-	var boss: BossEenemy
+	var boss: Enemy
 	var children = get_parent().get_children()
 	
 	for c in children:
-		if c is BossEenemy:
+		if c is Enemy:
 			boss = c
 			break
 	

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://hltqg6y24yxi" path="res://levels/level_1/background_manager.tscn" id="3_bacip"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="3_ks5nd"]
 [ext_resource type="PackedScene" uid="uid://12i2qachdu1p" path="res://levels/level_1/enemy_manager.tscn" id="6_8w0a2"]
-[ext_resource type="PackedScene" uid="uid://dvhb412hqr1q3" path="res://levels/level_1/enemy_chunk.tscn" id="7_h7mse"]
+[ext_resource type="PackedScene" uid="uid://dvhb412hqr1q3" path="res://levels/level_1/enemy_chunk_0.tscn" id="7_h7mse"]
 [ext_resource type="PackedScene" uid="uid://2empk7mtmylg" path="res://levels/level_1/enemy_chunk_1.tscn" id="8_dcy32"]
 [ext_resource type="PackedScene" uid="uid://bsewqcenmlwa3" path="res://levels/level_1/enemy_chunk_2.tscn" id="9_cq6gh"]
 [ext_resource type="PackedScene" uid="uid://bv2iye5c1uo01" path="res://levels/level_1/enemy_chunk_3.tscn" id="10_486us"]

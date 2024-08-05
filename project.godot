@@ -34,6 +34,7 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://scripts/": "yellow",
+"res://scripts/state/": "orange",
 "res://temp/": "gray",
 "res://test/": "teal"
 }

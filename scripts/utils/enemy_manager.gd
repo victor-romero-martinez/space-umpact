@@ -41,9 +41,7 @@ func _make_boos_chunk():
 			 
 
 func _append_boss():
-	#INFO: if c < 2 because there is still the EnemyAction area
-	#DANGER: base index 1
-	if get_child_count() < 2:
+	if get_child_count() == 0:
 		_make_boos_chunk()
 		_add_boss = true
 	

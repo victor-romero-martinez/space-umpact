@@ -10,7 +10,7 @@ position = Vector2(14, 8)
 health = 2
 
 [node name="Enemy3" parent="." index="1" instance=ExtResource("2_gxvia")]
-position = Vector2(22, 21)
+position = Vector2(31, 21)
 health = 2
 
 [node name="Enemy4" parent="." index="2" instance=ExtResource("2_gxvia")]
@@ -18,11 +18,11 @@ position = Vector2(32, 47)
 health = 2
 
 [node name="Enemy5" parent="." index="3" instance=ExtResource("2_gxvia")]
-position = Vector2(58, 29)
+position = Vector2(65, 29)
 health = 2
 
 [node name="Enemy6" parent="." index="4" instance=ExtResource("2_gxvia")]
-position = Vector2(125, 20)
+position = Vector2(138, 20)
 health = 2
 
 [node name="Enemy7" parent="." index="5" instance=ExtResource("2_gxvia")]
@@ -34,7 +34,7 @@ position = Vector2(115, 35)
 health = 2
 
 [node name="Enemy9" parent="." index="7" instance=ExtResource("2_gxvia")]
-position = Vector2(123, 12)
+position = Vector2(90, 11)
 health = 2
 
 [node name="Enemy10" parent="." index="8" instance=ExtResource("2_gxvia")]

@@ -56,6 +56,8 @@ radius = 12.0
 height = 28.0
 
 [node name="Boss1" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("2_fcshl")
 health = 6
 bullet_scene = ExtResource("3_23eqv")

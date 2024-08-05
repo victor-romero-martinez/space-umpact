@@ -1,5 +1,5 @@
 @icon("res://assets/icons/skull-and-crossbones.svg")
-extends CharacterBody2D
+extends Enemy
 
 ''' This script is only for Enemy node.
 	- Use actors.tscn to inherited scene located in res://entities/actors.tscn
@@ -12,44 +12,37 @@ extends CharacterBody2D
 @export var speed: float = 0.0
 ## active for can_shoot mode
 @export var can_shoot: bool = false
-## active for move up and down
-@export var zigzag: bool = false
-## initial direction by default is up
-@export var to_down: bool = false
-## positive value in float
-@export var zigzag_speed: float = 8.0
 @export var explotion_scene: PackedScene
 @export var bullet_scene: PackedScene
+@export_category('Movement')
+@export var fsm: EnemyStateMachine
+@export var move_down: EnemyMoveDown
+@export var move_up: EnemyMoveUp
+
 
 #WARNING: must be initialite before use on _make_bullets
-@onready var screen_size: Vector2 = Global.screen_size
+@onready var global = Global
 
-var _open_fire: float
-var _is_on_zigzag: bool = false
+signal on_viewport
 
+var _timer_off: bool = true
 
 func _ready():
-	if can_shoot:
-		var rand_pos = randf_range(20.0, 120.0)
-		_open_fire = screen_size.x - rand_pos
-
-
-
-func _physics_process(_delta):
-	if global_position.x < 0:
-		queue_free()
+	if can_shoot and bullet_scene:
+		connect('on_viewport', _start_timer)
+	
+	if fsm and move_down and move_up:
+		move_down.end_move_down.connect(fsm.change_state.bind(move_up))
+		move_up.end_move_up.connect(fsm.change_state.bind(move_down))
 	
 	$AnimatedSprite2D.play("default")
-	_apply_movement()
-	_shooting_up()
-	
-	
-func _apply_movement():
-	if speed > 0: velocity.x = -speed
-	if _is_on_zigzag: _apply_zigzag()
-	
-	move_and_slide()
 
+func _physics_process(_delta):
+	if global_position.x < global.screen_size.x:
+		on_viewport.emit()
+	elif global_position.x < 0:
+		queue_free()
+	
 
 func _set_blinking():
 	var _tween_timer: float = 0.25
@@ -77,37 +70,35 @@ func apply_damge():
 
 
 func _make_bullets():
-	if global_position.x < _open_fire:
-		if not bullet_scene:
-			push_error('Bullet PackScene is missing')
-			can_shoot = false
-		else:
-			var bullet = bullet_scene.instantiate()
-			bullet.go_negative()
-			bullet.position = position + Vector2(-8.0, 0)
-			add_sibling(bullet)
-			
-			can_shoot = false
-			
+	var bullet = bullet_scene.instantiate()
+	bullet.go_negative()
+	bullet.position = position + Vector2(-8.0, 0)
+	add_sibling(bullet)
+		
 
-func _shooting_up():
-	if can_shoot:
-		_make_bullets()
-
-
-func handler_zigzag_direction():
-	to_down = not to_down
-
-
-func _apply_zigzag():
-	# switch direction on up or down
-	var dir = 1 if to_down else -1
-	velocity.y = zigzag_speed * dir
+# setting the timer
+func _make_timer():
+	var rand_time = randf_range(2.5, 5.0)
+	var timer: Timer
 	
+	timer = Timer.new()
+	timer.wait_time = rand_time
+	timer.autostart = true
+	timer.timeout.connect(_on_timer_timeout)
+	
+	add_child(timer)
 	
 
-func start_move_on_zigszag():
-	if zigzag:
-		_is_on_zigzag = true
+# launch the timer
+func _start_timer():
+	if _timer_off:
+		_make_timer()
+		
+	_timer_off = false
+
+
+# shots timeout
+func _on_timer_timeout():
+	_make_bullets()
 
 
