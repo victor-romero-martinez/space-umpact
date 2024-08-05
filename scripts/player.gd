@@ -21,10 +21,11 @@ extends CharacterBody2D
 
 @onready var hud_health = $"../../Hud/HudHealth" as HudHealth
 
+enum TState { IMMUNITY, MOVE, FREEZE }
+
 var global # need set on ready
 var _can_shoot: bool = true
-var _immunity = true
-var _can_move = false
+var state: TState = TState.IMMUNITY
 
 
 func _ready():
@@ -41,20 +42,20 @@ func _ready():
 
 
 func _physics_process(delta):
-	if _can_move:
+	if state == TState.MOVE or state == TState.IMMUNITY:
 		_move(delta)
-		move_and_slide()
 	
 	if is_on_wall() or is_on_floor(): make_boom() #INFO: received damage and restart initioal position
 	if Input.is_action_just_pressed("ui_accept"): _fire()
-	if global.queue_boss: _finish_combat()
-
+	if global.queue_boss: _finish_combat(delta)
+	
+	move_and_slide()
 
 func _move(delta):
 	var direction = Input.get_vector('ui_left', 'ui_right', 'ui_up', 'ui_down')
 	velocity = direction.normalized() * speed
 
-	if _can_move:
+	if state == TState.MOVE or state == TState.IMMUNITY:
 		# limits movement on the screen
 		#WARNING: hace un pequeño movimineto
 		position += velocity * delta
@@ -66,21 +67,21 @@ func _start_combat():
 	t.tween_property(self, 'global_position', respawn.position, .45)\
 		.set_trans(Tween.TRANS_LINEAR)\
 		.set_ease(Tween.EASE_OUT)
-	t.tween_callback(func (): _can_move = true)
+	t.tween_callback(func (): state = TState.MOVE)
 	
 	
-func _finish_combat():
-	_can_move = false
-	_immunity = true
+func _finish_combat(delta):
+	state = TState.FREEZE
 	$CollisionShape2D.disabled = true
 	var t = create_tween()
 	t.tween_property(self, 'global_position', exit_screen.position, 1.5)
 	t.tween_callback(func (): global.hidden_player = true)
-		
+	
 	
 # apply damage and reset position when not immunity
 func make_boom():
-	if not _immunity:
+	#if not IMMUNITY OR FREEZE:
+	if state == TState.MOVE:
 		_apply_explotion()
 		_animation_spawn()
 		
@@ -92,10 +93,10 @@ func make_boom():
 
 # apply animation
 func _animation_spawn():
-	_immunity = true
+	state = TState.IMMUNITY
 	$AnimatedSprite2D.play('respawn')
 	await get_tree().create_timer(2.0).timeout
-	_immunity = false
+	state = TState.MOVE
 	$AnimatedSprite2D.play('default')
 
 
