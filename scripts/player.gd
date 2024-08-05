@@ -44,12 +44,12 @@ func _ready():
 func _physics_process(delta):
 	if state == TState.MOVE or state == TState.IMMUNITY:
 		_move(delta)
+		move_and_slide()
 	
 	if is_on_wall() or is_on_floor(): make_boom() #INFO: received damage and restart initioal position
 	if Input.is_action_just_pressed("ui_accept"): _fire()
-	if global.queue_boss: _finish_combat(delta)
+	if global.queue_boss: _finish_combat()
 	
-	move_and_slide()
 
 func _move(delta):
 	var direction = Input.get_vector('ui_left', 'ui_right', 'ui_up', 'ui_down')
@@ -70,7 +70,7 @@ func _start_combat():
 	t.tween_callback(func (): state = TState.MOVE)
 	
 	
-func _finish_combat(delta):
+func _finish_combat():
 	state = TState.FREEZE
 	$CollisionShape2D.disabled = true
 	var t = create_tween()
