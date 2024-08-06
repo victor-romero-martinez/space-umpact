@@ -1,11 +1,6 @@
 @icon("res://assets/icons/skull-and-crossbones.svg")
 extends Enemy
 
-signal on_viewport
-signal hit(val: int)
-signal activate_fight
-signal set_health(val: int)
-signal defeated
 
 @export var health: int = 60
 @export var speed: float = 8.0
@@ -19,6 +14,7 @@ signal defeated
 @export var move_down: EnemyMoveDown
 @export var move_up: EnemyMoveUp
 @export var move_left: EnemyMoveLeft
+@export var dead_move: DeadBoss
 
 
 var global
@@ -29,10 +25,11 @@ var _is_dead: bool = false
 func _ready():
 	global = Global
 	
-	if fsm and move_down and move_up:
+	if fsm and move_down and move_up and move_left:
 		move_left.end_move_left.connect(fsm.change_state.bind(move_up))
 		move_down.end_move_down.connect(fsm.change_state.bind(move_up))
 		move_up.end_move_up.connect(fsm.change_state.bind(move_down))
+		connect('defeated', _dead)
 	
 	$AnimatedSprite2D.play("default")
 	
@@ -48,6 +45,9 @@ func _physics_process(_delta):
 	if global_position.x < global.screen_size.x\
 	and global_position.y < global.screen_size.y:
 		on_viewport.emit()
+	
+	if health == 0:
+		defeated.emit()
 
 func _make_bullets():
 	var _rand_y = randf_range(-4, 4) #y = -2
@@ -78,11 +78,13 @@ func _rand_explotion():
 func _dead():
 	global.defeated_boss = true
 	$CollisionShape2D.disabled = true
-	defeated.emit()
+	if dead_move:
+		fsm.change_state(dead_move)
 	
-	if global_position.y > (global.screen_size.y + 20):
-		global.queue_boss = true
-		queue_free()
+	
+	#if global_position.y > (global.screen_size.y + 20):
+		#global.queue_boss = true
+		#queue_free()
 
 
 func _set_blinking():

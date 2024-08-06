@@ -23,7 +23,6 @@ extends Enemy
 #WARNING: must be initialite before use on _make_bullets
 @onready var global = Global
 
-signal on_viewport
 
 var _timer_off: bool = true
 

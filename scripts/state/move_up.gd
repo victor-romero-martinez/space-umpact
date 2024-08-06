@@ -13,12 +13,11 @@ var to_positon_y: float
 func _ready():
 	set_physics_process(false)
 	actor.on_viewport.connect(active_physics)
-	to_positon_y = actor.global_position.y - max_move
+	to_positon_y = actor.global_position.y - abs(max_move)
 	
 
 func enter_state():
-	actor.velocity.y = -actor.speed
-	actor.velocity.x = 0
+	actor.velocity = Vector2(0, -actor.speed)
 
 
 func exit_state():
