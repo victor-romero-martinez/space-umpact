@@ -11,7 +11,7 @@
 [node name="BossChunk" type="Node2D"]
 
 [node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "dead_move") instance=ExtResource("1_6kwli")]
-position = Vector2(192, 40)
+position = Vector2(190, 40)
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")

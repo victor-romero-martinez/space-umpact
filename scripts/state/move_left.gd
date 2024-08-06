@@ -16,21 +16,20 @@ func _ready():
 	
 
 func enter_state():
-	set_physics_process(true)
-	actor.velocity.x = -actor.speed
-	actor.velocity.y = 0
+	#set_physics_process(true)
+	var t = create_tween()
+	t.tween_property(actor, 'position:x', to_positon_x, 2.0)
+	t.tween_callback(_tween_end_move_left)
 
 
 func exit_state():
 	set_physics_process(false)
 
 
-func _physics_process(_delta):
-	if actor.global_position.x < to_positon_x:
-		end_move_left.emit()
-		# TODO: add type to enemy class
-		actor.activate_fight.emit()
-		actor.set_health.emit(actor.health)
-	
-	actor.move_and_slide()
+func _tween_end_move_left():
+	end_move_left.emit()
+	actor.activate_fight.emit()
+	actor.set_health.emit(actor.health)
+
+
 

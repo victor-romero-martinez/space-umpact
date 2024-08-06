@@ -17,28 +17,19 @@ extends Enemy
 @export var dead_move: DeadBoss
 
 
-var global
-var _can_shoot: bool = false
-var _is_dead: bool = false
+@onready var global = Global
 
+var spetial_timer: Timer
 
 func _ready():
-	global = Global
-	
 	if fsm and move_down and move_up and move_left:
 		move_left.end_move_left.connect(fsm.change_state.bind(move_up))
 		move_down.end_move_down.connect(fsm.change_state.bind(move_up))
 		move_up.end_move_up.connect(fsm.change_state.bind(move_down))
 		connect('defeated', _dead)
+		connect('activate_fight', _make_time)
 	
 	$AnimatedSprite2D.play("default")
-	
-	var spetial_timer = Timer.new()
-	add_child(spetial_timer)
-	spetial_timer.one_shot = false
-	spetial_timer.wait_time = timer_shots # this is 2.0s
-	spetial_timer.connect('timeout', Callable(self, '_on_special_action'))
-	spetial_timer.start()
 
 
 func _physics_process(_delta):
@@ -46,31 +37,42 @@ func _physics_process(_delta):
 	and global_position.y < global.screen_size.y:
 		on_viewport.emit()
 	
-	if health == 0:
-		defeated.emit()
 
 func _make_bullets():
-	var _rand_y = randf_range(-4, 4) #y = -2
-	var _g_position = global_position
-	_g_position.x -= 8.0
-	_g_position.y += _rand_y
+	var rand_y = randf_range(-4, 4) #y = -2
+	var g_position = global_position
+	g_position.x -= 8.0
+	g_position.y += rand_y
 	
 	for _b in bullet_by_shots:
 		var bullet = bullet_scene.instantiate()
-		bullet.position = _g_position
+		bullet.position = g_position
 		bullet.go_negative()
 		add_sibling(bullet)
 
 
+func _make_time():
+	spetial_timer = Timer.new()
+	add_child(spetial_timer)
+	spetial_timer.one_shot = false
+	spetial_timer.wait_time = timer_shots # this is 2.0s
+	spetial_timer.connect('timeout', Callable(self, '_on_special_action'))
+	spetial_timer.start()
+
+
+# TODO: tal vez lo cambie a un estado
 func _on_special_action():
-	if _can_shoot:
+	if global.defeated_boss:
+		spetial_timer.stop()
+	else:
 		_make_bullets()
+		
 
 
 func _rand_explotion():
-	var _rand_position = randf_range(-10.0, 10.0)
+	var rand_position = randf_range(-10.0, 10.0)
 	var boom = explotion_scene.instantiate()
-	boom.position = position + Vector2(_rand_position, _rand_position)
+	boom.position = position + Vector2(rand_position, rand_position)
 	
 	add_sibling(boom)
 
@@ -78,14 +80,13 @@ func _rand_explotion():
 func _dead():
 	global.defeated_boss = true
 	$CollisionShape2D.disabled = true
+	_rand_explotion()
+	%ExploitTrigger.start()
+	
 	if dead_move:
+		# ATTENTION: Disconnect move_down signal to avoid state inconsistency
+		move_down.end_move_down.disconnect(fsm.change_state)
 		fsm.change_state(dead_move)
-	
-	
-	#if global_position.y > (global.screen_size.y + 20):
-		#global.queue_boss = true
-		#queue_free()
-
 
 func _set_blinking():
 	var _tween_timer: float = 0.25
@@ -95,19 +96,13 @@ func _set_blinking():
 	tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, _tween_timer).from(_tween_timer)
 
 
-func _make_boom():
-	_is_dead = true
-	_can_shoot = false
-	_rand_explotion()
-	%ExploitTrigger.start()
-	
-
 func apply_damge():
 	health -= 1
 	_set_blinking()
 	hit.emit(1)
+	
 	if health == 0:
-		_make_boom()
+		defeated.emit()
 
 
 func _on_timer_timeout():

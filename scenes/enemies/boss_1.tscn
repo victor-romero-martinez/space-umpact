@@ -59,7 +59,7 @@ height = 28.0
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_fcshl")
-health = 6
+speed = 4.0
 bullet_scene = ExtResource("3_23eqv")
 explotion_scene = ExtResource("4_7o8cd")
 

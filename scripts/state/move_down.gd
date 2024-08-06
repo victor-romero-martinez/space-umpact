@@ -25,7 +25,7 @@ func exit_state():
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	if actor.global_position.y > to_positon_y and actor.health > 0:
+	if actor.global_position.y > to_positon_y:
 		end_move_down.emit()
 	
 	actor.move_and_slide()
