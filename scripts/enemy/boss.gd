@@ -3,10 +3,10 @@ extends Enemy
 
 
 @export var health: int = 60
-@export var speed: float = 8.0
+@export var speed: float = 16.0
 @export var bullet_scene: PackedScene
 ## time elapsed between shots
-@export var timer_shots: float = 2.0
+@export var timer_shots: float = 4.0
 @export var bullet_by_shots: int = 1
 @export var explotion_scene: PackedScene
 @export_category('Movement')
@@ -39,9 +39,9 @@ func _physics_process(_delta):
 	
 
 func _make_bullets():
-	var rand_y = randf_range(-4, 4) #y = -2
+	var rand_y = randf_range(-8, 8) #y = -2
 	var g_position = global_position
-	g_position.x -= 8.0
+	g_position.x -= 16.0
 	g_position.y += rand_y
 	
 	for _b in bullet_by_shots:
@@ -87,6 +87,7 @@ func _dead():
 		# ATTENTION: Disconnect move_down signal to avoid state inconsistency
 		move_down.end_move_down.disconnect(fsm.change_state)
 		fsm.change_state(dead_move)
+
 
 func _set_blinking():
 	var _tween_timer: float = 0.25

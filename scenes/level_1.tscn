@@ -16,9 +16,10 @@
 script = ExtResource("2_yp15v")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 176.0
-offset_bottom = 99.0
+offset_right = 352.0
+offset_bottom = 198.0
 color = Color(0.12549, 0.113725, 0.141176, 1)
+metadata/_edit_lock_ = true
 
 [node name="BG" type="Node2D" parent="."]
 
@@ -39,17 +40,17 @@ metadata/_edit_lock_ = true
 [node name="Player" type="Node2D" parent="."]
 
 [node name="Player" parent="Player" node_paths=PackedStringArray("respawn", "exit_screen") instance=ExtResource("2_do623")]
-position = Vector2(-14, 41)
+position = Vector2(-32, 68)
 respawn = NodePath("../PlayerRespawn")
 exit_screen = NodePath("../ExitScreen")
 metadata/_edit_lock_ = true
 
 [node name="PlayerRespawn" type="Marker2D" parent="Player"]
-position = Vector2(4, 41)
+position = Vector2(16, 68)
 metadata/_edit_lock_ = true
 
 [node name="ExitScreen" type="Marker2D" parent="Player"]
-position = Vector2(253, 44)
+position = Vector2(381, 72)
 metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="."]

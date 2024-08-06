@@ -32,30 +32,31 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 10
 
 [node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 16
 text = "New game"
 
 [node name="ContinueBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 16
 text = "Continue"
 
 [node name="Level" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 16
 text = "Level"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 16
 text = "Quit
 "
 

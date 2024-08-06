@@ -23,8 +23,8 @@ Global="*res://global/global.gd"
 
 [display]
 
-window/size/viewport_width=176
-window/size/viewport_height=99
+window/size/viewport_width=352
+window/size/viewport_height=198
 window/size/resizable=false
 window/size/window_width_override=640
 window/size/window_height_override=360

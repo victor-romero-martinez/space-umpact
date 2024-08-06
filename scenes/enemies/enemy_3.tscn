@@ -34,8 +34,8 @@ radius = 1.83058
 height = 9.76668
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jfxwh"]
-radius = 2.99999
-height = 7.99998
+radius = 4.99999
+height = 16.0
 
 [node name="Enemy3" instance=ExtResource("1_m0phh")]
 collision_layer = 4
@@ -45,6 +45,7 @@ health = 2
 explotion_scene = ExtResource("3_p5yu3")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_b0ffc")
 frame_progress = 0.93462
 
@@ -61,11 +62,12 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
 rotation = 1.57323
 shape = SubResource("CapsuleShape2D_jfxwh")
-debug_color = Color(0.894304, 0.264047, 0.468445, 0.42)
+debug_color = Color(0.412154, 0.492799, 0.919506, 0.42)
 
 [node name="EnemyHitBox" parent="." index="3" instance=ExtResource("5_gp40q")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
 rotation = 1.57323
 shape = SubResource("CapsuleShape2D_jfxwh")
-debug_color = Color(0.894304, 0.264047, 0.468445, 0.42)
+debug_color = Color(0.388045, 0.485955, 0.962392, 0.42)

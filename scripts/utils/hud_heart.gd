@@ -15,7 +15,7 @@ func _ready():
 		_initial_position = position
 		for h in global.player_heart:
 			var heart = heart_compnent.instantiate()
-			heart.position.x = position.x + 8.0 * h
+			heart.position.x = position.x + 16.0 * h
 			add_child(heart)
 		_show_health()
 	else:

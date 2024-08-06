@@ -9,9 +9,8 @@ metadata/_edit_use_anchors_ = true
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 176.0
-offset_bottom = 100.0
-metadata/_edit_use_anchors_ = true
+offset_right = 352.0
+offset_bottom = 197.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -36,23 +35,24 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 10
 
 [node name="Resume" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 16
 text = "Resume"
 
 [node name="MainMenu" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 16
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 16
 text = "Quit"
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

@@ -13,7 +13,7 @@ func _process(delta):
 
 
 #NOTE: using on enemy when shooting
-func go_negative(spd: float = 20.0):
+func go_negative(spd: float = 40.0):
 	direction = -1
 	speed = spd
 

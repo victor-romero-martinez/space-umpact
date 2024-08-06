@@ -43,16 +43,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_af115"]
-radius = 3.99993
-height = 11.9998
+radius = 7.99987
+height = 23.9996
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdn0y"]
-radius = 3.4
-height = 12.0
+radius = 4.18514
+height = 12.9232
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sg50y"]
-radius = 3.4
-height = 12.0
+radius = 6.99987
+height = 22.0118
 
 [node name="Player" instance=ExtResource("1_oct7a")]
 collision_layer = 2
@@ -61,20 +61,24 @@ bullet_scene = ExtResource("3_lue58")
 explotion_scene = ExtResource("4_gyihd")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(6, 5)
+position = Vector2(11, 9)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_gfygm")
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
-position = Vector2(5, 4)
+position = Vector2(9, 8)
 rotation = 1.56509
 shape = SubResource("CapsuleShape2D_af115")
 
 [node name="PlayerHitBox" parent="." index="2" instance=ExtResource("6_1htvj")]
+visible = false
+position = Vector2(1, 1)
+scale = Vector2(1.70215, 1.67611)
 collision_mask = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox" index="0"]
-position = Vector2(5, 4)
+position = Vector2(5.28744, 4.17634)
 rotation = 1.58667
 shape = SubResource("CapsuleShape2D_fdn0y")
 debug_color = Color(0.228476, 0.627522, 0.338528, 0.42)
@@ -83,6 +87,6 @@ debug_color = Color(0.228476, 0.627522, 0.338528, 0.42)
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealthBox" index="0"]
-position = Vector2(5, 4)
+position = Vector2(10, 8)
 rotation = 1.57692
 shape = SubResource("CapsuleShape2D_sg50y")

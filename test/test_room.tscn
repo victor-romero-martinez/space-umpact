@@ -10,8 +10,8 @@
 script = ExtResource("1_odhxs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 176.0
-offset_bottom = 99.0
+offset_right = 358.0
+offset_bottom = 201.0
 color = Color(0.12549, 0.113725, 0.141176, 1)
 metadata/_edit_lock_ = true
 
@@ -29,22 +29,23 @@ metadata/_edit_lock_ = true
 [node name="Player" type="Node2D" parent="."]
 
 [node name="Player" parent="Player" node_paths=PackedStringArray("respawn", "exit_screen") instance=ExtResource("2_b2s5v")]
-position = Vector2(-13, 41)
+position = Vector2(-26, 78)
 respawn = NodePath("../PlayerRespawn")
 exit_screen = NodePath("../ExitScreen")
 metadata/_edit_lock_ = true
 
 [node name="PlayerRespawn" type="Marker2D" parent="Player"]
-position = Vector2(4, 41)
+position = Vector2(12, 78)
 metadata/_edit_lock_ = true
 
 [node name="ExitScreen" type="Marker2D" parent="Player"]
-position = Vector2(253, 44)
+position = Vector2(369, 81)
 metadata/_edit_lock_ = true
 
 [node name="MenuPause" parent="." instance=ExtResource("2_51vey")]
 visible = false
 
 [node name="BossChunk" parent="." instance=ExtResource("5_7qg75")]
+metadata/_edit_lock_ = true
 
 [connection signal="resume" from="MenuPause" to="." method="_on_menu_pause_resume"]

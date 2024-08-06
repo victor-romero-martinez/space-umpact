@@ -14,7 +14,7 @@ extends CharacterBody2D
 @export var wait_seconds: float = .5
 
 @export_group('Settings')
-@export var speed = 40.0
+@export var speed = 80.0
 @export var respawn: Marker2D
 @export var exit_screen: Marker2D
 @export var explotion_scene: PackedScene
@@ -29,13 +29,6 @@ var state: TState = TState.IMMUNITY
 
 
 func _ready():
-	if not bullet_scene\
-	or not explotion_scene\
-	or not respawn\
-	or not exit_screen:
-		push_error('Some PackedScene is missing')
-		return
-	
 	global = Global
 	_animation_spawn()
 	_start_combat()
@@ -105,10 +98,10 @@ func _fire():
 	if _can_shoot:
 		for _b in bullet_by_shoot:
 			var bullet = bullet_scene.instantiate()
-			bullet.position = global_position + Vector2(14, 4)
+			bullet.position = global_position + Vector2(28, 8)
 			add_sibling(bullet)
 			
-			await get_tree().create_timer(0.03).timeout #WARNING: no estoy seguro de esto
+			await get_tree().create_timer(0.06).timeout #WARNING: no estoy seguro de esto
 			
 		_shoot_handle()
 

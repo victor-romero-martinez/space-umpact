@@ -10,25 +10,22 @@ script = ExtResource("1_tphy8")
 position = Vector2(13, 16)
 
 [node name="Enemy2" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(67, 43)
+position = Vector2(89, 102)
 
 [node name="Enemy3" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(36, 31)
+position = Vector2(55, 66)
 
 [node name="Enemy4" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(70, 7)
+position = Vector2(131, 20)
 
 [node name="Enemy5" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(95, 27)
-speed = 2.0
+position = Vector2(169, 66)
 
 [node name="Enemy6" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(114, 46)
+position = Vector2(226, 101)
 
 [node name="Enemy7" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(152, 20)
-speed = 2.0
+position = Vector2(263, 23)
 
 [node name="Enemy8" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(168, 43)
-speed = 2.0
+position = Vector2(317, 70)
