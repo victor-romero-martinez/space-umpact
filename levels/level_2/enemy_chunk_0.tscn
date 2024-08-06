@@ -6,28 +6,28 @@
 [node name="Enemy_Chunk" instance=ExtResource("1_dvinn")]
 
 [node name="Enemy3" parent="." index="0" instance=ExtResource("2_siir8")]
-position = Vector2(11, 41)
+position = Vector2(26, 50)
 
 [node name="Enemy4" parent="." index="1" instance=ExtResource("2_siir8")]
-position = Vector2(26, 16)
+position = Vector2(73, 13)
 
 [node name="Enemy5" parent="." index="2" instance=ExtResource("2_siir8")]
-position = Vector2(47, 28)
+position = Vector2(116, 95)
 
 [node name="Enemy6" parent="." index="3" instance=ExtResource("2_siir8")]
-position = Vector2(58, 47)
+position = Vector2(144, 48)
 
 [node name="Enemy7" parent="." index="4" instance=ExtResource("2_siir8")]
-position = Vector2(87, 58)
+position = Vector2(203, 94)
 
 [node name="Enemy8" parent="." index="5" instance=ExtResource("2_siir8")]
-position = Vector2(102, 35)
+position = Vector2(189, 16)
 
 [node name="Enemy9" parent="." index="6" instance=ExtResource("2_siir8")]
-position = Vector2(119, 16)
+position = Vector2(280, 14)
 
 [node name="Enemy10" parent="." index="7" instance=ExtResource("2_siir8")]
-position = Vector2(131, 51)
+position = Vector2(285, 94)
 
 [node name="Enemy11" parent="." index="8" instance=ExtResource("2_siir8")]
-position = Vector2(160, 29)
+position = Vector2(329, 62)

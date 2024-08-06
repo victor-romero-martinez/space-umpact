@@ -71,7 +71,7 @@ func apply_damge():
 func _make_bullets():
 	var bullet = bullet_scene.instantiate()
 	bullet.go_negative()
-	bullet.position = position + Vector2(-8.0, 0)
+	bullet.position = position + Vector2(-16.0, 0)
 	add_sibling(bullet)
 		
 
