@@ -16,10 +16,8 @@ func _ready():
 
 
 func _process(_delta):
-#TODO: remplazar por game over sscreen
 	if global.is_game_over():
-		print('estoy en level script')
-		get_tree().quit()
+		_lose_scene()
 
 	if Input.is_action_just_pressed('ui_pause'):
 		_pause_menu()
@@ -46,6 +44,12 @@ func _next_level():
 	else:
 		print_debug('TODO: poner creditos aqui')
 		get_tree().change_scene_to_file("res://control/main_menu.tscn")
+
+
+func _lose_scene():
+	global.player_heart = global.DEFAULT_SETTINGS.heart
+	_restore_global_var()
+	get_tree().change_scene_to_file("res://control/dead_menu.tscn")
 
 
 func _pause_menu():
