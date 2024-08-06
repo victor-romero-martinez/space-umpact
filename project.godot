@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://global/global.tscn"
+Global="*res://global/global.gd"
 
 [display]
 

@@ -31,4 +31,4 @@ func _on_back_pressed():
 
 
 func _on_restart_pressed():
-	Global.update_save_data(1)
+	Global.update_save_data()

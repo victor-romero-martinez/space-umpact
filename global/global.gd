@@ -1,7 +1,7 @@
 @icon("res://assets/icons/gear.svg")
 extends Node2D
 
-var default_settings := {
+const DEFAULT_SETTINGS := {
 		'level': 1,
 		'heart': 3
 	}
@@ -25,7 +25,7 @@ func _ready():
 	if FileAccess.file_exists(path):
 		_load_data(path)
 	else:
-		_create_data(path, default_settings)
+		_create_data(path, DEFAULT_SETTINGS)
 
 func take_damage():
 	if player_heart > 0:
@@ -42,7 +42,7 @@ func _create_data(path: String, data):
 	file.close()
 
 
-func update_save_data(level: int, heart: int = 3):
+func update_save_data(level: int = 1, heart: int = 3):
 	current_level = level
 	player_heart = heart
 	var temp = {
