@@ -20,16 +20,15 @@ extends CharacterBody2D
 @export var explotion_scene: PackedScene
 
 @onready var hud_health = $"../../Hud/HudHealth" as HudHealth
+@onready var global = Global
 
 enum TState { IMMUNITY, MOVE, FREEZE }
 
-var global # need set on ready
 var _can_shoot: bool = true
 var state: TState = TState.IMMUNITY
 
 
 func _ready():
-	global = Global
 	_animation_spawn()
 	_start_combat()
 
@@ -66,9 +65,9 @@ func _start_combat():
 func _finish_combat():
 	state = TState.FREEZE
 	$CollisionShape2D.disabled = true
-	var t = create_tween()
-	t.tween_property(self, 'global_position', exit_screen.position, 1.5)
-	t.tween_callback(func (): global.hidden_player = true)
+	velocity.x = speed * 2
+	if global_position.x > global.screen_size.x: global.hidden_player = true
+	move_and_slide()
 	
 	
 # apply damage and reset position when not immunity
