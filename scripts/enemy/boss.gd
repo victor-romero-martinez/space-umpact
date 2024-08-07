@@ -3,11 +3,10 @@ extends Enemy
 
 
 @export var health: int = 60
-@export var speed: float = 16.0
+@export var speed: float = 8.0
 @export var bullet_scene: PackedScene
 ## time elapsed between shots
 @export var timer_shots: float = 4.0
-@export var bullet_by_shots: int = 1
 @export var explotion_scene: PackedScene
 @export_category('Movement')
 @export var fsm: EnemyStateMachine
@@ -44,13 +43,13 @@ func _make_bullets():
 	g_position.x -= 16.0
 	g_position.y += rand_y
 	
-	for _b in bullet_by_shots:
-		var bullet = bullet_scene.instantiate()
-		bullet.position = g_position
-		bullet.go_negative()
-		add_sibling(bullet)
+	var bullet = bullet_scene.instantiate()
+	bullet.position = g_position
+	bullet.go_negative()
 
-
+	add_sibling(bullet)
+		
+	
 func _make_time():
 	spetial_timer = Timer.new()
 	add_child(spetial_timer)
@@ -79,7 +78,6 @@ func _rand_explotion():
 
 func _dead():
 	global.defeated_boss = true
-	$CollisionShape2D.disabled = true
 	_rand_explotion()
 	%ExploitTrigger.start()
 	

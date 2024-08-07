@@ -29,7 +29,7 @@ metadata/_edit_lock_ = true
 [node name="Hud" type="Node2D" parent="."]
 
 [node name="HudHealth" parent="Hud" node_paths=PackedStringArray("position_in_game") instance=ExtResource("3_ks5nd")]
-position = Vector2(4, -3)
+position = Vector2(4, -7)
 position_in_game = NodePath("../PlayerHealthPosition")
 metadata/_edit_lock_ = true
 

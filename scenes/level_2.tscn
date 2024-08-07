@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bse3clbf784ak"]
+[gd_scene load_steps=13 format=3 uid="uid://bse3clbf784ak"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_4iprt"]
 [ext_resource type="PackedScene" uid="uid://dvccawcbgcnj7" path="res://levels/level_2/background_manager.tscn" id="2_3wt1b"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dmb1acg6lojr5" path="res://control/menu_pause.tscn" id="8_7xj5j"]
 [ext_resource type="PackedScene" uid="uid://dmugjoqf0v7q6" path="res://levels/level_2/enemy_chunk_2.tscn" id="8_ssvme"]
 [ext_resource type="PackedScene" uid="uid://cjyg54our4k2k" path="res://levels/level_2/enemy_chunk_3.tscn" id="9_lwjuy"]
+[ext_resource type="PackedScene" uid="uid://dt7bvlg0x5jaw" path="res://levels/level_2/enemy_chunk_4.tscn" id="10_2bjc5"]
+[ext_resource type="PackedScene" uid="uid://ci2la4bi3xwb3" path="res://levels/level_2/bosss_chunk.tscn" id="10_qoqc0"]
 
 [node name="Level-2" type="Node2D"]
 script = ExtResource("1_4iprt")
@@ -26,7 +28,7 @@ color = Color(0.12549, 0.113725, 0.141176, 1)
 [node name="Hud" type="Node2D" parent="."]
 
 [node name="HudHealth" parent="Hud" node_paths=PackedStringArray("position_in_game") instance=ExtResource("2_jj21j")]
-position = Vector2(4, -3)
+position = Vector2(4, -7)
 position_in_game = NodePath("../PlayerHealthPosition")
 metadata/_edit_lock_ = true
 
@@ -36,24 +38,20 @@ metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="."]
 
-[node name="Player" parent="Player" node_paths=PackedStringArray("respawn", "exit_screen") instance=ExtResource("3_vard1")]
+[node name="Player" parent="Player" node_paths=PackedStringArray("respawn") instance=ExtResource("3_vard1")]
 position = Vector2(-58, 67)
 respawn = NodePath("../PlayerRespawn")
-exit_screen = NodePath("../ExitScreen")
 metadata/_edit_lock_ = true
 
 [node name="PlayerRespawn" type="Marker2D" parent="Player"]
-position = Vector2(18, 70)
-metadata/_edit_lock_ = true
-
-[node name="ExitScreen" type="Marker2D" parent="Player"]
-position = Vector2(376, 75)
+position = Vector2(16, 68)
 metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="."]
 
 [node name="EnemyManagertest" parent="Enemy" instance=ExtResource("4_whtcc")]
-enemies_chunk = Array[PackedScene]([ExtResource("5_ogfs4"), ExtResource("5_xni45"), ExtResource("8_ssvme"), ExtResource("8_ssvme"), ExtResource("9_lwjuy")])
+enemies_chunk = Array[PackedScene]([ExtResource("5_ogfs4"), ExtResource("5_xni45"), ExtResource("8_ssvme"), ExtResource("8_ssvme"), ExtResource("9_lwjuy"), ExtResource("10_2bjc5")])
+boss_chunk = ExtResource("10_qoqc0")
 
 [node name="MenuPause" parent="." instance=ExtResource("8_7xj5j")]
 unique_name_in_owner = true

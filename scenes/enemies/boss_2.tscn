@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2758ggun2sww"]
+
+[ext_resource type="PackedScene" uid="uid://2s814b5rdr10" path="res://entities/boss.tscn" id="1_lckgj"]
+[ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_ucuar"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cewlf"]
+atlas = ExtResource("2_ucuar")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mmal"]
+atlas = ExtResource("2_ucuar")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nyiu"]
+atlas = ExtResource("2_ucuar")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3frd"]
+atlas = ExtResource("2_ucuar")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4v27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cewlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mmal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nyiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3frd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7wgl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebysn"]
+radius = 16.0
+height = 44.0
+
+[node name="Boss1" instance=ExtResource("1_lckgj")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(6, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_k4v27")
+frame_progress = 0.834053
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+shape = SubResource("CapsuleShape2D_x7wgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
+visible = false
+position = Vector2(6, -5)
+shape = SubResource("CapsuleShape2D_ebysn")
+debug_color = Color(0.391448, 0.488361, 0.952404, 0.42)
+
+[node name="EnemyHitBox" parent="." index="3"]
+visible = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
+visible = false
+position = Vector2(6, -5)
+shape = SubResource("CapsuleShape2D_ebysn")
+debug_color = Color(0.391448, 0.488361, 0.952404, 0.42)

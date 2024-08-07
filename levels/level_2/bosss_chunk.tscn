@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci2la4bi3xwb3"]
+
+[ext_resource type="PackedScene" uid="uid://d175njosf45c7" path="res://scenes/utilities/health_bar.tscn" id="1_4s5pr"]
+[ext_resource type="PackedScene" uid="uid://d2758ggun2sww" path="res://scenes/enemies/boss_2.tscn" id="2_o4mp2"]
+[ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="3_24tmc"]
+[ext_resource type="Script" path="res://scripts/state/move_down.gd" id="4_hivsr"]
+[ext_resource type="Script" path="res://scripts/state/move_up.gd" id="5_aaos2"]
+[ext_resource type="Script" path="res://scripts/state/move_left.gd" id="6_dn64y"]
+[ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="7_560to"]
+
+[node name="BosssChunk" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="HealthFinalPos" type="Marker2D" parent="."]
+position = Vector2(264, 0)
+metadata/_edit_lock_ = true
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("pos_in_game") instance=ExtResource("1_4s5pr")]
+position = Vector2(265, -12)
+pos_in_game = NodePath("../HealthFinalPos")
+metadata/_edit_lock_ = true
+
+[node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "dead_move") instance=ExtResource("2_o4mp2")]
+position = Vector2(371, 81)
+health = 80
+timer_shots = 2.0
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+move_left = NodePath("EnemyStateMachine/EnemyMoveLeft")
+dead_move = NodePath("EnemyStateMachine/DeadBoss")
+metadata/_edit_lock_ = true
+
+[node name="EnemyStateMachine" type="Node" parent="Boss1" node_paths=PackedStringArray("state")]
+script = ExtResource("3_24tmc")
+state = NodePath("EnemyMoveLeft")
+
+[node name="EnemyMoveDown" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("4_hivsr")
+max_move = 40.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveUp" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_aaos2")
+max_move = 40.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveLeft" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_dn64y")
+max_move = 60.0
+actor = NodePath("../..")
+
+[node name="DeadBoss" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_560to")
+actor = NodePath("../..")
