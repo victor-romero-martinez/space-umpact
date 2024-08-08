@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci2la4bi3xwb3"]
+[gd_scene load_steps=10 format=3 uid="uid://ci2la4bi3xwb3"]
 
 [ext_resource type="PackedScene" uid="uid://d175njosf45c7" path="res://scenes/utilities/health_bar.tscn" id="1_4s5pr"]
 [ext_resource type="PackedScene" uid="uid://d2758ggun2sww" path="res://scenes/enemies/boss_2.tscn" id="2_o4mp2"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/state/move_up.gd" id="5_aaos2"]
 [ext_resource type="Script" path="res://scripts/state/move_left.gd" id="6_dn64y"]
 [ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="7_560to"]
+[ext_resource type="Script" path="res://scripts/state/shots.gd" id="8_0dhmd"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="9_qv2no"]
 
 [node name="BosssChunk" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -20,14 +22,14 @@ position = Vector2(265, -12)
 pos_in_game = NodePath("../HealthFinalPos")
 metadata/_edit_lock_ = true
 
-[node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "dead_move") instance=ExtResource("2_o4mp2")]
+[node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("2_o4mp2")]
 position = Vector2(371, 81)
 health = 80
-timer_shots = 2.0
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
 move_left = NodePath("EnemyStateMachine/EnemyMoveLeft")
+attack = NodePath("EnemyStateMachine/EnemyShots")
 dead_move = NodePath("EnemyStateMachine/DeadBoss")
 metadata/_edit_lock_ = true
 
@@ -53,3 +55,8 @@ actor = NodePath("../..")
 [node name="DeadBoss" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("7_560to")
 actor = NodePath("../..")
+
+[node name="EnemyShots" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("8_0dhmd")
+actor = NodePath("../..")
+bullet_scene = ExtResource("9_qv2no")

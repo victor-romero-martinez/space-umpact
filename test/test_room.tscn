@@ -48,4 +48,5 @@ visible = false
 [node name="BossChunk" parent="." instance=ExtResource("5_7qg75")]
 metadata/_edit_lock_ = true
 
+[connection signal="hit" from="Player/Player" to="Hud/HudHealth" method="_on_player_hit"]
 [connection signal="resume" from="MenuPause" to="." method="_on_menu_pause_resume"]

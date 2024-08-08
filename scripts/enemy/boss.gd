@@ -4,28 +4,28 @@ extends Enemy
 
 @export var health: int = 60
 @export var speed: float = 8.0
-@export var bullet_scene: PackedScene
 ## time elapsed between shots
-@export var timer_shots: float = 4.0
+@export var timer_attack: float = 4.0
 @export var explotion_scene: PackedScene
-@export_category('Movement')
+@export_category('State')
 @export var fsm: EnemyStateMachine
 @export var move_down: EnemyMoveDown
 @export var move_up: EnemyMoveUp
 @export var move_left: EnemyMoveLeft
+@export var attack: EnemyAttack
 @export var dead_move: DeadBoss
 
 
 @onready var global = Global
 
-var spetial_timer: Timer
+var _spetial_timer: Timer
 
 func _ready():
 	if fsm and move_down and move_up and move_left:
 		move_left.end_move_left.connect(fsm.change_state.bind(move_up))
 		move_down.end_move_down.connect(fsm.change_state.bind(move_up))
 		move_up.end_move_up.connect(fsm.change_state.bind(move_down))
-		connect('defeated', make_boom)
+		connect('defeated', _make_boom)
 		connect('activate_fight', _make_time)
 	
 	$AnimatedSprite2D.play("default")
@@ -36,36 +36,21 @@ func _physics_process(_delta):
 	and global_position.y < global.screen_size.y:
 		on_viewport.emit()
 	
-
-func _make_bullets():
-	var rand_y = randf_range(-8, 8) #y = -2
-	var g_position = global_position
-	g_position.x -= 16.0
-	g_position.y += rand_y
 	
-	var bullet = bullet_scene.instantiate()
-	bullet.position = g_position
-	bullet.go_negative()
-
-	add_sibling(bullet)
-		
-	
+# timer attack
 func _make_time():
-	spetial_timer = Timer.new()
-	add_child(spetial_timer)
-	spetial_timer.one_shot = false
-	spetial_timer.wait_time = timer_shots # this is 2.0s
-	spetial_timer.connect('timeout', Callable(self, '_on_special_action'))
-	spetial_timer.start()
+	_spetial_timer = Timer.new()
+	add_child(_spetial_timer)
+	_spetial_timer.one_shot = false
+	_spetial_timer.wait_time = timer_attack # this is 2.0s
+	_spetial_timer.connect('timeout', Callable(self, '_on_special_action'))
+	_spetial_timer.start()
 
-
-# TODO: tal vez lo cambie a un estado
+# attack
 func _on_special_action():
-	if global.defeated_boss:
-		spetial_timer.stop()
-	else:
-		_make_bullets()
-		
+	var last_state = fsm.current_state()
+	fsm.change_state(attack)
+	fsm.change_state(last_state)
 
 func _rand_explotion():
 	var rand_position_x = randf_range(-12.0, 12.0)
@@ -76,10 +61,10 @@ func _rand_explotion():
 	add_sibling(boom)
 
 
-func make_boom():
+func _make_boom():
 	global.defeated_boss = true
+	_spetial_timer.stop()
 	%ExploitTrigger.start()
-	print('bos')
 	
 	if dead_move:
 		# ATTENTION: Disconnect move_down signal to avoid state inconsistency
