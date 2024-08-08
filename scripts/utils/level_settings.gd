@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var menu_pause = %MenuPause
+@onready var global = Global
 
-var global = Global
 var _paused: bool = false
 
 func _ready():
@@ -16,12 +16,8 @@ func _ready():
 
 
 func _process(_delta):
-	if global.is_game_over():
-		_lose_scene()
-
-	if Input.is_action_just_pressed('ui_pause'):
-		_pause_menu()
-			
+	if global.player_heart == 0: _lose_scene()
+	if Input.is_action_just_pressed('ui_pause'): _pause_menu()
 	# call after hiding player
 	if global.hidden_player: _next_level()
 
@@ -69,3 +65,4 @@ func _on_menu_pause_resume():
 
 func _on_tree_exited():
 	Engine.time_scale = 1
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bi5ybcjsks1j8"]
+[gd_scene load_steps=14 format=3 uid="uid://bi5ybcjsks1j8"]
 
 [ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_cyndl"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="2_chjve"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_i3hfa"]
 [ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="5_iyae0"]
 [ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="6_543q8"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="7_7omev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxkj2"]
 atlas = ExtResource("2_v2rou")
@@ -71,3 +72,6 @@ debug_color = Color(0.329589, 0.520455, 0.902686, 0.42)
 rotation = 1.58536
 shape = SubResource("CapsuleShape2D_e5p5c")
 debug_color = Color(0.368102, 0.519065, 0.874657, 0.42)
+
+[node name="DestroyerEntities" type="Node" parent="." index="4"]
+script = ExtResource("7_7omev")

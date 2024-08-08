@@ -2,20 +2,15 @@
 extends Area2D
 class_name EnemyHitBox
 
-''' Instrunctions
-	- Drag and drop on enemy node
-	- Configure collisions as follows:
-		- Layer unassigned
-		- Mask assigned to player
-'''
 
-#DANGER: Be sure to set the collisions as follows: Layer unassigned and Mask assigned to player
+## DANGER: Be sure to set the collisions as follows: [b]Layer[/b] [b][color=#d58b8b]unassigned[/color][/b] and [b]Mask[/b] assigned to [b][color=#d58b8b]player[/color][/b]
 
 
 func _ready():
 	area_entered.connect(_hit)
 	
 	
-func _hit(area):
+## Player must have a components [color=#d58b8b]PlayerHealthBox[/color]
+func _hit(area: Area2D):
 	if area is PlayerHealthBox:
 		area.take_damage()

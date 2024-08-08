@@ -2,17 +2,25 @@
 extends Area2D
 class_name EnemyHealthBox
 
-''' Instrunctions
-	- Drag and drop on enemy node
-	- Inside the enemy script create the following methods:
-		- apply_damge()
-	- Configure collisions as follows:
-		- Layer assigned to enemy
-		- Mask unassigned
-'''
 
-#DANGER: Be sure to set the collisions as follows: Layer assigned to enemy and Mask  unassigned
+## DANGER: Be sure to set the collisions as follows: [b]Layer[/b] assigned to [b][color=#d58b8b]enemy[/color][/b] and [b]Mask[/b]  [b][color=#d58b8b]unassigned[/color][/b]
 
+var health: int = 0
 
+func _ready():
+	health = get_parent().health
+
+## Inside the enemy script create the following methods:
+##	[code]
+##		func make_boom():
+##			...logic code
+##
+##		func set_blinking():
+##			...logic code
+##	[/code]
 func take_damage():
-	get_parent().apply_damge()
+	health -= 1
+	get_parent().set_blinking()
+	
+	if health == 0:
+		get_parent().make_boom()

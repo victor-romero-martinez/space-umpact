@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgjylkyqgcmfy"]
+[gd_scene load_steps=16 format=3 uid="uid://bgjylkyqgcmfy"]
 
 [ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_j42wg"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="2_05bil"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="4_gljqk"]
 [ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="5_tsq3p"]
 [ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="6_eiiya"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="7_axb2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nss6f"]
 atlas = ExtResource("4_gljqk")
@@ -56,7 +57,6 @@ height = 16.0048
 
 [node name="Enemy5" instance=ExtResource("1_j42wg")]
 script = ExtResource("2_05bil")
-health = 3
 explotion_scene = ExtResource("3_8st87")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
@@ -82,3 +82,6 @@ debug_color = Color(0.368886, 0.496665, 0.947233, 0.42)
 rotation = 1.57323
 shape = SubResource("CapsuleShape2D_jfxwh")
 debug_color = Color(0.362171, 0.505504, 0.92548, 0.42)
+
+[node name="DestroyerEntities" type="Node" parent="." index="4"]
+script = ExtResource("7_axb2m")

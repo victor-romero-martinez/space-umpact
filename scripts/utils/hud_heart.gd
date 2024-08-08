@@ -5,11 +5,11 @@ class_name HudHealth
 @export var heart_compnent: PackedScene
 @export var position_in_game: Marker2D
 
-var global = Global
+@onready var global = Global
+
 var _initial_position: Vector2
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if heart_compnent and position_in_game:
 		_initial_position = position
@@ -41,6 +41,11 @@ func _hide_health():
 		.set_ease(Tween.EASE_IN)
 
 
-func remove_heart():
+func _remove_heart():
 	if get_child_count() > 0:
 		get_child(-1).queue_free()
+
+
+func _on_player_hit():
+	global.player_heart -= 1
+	_remove_heart()

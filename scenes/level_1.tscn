@@ -64,4 +64,5 @@ unique_name_in_owner = true
 visible = false
 metadata/_edit_lock_ = true
 
+[connection signal="hit" from="Player/Player" to="Hud/HudHealth" method="_on_player_hit"]
 [connection signal="resume" from="MenuPause" to="." method="_on_menu_pause_resume"]

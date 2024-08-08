@@ -27,14 +27,6 @@ func _ready():
 	else:
 		_create_data(path, DEFAULT_SETTINGS)
 
-func take_damage():
-	if player_heart > 0:
-		player_heart -= 1
-	
-
-func is_game_over() -> bool:
-	return player_heart == 0
-
 
 func _create_data(path: String, data):
 	var file = FileAccess.open(path, FileAccess.WRITE)

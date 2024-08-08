@@ -6,6 +6,7 @@ extends Enemy
 	- Attach dragging in your Enemy node.
 '''
 
+
 ## initial health
 @export var health: int = 1
 ## positive value in float
@@ -39,11 +40,9 @@ func _ready():
 func _physics_process(_delta):
 	if global_position.x < global.screen_size.x:
 		on_viewport.emit()
-	elif global_position.x < 0:
-		queue_free()
 	
 
-func _set_blinking():
+func set_blinking():
 	var _tween_timer: float = 0.25
 	var tween: Tween = create_tween()
 	
@@ -51,7 +50,7 @@ func _set_blinking():
 	tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, _tween_timer).from(_tween_timer)
 
 
-func _make_boom():
+func make_boom():
 	if not explotion_scene:
 		push_error('Explotion PackScene is missing')
 	else:
@@ -60,12 +59,6 @@ func _make_boom():
 		add_sibling(boom)
 		
 		queue_free()
-
-
-func apply_damge():
-	health -= 1
-	_set_blinking()
-	if health == 0: _make_boom()
 
 
 func _make_bullets():

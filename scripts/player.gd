@@ -6,6 +6,8 @@ extends CharacterBody2D
 	- Attach dragging in Player node
 '''
 
+signal hit
+
 @export_group('Bullet Settings')
 @export var bullet_scene: PackedScene
 ## how many bullets can shots
@@ -19,7 +21,6 @@ extends CharacterBody2D
 @export var exit_screen: Marker2D
 @export var explotion_scene: PackedScene
 
-@onready var hud_health = $"../../Hud/HudHealth" as HudHealth
 @onready var global = Global
 
 enum TState { IMMUNITY, MOVE, FREEZE }
@@ -38,7 +39,7 @@ func _physics_process(delta):
 		_move(delta)
 		move_and_slide()
 	
-	if is_on_wall() or is_on_floor(): make_boom() #INFO: received damage and restart initioal position
+	if is_on_wall() or is_on_floor(): make_boom()
 	if Input.is_action_just_pressed("ui_accept"): _fire()
 	if global.queue_boss: _finish_combat()
 	
@@ -77,10 +78,8 @@ func make_boom():
 		_apply_explotion()
 		_animation_spawn()
 		
+		hit.emit()
 		global_position = respawn.position
-		
-		global.take_damage() #NOTE: base 1
-		hud_health.remove_heart() #NOTE: base index 0
 
 
 # apply animation
