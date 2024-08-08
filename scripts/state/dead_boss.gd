@@ -1,4 +1,5 @@
 extends State
+## When [u]boss[/u] is defeat
 class_name DeadBoss
 
 

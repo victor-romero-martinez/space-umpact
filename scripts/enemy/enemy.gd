@@ -35,6 +35,7 @@ func _ready():
 		move_down.end_move_down.connect(fsm.change_state.bind(move_up))
 		move_up.end_move_up.connect(fsm.change_state.bind(move_down))
 	
+	connect('defeated', _make_boom)
 	$AnimatedSprite2D.play("default")
 
 func _physics_process(_delta):
@@ -50,7 +51,7 @@ func set_blinking():
 	tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, _tween_timer).from(_tween_timer)
 
 
-func make_boom():
+func _make_boom():
 	if not explotion_scene:
 		push_error('Explotion PackScene is missing')
 	else:

@@ -25,7 +25,7 @@ func _ready():
 		move_left.end_move_left.connect(fsm.change_state.bind(move_up))
 		move_down.end_move_down.connect(fsm.change_state.bind(move_up))
 		move_up.end_move_up.connect(fsm.change_state.bind(move_down))
-		connect('defeated', _dead)
+		connect('defeated', make_boom)
 		connect('activate_fight', _make_time)
 	
 	$AnimatedSprite2D.play("default")
@@ -67,19 +67,19 @@ func _on_special_action():
 		_make_bullets()
 		
 
-
 func _rand_explotion():
-	var rand_position = randf_range(-10.0, 10.0)
+	var rand_position_x = randf_range(-12.0, 12.0)
+	var rand_position_y = randf_range(-12.0, 12.0)
 	var boom = explotion_scene.instantiate()
-	boom.position = position + Vector2(rand_position, rand_position)
+	boom.position = position + Vector2(rand_position_x, rand_position_y)
 	
 	add_sibling(boom)
 
 
-func _dead():
+func make_boom():
 	global.defeated_boss = true
-	_rand_explotion()
 	%ExploitTrigger.start()
+	print('bos')
 	
 	if dead_move:
 		# ATTENTION: Disconnect move_down signal to avoid state inconsistency
@@ -87,21 +87,13 @@ func _dead():
 		fsm.change_state(dead_move)
 
 
-func _set_blinking():
+func set_blinking():
+	hit.emit(1)
 	var _tween_timer: float = 0.25
 	var tween: Tween = create_tween()
 	
 	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.2, _tween_timer)
 	tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, _tween_timer).from(_tween_timer)
-
-
-func apply_damge():
-	health -= 1
-	_set_blinking()
-	hit.emit(1)
-	
-	if health == 0:
-		defeated.emit()
 
 
 func _on_timer_timeout():

@@ -12,9 +12,6 @@ func _ready():
 
 ## Inside the enemy script create the following methods:
 ##	[code]
-##		func make_boom():
-##			...logic code
-##
 ##		func set_blinking():
 ##			...logic code
 ##	[/code]
@@ -23,4 +20,4 @@ func take_damage():
 	get_parent().set_blinking()
 	
 	if health == 0:
-		get_parent().make_boom()
+		get_parent().defeated.emit()
