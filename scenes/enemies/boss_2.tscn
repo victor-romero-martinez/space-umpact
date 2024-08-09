@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2758ggun2sww"]
+[gd_scene load_steps=12 format=3 uid="uid://d2758ggun2sww"]
 
-[ext_resource type="PackedScene" uid="uid://2s814b5rdr10" path="res://entities/boss.tscn" id="1_lckgj"]
+[ext_resource type="Script" path="res://scripts/enemy/boss.gd" id="1_llluu"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_ucuar"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_xppea"]
+[ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="4_kaodc"]
+[ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="5_phldo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cewlf"]
 atlas = ExtResource("2_ucuar")
@@ -39,35 +42,46 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7wgl"]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebysn"]
 radius = 16.0
 height = 44.0
 
-[node name="Boss1" instance=ExtResource("1_lckgj")]
+[node name="Boss1" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_llluu")
+explotion_scene = ExtResource("2_xppea")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(6, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_k4v27")
-frame_progress = 0.834053
+frame = 1
+frame_progress = 0.10655
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(2, -2)
+polygon = PackedVector2Array(-12, 1, -3, -11, 15, -11, 15, -18, 1, -17, -12, -8, -23, -8, -19, -23, 10, -27, 23, -27, 29, -18, 29, 17, 23, 17, 22, 7, 5, 17, -6, 17, -12, 8)
+
+[node name="EnemyHealthBox" parent="." instance=ExtResource("4_kaodc")]
 visible = false
-shape = SubResource("CapsuleShape2D_x7wgl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox"]
+visible = false
+position = Vector2(6, -5)
+shape = SubResource("CapsuleShape2D_ebysn")
+debug_color = Color(0.391448, 0.488361, 0.952404, 0.42)
+
+[node name="EnemyHitBox" parent="." instance=ExtResource("5_phldo")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHitBox"]
 visible = false
 position = Vector2(6, -5)
 shape = SubResource("CapsuleShape2D_ebysn")
 debug_color = Color(0.391448, 0.488361, 0.952404, 0.42)
 
-[node name="EnemyHitBox" parent="." index="3"]
-visible = true
+[node name="ExploitTrigger" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
-visible = false
-position = Vector2(6, -5)
-shape = SubResource("CapsuleShape2D_ebysn")
-debug_color = Color(0.391448, 0.488361, 0.952404, 0.42)
+[connection signal="timeout" from="ExploitTrigger" to="." method="_on_timer_timeout"]

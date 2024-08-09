@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c88ev1so4wvv1"]
+[gd_scene load_steps=13 format=3 uid="uid://c88ev1so4wvv1"]
 
 [ext_resource type="Script" path="res://scripts/enemy/boss.gd" id="2_fcshl"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_pqo2t"]
@@ -42,10 +42,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2b4aq"]
-radius = 19.0
-height = 42.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krlev"]
 radius = 17.0
 height = 42.0
@@ -64,14 +60,12 @@ explotion_scene = ExtResource("4_7o8cd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_on6vi")
-frame = 1
-frame_progress = 0.285806
+frame = 2
+frame_progress = 0.722626
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(5, -5)
-shape = SubResource("CapsuleShape2D_2b4aq")
-debug_color = Color(0.679218, 0.327654, 0.955027, 0.42)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, -8, -15, -17, -6, -26, -6, -26, 14, -26, 24, -14, 23, -1, 10, 15, -2, 14, -8, 12, -8, -3)
 
 [node name="EnemyHealthBox" parent="." instance=ExtResource("3_yd4ll")]
 visible = false
