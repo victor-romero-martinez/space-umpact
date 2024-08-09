@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6o73s0pkyk7x"]
+
+[ext_resource type="Script" path="res://scripts/utils/rocket.gd" id="1_7mf50"]
+[ext_resource type="Texture2D" uid="uid://4txxjkpo453e" path="res://assets/bullet.png" id="1_nm32w"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_vdd2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3t4pb"]
+size = Vector2(10, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv1py"]
+size = Vector2(10, 6)
+
+[node name="Rocket" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_7mf50")
+explotion = ExtResource("2_vdd2c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_nm32w")
+hframes = 4
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_3t4pb")
+
+[node name="Sensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Sensor"]
+polygon = PackedVector2Array(5, -1, 25, -31, 25, 31, 5, 1)
+
+[node name="HitBox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_mv1py")
+
+[connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]
+[connection signal="body_exited" from="Sensor" to="." method="_on_sensor_body_exited"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

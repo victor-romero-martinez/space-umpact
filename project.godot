@@ -58,6 +58,7 @@ ui_pause={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="boss"
 2d_physics/layer_5="bullets"
+2d_physics/layer_6="sensor"
 2d_physics/layer_8="wall"
 
 [rendering]

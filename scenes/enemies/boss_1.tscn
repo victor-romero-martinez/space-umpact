@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c88ev1so4wvv1"]
+[gd_scene load_steps=14 format=3 uid="uid://c88ev1so4wvv1"]
 
 [ext_resource type="Script" path="res://scripts/enemy/boss.gd" id="2_fcshl"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_pqo2t"]
-[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_23eqv"]
 [ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="3_yd4ll"]
 [ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="4_6iuw8"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="4_7o8cd"]
@@ -56,11 +55,10 @@ radius = 18.0
 height = 44.0
 
 [node name="Boss1" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 8
+collision_mask = 32
 script = ExtResource("2_fcshl")
 speed = 4.0
-bullet_scene = ExtResource("3_23eqv")
 explotion_scene = ExtResource("4_7o8cd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -85,6 +83,7 @@ debug_color = Color(0.59863, 0.376395, 0.987965, 0.42)
 
 [node name="EnemyHitBox" parent="." instance=ExtResource("4_6iuw8")]
 visible = false
+collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
 position = Vector2(5, -5)

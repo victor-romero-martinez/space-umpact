@@ -14,6 +14,7 @@
 
 [node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("1_6kwli")]
 position = Vector2(385, 87)
+collision_mask = 0
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
@@ -46,8 +47,8 @@ actor = NodePath("../..")
 
 [node name="EnemyShots" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("7_nebfx")
-bullet_scene = ExtResource("8_6cfwa")
 actor = NodePath("../..")
+bullet_scene = ExtResource("8_6cfwa")
 
 [node name="HealthFinalPos" type="Marker2D" parent="."]
 position = Vector2(264, 9.53674e-07)

@@ -12,5 +12,5 @@ func _ready():
 
 ## Enemy must have a components [u][color=#d58b8b]EnemyHealthBox[/color][/u]
 func _hit(area: Area2D):
-	if area is EnemyHealthBox:
+	if area is EnemyHealthBox: # TODO: agregar colosion player
 		area.take_damage()
