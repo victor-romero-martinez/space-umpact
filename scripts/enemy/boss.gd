@@ -18,6 +18,7 @@ extends Enemy
 
 @onready var global = Global
 
+#var fight_position: Vector2
 var _spetial_timer: Timer
 
 func _ready():
@@ -26,7 +27,7 @@ func _ready():
 		move_down.end_move_down.connect(fsm.change_state.bind(move_up))
 		move_up.end_move_up.connect(fsm.change_state.bind(move_down))
 		connect('defeated', _make_boom)
-		connect('activate_fight', _make_time)
+		connect('activate_fight', _activate_figth)
 	
 	$AnimatedSprite2D.play("default")
 
@@ -37,8 +38,9 @@ func _physics_process(_delta):
 		on_viewport.emit()
 	
 	
-# timer attack
-func _make_time():
+# Start fight
+func _activate_figth():
+	#fight_position = global_position
 	_spetial_timer = Timer.new()
 	add_child(_spetial_timer)
 	_spetial_timer.one_shot = false
@@ -49,8 +51,12 @@ func _make_time():
 # attack
 func _on_special_action():
 	var last_state = fsm.current_state()
+	
 	fsm.change_state(attack)
-	fsm.change_state(last_state)
+	
+	attack.end_attack.connect(fsm.change_state.bind(last_state))
+	# CAUTION: It must be reset to avoid state bug
+	attack.end_attack.disconnect(fsm.change_state)
 
 func _rand_explotion():
 	var rand_position_x = randf_range(-12.0, 12.0)

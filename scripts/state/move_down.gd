@@ -18,6 +18,7 @@ func _ready():
 	
 
 func enter_state():
+	#to_positon_y = actor.fight_position.y + abs(max_move)
 	actor.velocity = Vector2(0, abs(actor.speed))
 
 

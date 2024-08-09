@@ -1,37 +1,105 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmugjoqf0v7q6"]
+[gd_scene load_steps=7 format=3 uid="uid://dmugjoqf0v7q6"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_qf0sk"]
 [ext_resource type="PackedScene" uid="uid://owst6smqhoks" path="res://scenes/enemies/enemy_4.tscn" id="2_0xmlv"]
+[ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="3_0ywtl"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_jb1o1"]
+[ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="5_h6eet"]
+[ext_resource type="Script" path="res://scripts/state/enemy_attack.gd" id="6_717wm"]
 
 [node name="Enemy_Chunk" instance=ExtResource("1_qf0sk")]
 
-[node name="Enemy4" parent="." index="0" instance=ExtResource("2_0xmlv")]
+[node name="Enemy4" parent="." index="0" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
 position = Vector2(33, 55)
 health = 2
 can_shoot = true
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy4" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("3_0ywtl")
+state = NodePath("EnemyAttack")
+
+[node name="EnemyAttack" type="Node" parent="Enemy4/EnemyStateMachine" index="0"]
+script = ExtResource("6_717wm")
+
+[node name="EnemyShots" type="Node" parent="Enemy4/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_h6eet")
+actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")
 
-[node name="Enemy5" parent="." index="1" instance=ExtResource("2_0xmlv")]
+[node name="Enemy5" parent="." index="1" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
 position = Vector2(123, 33)
 health = 2
 can_shoot = true
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy5" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("3_0ywtl")
+state = NodePath("EnemyAttack2")
+
+[node name="EnemyAttack2" type="Node" parent="Enemy5/EnemyStateMachine" index="0"]
+script = ExtResource("6_717wm")
+
+[node name="EnemyShots" type="Node" parent="Enemy5/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_h6eet")
+actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")
 
-[node name="Enemy6" parent="." index="2" instance=ExtResource("2_0xmlv")]
+[node name="Enemy6" parent="." index="2" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
 position = Vector2(199, 93)
 health = 2
 can_shoot = true
+fsm = NodePath("EnemyStateMachine2")
+attack = NodePath("EnemyStateMachine2/EnemyShots")
+
+[node name="EnemyStateMachine2" type="Node" parent="Enemy6" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("3_0ywtl")
+state = NodePath("EnemyAttack3")
+
+[node name="EnemyAttack3" type="Node" parent="Enemy6/EnemyStateMachine2" index="0"]
+script = ExtResource("6_717wm")
+
+[node name="EnemyShots" type="Node" parent="Enemy6/EnemyStateMachine2" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_h6eet")
+actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")
 
-[node name="Enemy7" parent="." index="3" instance=ExtResource("2_0xmlv")]
+[node name="Enemy7" parent="." index="3" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
 position = Vector2(247, 21)
 health = 2
 can_shoot = true
+fsm = NodePath("EnemyStateMachine3")
+attack = NodePath("EnemyStateMachine3/EnemyShots")
+
+[node name="EnemyStateMachine3" type="Node" parent="Enemy7" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("3_0ywtl")
+state = NodePath("EnemyAttack4")
+
+[node name="EnemyAttack4" type="Node" parent="Enemy7/EnemyStateMachine3" index="0"]
+script = ExtResource("6_717wm")
+
+[node name="EnemyShots" type="Node" parent="Enemy7/EnemyStateMachine3" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_h6eet")
+actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")
 
-[node name="Enemy8" parent="." index="4" instance=ExtResource("2_0xmlv")]
+[node name="Enemy8" parent="." index="4" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
 position = Vector2(312, 71)
 health = 2
 can_shoot = true
+fsm = NodePath("EnemyStateMachine4")
+attack = NodePath("EnemyStateMachine4/EnemyShots")
+
+[node name="EnemyStateMachine4" type="Node" parent="Enemy8" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("3_0ywtl")
+state = NodePath("EnemyAttack5")
+
+[node name="EnemyAttack5" type="Node" parent="Enemy8/EnemyStateMachine4" index="0"]
+script = ExtResource("6_717wm")
+
+[node name="EnemyShots" type="Node" parent="Enemy8/EnemyStateMachine4" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_h6eet")
+actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")

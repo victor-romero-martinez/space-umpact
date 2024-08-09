@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/state/move_left.gd" id="3_t1oet"]
 [ext_resource type="Script" path="res://scripts/state/move_down.gd" id="4_ssmxr"]
 [ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="6_oiw3h"]
-[ext_resource type="Script" path="res://scripts/state/shots.gd" id="7_nebfx"]
+[ext_resource type="Script" path="res://scripts/state/boss_shots.gd" id="7_nebfx"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="8_6cfwa"]
 
 [node name="BossChunk" type="Node2D"]
@@ -46,8 +46,8 @@ actor = NodePath("../..")
 
 [node name="EnemyShots" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("7_nebfx")
-actor = NodePath("../..")
 bullet_scene = ExtResource("8_6cfwa")
+actor = NodePath("../..")
 
 [node name="HealthFinalPos" type="Marker2D" parent="."]
 position = Vector2(264, 9.53674e-07)

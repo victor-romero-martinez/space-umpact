@@ -1,8 +1,6 @@
 extends EnemyAttack
-## Enemy attack by bullet
-class_name EnemyShots
-
-signal end_shot
+## Boss attack by bullet
+class_name BossShots
 
 
 @export var actor: Enemy
@@ -17,20 +15,20 @@ func _ready():
 
 func enter_state():
 	set_physics_process(true)
-	_initial = actor.global_position.x
+	_initial = actor.position.x
 
 	var rand_y = randf_range(-8, 8) #y = -2
-	var g_position = actor.global_position
-	g_position.x -= 16.0
-	g_position.y += rand_y
+	var position = actor.position
+	position.x -= 16.0
+	position.y += rand_y
 	
 	var bullet = bullet_scene.instantiate()
-	bullet.position = g_position
+	bullet.position = position
 	bullet.go_negative()
 
 	actor.add_sibling(bullet)
 	
-	end_shot.emit()
+	end_attack.emit()
 
 
 func exite_state():

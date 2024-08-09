@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/state/move_up.gd" id="5_aaos2"]
 [ext_resource type="Script" path="res://scripts/state/move_left.gd" id="6_dn64y"]
 [ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="7_560to"]
-[ext_resource type="Script" path="res://scripts/state/shots.gd" id="8_0dhmd"]
+[ext_resource type="Script" path="res://scripts/state/boss_shots.gd" id="8_0dhmd"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="9_qv2no"]
 
 [node name="BosssChunk" type="Node2D"]
@@ -25,6 +25,7 @@ metadata/_edit_lock_ = true
 [node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("2_o4mp2")]
 position = Vector2(371, 81)
 health = 80
+timer_attack = 2.0
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")

@@ -14,11 +14,11 @@ extends Enemy
 ## active for can_shoot mode
 @export var can_shoot: bool = false
 @export var explotion_scene: PackedScene
-@export var bullet_scene: PackedScene
-@export_category('Movement')
+@export_category('State')
 @export var fsm: EnemyStateMachine
 @export var move_down: EnemyMoveDown
 @export var move_up: EnemyMoveUp
+@export var attack: EnemyAttack
 
 
 #WARNING: must be initialite before use on _make_bullets
@@ -28,7 +28,7 @@ extends Enemy
 var _timer_off: bool = true
 
 func _ready():
-	if can_shoot and bullet_scene:
+	if can_shoot and attack:
 		connect('on_viewport', _start_timer)
 	
 	if fsm and move_down and move_up:
@@ -62,13 +62,6 @@ func _make_boom():
 		queue_free()
 
 
-func _make_bullets():
-	var bullet = bullet_scene.instantiate()
-	bullet.go_negative()
-	bullet.position = position + Vector2(-16.0, 0)
-	add_sibling(bullet)
-		
-
 # setting the timer
 func _make_timer():
 	var rand_time = randf_range(2.5, 5.0)
@@ -77,7 +70,7 @@ func _make_timer():
 	timer = Timer.new()
 	timer.wait_time = rand_time
 	timer.autostart = true
-	timer.timeout.connect(_on_timer_timeout)
+	timer.timeout.connect(_on_attack)
 	
 	add_child(timer)
 	
@@ -90,8 +83,12 @@ func _start_timer():
 	_timer_off = false
 
 
-# shots timeout
-func _on_timer_timeout():
-	_make_bullets()
-
-
+# attack
+func _on_attack():
+	var last_state = fsm.current_state()
+	
+	fsm.change_state(attack)
+	
+	attack.end_attack.connect(fsm.change_state.bind(last_state))
+	# CAUTION: It must be reset to avoid state bug
+	attack.end_attack.disconnect(fsm.change_state)

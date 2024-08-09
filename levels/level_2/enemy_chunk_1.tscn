@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1bcxhijj1cwo"]
+[gd_scene load_steps=6 format=3 uid="uid://c1bcxhijj1cwo"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_sitfv"]
 [ext_resource type="PackedScene" uid="uid://bi5ybcjsks1j8" path="res://scenes/enemies/enemy_1.tscn" id="2_8jggn"]
-[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_xfn7v"]
 [ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="4_vpoyr"]
 [ext_resource type="Script" path="res://scripts/state/move_up.gd" id="5_7kxxa"]
 [ext_resource type="Script" path="res://scripts/state/move_down.gd" id="6_rumyg"]
@@ -14,8 +13,6 @@ metadata/_edit_lock_ = true
 position = Vector2(53, 37)
 health = 2
 speed = 8.0
-can_shoot = true
-bullet_scene = ExtResource("3_xfn7v")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
@@ -38,8 +35,6 @@ actor = NodePath("../..")
 position = Vector2(213, 87)
 health = 2
 speed = 8.0
-can_shoot = true
-bullet_scene = ExtResource("3_xfn7v")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
@@ -128,7 +123,6 @@ actor = NodePath("../..")
 position = Vector2(289, 86)
 health = 2
 speed = 8.0
-bullet_scene = ExtResource("3_xfn7v")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
