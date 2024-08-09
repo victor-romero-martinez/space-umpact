@@ -6,7 +6,6 @@ class_name EnemyShots
 @export var actor: Enemy
 @export var bullet_scene: PackedScene
 
-var _initial: float
 
 func _ready():
 	set_physics_process(false)
