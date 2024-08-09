@@ -38,8 +38,7 @@ func _next_level():
 	if FileAccess.file_exists(next_level):
 		get_tree().change_scene_to_file(next_level)
 	else:
-		print_debug('TODO: poner creditos aqui')
-		get_tree().change_scene_to_file("res://control/main_menu.tscn")
+		get_tree().change_scene_to_file('res://control/credit.tscn')
 
 
 func _lose_scene():
