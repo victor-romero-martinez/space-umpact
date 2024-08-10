@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8c2extoj0v8v"]
+
+[ext_resource type="Script" path="res://scripts/utils/reload.gd" id="1_s0vvb"]
+[ext_resource type="Texture2D" uid="uid://cpvg5t4ua7e58" path="res://assets/reload.png" id="1_u3i5h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqqbg"]
+atlas = ExtResource("1_u3i5h")
+region = Rect2(0, 8, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75yts"]
+atlas = ExtResource("1_u3i5h")
+region = Rect2(10, 8, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brhdd"]
+atlas = ExtResource("1_u3i5h")
+region = Rect2(0, 16, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlns1"]
+atlas = ExtResource("1_u3i5h")
+region = Rect2(10, 16, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmttc"]
+atlas = ExtResource("1_u3i5h")
+region = Rect2(0, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xis82"]
+atlas = ExtResource("1_u3i5h")
+region = Rect2(10, 0, 10, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ex3qh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqqbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75yts")
+}],
+"loop": true,
+"name": &"laser_h",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brhdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlns1")
+}],
+"loop": true,
+"name": &"laser_v",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmttc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xis82")
+}],
+"loop": true,
+"name": &"rocket",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkd5n"]
+size = Vector2(16, 14)
+
+[node name="Reload" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_s0vvb")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ex3qh")
+animation = &"laser_v"
+autoplay = "rocket"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_lkd5n")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 64
+collision_mask = 256
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lkd5n")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
