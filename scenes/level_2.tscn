@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bse3clbf784ak"]
+[gd_scene load_steps=14 format=3 uid="uid://bse3clbf784ak"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_4iprt"]
 [ext_resource type="PackedScene" uid="uid://dvccawcbgcnj7" path="res://levels/level_2/background_manager.tscn" id="2_3wt1b"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="2_jj21j"]
+[ext_resource type="Script" path="res://scripts/utils/hud_player.gd" id="3_2trpj"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="3_vard1"]
 [ext_resource type="PackedScene" uid="uid://12i2qachdu1p" path="res://levels/level_1/enemy_manager.tscn" id="4_whtcc"]
 [ext_resource type="PackedScene" uid="uid://caasmbolvwk0n" path="res://levels/level_2/enemy_chunk_0.tscn" id="5_ogfs4"]
@@ -25,15 +26,17 @@ color = Color(0.12549, 0.113725, 0.141176, 1)
 
 [node name="BackgroundManager" parent="BG" instance=ExtResource("2_3wt1b")]
 
-[node name="Hud" type="Node2D" parent="."]
+[node name="Hud" type="Node2D" parent="." node_paths=PackedStringArray("final_position")]
+position = Vector2(0, -12)
+script = ExtResource("3_2trpj")
+final_position = NodePath("HudPosition")
 
-[node name="HudHealth" parent="Hud" node_paths=PackedStringArray("position_in_game") instance=ExtResource("2_jj21j")]
-position = Vector2(4, -7)
-position_in_game = NodePath("../PlayerHealthPosition")
+[node name="HudHealth" parent="Hud" instance=ExtResource("2_jj21j")]
+position = Vector2(4, 0)
 metadata/_edit_lock_ = true
 
-[node name="PlayerHealthPosition" type="Marker2D" parent="Hud"]
-position = Vector2(4, 4)
+[node name="HudPosition" type="Marker2D" parent="Hud"]
+position = Vector2(9, 5)
 metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="."]

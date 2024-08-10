@@ -8,23 +8,28 @@ enum Direction { LEFT = -1, RIGHT = 1 }
 @export var directon: Direction = Direction.RIGHT
 @export var explotion: PackedScene
 
+@onready var global = Global
 
 var collitions: Array[CollisionObject2D] = []
-		
+
+
+func _ready():
+	if directon == Direction.LEFT:
+		$Sprite2D.flip_h = true
+		$Sensor.rotation_degrees = 180
+		$HitBox.rotation_degrees = 180
+
 
 func _physics_process(_delta):
 	velocity.x = directon * speed
-	
-	if velocity.x > 0:
-		$Sprite2D.flip_h = false
-	else:
-		$Sprite2D.flip_h = true
+		
 	
 	if collitions.is_empty():
 		velocity.y = 0
 	else:
 		scan()
 	
+	_auto_remove()
 	move_and_slide()
 
 
@@ -41,6 +46,11 @@ func _make_boom():
 		var boom = explotion.instantiate()
 		boom.position = global_position
 		add_sibling(boom)
+
+
+func _auto_remove():
+	if global_position.x > global.screen_size.x or global_position.x < 0:
+		queue_free()
 
 
 # add

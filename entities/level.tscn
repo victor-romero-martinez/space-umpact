@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm5gcd3osutb1"]
+[gd_scene load_steps=4 format=3 uid="uid://dm5gcd3osutb1"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_y4lnm"]
+[ext_resource type="Script" path="res://scripts/utils/hud_player.gd" id="2_kux8c"]
 [ext_resource type="PackedScene" uid="uid://dmb1acg6lojr5" path="res://control/menu_pause.tscn" id="2_vb0de"]
 
 [node name="Level" type="Node2D"]
@@ -14,6 +15,8 @@ color = Color(0.12549, 0.113725, 0.141176, 1)
 [node name="BG" type="Node2D" parent="."]
 
 [node name="Hud" type="Node2D" parent="."]
+position = Vector2(0, -12)
+script = ExtResource("2_kux8c")
 
 [node name="Player" type="Node2D" parent="."]
 

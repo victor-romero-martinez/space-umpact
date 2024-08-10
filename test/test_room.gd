@@ -16,7 +16,7 @@ func _process(_delta):
 	if global.hidden_player:
 		close_room()
 
-
+ 
 func close_room():
 	print_rich("[color=green][b]Finished test![/b][/color]")
 	get_tree().quit()

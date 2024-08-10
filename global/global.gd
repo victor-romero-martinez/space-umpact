@@ -8,7 +8,9 @@ const DEFAULT_SETTINGS := {
 
 var screen_size: Vector2
 var current_level: int = 1
+
 var player_heart: int = 3
+var player_arsenal: Array[String] = ['bullet']
 
 var defeated_boss: bool = false
 ## call after hiding boss
