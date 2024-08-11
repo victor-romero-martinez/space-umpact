@@ -1,46 +1,52 @@
 @icon("res://assets/icons/gamepad.svg")
 extends CharacterBody2D
+## This script is only for Player node.[br]
+## 1. Use actors.tscn to inherited scene located in res://entities/actors.tscn.[br]
+## 2. Attach dragging in Player node.
 class_name Player
 
-''' This script is only for Player node.
-	- Use actors.tscn to inherited scene located in res://entities/actors.tscn
-	- Attach dragging in Player node
-'''
 
 signal hit
+signal current_weapon(idx: int)
+signal add_weapon(val: String)
+signal remove_weapon(val: int)
 
 @export_group('Gun Settings')
-#@export var bullet_scene: PackedScene
-## how many bullets can shots
+## How many bullets can shots
 @export var bullet_by_shoot: int = 3
-## how many time wait for the next shooting
+## How many time wait for the next shooting
 @export var wait_seconds: float = .5
-#@export var rcket_scene: PackedScene
+## Load in order likes this
+##	[code]
+##	0. bulletScene
+##	1. rocketScene
+##	2. laser_hScene
+##	3. laser_vScene
+##	[/code]
+@export var guns: Array[PackedScene]
 
 @export_group('Settings')
+## Player velocity
 @export var speed = 80.0
+## Player respawn position
 @export var respawn: Marker2D
-@export var exit_screen: Marker2D
+## Explotion effects scene
 @export var explotion_scene: PackedScene
 
 @onready var global = Global
 
 enum TState { IMMUNITY, MOVE, FREEZE }
 
-const GUNS := {
-	'bullet': preload('res://scenes/utilities/bullet.tscn'),
-	'rocket': preload('res://scenes/utilities/rocket.tscn'),
-	'laser_h': null,
-	'laser_v': null
-}
-
 var _can_shoot: bool = true
+var _weapon_idx: int = 0
+## States of state machine
 var state: TState = TState.IMMUNITY
 
 
 func _ready():
 	_animation_spawn()
 	_start_combat()
+	current_weapon.emit(_weapon_idx)
 
 
 func _physics_process(delta):
@@ -49,6 +55,7 @@ func _physics_process(delta):
 		move_and_slide()
 	
 	if is_on_wall() or is_on_floor(): make_boom()
+	if Input.is_action_just_pressed('change_weapon'): _next_weapon()
 	if Input.is_action_just_pressed("ui_accept"): _fire()
 	if global.queue_boss: _finish_combat()
 	
@@ -72,6 +79,7 @@ func _start_combat():
 	t.tween_callback(func (): state = TState.MOVE)
 	
 	
+# change level when finish fight 
 func _finish_combat():
 	state = TState.FREEZE
 	$CollisionShape2D.disabled = true
@@ -80,7 +88,7 @@ func _finish_combat():
 	move_and_slide()
 	
 	
-# apply damage and reset position when not immunity
+## Applies damage, explosion effect and resets position when not immunity
 func make_boom():
 	#if not IMMUNITY OR FREEZE:
 	if state == TState.MOVE:
@@ -100,24 +108,41 @@ func _animation_spawn():
 	$AnimatedSprite2D.play('default')
 
 
-#TODO: destroy when colliction by buildings
+# Select ammunition type and shoot
 func _fire():
 	if _can_shoot:
 		for _b in bullet_by_shoot:
-			#var bullet = bullet_scene.instantiate()
-			var bullet = GUNS.bullet.instantiate()
+			var bullet = guns[_weapon_idx].instantiate()
 			bullet.position = global_position + Vector2(28, 8)
 			add_sibling(bullet)
 			
+			if _weapon_idx != 0:
+				var temp = _weapon_idx
+				_weapon_idx = 0
+				current_weapon.emit(_weapon_idx)
+				remove_weapon.emit(temp)
+				break
 			await get_tree().create_timer(0.06).timeout #WARNING: no estoy seguro de esto
 			
 		_shoot_handle()
 
 
+## Add gun type on [u]global.player_arsenal[/u]
 func add_arsenal(arg: String):
 	if not global.player_arsenal.has(arg):
 		global.player_arsenal.append(arg)
-		print(global.player_arsenal)
+		add_weapon.emit(arg)
+		
+
+# Set nex weapon
+func _next_weapon():
+	# [].size() -> base 1
+	if (global.player_arsenal.size() - 1) > _weapon_idx:
+		_weapon_idx += 1
+		current_weapon.emit(_weapon_idx)
+	else:
+		_weapon_idx = 0
+		current_weapon.emit(_weapon_idx)
 
 
 # add explotion as sibling 
@@ -127,6 +152,7 @@ func _apply_explotion():
 	add_sibling(boom)
 
 
+# wating shoot
 func _shoot_handle():
 	_can_shoot = false
 	await get_tree().create_timer(wait_seconds).timeout

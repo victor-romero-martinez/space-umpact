@@ -1,13 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bei2gam4iv8m6"]
+[gd_scene load_steps=2 format=3 uid="uid://bei2gam4iv8m6"]
 
 [ext_resource type="Script" path="res://scripts/utils/gun_hud.gd" id="1_m122x"]
-[ext_resource type="Texture2D" uid="uid://cbynurkdemm3d" path="res://assets/gun_select.png" id="2_3tks5"]
 
 [node name="GunHud" type="Node2D"]
 script = ExtResource("1_m122x")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3tks5")
-hframes = 2
-vframes = 4
-frame = 1

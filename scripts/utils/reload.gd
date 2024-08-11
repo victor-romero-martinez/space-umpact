@@ -1,3 +1,4 @@
+@icon("res://assets/icons/tools.svg")
 extends StaticBody2D
 class_name ReloadItem
 
