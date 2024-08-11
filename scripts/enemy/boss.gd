@@ -74,12 +74,14 @@ func _make_boom():
 	
 	if dead_move:
 		# ATTENTION: Disconnect move_down signal to avoid state inconsistency
-		move_down.end_move_down.disconnect(fsm.change_state)
+		if move_down.end_move_down.is_connected(fsm.change_state):
+			move_down.end_move_down.disconnect(fsm.change_state)
+			
 		fsm.change_state(dead_move)
 
 
-func set_blinking():
-	hit.emit(1)
+func set_blinking(damage: int):
+	hit.emit(damage)
 	var _tween_timer: float = 0.25
 	var tween: Tween = create_tween()
 	

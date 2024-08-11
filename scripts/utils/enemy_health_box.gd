@@ -15,9 +15,9 @@ func _ready():
 ##		func set_blinking():
 ##			...logic code
 ##	[/code]
-func take_damage():
-	health -= 1
-	get_parent().set_blinking()
+func take_damage(damage: int = 1):
+	health -= damage
+	get_parent().set_blinking(damage)
 	
-	if health == 0:
+	if health  < 1:
 		get_parent().defeated.emit()

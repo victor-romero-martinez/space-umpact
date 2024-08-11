@@ -10,7 +10,7 @@ func _ready():
 	area_entered.connect(_hit)
 	
 	
-## Player must have a components [color=#d58b8b]PlayerHealthBox[/color]
+## Player must have a components [u][color=#d58b8b]PlayerHealthBox[/color][/u]
 func _hit(area: Area2D):
 	if area is PlayerHealthBox:
 		area.take_damage()

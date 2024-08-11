@@ -41,6 +41,11 @@ collision_mask = 14
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_mv1py")
 
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
 [connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]
 [connection signal="body_exited" from="Sensor" to="." method="_on_sensor_body_exited"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

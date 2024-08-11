@@ -43,7 +43,7 @@ func _physics_process(_delta):
 		on_viewport.emit()
 	
 
-func set_blinking():
+func set_blinking(_damage: int):
 	var _tween_timer: float = 0.25
 	var tween: Tween = create_tween()
 	

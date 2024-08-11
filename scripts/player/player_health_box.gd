@@ -7,7 +7,7 @@ class_name PlayerHealthBox
 
 
 ## Set player health and apply function dead 
-func take_damage():
+func take_damage(_damage: int = 1):
 	get_parent().make_boom()
 
 	

@@ -27,7 +27,7 @@ signal remove_weapon(val: int)
 
 @export_group('Settings')
 ## Player velocity
-@export var speed = 80.0
+@export var speed = 50.0
 ## Player respawn position
 @export var respawn: Marker2D
 ## Explotion effects scene
@@ -82,7 +82,7 @@ func _start_combat():
 # change level when finish fight 
 func _finish_combat():
 	state = TState.FREEZE
-	$CollisionShape2D.disabled = true
+	%PlayerCollision.disabled = true
 	velocity.x = speed * 2
 	if global_position.x > global.screen_size.x: global.hidden_player = true
 	move_and_slide()
