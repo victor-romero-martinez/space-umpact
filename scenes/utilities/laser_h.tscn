@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://43uly46lm3op"]
+
+[ext_resource type="Script" path="res://scripts/utils/laser_h.gd" id="1_s4lyn"]
+[ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="2_y6oky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul3qc"]
+size = Vector2(5, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhfmj"]
+atlas = ExtResource("2_y6oky")
+region = Rect2(0, 52, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjrqh"]
+atlas = ExtResource("2_y6oky")
+region = Rect2(16, 52, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfywm"]
+atlas = ExtResource("2_y6oky")
+region = Rect2(32, 52, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3joyl"]
+atlas = ExtResource("2_y6oky")
+region = Rect2(48, 52, 16, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bl7wl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhfmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjrqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfywm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3joyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="LaserH" type="Node2D"]
+script = ExtResource("1_s4lyn")
+
+[node name="Line2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 308, 0)
+width = 1.0
+default_color = Color(0.964706, 0.188235, 0.564706, 1)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_mask = 14
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_ul3qc")
+
+[node name="Distroyer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bl7wl")
+autoplay = "default"
+frame = 3
+frame_progress = 0.228822
+flip_h = true
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
+[connection signal="area_exited" from="Area" to="." method="_on_area_area_exited"]
+[connection signal="timeout" from="Distroyer" to="." method="_on_distroyer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
