@@ -37,6 +37,8 @@ signal remove_weapon(val: int)
 
 enum TState { IMMUNITY, MOVE, FREEZE }
 
+## Limit to prevent the player from leaving the screen
+var offset: float = 10.0
 var _can_shoot: bool = true
 var _weapon_idx: int = 0
 ## States of state machine
@@ -47,7 +49,7 @@ func _ready():
 	_animation_spawn()
 	_start_combat()
 	current_weapon.emit(_weapon_idx)
-
+	
 
 func _physics_process(delta):
 	if state == TState.MOVE or state == TState.IMMUNITY:
@@ -68,7 +70,7 @@ func _move(delta):
 		# limits movement on the screen
 		#WARNING: hace un pequeño movimineto
 		position += velocity * delta
-		position = position.clamp(Vector2.ZERO, (Global.screen_size - Vector2(21.0, 15.0)))
+		position = position.clamp(Vector2(offset, offset), (Global.screen_size - Vector2(offset, offset)))
 
 # enter from outside
 func _start_combat():
@@ -113,7 +115,7 @@ func _fire():
 	if _can_shoot:
 		for _b in bullet_by_shoot:
 			var bullet = guns[_weapon_idx].instantiate()
-			bullet.position = global_position + Vector2(28, 8)
+			bullet.position = global_position + Vector2(20.0, 0)
 			add_sibling(bullet)
 			
 			if _weapon_idx != 0:
@@ -148,7 +150,7 @@ func _next_weapon():
 # add explotion as sibling 
 func _apply_explotion():
 	var boom = explotion_scene.instantiate()
-	boom.position = global_position + Vector2(4, 6)
+	boom.position = global_position
 	add_sibling(boom)
 
 
