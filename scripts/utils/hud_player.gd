@@ -30,4 +30,4 @@ func _hide():
 		.set_trans(Tween.TRANS_LINEAR)\
 		.set_ease(Tween.EASE_IN)
 
-		
+	
