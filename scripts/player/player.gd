@@ -8,7 +8,7 @@ class_name Player
 
 signal hit
 signal current_weapon(idx: int)
-signal add_weapon(val: String)
+signal add_weapon(idx: int)
 signal remove_weapon(val: int)
 
 @export_group('Gun Settings')
@@ -16,14 +16,7 @@ signal remove_weapon(val: int)
 @export var bullet_by_shoot: int = 3
 ## How many time wait for the next shooting
 @export var wait_seconds: float = .5
-## Load in order likes this
-##	[code]
-##	0. bulletScene
-##	1. rocketScene
-##	2. laser_hScene
-##	3. laser_vScene
-##	[/code]
-@export var guns: Array[PackedScene]
+
 
 @export_group('Settings')
 ## Player velocity
@@ -36,6 +29,15 @@ signal remove_weapon(val: int)
 @onready var global = Global
 
 enum TState { IMMUNITY, MOVE, FREEZE }
+enum TBullet { bullet, rocket, laser_h, laser_v }
+
+## List of guns
+var GUNS = {
+	'bullet': load('res://scenes/utilities/bullet.tscn'),
+	'rocket': load('res://scenes/utilities/rocket.tscn'),
+	'laser_h': load('res://scenes/utilities/laser_h.tscn'),
+	'laser_v': null
+}
 
 ## Limit to prevent the player from leaving the screen
 var offset: float = 10.0
@@ -48,7 +50,7 @@ var state: TState = TState.IMMUNITY
 func _ready():
 	_animation_spawn()
 	_start_combat()
-	current_weapon.emit(_weapon_idx)
+	current_weapon.emit(TBullet.bullet)
 	
 
 func _physics_process(delta):
@@ -114,11 +116,14 @@ func _animation_spawn():
 func _fire():
 	if _can_shoot:
 		for _b in bullet_by_shoot:
-			var bullet = guns[_weapon_idx].instantiate()
+			var bullet = GUNS[global.player_arsenal[_weapon_idx]].instantiate()
 			bullet.position = global_position + Vector2(20.0, 0)
 			add_sibling(bullet)
 			
+			
 			if _weapon_idx != 0:
+				global.player_arsenal.remove_at(_weapon_idx)
+				
 				var temp = _weapon_idx
 				_weapon_idx = 0
 				current_weapon.emit(_weapon_idx)
@@ -133,7 +138,7 @@ func _fire():
 func add_arsenal(arg: String):
 	if not global.player_arsenal.has(arg):
 		global.player_arsenal.append(arg)
-		add_weapon.emit(arg)
+		add_weapon.emit(TBullet.get(arg))
 		
 
 # Set nex weapon
@@ -145,7 +150,7 @@ func _next_weapon():
 	else:
 		_weapon_idx = 0
 		current_weapon.emit(_weapon_idx)
-
+	
 
 # add explotion as sibling 
 func _apply_explotion():

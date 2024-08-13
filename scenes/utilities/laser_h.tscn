@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://43uly46lm3op"]
+[gd_scene load_steps=10 format=3 uid="uid://43uly46lm3op"]
 
 [ext_resource type="Script" path="res://scripts/utils/laser_h.gd" id="1_s4lyn"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_66b3u"]
 [ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="2_y6oky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul3qc"]
@@ -44,6 +45,7 @@ animations = [{
 
 [node name="LaserH" type="Node2D"]
 script = ExtResource("1_s4lyn")
+explotion_scene = ExtResource("2_66b3u")
 
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
@@ -71,8 +73,7 @@ wait_time = 6.0
 one_shot = true
 autostart = true
 
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
+[node name="DamageTimer" type="Timer" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -85,4 +86,4 @@ flip_h = true
 [connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
 [connection signal="area_exited" from="Area" to="." method="_on_area_area_exited"]
 [connection signal="timeout" from="Distroyer" to="." method="_on_distroyer_timeout"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_timer_timeout"]

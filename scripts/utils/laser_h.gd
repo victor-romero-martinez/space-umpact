@@ -1,8 +1,9 @@
 extends Node2D
 
+@export var explotion_scene: PackedScene
+@onready var length = Global.screen_size.x
 
 const SPEED = 400.0
-@onready var length = Global.screen_size.x
 
 var _target: Area2D
 
@@ -27,7 +28,7 @@ func _on_area_area_entered(area):
 	if area is EnemyHealthBox or area is PlayerHealthBox:
 		_target = area
 		_apply_damage()
-		%Timer.start()
+		$DamageTimer.start()
 	
 
 func _on_timer_timeout():
@@ -35,10 +36,14 @@ func _on_timer_timeout():
 	
 
 func _on_distroyer_timeout():
+	var explotion = explotion_scene.instantiate()
+	explotion.position = global_position
+	
+	add_sibling(explotion)
 	queue_free()
 
 
 func _on_area_area_exited(_area):
 	_target = null
-	%Timer.stop()
+	$DamageTimer.stop()
 

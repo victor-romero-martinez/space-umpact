@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf75tmh3rpht1"]
+[gd_scene load_steps=10 format=3 uid="uid://cf75tmh3rpht1"]
 
 [ext_resource type="Script" path="res://test/test_room.gd" id="1_odhxs"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="1_qhkwd"]
@@ -7,11 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="2_b2s5v"]
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="3_jusy6"]
 [ext_resource type="PackedScene" uid="uid://dxdtonhgxyoh8" path="res://levels/level_1/boss_chunk.tscn" id="5_7qg75"]
-[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="6_53nrr"]
 [ext_resource type="PackedScene" uid="uid://3jrsb7a53rbs" path="res://scenes/enemies/enemy_3.tscn" id="7_mlwkf"]
 [ext_resource type="PackedScene" uid="uid://c8c2extoj0v8v" path="res://scenes/utilities/reload.tscn" id="7_s7x5g"]
-[ext_resource type="PackedScene" uid="uid://b6o73s0pkyk7x" path="res://scenes/utilities/rocket.tscn" id="10_60wfp"]
-[ext_resource type="PackedScene" uid="uid://43uly46lm3op" path="res://scenes/utilities/laser_h.tscn" id="12_p33ng"]
 
 [node name="TestRoom" type="Node2D"]
 script = ExtResource("1_odhxs")
@@ -45,7 +42,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="Player" node_paths=PackedStringArray("respawn") instance=ExtResource("2_b2s5v")]
 position = Vector2(-26, 78)
-guns = Array[PackedScene]([ExtResource("6_53nrr"), ExtResource("10_60wfp"), ExtResource("12_p33ng")])
 respawn = NodePath("../PlayerRespawn")
 metadata/_edit_lock_ = true
 
@@ -80,6 +76,7 @@ bullet_type = 1
 position = Vector2(164, 165)
 collision_layer = 64
 collision_mask = 256
+bullet_type = 2
 
 [connection signal="add_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_add_weapon"]
 [connection signal="current_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_current_weapon"]
