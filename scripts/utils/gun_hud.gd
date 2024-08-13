@@ -51,8 +51,15 @@ func _on_player_remove_weapon(val: int):
 	child.queue_free()
 	
 	_next_position_x -= 12.0
+	# still includes the deleted node
 	var children = get_children()
-	for i in children.size():
-		if i > 0:
-			children[i].position.x -= 12
+	
+	# val -> base 0, children.size -> base 1
+	if (val + 1) == children.size(): return
+	
+	# i -> base 0, children.size -> base 1
+	for i in children.size(): # [0, 1, 2, 3]
+		if i <= val: continue
+		
+		children[i].position.x -= 12
 	
