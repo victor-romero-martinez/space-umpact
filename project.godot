@@ -65,8 +65,10 @@ change_weapon={
 2d_physics/layer_5="bullets"
 2d_physics/layer_6="sensor"
 2d_physics/layer_7="reload_item"
-2d_physics/layer_8="wall"
+2d_physics/layer_8="destroyer"
 2d_physics/layer_9="player_colectable"
+2d_physics/layer_10="off_x_left"
+2d_physics/layer_11="off_x_rigth"
 
 [rendering]
 

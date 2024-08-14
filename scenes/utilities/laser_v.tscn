@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://c5x83ql6vdni2"]
+
+[ext_resource type="Texture2D" uid="uid://rqviagvnfuef" path="res://assets/laser_v.png" id="1_eft6y"]
+[ext_resource type="Script" path="res://scripts/utils/laser_v.gd" id="1_rv3j7"]
+[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://temp/destroyer.tscn" id="3_mjgw2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alrnc"]
+atlas = ExtResource("1_eft6y")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mxrv"]
+atlas = ExtResource("1_eft6y")
+region = Rect2(9, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujxr0"]
+atlas = ExtResource("1_eft6y")
+region = Rect2(18, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yydel"]
+atlas = ExtResource("1_eft6y")
+region = Rect2(27, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_300iv"]
+atlas = ExtResource("1_eft6y")
+region = Rect2(36, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ttji"]
+atlas = ExtResource("1_eft6y")
+region = Rect2(45, 0, 9, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jsfj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alrnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mxrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujxr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yydel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_300iv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ttji")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8h2i"]
+size = Vector2(2, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htnqn"]
+size = Vector2(8, 46)
+
+[node name="laser_v" type="Node2D"]
+script = ExtResource("1_rv3j7")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, -17.5)
+points = PackedVector2Array(0, 35, 0, 0)
+width = 1.0
+default_color = Color(0.964706, 0.188235, 0.564706, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20.5)
+sprite_frames = SubResource("SpriteFrames_jsfj5")
+autoplay = "default"
+frame_progress = 0.0167114
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 20.5)
+sprite_frames = SubResource("SpriteFrames_jsfj5")
+autoplay = "default"
+frame = 3
+frame_progress = 0.328778
+flip_v = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_w8h2i")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Destroyer" parent="." instance=ExtResource("3_mjgw2")]
+collision_layer = 128
+collision_mask = 1536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destroyer"]
+shape = SubResource("RectangleShape2D_htnqn")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

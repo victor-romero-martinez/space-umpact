@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://qlyx656gs0kk"]
+
+[ext_resource type="Script" path="res://scripts/utils/off_screen_x_left.gd" id="1_2pi1v"]
+[ext_resource type="Script" path="res://scripts/utils/off_screen_x_right.gd" id="1_3s3w2"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bda68"]
+b = Vector2(0, 197)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_304el"]
+b = Vector2(0, 198)
+
+[node name="OffScreenX" type="Node2D"]
+
+[node name="Left" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 128
+script = ExtResource("1_2pi1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+shape = SubResource("SegmentShape2D_bda68")
+
+[node name="Rigth" type="Area2D" parent="."]
+position = Vector2(352, 0)
+collision_layer = 1024
+collision_mask = 128
+script = ExtResource("1_3s3w2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rigth"]
+shape = SubResource("SegmentShape2D_304el")
+
+[connection signal="area_exited" from="Left" to="Left" method="_on_area_exited"]
+[connection signal="area_exited" from="Rigth" to="Rigth" method="_on_area_exited"]

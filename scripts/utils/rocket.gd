@@ -38,7 +38,6 @@ func _physics_process(_delta):
 	else:
 		_scan()
 	
-	_auto_remove()
 	move_and_slide()
 
 
@@ -55,11 +54,6 @@ func _make_boom():
 		var boom = explotion.instantiate()
 		boom.position = global_position
 		add_sibling(boom)
-
-
-func _auto_remove():
-	if global_position.x > global.screen_size.x or global_position.x < 0:
-		queue_free()
 
 
 # add

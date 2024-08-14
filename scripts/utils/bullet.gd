@@ -8,9 +8,7 @@ var direction: int = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x += (speed * direction) * delta
-	if global_position.x > limit.x or global_position.x < 0:
-		queue_free()
-
+	
 
 #NOTE: using on enemy when shooting
 func go_negative(spd: float = 40.0):

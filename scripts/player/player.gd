@@ -36,7 +36,7 @@ var GUNS = {
 	'bullet': load('res://scenes/utilities/bullet.tscn'),
 	'rocket': load('res://scenes/utilities/rocket.tscn'),
 	'laser_h': load('res://scenes/utilities/laser_h.tscn'),
-	'laser_v': null
+	'laser_v': load("res://scenes/utilities/laser_v.tscn")
 }
 
 ## Limit to prevent the player from leaving the screen

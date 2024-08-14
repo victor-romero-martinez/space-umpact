@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bse3clbf784ak"]
+[gd_scene load_steps=16 format=3 uid="uid://bse3clbf784ak"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_4iprt"]
 [ext_resource type="PackedScene" uid="uid://dvccawcbgcnj7" path="res://levels/level_2/background_manager.tscn" id="2_3wt1b"]
@@ -9,13 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="5_gsjib"]
 [ext_resource type="PackedScene" uid="uid://caasmbolvwk0n" path="res://levels/level_2/enemy_chunk_0.tscn" id="5_ogfs4"]
 [ext_resource type="PackedScene" uid="uid://c1bcxhijj1cwo" path="res://levels/level_2/enemy_chunk_1.tscn" id="5_xni45"]
-[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="7_iumm6"]
 [ext_resource type="PackedScene" uid="uid://dmb1acg6lojr5" path="res://control/menu_pause.tscn" id="8_7xj5j"]
-[ext_resource type="PackedScene" uid="uid://b6o73s0pkyk7x" path="res://scenes/utilities/rocket.tscn" id="8_jssxd"]
 [ext_resource type="PackedScene" uid="uid://dmugjoqf0v7q6" path="res://levels/level_2/enemy_chunk_2.tscn" id="8_ssvme"]
 [ext_resource type="PackedScene" uid="uid://cjyg54our4k2k" path="res://levels/level_2/enemy_chunk_3.tscn" id="9_lwjuy"]
 [ext_resource type="PackedScene" uid="uid://dt7bvlg0x5jaw" path="res://levels/level_2/enemy_chunk_4.tscn" id="10_2bjc5"]
 [ext_resource type="PackedScene" uid="uid://ci2la4bi3xwb3" path="res://levels/level_2/bosss_chunk.tscn" id="10_qoqc0"]
+[ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="15_yfs6h"]
 
 [node name="Level-2" type="Node2D"]
 script = ExtResource("1_4iprt")
@@ -50,7 +49,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="Player" node_paths=PackedStringArray("respawn") instance=ExtResource("3_vard1")]
 position = Vector2(-58, 67)
-guns = Array[PackedScene]([ExtResource("7_iumm6"), ExtResource("8_jssxd")])
 respawn = NodePath("../PlayerRespawn")
 metadata/_edit_lock_ = true
 
@@ -68,6 +66,8 @@ boss_chunk = ExtResource("10_qoqc0")
 unique_name_in_owner = true
 visible = false
 metadata/_edit_lock_ = true
+
+[node name="OffScreenX" parent="." instance=ExtResource("15_yfs6h")]
 
 [connection signal="add_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_add_weapon"]
 [connection signal="current_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_current_weapon"]
