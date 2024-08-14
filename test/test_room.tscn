@@ -56,30 +56,20 @@ visible = false
 [node name="BossChunk" parent="." instance=ExtResource("5_7qg75")]
 metadata/_edit_lock_ = true
 
-[node name="Enemy3" parent="." instance=ExtResource("7_mlwkf")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("7_mlwkf")]
 position = Vector2(191, 113)
 
-[node name="Enemy4" parent="." instance=ExtResource("7_mlwkf")]
+[node name="Enemy4" parent="Enemies" instance=ExtResource("7_mlwkf")]
 position = Vector2(206, 78)
 
-[node name="Reload" parent="." instance=ExtResource("7_s7x5g")]
-position = Vector2(95, 164)
-collision_layer = 64
-collision_mask = 256
-
-[node name="Reload2" parent="." instance=ExtResource("7_s7x5g")]
-position = Vector2(130, 164)
-collision_layer = 64
-collision_mask = 256
-bullet_type = 1
-
-[node name="Reload3" parent="." instance=ExtResource("7_s7x5g")]
-position = Vector2(164, 165)
-collision_layer = 64
-collision_mask = 256
-bullet_type = 2
-
 [node name="OffScreenX" parent="." instance=ExtResource("10_4vub1")]
+metadata/_edit_lock_ = true
+
+[node name="Reload" parent="." instance=ExtResource("7_s7x5g")]
+position = Vector2(130, 170)
+random_type = true
 metadata/_edit_lock_ = true
 
 [connection signal="add_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_add_weapon"]
