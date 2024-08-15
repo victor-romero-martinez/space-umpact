@@ -52,6 +52,7 @@ size_flags_vertical = 8
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
+theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
 theme_override_font_sizes/font_size = 8
 text = "Restart"
 
@@ -64,6 +65,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
+theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
 theme_override_font_sizes/font_size = 8
 text = "Back
 "
