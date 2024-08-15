@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="3_jusy6"]
 [ext_resource type="PackedScene" uid="uid://dxdtonhgxyoh8" path="res://levels/level_1/boss_chunk.tscn" id="5_7qg75"]
 [ext_resource type="PackedScene" uid="uid://3jrsb7a53rbs" path="res://scenes/enemies/enemy_3.tscn" id="7_mlwkf"]
-[ext_resource type="PackedScene" uid="uid://c8c2extoj0v8v" path="res://scenes/utilities/reload.tscn" id="7_s7x5g"]
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="10_4vub1"]
+[ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="10_scsta"]
 
 [node name="TestRoom" type="Node2D"]
 script = ExtResource("1_odhxs")
@@ -67,10 +67,7 @@ position = Vector2(206, 78)
 [node name="OffScreenX" parent="." instance=ExtResource("10_4vub1")]
 metadata/_edit_lock_ = true
 
-[node name="Reload" parent="." instance=ExtResource("7_s7x5g")]
-position = Vector2(130, 170)
-random_type = true
-metadata/_edit_lock_ = true
+[node name="RespawnReload" parent="." instance=ExtResource("10_scsta")]
 
 [connection signal="add_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_add_weapon"]
 [connection signal="current_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_current_weapon"]

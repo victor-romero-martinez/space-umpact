@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://vv3i651s575k"]
+
+[ext_resource type="Script" path="res://scripts/utils/respawn_reload.gd" id="1_q2lej"]
+
+[node name="RespawnReload" type="Node2D"]
+position = Vector2(98, 163)
+script = ExtResource("1_q2lej")
+respown = true
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_make_scene"]
