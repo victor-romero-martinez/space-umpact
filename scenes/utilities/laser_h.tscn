@@ -1,42 +1,49 @@
-[gd_scene load_steps=10 format=3 uid="uid://43uly46lm3op"]
+[gd_scene load_steps=11 format=3 uid="uid://43uly46lm3op"]
 
 [ext_resource type="Script" path="res://scripts/utils/laser_h.gd" id="1_s4lyn"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_66b3u"]
-[ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="2_y6oky"]
+[ext_resource type="Texture2D" uid="uid://o3oim4wfe6t2" path="res://assets/laser_h.png" id="3_4m8kl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul3qc"]
 size = Vector2(5, 2)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dhfmj"]
-atlas = ExtResource("2_y6oky")
-region = Rect2(0, 52, 16, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd4dd"]
+atlas = ExtResource("3_4m8kl")
+region = Rect2(0, 0, 9, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjrqh"]
-atlas = ExtResource("2_y6oky")
-region = Rect2(16, 52, 16, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6nub"]
+atlas = ExtResource("3_4m8kl")
+region = Rect2(9, 0, 9, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfywm"]
-atlas = ExtResource("2_y6oky")
-region = Rect2(32, 52, 16, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve7wr"]
+atlas = ExtResource("3_4m8kl")
+region = Rect2(18, 0, 9, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3joyl"]
-atlas = ExtResource("2_y6oky")
-region = Rect2(48, 52, 16, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m85ik"]
+atlas = ExtResource("3_4m8kl")
+region = Rect2(27, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d75fg"]
+atlas = ExtResource("3_4m8kl")
+region = Rect2(36, 0, 9, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bl7wl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dhfmj")
+"texture": SubResource("AtlasTexture_gd4dd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bjrqh")
+"texture": SubResource("AtlasTexture_p6nub")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cfywm")
+"texture": SubResource("AtlasTexture_ve7wr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3joyl")
+"texture": SubResource("AtlasTexture_m85ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d75fg")
 }],
 "loop": true,
 "name": &"default",
@@ -49,7 +56,7 @@ explotion_scene = ExtResource("2_66b3u")
 
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
-points = PackedVector2Array(0, 0, 308, 0)
+points = PackedVector2Array(2, 0, 308, 0)
 width = 1.0
 default_color = Color(0.964706, 0.188235, 0.564706, 1)
 
@@ -76,12 +83,10 @@ autostart = true
 [node name="DamageTimer" type="Timer" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bl7wl")
 autoplay = "default"
-frame = 3
-frame_progress = 0.228822
-flip_h = true
+frame = 1
+frame_progress = 0.754139
 
 [connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
 [connection signal="area_exited" from="Area" to="." method="_on_area_area_exited"]

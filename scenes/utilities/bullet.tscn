@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/utils/bullet.gd" id="1_rlf4v"]
 [ext_resource type="Texture2D" uid="uid://4txxjkpo453e" path="res://assets/bullet.png" id="2_vqrpj"]
-[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://temp/destroyer.tscn" id="3_rxtf5"]
+[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="3_rxtf5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr26n"]
 size = Vector2(4, 2)

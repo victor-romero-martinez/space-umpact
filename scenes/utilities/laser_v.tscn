@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://rqviagvnfuef" path="res://assets/laser_v.png" id="1_eft6y"]
 [ext_resource type="Script" path="res://scripts/utils/laser_v.gd" id="1_rv3j7"]
-[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://temp/destroyer.tscn" id="3_mjgw2"]
+[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="3_mjgw2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_alrnc"]
 atlas = ExtResource("1_eft6y")

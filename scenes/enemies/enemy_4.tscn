@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="4_lw8cc"]
 [ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="5_6lla0"]
 [ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="6_by1eg"]
-[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="7_80kte"]
+[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="7_trtyi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycs32"]
 atlas = ExtResource("4_lw8cc")
@@ -65,5 +65,12 @@ rotation = 1.58233
 shape = SubResource("CapsuleShape2D_vknv7")
 debug_color = Color(0.34244, 0.506983, 0.936834, 0.42)
 
-[node name="DestroyerEntities" type="Node" parent="." index="4"]
-script = ExtResource("7_80kte")
+[node name="Destroyer" parent="." index="4" instance=ExtResource("7_trtyi")]
+visible = false
+collision_layer = 2048
+collision_mask = 512
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Destroyer" index="0"]
+rotation = 1.58233
+shape = SubResource("CapsuleShape2D_vknv7")
+debug_color = Color(0.34244, 0.506983, 0.936834, 0.42)
