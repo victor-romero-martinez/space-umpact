@@ -9,12 +9,13 @@ extends Control
 
 func _ready():
 	if not levels.is_empty():
+		var theme = load('res://control/theme/button_pink_theme.tres')
 		for i in range(levels.size()):
 			var button = Button.new()
 			button.text = str(i + 1)
-			button.add_theme_font_size_override("font_size", 8)
-			button.add_theme_color_override("font_color", "#f63090")
-			button.focus_mode = FOCUS_NONE
+			button.theme = theme
+			button.focus_mode = Control.FOCUS_NONE
+			button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 			button.pressed.connect(func (): self.on_emit_level(i))
 

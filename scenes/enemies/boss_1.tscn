@@ -65,6 +65,7 @@ frame_progress = 0.722626
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-12, -8, -15, -17, -6, -26, -6, -26, 14, -26, 24, -14, 23, -1, 10, 15, -2, 14, -8, 12, -8, -3)
 
 [node name="EnemyHealthBox" parent="." instance=ExtResource("3_yd4ll")]

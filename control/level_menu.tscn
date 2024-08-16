@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7nx3jikvuyxe"]
+[gd_scene load_steps=5 format=3 uid="uid://c7nx3jikvuyxe"]
 
 [ext_resource type="Script" path="res://scripts/control/level_menu.gd" id="1_n7du3"]
 [ext_resource type="PackedScene" uid="uid://hs2qvsb6w8tj" path="res://scenes/level_1.tscn" id="2_meudv"]
 [ext_resource type="PackedScene" uid="uid://bse3clbf784ak" path="res://scenes/level_2.tscn" id="3_o7u8i"]
+[ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/button_pink_theme.tres" id="4_2ylfj"]
 
 [node name="LevelMenu" type="Control"]
 layout_mode = 3
@@ -52,8 +53,8 @@ size_flags_vertical = 8
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_2ylfj")
 text = "Restart"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer"]
@@ -65,8 +66,8 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_2ylfj")
 text = "Back
 "
 

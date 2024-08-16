@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmb1acg6lojr5"]
+[gd_scene load_steps=3 format=3 uid="uid://dmb1acg6lojr5"]
 
 [ext_resource type="Script" path="res://scripts/control/menu_pause.gd" id="1_wm58i"]
+[ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/button_pink_theme.tres" id="2_ao2jd"]
 
 [node name="MenuPause" type="Node2D"]
 script = ExtResource("1_wm58i")
@@ -40,22 +41,22 @@ theme_override_constants/separation = 10
 [node name="Resume" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_ao2jd")
 text = "Resume"
 
 [node name="MainMenu" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_ao2jd")
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_ao2jd")
 text = "Quit"
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

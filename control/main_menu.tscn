@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsqspqaej2x7i"]
+[gd_scene load_steps=3 format=3 uid="uid://dsqspqaej2x7i"]
 
 [ext_resource type="Script" path="res://scripts/control/main_menu.gd" id="1_4txhe"]
+[ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/button_pink_theme.tres" id="1_tq4my"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_tq4my")
 script = ExtResource("1_4txhe")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -37,28 +39,32 @@ theme_override_constants/separation = 10
 [node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_tq4my")
 text = "New game"
 
 [node name="ContinueBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_tq4my")
 theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
 text = "Continue"
 
 [node name="Level" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_tq4my")
 theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
 text = "Level"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_tq4my")
 theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
 theme_override_font_sizes/font_size = 8
 text = "Quit
