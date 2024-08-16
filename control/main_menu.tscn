@@ -27,50 +27,91 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 16.0
+offset_right = -23.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Main" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="NewGame" type="Button" parent="MarginContainer/Main"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("1_tq4my")
 text = "New game"
 
-[node name="ContinueBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ContinueBtn" type="Button" parent="MarginContainer/Main"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("1_tq4my")
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
 text = "Continue"
 
-[node name="Level" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Level" type="Button" parent="MarginContainer/Main"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("1_tq4my")
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
 text = "Level"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="MarginContainer/Main"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MarginContainer/Main"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("1_tq4my")
-theme_override_colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
-theme_override_font_sizes/font_size = 8
 text = "Quit
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Level" to="." method="_on_level_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Settings" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Theme" type="HBoxContainer" parent="MarginContainer/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Settings/Theme"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Theme"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/Settings/Theme"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Pink"
+popup/item_0/id = 1
+popup/item_1/text = "Classic"
+popup/item_1/id = 2
+
+[node name="VSeparator" type="HSeparator" parent="MarginContainer/Settings"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/Main/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/Main/ContinueBtn" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/Main/Level" to="." method="_on_level_pressed"]
+[connection signal="pressed" from="MarginContainer/Main/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/Main/Quit" to="." method="_on_quit_pressed"]
+[connection signal="item_selected" from="MarginContainer/Settings/Theme/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Settings/Button" to="." method="_on_button_pressed"]
