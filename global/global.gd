@@ -8,10 +8,8 @@ const DEFAULT_SETTINGS := {
 	}
 
 var screen_size: Vector2
-var current_level: int = 1
 
 var game_data: Dictionary
-var player_heart: int = 3
 var player_arsenal: Array[String] = ['bullet']
 
 var defeated_boss: bool = false
@@ -68,8 +66,6 @@ func _load_data():
 	if error == OK:
 		var data = json.data
 		game_data = data
-		current_level = data.level
-		player_heart = data.heart
 	else :
 		push_error('Unexpected data')
 

@@ -7,16 +7,16 @@ var _paused: bool = false
 
 func _ready():
 	# level settings
-	global.current_level = self.name.split('-')[-1].to_int()
+	global.game_data.level = self.name.split('-')[-1].to_int()
 
-	if not global.current_level:
+	if not global.game_data.level:
 		push_error('Make sure the node is named as follows Node-1')
 		
 	connect('tree_exited', _on_tree_exited)
 
 
 func _process(_delta):
-	if global.player_heart == 0: _lose_scene()
+	if global.game_data.heart == 0: _lose_scene()
 	if Input.is_action_just_pressed('ui_pause'): _pause_menu()
 	# call after hiding player
 	if global.hidden_player: _next_level()
@@ -31,7 +31,7 @@ func _restore_global_var():
 
 func _next_level():
 	_restore_global_var()
-	var next_value = global.current_level + 1
+	var next_value = global.game_data.level + 1
 	var next_level = 'res://scenes/level_%d.tscn' %next_value
 	
 	if FileAccess.file_exists(next_level):
@@ -42,7 +42,7 @@ func _next_level():
 
 
 func _lose_scene():
-	global.player_heart = global.DEFAULT_SETTINGS.heart
+	global.game_data.heart = global.DEFAULT_SETTINGS.heart
 	_restore_global_var()
 	get_tree().change_scene_to_file("res://control/dead_menu.tscn")
 

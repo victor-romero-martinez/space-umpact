@@ -5,7 +5,7 @@ extends Control
 
 
 func _ready():
-	if global.current_level > 1:
+	if global.game_data.level > 1:
 		%ContinueBtn.disabled = false
 	else:
 		%ContinueBtn.disabled = true
@@ -24,8 +24,8 @@ func _on_new_game_pressed():
 
 
 func _on_continue_pressed():
-	if global.current_level:
-		get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %global.current_level)
+	if global.game_data.level:
+		get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %global.game_data.level)
 	else:
 		%ContinueBtn.disabled = true
 		

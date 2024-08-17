@@ -9,7 +9,7 @@ var img = load('res://assets/heart.png')
 
 
 func _ready():
-	for h in global.player_heart:
+	for h in global.game_data.heart:
 		var heart = Sprite2D.new()
 		heart.texture = img
 		heart.position.x = position.x + 10.0 * h
@@ -23,5 +23,5 @@ func _remove_heart():
 
 
 func _on_player_hit():
-	global.player_heart -= 1
+	global.game_data.heart -= 1
 	_remove_heart()
