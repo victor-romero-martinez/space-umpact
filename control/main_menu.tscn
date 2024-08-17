@@ -103,6 +103,44 @@ popup/item_1/id = 2
 popup/item_2/text = "Modern"
 popup/item_2/id = 2
 
+[node name="Music" type="HBoxContainer" parent="MarginContainer/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Settings/Music"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Music"
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Settings/Music"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/Settings/Music"]
+clip_contents = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="FX" type="HBoxContainer" parent="MarginContainer/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Settings/FX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Fx"
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Settings/FX"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/Settings/FX"]
+clip_contents = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="VSeparator" type="HSeparator" parent="MarginContainer/Settings"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2

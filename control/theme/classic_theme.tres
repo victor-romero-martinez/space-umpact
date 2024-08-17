@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bctd62av1qlji"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bctd62av1qlji"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6dwr3"]
 
@@ -22,6 +22,18 @@ modulate_color = Color(0.454902, 0.647059, 0.513726, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6knp"]
 texture = SubResource("CanvasTexture_uigps")
+modulate_color = Color(0.454902, 0.647059, 0.513726, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n12id"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2e7ht"]
+texture = SubResource("CanvasTexture_n12id")
+modulate_color = Color(0.454902, 0.647059, 0.513726, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_c8v44"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dyrl6"]
+texture = SubResource("CanvasTexture_c8v44")
 modulate_color = Color(0.454902, 0.647059, 0.513726, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7uwdo"]
@@ -64,6 +76,8 @@ Button/styles/focus = SubResource("StyleBoxEmpty_6dwr3")
 Button/styles/hover = SubResource("StyleBoxTexture_6a7bh")
 Button/styles/normal = SubResource("StyleBoxTexture_4m2su")
 Button/styles/pressed = SubResource("StyleBoxTexture_c6knp")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_2e7ht")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_dyrl6")
 Label/colors/font_color = Color(0.12549, 0.113725, 0.141176, 1)
 OptionButton/colors/font_color = Color(0.12549, 0.113725, 0.141176, 1)
 OptionButton/colors/font_hover_color = Color(0.454902, 0.647059, 0.513726, 1)
