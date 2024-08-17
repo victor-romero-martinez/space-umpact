@@ -12,6 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 352.0
 offset_bottom = 197.0
+theme = ExtResource("2_ao2jd")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -42,21 +43,18 @@ theme_override_constants/separation = 10
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("2_ao2jd")
 text = "Resume"
 
 [node name="MainMenu" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("2_ao2jd")
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("2_ao2jd")
 text = "Quit"
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

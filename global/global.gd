@@ -3,12 +3,14 @@ extends Node2D
 
 const DEFAULT_SETTINGS := {
 		'level': 1,
-		'heart': 3
+		'heart': 3,
+		'theme': null
 	}
 
 var screen_size: Vector2
 var current_level: int = 1
 
+var game_data: Dictionary
 var player_heart: int = 3
 var player_arsenal: Array[String] = ['bullet']
 
@@ -19,41 +21,53 @@ var queue_boss: bool = false
 var hidden_player: bool = false
 
 
+## Theme colors
+var theme_schema := {
+	#index: path_custome_theme, color_rect, sprites_and_tiles, index_namber
+	0: ['res://control/theme/button_pink_theme.tres', '#201d24', '#f63090', 0],
+	1: ['res://control/theme/button_classic_theme.tres', '#74a583', '#201d24', 1]
+	}
+## User directory
+var path: String
+
 #TODO: implementar animacion de spawn
 func _ready():
 	screen_size = get_viewport_rect().size
-	var path = 'user://data.json'
+	path = 'user://data.json'
 
 	if FileAccess.file_exists(path):
-		_load_data(path)
+		_load_data()
 	else:
-		_create_data(path, DEFAULT_SETTINGS)
+		_create_data(DEFAULT_SETTINGS)
 
 
-func _create_data(path: String, data):
+func _create_data(data):
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data, '\t'))
 	file.close()
 
 
 func update_save_data(level: int = 1, heart: int = 3):
-	current_level = level
-	player_heart = heart
-	var temp = {
-		'level': level,
-		'heart': heart
-		}
+	game_data.level = level
+	game_data.heart = heart
 	
-	_create_data('user://data.json', temp)
+	_create_data(game_data)
 
 
-func _load_data(path: String):
+func update_theme(new_theme: Array):
+	game_data.theme = new_theme
+	
+	_create_data(game_data)
+	
+
+func _load_data():
 	var file = FileAccess.open(path, FileAccess.READ)
 	var res = file.get_as_text()
 	var json = JSON.new()
 	var error = json.parse(res)
 	if error == OK:
 		var data = json.data
+		game_data = data
 		current_level = data.level
 		player_heart = data.heart
 	else :

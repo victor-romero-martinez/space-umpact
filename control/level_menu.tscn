@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_2ylfj")
 script = ExtResource("1_n7du3")
 levels = Array[PackedScene]([ExtResource("2_meudv"), ExtResource("3_o7u8i")])
 
@@ -54,7 +55,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("4_2ylfj")
 text = "Restart"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer"]
@@ -67,7 +67,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = ExtResource("4_2ylfj")
 text = "Back
 "
 

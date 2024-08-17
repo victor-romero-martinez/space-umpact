@@ -6,14 +6,22 @@ extends Control
 
 @onready var level_container = %LevelContainer
 
+@onready var global = Global
+
 
 func _ready():
+	# set color shema
+	if global.game_data.theme:
+		theme = load(global.game_data.theme[0])
+		$ColorRect.color = global.game_data.theme[1]
+	
+	# set levels
 	if not levels.is_empty():
-		var theme = load('res://control/theme/button_pink_theme.tres')
+		#var theme = load('res://control/theme/button_pink_theme.tres')
 		for i in range(levels.size()):
 			var button = Button.new()
 			button.text = str(i + 1)
-			button.theme = theme
+			#button.theme = theme
 			button.focus_mode = Control.FOCUS_NONE
 			button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 

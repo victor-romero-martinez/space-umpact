@@ -10,8 +10,14 @@ func _ready():
 	else:
 		%ContinueBtn.disabled = true
 	
+	# app settings
 	$MarginContainer/Settings.visible = false
-
+	# set color shema
+	if global.game_data.theme:
+		theme = load(global.game_data.theme[0])
+		$ColorRect.color = global.game_data.theme[1]
+		$MarginContainer/Settings/Theme/OptionButton.select(global.game_data.theme[3])
+	
 
 func _on_new_game_pressed():
 	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
@@ -44,18 +50,14 @@ func _on_button_pressed():
 	
 
 func _on_option_button_item_selected(index):
-
-	var theme_schema := {
-		0: [load('res://control/theme/button_pink_theme.tres'), '#201d24'],
-		1: [load('res://control/theme/button_classic_theme.tres'), '#74a583']
-	}
-	
 	match index:
 		0:
-			self.theme = theme_schema[index][0]
-			$ColorRect.color = Color(theme_schema[index][1])
+			self.theme = load(global.theme_schema[index][0])
+			$ColorRect.color = Color(global.theme_schema[index][1])
+			global.update_theme(global.theme_schema[index])
 		1:
-			self.theme = theme_schema[index][0]
-			$ColorRect.color = Color(theme_schema[index][1])
+			self.theme = load(global.theme_schema[index][0])
+			$ColorRect.color = Color(global.theme_schema[index][1])
+			global.update_theme(global.theme_schema[index])
 	
 	
