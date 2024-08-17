@@ -6,7 +6,7 @@ func _ready():
 	# set color shema
 	if Global.game_data.theme:
 		theme = load(Global.game_data.theme[0])
-		$ColorRect.color = Global.game_data.theme[0]
+		$ColorRect.color = Global.game_data.theme[1]
 	
 
 

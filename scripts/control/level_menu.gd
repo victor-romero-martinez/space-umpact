@@ -17,11 +17,9 @@ func _ready():
 	
 	# set levels
 	if not levels.is_empty():
-		#var theme = load('res://control/theme/button_pink_theme.tres')
 		for i in range(levels.size()):
 			var button = Button.new()
 			button.text = str(i + 1)
-			#button.theme = theme
 			button.focus_mode = Control.FOCUS_NONE
 			button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 

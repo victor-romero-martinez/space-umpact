@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsqspqaej2x7i"]
 
 [ext_resource type="Script" path="res://scripts/control/main_menu.gd" id="1_4txhe"]
-[ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/button_pink_theme.tres" id="1_tq4my"]
+[ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/pink_theme.tres" id="1_tq4my"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12549, 0.113725, 0.141176, 1)
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -39,7 +40,6 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 10
 
 [node name="NewGame" type="Button" parent="MarginContainer/Main"]
 layout_mode = 2
@@ -82,19 +82,26 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/Settings/Theme"]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 8
 text = "Theme"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/Settings/Theme"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/Settings/Theme"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-item_count = 2
+item_count = 3
 selected = 0
 popup/item_0/text = "Pink"
 popup/item_0/id = 1
 popup/item_1/text = "Classic"
 popup/item_1/id = 2
+popup/item_2/text = "Modern"
+popup/item_2/id = 2
 
 [node name="VSeparator" type="HSeparator" parent="MarginContainer/Settings"]
 modulate = Color(1, 1, 1, 0)
@@ -104,7 +111,7 @@ size_flags_vertical = 3
 [node name="Button" type="Button" parent="MarginContainer/Settings"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 text = "Back"
 

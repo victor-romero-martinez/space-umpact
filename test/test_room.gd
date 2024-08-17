@@ -9,6 +9,13 @@ var global = Global
 var paused: bool = false
 
 
+func _ready():
+	# set color shema
+	if global.game_data.theme:
+		$ColorRect.color = global.game_data.theme[1]
+		$Game.modulate = global.game_data.theme[2]
+
+
 func _process(_delta):
 	if Input.is_action_just_pressed('ui_pause'):
 		_pause_menu()

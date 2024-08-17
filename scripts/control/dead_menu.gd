@@ -11,7 +11,7 @@ func _ready():
 	
 
 func _on_retry_pressed():
-	get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %Global.current_level)
+	get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %Global.game_data.level)
 
 
 func _on_main_menu_pressed():

@@ -24,41 +24,43 @@ offset_right = 352.0
 offset_bottom = 198.0
 color = Color(0.12549, 0.113725, 0.141176, 1)
 
-[node name="BG" type="Node2D" parent="."]
+[node name="Game" type="Node2D" parent="."]
 
-[node name="BackgroundManager" parent="BG" instance=ExtResource("2_3wt1b")]
+[node name="BG" type="Node2D" parent="Game"]
 
-[node name="Hud" type="Node2D" parent="." node_paths=PackedStringArray("final_position")]
+[node name="BackgroundManager" parent="Game/BG" instance=ExtResource("2_3wt1b")]
+
+[node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
 position = Vector2(0, -12)
 script = ExtResource("3_2trpj")
 final_position = NodePath("HudPosition")
 
-[node name="HudHealth" parent="Hud" instance=ExtResource("2_jj21j")]
+[node name="HudHealth" parent="Game/Hud" instance=ExtResource("2_jj21j")]
 position = Vector2(4, 0)
 metadata/_edit_lock_ = true
 
-[node name="GunHud" parent="Hud" instance=ExtResource("5_gsjib")]
+[node name="GunHud" parent="Game/Hud" instance=ExtResource("5_gsjib")]
 position = Vector2(53, 0)
 metadata/_edit_lock_ = true
 
-[node name="HudPosition" type="Marker2D" parent="Hud"]
+[node name="HudPosition" type="Marker2D" parent="Game/Hud"]
 position = Vector2(9, 5)
 metadata/_edit_lock_ = true
 
-[node name="Player" type="Node2D" parent="."]
+[node name="Player" type="Node2D" parent="Game"]
 
-[node name="Player" parent="Player" node_paths=PackedStringArray("respawn") instance=ExtResource("3_vard1")]
+[node name="Player" parent="Game/Player" node_paths=PackedStringArray("respawn") instance=ExtResource("3_vard1")]
 position = Vector2(-58, 67)
 respawn = NodePath("../PlayerRespawn")
 metadata/_edit_lock_ = true
 
-[node name="PlayerRespawn" type="Marker2D" parent="Player"]
+[node name="PlayerRespawn" type="Marker2D" parent="Game/Player"]
 position = Vector2(16, 68)
 metadata/_edit_lock_ = true
 
-[node name="Enemy" type="Node2D" parent="."]
+[node name="Enemy" type="Node2D" parent="Game"]
 
-[node name="EnemyManagertest" parent="Enemy" instance=ExtResource("4_whtcc")]
+[node name="EnemyManagertest" parent="Game/Enemy" instance=ExtResource("4_whtcc")]
 enemies_chunk = Array[PackedScene]([ExtResource("5_ogfs4"), ExtResource("5_xni45"), ExtResource("8_ssvme"), ExtResource("8_ssvme"), ExtResource("9_lwjuy"), ExtResource("10_2bjc5")])
 boss_chunk = ExtResource("10_qoqc0")
 
@@ -69,8 +71,8 @@ metadata/_edit_lock_ = true
 
 [node name="OffScreenX" parent="." instance=ExtResource("15_yfs6h")]
 
-[connection signal="add_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_add_weapon"]
-[connection signal="current_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_current_weapon"]
-[connection signal="hit" from="Player/Player" to="Hud/HudHealth" method="_on_player_hit"]
-[connection signal="remove_weapon" from="Player/Player" to="Hud/GunHud" method="_on_player_remove_weapon"]
+[connection signal="add_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_add_weapon"]
+[connection signal="current_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_current_weapon"]
+[connection signal="hit" from="Game/Player/Player" to="Game/Hud/HudHealth" method="_on_player_hit"]
+[connection signal="remove_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_remove_weapon"]
 [connection signal="resume" from="MenuPause" to="." method="_on_menu_pause_resume"]

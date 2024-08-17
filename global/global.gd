@@ -22,8 +22,9 @@ var hidden_player: bool = false
 ## Theme colors
 var theme_schema := {
 	#index: path_custome_theme, color_rect, sprites_and_tiles, index_namber
-	0: ['res://control/theme/button_pink_theme.tres', '#201d24', '#f63090', 0],
-	1: ['res://control/theme/button_classic_theme.tres', '#74a583', '#201d24', 1]
+	0: ['res://control/theme/pink_theme.tres', '#201d24', '#f63090', 0],
+	1: ['res://control/theme/classic_theme.tres', '#74a583', '#201d24', 1],
+	2: ['res://control/theme/modern_theme.tres', '#252525', '#e4e4e4', 2]
 	}
 ## User directory
 var path: String

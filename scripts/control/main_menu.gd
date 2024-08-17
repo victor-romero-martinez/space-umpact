@@ -59,5 +59,10 @@ func _on_option_button_item_selected(index):
 			self.theme = load(global.theme_schema[index][0])
 			$ColorRect.color = Color(global.theme_schema[index][1])
 			global.update_theme(global.theme_schema[index])
+		2:
+			self.theme = load(global.theme_schema[index][0])
+			$ColorRect.color = Color(global.theme_schema[index][1])
+			global.update_theme(global.theme_schema[index])
+			
 	
 	

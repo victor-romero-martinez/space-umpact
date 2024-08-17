@@ -12,6 +12,12 @@ func _ready():
 	if not global.game_data.level:
 		push_error('Make sure the node is named as follows Node-1')
 		
+	# set color shema
+	if global.game_data.theme:
+		print(global.game_data.theme)
+		$ColorRect.color = global.game_data.theme[1]
+		$Game.modulate = global.game_data.theme[2]
+		
 	connect('tree_exited', _on_tree_exited)
 
 

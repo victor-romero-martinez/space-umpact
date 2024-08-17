@@ -6,68 +6,52 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6a7bh"]
 texture = SubResource("CanvasTexture_iqrbp")
-expand_margin_left = 8.0
-expand_margin_top = 2.0
-expand_margin_right = 8.0
-expand_margin_bottom = 2.0
 modulate_color = Color(0.12549, 0.113725, 0.141176, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_jbrlx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4m2su"]
 texture = SubResource("CanvasTexture_jbrlx")
-expand_margin_left = 8.0
-expand_margin_top = 2.0
-expand_margin_right = 8.0
-expand_margin_bottom = 2.0
+texture_margin_left = 8.0
+texture_margin_top = 2.0
+texture_margin_right = 8.0
+texture_margin_bottom = 2.0
 modulate_color = Color(0.454902, 0.647059, 0.513726, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_uigps"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6knp"]
 texture = SubResource("CanvasTexture_uigps")
-expand_margin_left = 8.0
-expand_margin_top = 2.0
-expand_margin_right = 8.0
-expand_margin_bottom = 2.0
 modulate_color = Color(0.454902, 0.647059, 0.513726, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7uwdo"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_3brii"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_gkhf7"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v120q"]
-texture = SubResource("CanvasTexture_3brii")
-expand_margin_left = 8.0
-expand_margin_top = 2.0
-expand_margin_right = 8.0
-expand_margin_bottom = 2.0
-modulate_color = Color(0.12549, 0.113725, 0.141176, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ak5hq"]
+texture = SubResource("CanvasTexture_gkhf7")
+texture_margin_left = 4.0
+modulate_color = Color(0.145098, 0.145098, 0.145098, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1ibii"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bpq6"]
 texture = SubResource("CanvasTexture_1ibii")
-expand_margin_left = 8.0
-expand_margin_top = 2.0
-expand_margin_right = 8.0
-expand_margin_bottom = 2.0
+texture_margin_left = 4.0
+expand_margin_left = 4.0
 modulate_color = Color(0.454902, 0.647059, 0.513726, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_kb24t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ynx47"]
 texture = SubResource("CanvasTexture_kb24t")
-expand_margin_left = 8.0
-expand_margin_top = 2.0
-expand_margin_right = 8.0
-expand_margin_bottom = 2.0
 modulate_color = Color(0.12549, 0.113725, 0.141176, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7pkef"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mt0e3"]
 texture = SubResource("CanvasTexture_7pkef")
+expand_margin_left = 4.0
 modulate_color = Color(0.454902, 0.647059, 0.513726, 1)
 
 [resource]
@@ -86,7 +70,7 @@ OptionButton/colors/font_hover_color = Color(0.454902, 0.647059, 0.513726, 1)
 OptionButton/colors/font_pressed_color = Color(0.12549, 0.113725, 0.141176, 1)
 OptionButton/font_sizes/font_size = 8
 OptionButton/styles/focus = SubResource("StyleBoxEmpty_7uwdo")
-OptionButton/styles/hover = SubResource("StyleBoxTexture_v120q")
+OptionButton/styles/hover = SubResource("StyleBoxTexture_ak5hq")
 OptionButton/styles/normal = SubResource("StyleBoxTexture_5bpq6")
 PopupMenu/colors/font_color = Color(0.12549, 0.113725, 0.141176, 1)
 PopupMenu/colors/font_hover_color = Color(0.454902, 0.647059, 0.513726, 1)
