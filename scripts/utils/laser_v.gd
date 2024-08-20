@@ -6,8 +6,8 @@ enum DIRECTION { LEFT, RIGTH }
 @export var speed: float = 12.0
 @export var direction: DIRECTION = DIRECTION.RIGTH
 
-
 var taget: Area2D
+
 
 
 func _process(delta):
@@ -17,7 +17,6 @@ func _process(delta):
 func _apply_damage():
 	taget.take_damage(3)
 	
-
 
 func _on_area_2d_area_entered(area):
 	if area is EnemyHealthBox or area is PlayerHealthBox:

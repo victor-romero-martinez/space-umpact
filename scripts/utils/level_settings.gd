@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var menu_pause = %MenuPause
+@onready var menu_pause = %MenuPause as MenuPause
 @onready var global = Global
 
 var _paused: bool = false
@@ -23,7 +23,7 @@ func _ready():
 
 func _process(_delta):
 	if global.game_data.heart == 0: _lose_scene()
-	if Input.is_action_just_pressed('ui_pause'): _pause_menu()
+	if Input.is_action_just_pressed('ui_pause'): _on_pause()
 	# call after hiding player
 	if global.hidden_player: _next_level()
 
@@ -54,19 +54,17 @@ func _lose_scene():
 	get_tree().change_scene_to_file("res://control/dead_menu.tscn")
 
 
-func _pause_menu():
+func _on_pause():
 	if _paused:
+		menu_pause.stop_music()
 		menu_pause.hide()
 		Engine.time_scale = 1
 	else:
 		menu_pause.show()
+		menu_pause.play_music()
 		Engine.time_scale = 0
 		
 	_paused = not _paused
-
-
-func _on_menu_pause_resume():
-	_pause_menu()
 
 
 func _on_tree_exited():

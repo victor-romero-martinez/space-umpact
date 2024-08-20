@@ -6,6 +6,8 @@ extends Control
 
 @onready var global = Global
 
+## Min value for audio bus control
+const MIN_VOL = -20
 
 func _ready():
 	if global.game_data.level > 1:
@@ -110,12 +112,24 @@ func _on_option_button_item_selected(index):
 	$Beep1.play()
 	
 
+func _game_volumen(name_db: String, value: float):
+	var bus_idx = AudioServer.get_bus_index(name_db)
+	
+	if value > MIN_VOL:
+		AudioServer.set_bus_volume_db(bus_idx, value)
+	else:
+		AudioServer.set_bus_volume_db(bus_idx, -80)
+	
+	# NOTE: saving data
+	global.game_data[name_db] = value
+
+
 func _on_vfx(value):
-	global.game_volumen('vfx', value)
+	_game_volumen('vfx', value)
 
 
 func _on_music(value):
-	global.game_volumen('music', value)
+	_game_volumen('music', value)
 		
 	
 func _on_music_slide_drag_ended(value_changed):

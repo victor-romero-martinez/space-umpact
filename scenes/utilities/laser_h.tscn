@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://43uly46lm3op"]
+[gd_scene load_steps=12 format=3 uid="uid://43uly46lm3op"]
 
 [ext_resource type="Script" path="res://scripts/utils/laser_h.gd" id="1_s4lyn"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_66b3u"]
 [ext_resource type="Texture2D" uid="uid://o3oim4wfe6t2" path="res://assets/laser_h.png" id="3_4m8kl"]
+[ext_resource type="PackedScene" uid="uid://jjef1gjl445n" path="res://scenes/vfx/laser_h_vfx.tscn" id="4_w3jjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul3qc"]
 size = Vector2(5, 2)
@@ -58,7 +59,7 @@ explotion_scene = ExtResource("2_66b3u")
 unique_name_in_owner = true
 points = PackedVector2Array(2, 0, 308, 0)
 width = 1.0
-default_color = Color(0.964706, 0.188235, 0.564706, 1)
+default_color = Color(1, 1, 0.960784, 1)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -87,6 +88,8 @@ sprite_frames = SubResource("SpriteFrames_bl7wl")
 autoplay = "default"
 frame = 1
 frame_progress = 0.754139
+
+[node name="LaserHVfx" parent="." instance=ExtResource("4_w3jjp")]
 
 [connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
 [connection signal="area_exited" from="Area" to="." method="_on_area_area_exited"]

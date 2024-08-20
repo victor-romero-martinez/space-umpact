@@ -1,4 +1,5 @@
 extends Node2D
+class_name MenuPause
 
 signal resume
 
@@ -12,6 +13,13 @@ func _ready():
 		$Control.theme = load(global.game_data.theme[0])
 		$Control/ColorRect.color = global.game_data.theme[1]
 	
+
+func play_music():
+	$PauseMusic.play()
+
+
+func stop_music():
+	$PauseMusic.stop()
 
 
 func _on_resume_pressed():

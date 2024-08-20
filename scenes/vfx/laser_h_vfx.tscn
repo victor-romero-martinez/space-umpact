@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://jjef1gjl445n"]
+
+[ext_resource type="AudioStream" uid="uid://dfduw6cigpit8" path="res://assets/vfx/loop_machine_01.ogg" id="1_mib5a"]
+
+[node name="LaserHVfx" type="AudioStreamPlayer"]
+stream = ExtResource("1_mib5a")
+autoplay = true
+bus = &"vfx"

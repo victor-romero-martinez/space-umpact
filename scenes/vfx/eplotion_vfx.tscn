@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj62ax0n1vngx"]
+
+[ext_resource type="AudioStream" uid="uid://boywic48kq6cc" path="res://assets/vfx/explosion_01.ogg" id="1_biu7j"]
+
+[node name="EplotionVfx" type="AudioStreamPlayer"]
+stream = ExtResource("1_biu7j")
+autoplay = true
+bus = &"vfx"

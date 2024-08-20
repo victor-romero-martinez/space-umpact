@@ -1,14 +1,14 @@
 extends Node2D
 
 @export var explotion_scene: PackedScene
-@onready var length = Global.screen_size.x
+@onready var global = Global
 
 const SPEED = 400.0
 
 var _target: Area2D
 
 func _ready():
-	%RayCast2D.target_position = Vector2(length, 0)
+	%RayCast2D.target_position = Vector2(global.screen_size.x, 0)
 	
 	
 func _process(_delta):
@@ -17,7 +17,7 @@ func _process(_delta):
 		%Line2D.points[1].x = global_position.distance_to(collition_point)
 		%CollisionShape2D.position.x = global_position.distance_to(collition_point)
 	else:
-		%Line2D.points[1].x = length
+		%Line2D.points[1].x = global.screen_size.x
 
 
 func _apply_damage():

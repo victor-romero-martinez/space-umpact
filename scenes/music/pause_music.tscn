@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gnw5l63njqjq"]
+
+[ext_resource type="AudioStream" uid="uid://bttk67swct6dn" path="res://assets/music/loop_ambient_01.ogg" id="1_q8mkf"]
+
+[node name="PauseMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_q8mkf")
+autoplay = true
+bus = &"music"

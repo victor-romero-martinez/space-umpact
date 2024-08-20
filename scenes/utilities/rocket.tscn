@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6o73s0pkyk7x"]
+[gd_scene load_steps=9 format=3 uid="uid://b6o73s0pkyk7x"]
 
 [ext_resource type="Script" path="res://scripts/utils/rocket.gd" id="1_7mf50"]
 [ext_resource type="Texture2D" uid="uid://4txxjkpo453e" path="res://assets/bullet.png" id="1_nm32w"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_vdd2c"]
 [ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="4_1imfe"]
+[ext_resource type="PackedScene" uid="uid://dl6dve1g4fthf" path="res://scenes/vfx/rocket_vfx.tscn" id="5_03j3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3t4pb"]
 size = Vector2(10, 6)
@@ -53,6 +54,9 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destroyer"]
 shape = SubResource("CircleShape2D_57ecl")
+
+[node name="RocketVfx" parent="." instance=ExtResource("5_03j3k")]
+autoplay = true
 
 [connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]
 [connection signal="body_exited" from="Sensor" to="." method="_on_sensor_body_exited"]

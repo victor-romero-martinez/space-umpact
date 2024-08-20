@@ -21,8 +21,6 @@ var theme_schema := {
 	}
 ## User directory
 const PATH = 'user://data.json'
-## Min value for audio bus control
-const MIN_VOL = -10
 var screen_size = Vector2(
 	ProjectSettings.get_setting('display/window/size/viewport_width'),\
 	ProjectSettings.get_setting('display/window/size/viewport_height')
@@ -52,13 +50,6 @@ func _create_data(data):
 	file.store_string(JSON.stringify(data, '\t'))
 	file.close()
 
-
-#func update_save_data(level: int = 1, heart: int = 3):
-	#game_data.level = level
-	#game_data.heart = heart
-	#
-	#_create_data(game_data)
-
 	
 func update_data():
 	_create_data(game_data)
@@ -74,14 +65,5 @@ func _load_data():
 		game_data = data
 	else :
 		push_error('Unexpected data')
-
-
-func game_volumen(name_db: String, value: float):
-	var bus_idx = AudioServer.get_bus_index(name_db)
-	
-	if value > MIN_VOL:
-		AudioServer.set_bus_volume_db(bus_idx, value)
-	else:
-		AudioServer.set_bus_volume_db(bus_idx, -80)
 
 

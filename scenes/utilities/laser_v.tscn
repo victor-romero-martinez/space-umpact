@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5x83ql6vdni2"]
+[gd_scene load_steps=14 format=3 uid="uid://c5x83ql6vdni2"]
 
 [ext_resource type="Texture2D" uid="uid://rqviagvnfuef" path="res://assets/laser_v.png" id="1_eft6y"]
 [ext_resource type="Script" path="res://scripts/utils/laser_v.gd" id="1_rv3j7"]
 [ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="3_mjgw2"]
+[ext_resource type="PackedScene" uid="uid://cu0cyef6b243p" path="res://scenes/vfx/laser_v_vfx.tscn" id="4_urb11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_alrnc"]
 atlas = ExtResource("1_eft6y")
@@ -67,7 +68,6 @@ script = ExtResource("1_rv3j7")
 position = Vector2(0, -17.5)
 points = PackedVector2Array(0, 35, 0, 0)
 width = 1.0
-default_color = Color(0.964706, 0.188235, 0.564706, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -20.5)
@@ -93,11 +93,11 @@ shape = SubResource("RectangleShape2D_w8h2i")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Destroyer" parent="." instance=ExtResource("3_mjgw2")]
-collision_layer = 128
-collision_mask = 1536
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destroyer"]
 shape = SubResource("RectangleShape2D_htnqn")
+
+[node name="LaserVVfx" parent="." instance=ExtResource("4_urb11")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

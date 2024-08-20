@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/control/main_menu.gd" id="1_4txhe"]
 [ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/pink_theme.tres" id="1_tq4my"]
-[ext_resource type="PackedScene" uid="uid://b8rclw5pbsbpp" path="res://scenes/vfx/beep_1.tscn" id="3_d12y8"]
+[ext_resource type="PackedScene" uid="uid://b8rclw5pbsbpp" path="res://scenes/vfx/beep_1_vfx.tscn" id="3_d12y8"]
 [ext_resource type="PackedScene" uid="uid://hs2qvsb6w8tj" path="res://scenes/level_1.tscn" id="3_divir"]
-[ext_resource type="PackedScene" uid="uid://daycwy6rac11b" path="res://scenes/vfx/beep_2.tscn" id="4_5mh6q"]
+[ext_resource type="PackedScene" uid="uid://daycwy6rac11b" path="res://scenes/vfx/beep_2_vfx.tscn" id="4_5mh6q"]
 [ext_resource type="PackedScene" uid="uid://bse3clbf784ak" path="res://scenes/level_2.tscn" id="4_mjsxg"]
 [ext_resource type="PackedScene" uid="uid://b3nuxs564es82" path="res://scenes/music/main_music.tscn" id="5_kvi5w"]
 
@@ -126,9 +126,8 @@ size_flags_horizontal = 3
 clip_contents = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-min_value = -10.0
+min_value = -20.0
 max_value = 0.0
-step = 0.1
 
 [node name="VFX" type="HBoxContainer" parent="MarginContainer/Settings"]
 layout_mode = 2
@@ -149,9 +148,8 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-min_value = -10.0
+min_value = -20.0
 max_value = 0.0
-step = 0.1
 
 [node name="VSeparator" type="HSeparator" parent="MarginContainer/Settings"]
 modulate = Color(1, 1, 1, 0)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4ag2vyg2jj2y"]
+[gd_scene load_steps=10 format=3 uid="uid://b4ag2vyg2jj2y"]
 
 [ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="1_43sns"]
 [ext_resource type="Script" path="res://scripts/utils/explotion.gd" id="2_0egni"]
+[ext_resource type="PackedScene" uid="uid://bj62ax0n1vngx" path="res://scenes/vfx/eplotion_vfx.tscn" id="3_52woh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iop57"]
 atlas = ExtResource("1_43sns")
@@ -53,4 +54,7 @@ frame = 4
 frame_progress = 1.0
 script = ExtResource("2_0egni")
 
+[node name="EplotionVfx" parent="." instance=ExtResource("3_52woh")]
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="finished" from="EplotionVfx" to="." method="_on_eplotion_vfx_finished"]

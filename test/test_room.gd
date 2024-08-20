@@ -1,6 +1,8 @@
 @icon("res://assets/icons/round-test-tube.svg")
 extends Node2D
 
+@export_range(-20, 0) var vol_vfx = -10
+
 
 @onready var menu_pause = $MenuPause
 
@@ -14,7 +16,9 @@ func _ready():
 	if global.game_data.theme:
 		$ColorRect.color = global.game_data.theme[1]
 		$Game.modulate = global.game_data.theme[2]
-
+	
+	AudioServer.set_bus_volume_db(1, vol_vfx)
+		
 
 func _process(_delta):
 	if Input.is_action_just_pressed('ui_pause'):

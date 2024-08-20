@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl6dve1g4fthf"]
+
+[ext_resource type="AudioStream" uid="uid://b683e2ta4ffo0" path="res://assets/vfx/retro_beep_02.ogg" id="1_b2vl8"]
+
+[node name="RocketVfx" type="AudioStreamPlayer"]
+stream = ExtResource("1_b2vl8")
+autoplay = true
+bus = &"vfx"
