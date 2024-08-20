@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvly1kbiy7ohq"]
+[gd_scene load_steps=5 format=3 uid="uid://bvly1kbiy7ohq"]
 
 [ext_resource type="Script" path="res://scripts/control/dead_menu.gd" id="1_on13i"]
 [ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/pink_theme.tres" id="2_kx8tq"]
+[ext_resource type="PackedScene" uid="uid://b8rclw5pbsbpp" path="res://scenes/vfx/beep_1.tscn" id="3_yifku"]
+[ext_resource type="PackedScene" uid="uid://daycwy6rac11b" path="res://scenes/vfx/beep_2.tscn" id="4_3oiaq"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -61,6 +63,10 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Quit"
+
+[node name="Beep1" parent="." instance=ExtResource("3_yifku")]
+
+[node name="Beep2" parent="." instance=ExtResource("4_3oiaq")]
 
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

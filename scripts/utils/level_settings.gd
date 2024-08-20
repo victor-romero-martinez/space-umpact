@@ -41,7 +41,8 @@ func _next_level():
 	var next_level = 'res://scenes/level_%d.tscn' %next_value
 	
 	if FileAccess.file_exists(next_level):
-		global.update_save_data(next_value)
+		global.game_data.level = next_value
+		global.update_data()
 		get_tree().change_scene_to_file(next_level)
 	else:
 		get_tree().change_scene_to_file('res://control/credit.tscn')

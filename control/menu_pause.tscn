@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmb1acg6lojr5"]
+[gd_scene load_steps=5 format=3 uid="uid://dmb1acg6lojr5"]
 
 [ext_resource type="Script" path="res://scripts/control/menu_pause.gd" id="1_wm58i"]
 [ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/pink_theme.tres" id="2_ao2jd"]
+[ext_resource type="PackedScene" uid="uid://b8rclw5pbsbpp" path="res://scenes/vfx/beep_1.tscn" id="3_tsygb"]
+[ext_resource type="PackedScene" uid="uid://daycwy6rac11b" path="res://scenes/vfx/beep_2.tscn" id="4_6nwfw"]
 
 [node name="MenuPause" type="Node2D"]
 script = ExtResource("1_wm58i")
@@ -55,6 +57,10 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Quit"
+
+[node name="Beep1" parent="." instance=ExtResource("3_tsygb")]
+
+[node name="Beep2" parent="." instance=ExtResource("4_6nwfw")]
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -15,12 +15,16 @@ func _ready():
 
 
 func _on_resume_pressed():
+	$Beep2.play()
 	resume.emit()
 
 
 func _on_main_menu_pressed():
-	get_tree().change_scene_to_file("res://control/main_menu.tscn")
-
+	$Beep1.play()
+	$Beep1.finished.connect(func (): get_tree().change_scene_to_file("res://control/main_menu.tscn"))
+	
 
 func _on_quit_pressed():
-	get_tree().quit()
+	$Beep2.play()
+	$Beep2.finished.connect(func (): get_tree().quit())
+	

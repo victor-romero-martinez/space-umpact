@@ -1,24 +1,17 @@
 @icon("res://assets/icons/gear.svg")
 extends Node2D
 
-const DEFAULT_SETTINGS := {
+const DEFAULT_SETTINGS = {
 		'level': 1,
 		'heart': 3,
-		'theme': null
+		'theme': null,
+		'music': 0,
+		'vfx': 0
 	}
 
-var screen_size: Vector2
 
+#region Game Settings
 var game_data: Dictionary
-var player_arsenal: Array[String] = ['bullet']
-
-var defeated_boss: bool = false
-## call after hiding boss
-var queue_boss: bool = false
-## call after hiding player
-var hidden_player: bool = false
-
-
 ## Theme colors
 var theme_schema := {
 	#index: path_custome_theme, color_rect, sprites_and_tiles, index_namber
@@ -27,40 +20,52 @@ var theme_schema := {
 	2: ['res://control/theme/modern_theme.tres', '#252525', '#e4e4e4', 2]
 	}
 ## User directory
-var path: String
+const PATH = 'user://data.json'
+## Min value for audio bus control
+const MIN_VOL = -10
+var screen_size = Vector2(
+	ProjectSettings.get_setting('display/window/size/viewport_width'),\
+	ProjectSettings.get_setting('display/window/size/viewport_height')
+	)
+#endregion
+
+#region Status game
+var player_arsenal: Array[String] = ['bullet']
+var defeated_boss: bool = false
+## call after hiding boss
+var queue_boss: bool = false
+## call after hiding player
+var hidden_player: bool = false
+#endregion
+
 
 #TODO: implementar animacion de spawn
 func _ready():
-	screen_size = get_viewport_rect().size
-	path = 'user://data.json'
-
-	if FileAccess.file_exists(path):
+	if FileAccess.file_exists(PATH):
 		_load_data()
 	else:
 		_create_data(DEFAULT_SETTINGS)
 
 
 func _create_data(data):
-	var file = FileAccess.open(path, FileAccess.WRITE)
+	var file = FileAccess.open(PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data, '\t'))
 	file.close()
 
 
-func update_save_data(level: int = 1, heart: int = 3):
-	game_data.level = level
-	game_data.heart = heart
-	
-	_create_data(game_data)
+#func update_save_data(level: int = 1, heart: int = 3):
+	#game_data.level = level
+	#game_data.heart = heart
+	#
+	#_create_data(game_data)
 
-
-func update_theme(new_theme: Array):
-	game_data.theme = new_theme
 	
+func update_data():
 	_create_data(game_data)
 	
-
+	
 func _load_data():
-	var file = FileAccess.open(path, FileAccess.READ)
+	var file = FileAccess.open(PATH, FileAccess.READ)
 	var res = file.get_as_text()
 	var json = JSON.new()
 	var error = json.parse(res)
@@ -69,4 +74,14 @@ func _load_data():
 		game_data = data
 	else :
 		push_error('Unexpected data')
+
+
+func game_volumen(name_db: String, value: float):
+	var bus_idx = AudioServer.get_bus_index(name_db)
+	
+	if value > MIN_VOL:
+		AudioServer.set_bus_volume_db(bus_idx, value)
+	else:
+		AudioServer.set_bus_volume_db(bus_idx, -80)
+
 

@@ -11,12 +11,16 @@ func _ready():
 	
 
 func _on_retry_pressed():
-	get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %Global.game_data.level)
-
+	$Beep1.play()
+	$Beep1.finished.connect(func (): get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %Global.game_data.level))
+	
 
 func _on_main_menu_pressed():
-	get_tree().change_scene_to_file("res://control/main_menu.tscn")
-
+	$Beep1.play()
+	$Beep1.finished.connect(func (): get_tree().change_scene_to_file("res://control/main_menu.tscn"))
+	
 
 func _on_quit_pressed():
-	get_tree().quit()
+	$Beep2.play()
+	$Beep2.finished.connect(func (): get_tree().quit())
+	

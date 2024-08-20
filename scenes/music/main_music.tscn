@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3nuxs564es82"]
+
+[ext_resource type="AudioStream" uid="uid://uqei0n24iwai" path="res://assets/music/my-universe-147152.mp3" id="1_bj5lp"]
+
+[node name="MainMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_bj5lp")
+autoplay = true
+bus = &"music"
