@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://diid8siliqbiu"]
+
+[ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="1_y2unk"]
+
+[node name="GameMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_y2unk")
+autoplay = true
+bus = &"music"

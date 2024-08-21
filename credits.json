@@ -1,6 +1,23 @@
 [
 	"graphic": [],
-	"music": [],
+	"music": [
+		{
+			"sound_url": "https://freesound.org/people/Superglue28/sounds/510148/",
+			"sound_name": "random boss fight music",
+			"author_url": "https://freesound.org/people/Superglue28/",
+			"author_name": "Superglue28",
+			"license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+			"license_name": "Creative Commons 0"
+		},
+		{
+			"sound_url": "https://freesound.org/people/Romariogrande/sounds/370801/",
+			"sound_name": "Space Chase",
+			"author_url": "https://freesound.org/people/Romariogrande/",
+			"author_name": "Romariogrande",
+			"license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+			"license_name": "Creative Commons 0"
+		}
+	],
 	"sfx": [
 		{
 			"sound_url": "https://freesound.org/people/cabled_mess/sounds/351000/",
@@ -12,7 +29,7 @@
 		},
 		{
 			"sound_url": "https://freesound.org/people/Alderman2k/sounds/492486/",
-			"sound_name": "Laser_Shoot8.wav",
+			"sound_name": "Laser_Shoot8",
 			"author_url": "https://freesound.org/people/Alderman2k/",
 			"author_name": "Alderman2k",
 			"license_url": "http://creativecommons.org/licenses/by-nc/3.0/",
@@ -20,7 +37,7 @@
 		},
 		{
 			"sound_url": "https://freesound.org/people/Koops/sounds/12505/",
-			"sound_name": "Lazer_01_loop.mp3",
+			"sound_name": "Lazer_01_loop",
 			"author_url": "https://freesound.org/people/Koops/",
 			"author_name": "Koops",
 			"license_url": "https://creativecommons.org/licenses/by/4.0/",
@@ -28,7 +45,7 @@
 		},
 		{
 			"sound_url": "https://freesound.org/people/pixelicious/sounds/625672/",
-			"sound_name": "laser_sfx.mp3",
+			"sound_name": "laser_sfx",
 			"author_url": "https://freesound.org/people/pixelicious/",
 			"author_name": "pixelicious",
 			"license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
@@ -44,7 +61,7 @@
 		},
 		{
 			"sound_url": "https://freesound.org/people/jeckkech/sounds/391668/",
-			"sound_name": "hit.wav",
+			"sound_name": "hit",
 			"author_url": "https://freesound.org/people/jeckkech/",
 			"author_name": "jeckkech",
 			"license_url": "http://creativecommons.org/publicdomain/zero/1.0/",

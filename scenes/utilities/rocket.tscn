@@ -56,7 +56,6 @@ autostart = true
 shape = SubResource("CircleShape2D_57ecl")
 
 [node name="RocketVfx" parent="." instance=ExtResource("5_03j3k")]
-autoplay = true
 
 [connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]
 [connection signal="body_exited" from="Sensor" to="." method="_on_sensor_body_exited"]

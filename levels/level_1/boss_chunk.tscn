@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxdtonhgxyoh8"]
+[gd_scene load_steps=11 format=3 uid="uid://dxdtonhgxyoh8"]
 
 [ext_resource type="PackedScene" uid="uid://c88ev1so4wvv1" path="res://scenes/enemies/boss_1.tscn" id="1_6kwli"]
 [ext_resource type="PackedScene" uid="uid://d175njosf45c7" path="res://scenes/utilities/health_bar.tscn" id="1_8wj5q"]
+[ext_resource type="Script" path="res://scripts/utils/bosss_chunk.gd" id="1_ykc7j"]
 [ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="2_wp75p"]
 [ext_resource type="Script" path="res://scripts/state/move_up.gd" id="3_q31ii"]
 [ext_resource type="Script" path="res://scripts/state/move_left.gd" id="3_t1oet"]
@@ -10,7 +11,9 @@
 [ext_resource type="Script" path="res://scripts/state/boss_shots.gd" id="7_nebfx"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="8_6cfwa"]
 
-[node name="BossChunk" type="Node2D"]
+[node name="BossChunk" type="Node2D" node_paths=PackedStringArray("boss")]
+script = ExtResource("1_ykc7j")
+boss = NodePath("Boss1")
 
 [node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("1_6kwli")]
 position = Vector2(385, 87)

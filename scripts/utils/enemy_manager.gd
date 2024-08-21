@@ -3,31 +3,42 @@ extends Node2D
 
 
 @export_group('enemies_collections List')
+@export var game_music: AudioStreamPlayer
 @export var enemies_chunk: Array[PackedScene] = []
+@export var boss_music: AudioStreamPlayer
 @export var boss_chunk:PackedScene
 
 
 var _screen_width: float
-var _add_boss: bool = false
+var _chunk_counter: int = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_screen_width = Global.screen_size.x
+	
 	_make_enemy_chunk()
 
-
-func _process(_delta):
-	if not _add_boss: _append_boss()
 	
-
+func _decrement_chunk():
+	_chunk_counter -= 1
+	
+	if _chunk_counter == 0:
+		_trans_music()
+		_make_boos_chunk()
+	
+	
 func _make_enemy_chunk():
-	if enemies_chunk.size() == 0:
+	if enemies_chunk.is_empty():
 		push_error('Enemy chunk scene is missing')
 	else:
-		for i in enemies_chunk.size():
+		_chunk_counter = enemies_chunk.size()
+		
+		for i in _chunk_counter:
 			var chunk = enemies_chunk[i].instantiate()
 			chunk.position.x = _screen_width * (i + 1)
+			chunk.tree_exiting.connect(_decrement_chunk)
+			
 			add_child(chunk)
 
 
@@ -35,13 +46,25 @@ func _make_boos_chunk():
 	if not boss_chunk:
 		push_error('Boss chunk scene is missing')
 	else:
-		var boss = boss_chunk.instantiate()
-		boss.position = position
-		add_child(boss)
-			 
-
-func _append_boss():
-	if get_child_count() == 0:
-		_make_boos_chunk()
-		_add_boss = true
+		var boss_c = boss_chunk.instantiate()
+		boss_c.position = position
+		boss_c.boss.defeated.connect(_stop_boss_music) #NOTICE
+		add_child.call_deferred(boss_c)
 	
+	
+func _change_music():
+	game_music.stop()
+	boss_music.play()
+	
+			 
+func _trans_music():
+	var t = create_tween()
+	t.set_trans(Tween.TRANS_QUAD)
+	t.tween_property(game_music, "volume_db", -80, 2.0)
+	t.tween_callback(_change_music)
+	
+
+func _stop_boss_music():
+	var t_b = create_tween()
+	t_b.set_trans(Tween.TRANS_QUAD)
+	t_b.tween_property(boss_music, "volume_db", -80, 4.0)

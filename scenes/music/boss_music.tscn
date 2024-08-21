@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx8ian2j1oj0e"]
+
+[ext_resource type="AudioStream" uid="uid://b356a6s6snqe2" path="res://assets/music/random-boss-fight-music.ogg" id="1_rsp2u"]
+
+[node name="BossMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_rsp2u")
+bus = &"music"
