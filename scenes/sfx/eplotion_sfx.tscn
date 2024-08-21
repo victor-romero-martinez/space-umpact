@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj62ax0n1vngx"]
+
+[ext_resource type="AudioStream" uid="uid://neq2e7lsxidh" path="res://assets/sfx/boom_c_02.wav" id="1_04hky"]
+
+[node name="EplotionSfx" type="AudioStreamPlayer"]
+stream = ExtResource("1_04hky")
+autoplay = true
+bus = &"sfx"

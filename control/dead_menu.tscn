@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/control/dead_menu.gd" id="1_on13i"]
 [ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/pink_theme.tres" id="2_kx8tq"]
-[ext_resource type="PackedScene" uid="uid://b8rclw5pbsbpp" path="res://scenes/vfx/beep_1_vfx.tscn" id="3_yifku"]
-[ext_resource type="PackedScene" uid="uid://daycwy6rac11b" path="res://scenes/vfx/beep_2_vfx.tscn" id="4_3oiaq"]
+[ext_resource type="PackedScene" uid="uid://b8rclw5pbsbpp" path="res://scenes/sfx/beep_1_sfx.tscn" id="3_yifku"]
+[ext_resource type="PackedScene" uid="uid://daycwy6rac11b" path="res://scenes/sfx/beep_2_sfx.tscn" id="4_3oiaq"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

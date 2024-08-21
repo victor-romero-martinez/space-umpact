@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddfaojuimki2i"]
-
-[ext_resource type="AudioStream" uid="uid://b7re51r76lkf5" path="res://assets/vfx/shoot_01.ogg" id="1_w3h5u"]
-
-[node name="BulletSound" type="AudioStreamPlayer"]
-stream = ExtResource("1_w3h5u")
-autoplay = true
-bus = &"vfx"

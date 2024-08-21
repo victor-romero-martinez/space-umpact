@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://by7lrbpcv54q0"]
+[gd_scene load_steps=3 format=3 uid="uid://by7lrbpcv54q0"]
 
 [ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="1_spqsr"]
+[ext_resource type="PackedScene" uid="uid://c1gcr1nbuajbx" path="res://scenes/sfx/hit_sfx.tscn" id="2_wqh4x"]
 
 [node name="EnemyHealthBox" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_spqsr")
+
+[node name="HitSfx" parent="." instance=ExtResource("2_wqh4x")]

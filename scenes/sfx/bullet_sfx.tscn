@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddfaojuimki2i"]
+
+[ext_resource type="AudioStream" uid="uid://dx5sdru1d8l0a" path="res://assets/sfx/zap_c_03.wav" id="1_fi12v"]
+
+[node name="BulletSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_fi12v")
+autoplay = true
+bus = &"sfx"

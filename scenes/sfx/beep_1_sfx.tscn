@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8rclw5pbsbpp"]
+
+[ext_resource type="AudioStream" uid="uid://d4clv1aiw4of1" path="res://assets/vfx/beep_01.ogg" id="1_im54l"]
+
+[node name="Beep1" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_im54l")
+bus = &"sfx"

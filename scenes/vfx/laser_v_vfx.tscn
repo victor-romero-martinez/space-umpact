@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu0cyef6b243p"]
-
-[ext_resource type="AudioStream" uid="uid://d0228amv0dba4" path="res://assets/vfx/loop_machine_02.ogg" id="1_a2alf"]
-
-[node name="LaserVVfx" type="AudioStreamPlayer"]
-stream = ExtResource("1_a2alf")
-volume_db = -4.0
-autoplay = true

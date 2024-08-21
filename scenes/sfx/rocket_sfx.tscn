@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl6dve1g4fthf"]
+
+[ext_resource type="AudioStream" uid="uid://iqgadme028vr" path="res://assets/sfx/laser_shoot8.wav" id="1_xsfht"]
+
+[node name="RocketVfx" type="AudioStreamPlayer"]
+stream = ExtResource("1_xsfht")
+autoplay = true
+bus = &"sfx"

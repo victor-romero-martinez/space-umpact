@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://daycwy6rac11b"]
 
-[ext_resource type="AudioStream" uid="uid://78mg32lm1fy6" path="res://assets/vfx/beep_03.ogg" id="1_whvy8"]
+[ext_resource type="AudioStream" uid="uid://78mg32lm1fy6" path="res://assets/sfx/beep_03.ogg" id="1_whvy8"]
 
 [node name="Beep2" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_whvy8")
-bus = &"vfx"
+bus = &"sfx"

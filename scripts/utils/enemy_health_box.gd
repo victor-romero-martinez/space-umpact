@@ -18,6 +18,8 @@ func _ready():
 func take_damage(damage: int = 1):
 	health -= damage
 	get_parent().set_blinking(damage)
+	$HitSfx.play()
 	
-	if health  < 1:
+	if health < 1:
 		get_parent().defeated.emit()
+		

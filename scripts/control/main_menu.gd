@@ -20,7 +20,7 @@ func _ready():
 	$MarginContainer/Settings.visible = false
 	$MarginContainer/Level.visible = false
 	$MarginContainer/Settings/Music/MusicSlide.value = global.game_data.music
-	$MarginContainer/Settings/VFX/VFXSlide.value = global.game_data.vfx
+	$MarginContainer/Settings/VFX/VFXSlide.value = global.game_data.sfx
 	
 	_set_theme()
 	_level_creen()
@@ -125,7 +125,7 @@ func _game_volumen(name_db: String, value: float):
 
 
 func _on_vfx(value):
-	_game_volumen('vfx', value)
+	_game_volumen('sfx', value)
 
 
 func _on_music(value):

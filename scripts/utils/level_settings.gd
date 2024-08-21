@@ -14,7 +14,6 @@ func _ready():
 		
 	# set color shema
 	if global.game_data.theme:
-		print(global.game_data.theme)
 		$ColorRect.color = global.game_data.theme[1]
 		$Game.modulate = global.game_data.theme[2]
 		

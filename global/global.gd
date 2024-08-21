@@ -6,7 +6,7 @@ const DEFAULT_SETTINGS = {
 		'heart': 3,
 		'theme': null,
 		'music': 0,
-		'vfx': 0
+		'sfx': 0
 	}
 
 

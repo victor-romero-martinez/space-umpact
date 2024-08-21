@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="1_43sns"]
 [ext_resource type="Script" path="res://scripts/utils/explotion.gd" id="2_0egni"]
-[ext_resource type="PackedScene" uid="uid://bj62ax0n1vngx" path="res://scenes/vfx/eplotion_vfx.tscn" id="3_52woh"]
+[ext_resource type="PackedScene" uid="uid://bj62ax0n1vngx" path="res://scenes/sfx/eplotion_sfx.tscn" id="3_52woh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iop57"]
 atlas = ExtResource("1_43sns")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/utils/laser_h.gd" id="1_s4lyn"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_66b3u"]
 [ext_resource type="Texture2D" uid="uid://o3oim4wfe6t2" path="res://assets/laser_h.png" id="3_4m8kl"]
-[ext_resource type="PackedScene" uid="uid://jjef1gjl445n" path="res://scenes/vfx/laser_h_vfx.tscn" id="4_w3jjp"]
+[ext_resource type="PackedScene" uid="uid://jjef1gjl445n" path="res://scenes/sfx/laser_h_sfx.tscn" id="4_w3jjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul3qc"]
 size = Vector2(5, 2)

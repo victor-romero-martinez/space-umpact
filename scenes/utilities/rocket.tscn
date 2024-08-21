@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4txxjkpo453e" path="res://assets/bullet.png" id="1_nm32w"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_vdd2c"]
 [ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="4_1imfe"]
-[ext_resource type="PackedScene" uid="uid://dl6dve1g4fthf" path="res://scenes/vfx/rocket_vfx.tscn" id="5_03j3k"]
+[ext_resource type="PackedScene" uid="uid://dl6dve1g4fthf" path="res://scenes/sfx/rocket_sfx.tscn" id="5_03j3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3t4pb"]
 size = Vector2(10, 6)

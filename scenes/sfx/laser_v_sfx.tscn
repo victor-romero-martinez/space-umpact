@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu0cyef6b243p"]
+
+[ext_resource type="AudioStream" uid="uid://c26tertyssbqk" path="res://assets/sfx/lazer_01_loop.mp3" id="1_wiijk"]
+
+[node name="LaserVSfx" type="AudioStreamPlayer"]
+stream = ExtResource("1_wiijk")
+volume_db = -4.0
+autoplay = true
+bus = &"sfx"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1gcr1nbuajbx"]
+
+[ext_resource type="AudioStream" uid="uid://rgs8rwnm6uxo" path="res://assets/sfx/hit.wav" id="1_x0nep"]
+
+[node name="HitSfx" type="AudioStreamPlayer"]
+stream = ExtResource("1_x0nep")
+bus = &"sfx"
