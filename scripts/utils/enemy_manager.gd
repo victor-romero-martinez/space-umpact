@@ -60,11 +60,11 @@ func _change_music():
 func _trans_music():
 	var t = create_tween()
 	t.set_trans(Tween.TRANS_QUAD)
-	t.tween_property(game_music, "volume_db", -80, 2.0)
+	t.tween_property(game_music, "volume_db", -60, 2.0)
 	t.tween_callback(_change_music)
 	
 
 func _stop_boss_music():
 	var t_b = create_tween()
 	t_b.set_trans(Tween.TRANS_QUAD)
-	t_b.tween_property(boss_music, "volume_db", -80, 4.0)
+	t_b.tween_property(boss_music, "volume_db", -60, 4.0)
