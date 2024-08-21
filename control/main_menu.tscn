@@ -129,20 +129,20 @@ layout_mode = 2
 min_value = -20.0
 max_value = 0.0
 
-[node name="VFX" type="HBoxContainer" parent="MarginContainer/Settings"]
+[node name="SFX" type="HBoxContainer" parent="MarginContainer/Settings"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Settings/VFX"]
+[node name="Label" type="Label" parent="MarginContainer/Settings/SFX"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Fx"
+text = "Sfx"
 
-[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Settings/VFX"]
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Settings/SFX"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="VFXSlide" type="HSlider" parent="MarginContainer/Settings/VFX"]
+[node name="SFXSlide" type="HSlider" parent="MarginContainer/Settings/SFX"]
 clip_contents = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -224,8 +224,8 @@ visible = false
 [connection signal="item_selected" from="MarginContainer/Settings/Theme/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="drag_ended" from="MarginContainer/Settings/Music/MusicSlide" to="." method="_on_music_slide_drag_ended"]
 [connection signal="value_changed" from="MarginContainer/Settings/Music/MusicSlide" to="." method="_on_music"]
-[connection signal="drag_ended" from="MarginContainer/Settings/VFX/VFXSlide" to="." method="_on_vfx_slide_drag_ended"]
-[connection signal="value_changed" from="MarginContainer/Settings/VFX/VFXSlide" to="." method="_on_vfx"]
+[connection signal="drag_ended" from="MarginContainer/Settings/SFX/SFXSlide" to="." method="_on_sfx_slide_drag_ended"]
+[connection signal="value_changed" from="MarginContainer/Settings/SFX/SFXSlide" to="." method="_on_sfx"]
 [connection signal="pressed" from="MarginContainer/Settings/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Level/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/Level/VBoxContainer/Back" to="." method="_on_back_pressed"]
