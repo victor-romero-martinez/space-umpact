@@ -11,13 +11,16 @@ signal current_weapon(idx: int)
 signal add_weapon(idx: int)
 signal remove_weapon(val: int)
 
+#region Gun settings
 @export_group('Gun Settings')
 ## How many bullets can shots
 @export var bullet_by_shoot: int = 3
 ## How many time wait for the next shooting
 @export var wait_seconds: float = .5
+#endregion
 
 
+#region Settings
 @export_group('Settings')
 ## Player velocity
 @export var speed = 50.0
@@ -25,6 +28,7 @@ signal remove_weapon(val: int)
 @export var respawn: Marker2D
 ## Explotion effects scene
 @export var explotion_scene: PackedScene
+#endregion
 
 @onready var global = Global
 
@@ -96,10 +100,14 @@ func _finish_combat():
 func make_boom():
 	#if not IMMUNITY OR FREEZE:
 	if state == TState.MOVE:
+		visible = false
 		_apply_explotion()
-		_animation_spawn()
 		
 		hit.emit()
+		
+		await get_tree().create_timer(1.0).timeout
+		visible = true
+		_animation_spawn()
 		global_position = respawn.position
 
 
@@ -107,9 +115,11 @@ func make_boom():
 func _animation_spawn():
 	state = TState.IMMUNITY
 	$AnimatedSprite2D.play('respawn')
+	$ShieldSfx.play()
 	await get_tree().create_timer(2.0).timeout
 	state = TState.MOVE
 	$AnimatedSprite2D.play('default')
+	$ShieldSfx.stop()
 
 
 # Select ammunition type and shoot

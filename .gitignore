@@ -5,5 +5,5 @@
 *.import
 
 # temporary ignore
-assets/music/
-
+#assets/music/
+#assets/sfx/

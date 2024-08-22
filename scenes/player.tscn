@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://ncfavua7kjnn"]
+[gd_scene load_steps=16 format=3 uid="uid://ncfavua7kjnn"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="2_c5j55"]
 [ext_resource type="Texture2D" uid="uid://bc7h6qwx3d7bi" path="res://assets/ship.png" id="2_wxiv3"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="4_gyihd"]
 [ext_resource type="PackedScene" uid="uid://b6kwgfottfx6k" path="res://scenes/utilities/player_hit_box.tscn" id="6_1htvj"]
+[ext_resource type="PackedScene" uid="uid://c2i63t0qw4v5n" path="res://scenes/sfx/shield_sfx.tscn" id="7_68ugx"]
 [ext_resource type="Script" path="res://scripts/player/colector_item.gd" id="7_gowpx"]
 [ext_resource type="PackedScene" uid="uid://dfew3tjdbt8e5" path="res://scenes/utilities/player_health_box.tscn" id="7_j7iap"]
 
@@ -98,3 +99,5 @@ script = ExtResource("7_gowpx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColectorItem"]
 rotation = -1.57421
 shape = SubResource("CapsuleShape2D_phk82")
+
+[node name="ShieldSfx" parent="." instance=ExtResource("7_68ugx")]

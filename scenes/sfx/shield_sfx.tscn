@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2i63t0qw4v5n"]
+
+[ext_resource type="AudioStream" uid="uid://dnyjrrioeelq2" path="res://assets/sfx/shield.ogg" id="1_u2vgr"]
+
+[node name="ShieldSfx" type="AudioStreamPlayer"]
+stream = ExtResource("1_u2vgr")
+volume_db = -5.0
+bus = &"sfx"
