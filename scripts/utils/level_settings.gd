@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var menu_pause = %MenuPause as MenuPause
+@export var enemy_manager: EnemyManager
+@export var menu_pause: MenuPause
+
 @onready var global = Global
 
 var _paused: bool = false
@@ -55,10 +57,12 @@ func _lose_scene():
 
 func _on_pause():
 	if _paused:
+		enemy_manager.pause_music(false)
 		menu_pause.stop_music()
 		menu_pause.hide()
 		Engine.time_scale = 1
 	else:
+		enemy_manager.pause_music(true)
 		menu_pause.show()
 		menu_pause.play_music()
 		Engine.time_scale = 0

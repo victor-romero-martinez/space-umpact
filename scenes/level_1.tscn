@@ -17,8 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="14_85yuv"]
 [ext_resource type="PackedScene" uid="uid://cx8ian2j1oj0e" path="res://scenes/music/boss_music.tscn" id="14_i41pb"]
 
-[node name="Level-1" type="Node2D"]
+[node name="Level-1" type="Node2D" node_paths=PackedStringArray("enemy_manager", "menu_pause")]
 script = ExtResource("2_yp15v")
+enemy_manager = NodePath("Game/Enemy/EnemyManagertest")
+menu_pause = NodePath("MenuPause")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 352.0
@@ -62,10 +64,9 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="Game"]
 
-[node name="EnemyManagertest" parent="Game/Enemy" node_paths=PackedStringArray("game_music", "boss_music") instance=ExtResource("6_8w0a2")]
-game_music = NodePath("GameMusic")
+[node name="EnemyManagertest" parent="Game/Enemy" node_paths=PackedStringArray("game_music") instance=ExtResource("6_8w0a2")]
+game_music = [NodePath("GameMusic"), NodePath("BossMusic")]
 enemies_chunk = Array[PackedScene]([ExtResource("7_h7mse"), ExtResource("8_dcy32"), ExtResource("9_cq6gh"), ExtResource("10_486us")])
-boss_music = NodePath("BossMusic")
 boss_chunk = ExtResource("11_y36ey")
 
 [node name="GameMusic" parent="Game/Enemy/EnemyManagertest" instance=ExtResource("13_hw526")]
@@ -73,7 +74,6 @@ boss_chunk = ExtResource("11_y36ey")
 [node name="BossMusic" parent="Game/Enemy/EnemyManagertest" instance=ExtResource("14_i41pb")]
 
 [node name="MenuPause" parent="." instance=ExtResource("11_ew1lc")]
-unique_name_in_owner = true
 visible = false
 metadata/_edit_lock_ = true
 

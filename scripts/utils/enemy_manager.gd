@@ -1,21 +1,22 @@
 @icon("res://assets/icons/gear.svg")
 extends Node2D
+class_name EnemyManager
 
 
 @export_group('enemies_collections List')
-@export var game_music: AudioStreamPlayer
+@export var game_music: Array[AudioStreamPlayer]
 @export var enemies_chunk: Array[PackedScene] = []
-@export var boss_music: AudioStreamPlayer
 @export var boss_chunk:PackedScene
 
 
 var _screen_width: float
 var _chunk_counter: int = 0
-
+var _current_music:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_screen_width = Global.screen_size.x
+	game_music[_current_music].play()
 	
 	_make_enemy_chunk()
 
@@ -52,19 +53,24 @@ func _make_boos_chunk():
 		add_child.call_deferred(boss_c)
 	
 	
+func pause_music(val: bool):
+	game_music[_current_music].stream_paused = val
+	
+	
 func _change_music():
-	game_music.stop()
-	boss_music.play()
+	game_music[_current_music].stop()
+	_current_music += 1
+	game_music[_current_music].play()
 	
 			 
 func _trans_music():
 	var t = create_tween()
 	t.set_trans(Tween.TRANS_QUAD)
-	t.tween_property(game_music, "volume_db", -60, 2.0)
+	t.tween_property(game_music[0], "volume_db", -60, 2.0)
 	t.tween_callback(_change_music)
 	
 
 func _stop_boss_music():
 	var t_b = create_tween()
 	t_b.set_trans(Tween.TRANS_QUAD)
-	t_b.tween_property(boss_music, "volume_db", -60, 4.0)
+	t_b.tween_property(game_music[1], "volume_db", -60, 4.0)
