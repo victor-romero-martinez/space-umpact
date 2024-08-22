@@ -102,13 +102,13 @@ func make_boom():
 	if state == TState.MOVE:
 		visible = false
 		_apply_explotion()
+		global_position = respawn.position
 		
 		hit.emit()
 		
 		await get_tree().create_timer(1.0).timeout
 		visible = true
 		_animation_spawn()
-		global_position = respawn.position
 
 
 # apply animation
