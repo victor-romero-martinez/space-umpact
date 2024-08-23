@@ -3,7 +3,9 @@ extends EnemyAttack
 class_name EnemyShots
 
 
+## Entity owner
 @export var actor: Enemy
+## Bullet Scene
 @export var bullet_scene: PackedScene
 
 

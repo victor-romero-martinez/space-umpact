@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b57aq8mq723ou"]
+[gd_scene load_steps=14 format=3 uid="uid://b57aq8mq723ou"]
 
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_afp8x"]
 [ext_resource type="Script" path="res://scripts/utils/map_manager.gd" id="2_brkgf"]
@@ -10,8 +10,12 @@
 [ext_resource type="Script" path="res://scripts/utils/enemy_manager.gd" id="6_3l0ug"]
 [ext_resource type="PackedScene" uid="uid://diid8siliqbiu" path="res://scenes/music/game_music.tscn" id="7_er1kw"]
 [ext_resource type="PackedScene" uid="uid://cx8ian2j1oj0e" path="res://scenes/music/boss_music.tscn" id="8_do6ar"]
+[ext_resource type="PackedScene" uid="uid://cku34ulcamr5u" path="res://levels/level_3/enemy_chunk.tscn" id="9_4bosb"]
+[ext_resource type="PackedScene" uid="uid://dja255rciejxv" path="res://levels/level_3/enemy_chunk_1.tscn" id="10_rhcff"]
+[ext_resource type="PackedScene" uid="uid://bhddbyuaaux36" path="res://levels/level_3/enemy_chunk_2.tscn" id="11_ftd5v"]
 
-[node name="Level-3" node_paths=PackedStringArray("menu_pause") instance=ExtResource("1_afp8x")]
+[node name="Level-3" node_paths=PackedStringArray("enemy_manager", "menu_pause") instance=ExtResource("1_afp8x")]
+enemy_manager = NodePath("Game/Enemy/EnemyManager")
 menu_pause = NodePath("MenuPause")
 
 [node name="BackgroundManager" type="Node2D" parent="Game/BG" index="0" node_paths=PackedStringArray("list_map")]
@@ -53,6 +57,7 @@ metadata/_edit_lock_ = true
 [node name="EnemyManager" type="Node2D" parent="Game/Enemy" index="0" node_paths=PackedStringArray("game_music")]
 script = ExtResource("6_3l0ug")
 game_music = [NodePath("GameMusic"), NodePath("BossMusic")]
+enemies_chunk = Array[PackedScene]([ExtResource("9_4bosb"), ExtResource("10_rhcff"), ExtResource("11_ftd5v")])
 
 [node name="GameMusic" parent="Game/Enemy/EnemyManager" index="0" instance=ExtResource("7_er1kw")]
 

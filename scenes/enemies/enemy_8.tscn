@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://5solvkojlpwa"]
+
+[ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_v18pa"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="2_vtm0v"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_s2n0i"]
+[ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="4_7miqo"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="5_had4y"]
+[ext_resource type="PackedScene" uid="uid://c1gcr1nbuajbx" path="res://scenes/sfx/hit_sfx.tscn" id="6_qb7vn"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_hit_box.gd" id="7_2oewb"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="8_8tjh6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqi56"]
+atlas = ExtResource("4_7miqo")
+region = Rect2(0, 91, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohf8w"]
+atlas = ExtResource("4_7miqo")
+region = Rect2(16, 91, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnd34"]
+atlas = ExtResource("4_7miqo")
+region = Rect2(32, 91, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly481"]
+atlas = ExtResource("4_7miqo")
+region = Rect2(48, 91, 16, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g0ar1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqi56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohf8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnd34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly481")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5l04"]
+radius = 7.0
+height = 22.0
+
+[node name="Enemy" instance=ExtResource("1_v18pa")]
+script = ExtResource("2_vtm0v")
+can_shoot = true
+explotion_scene = ExtResource("3_s2n0i")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(-1, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_g0ar1")
+autoplay = "default"
+frame = 2
+frame_progress = 0.644117
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+shape = SubResource("CapsuleShape2D_b5l04")
+
+[node name="EnemyHealthBox" type="Area2D" parent="." index="2"]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_had4y")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
+shape = SubResource("CapsuleShape2D_b5l04")
+
+[node name="HitSfx" parent="EnemyHealthBox" index="1" instance=ExtResource("6_qb7vn")]
+
+[node name="EnemyHitBox" type="Area2D" parent="." index="3"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_2oewb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
+shape = SubResource("CapsuleShape2D_b5l04")
+
+[node name="Destroyer" type="Area2D" parent="." index="4"]
+visible = false
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("8_8tjh6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Destroyer" index="0"]
+shape = SubResource("CapsuleShape2D_b5l04")

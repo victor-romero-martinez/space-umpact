@@ -1,6 +1,6 @@
 @icon("res://assets/icons/tools.svg")
 extends Node
-## State machine manager
+## [color=GREEN]State machine manager[/color]
 class_name EnemyStateMachine
 
 @export var state: State

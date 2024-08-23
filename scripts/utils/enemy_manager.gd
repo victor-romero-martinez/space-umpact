@@ -3,10 +3,12 @@ extends Node2D
 ## Control of enemy chunk
 class_name EnemyManager
 
-
+## List of music to play
 @export var game_music: Array[AudioStreamPlayer]
 @export_group('enemies_collections List')
+## List of enemy pack
 @export var enemies_chunk: Array[PackedScene] = []
+## Boss scene fight
 @export var boss_chunk:PackedScene
 
 
@@ -53,7 +55,7 @@ func _make_boos_chunk():
 		boss_c.boss.defeated.connect(_stop_boss_music) #NOTICE
 		add_child.call_deferred(boss_c)
 	
-	
+## Pause or resume current music
 func pause_music(val: bool):
 	game_music[_current_music].stream_paused = val
 	
