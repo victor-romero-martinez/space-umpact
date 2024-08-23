@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://b57aq8mq723ou"]
+
+[ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_afp8x"]
+[ext_resource type="PackedScene" uid="uid://bym8b2dme3ydw" path="res://levels/level_3/background_manager.tscn" id="2_l04l2"]
+[ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="3_87jow"]
+[ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="3_wvm7h"]
+[ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="4_cien6"]
+
+[node name="Level-3" node_paths=PackedStringArray("menu_pause") instance=ExtResource("1_afp8x")]
+menu_pause = NodePath("MenuPause")
+
+[node name="BackgroundManager" parent="Game/BG" index="0" instance=ExtResource("2_l04l2")]
+
+[node name="Hud" parent="Game" index="1" node_paths=PackedStringArray("final_position")]
+final_position = NodePath("HudPosition")
+
+[node name="HudHealth" parent="Game/Hud" index="0" instance=ExtResource("3_wvm7h")]
+position = Vector2(4, 0)
+metadata/_edit_lock_ = true
+
+[node name="GunHud" parent="Game/Hud" index="1" instance=ExtResource("4_cien6")]
+position = Vector2(53, 0)
+metadata/_edit_lock_ = true
+
+[node name="HudPosition" type="Marker2D" parent="Game/Hud" index="2"]
+position = Vector2(9, 5)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="Game/Player" index="0" node_paths=PackedStringArray("initial_position", "respawn") instance=ExtResource("3_87jow")]
+position = Vector2(-58, 60)
+initial_position = NodePath("../PlayerInit")
+respawn = NodePath("../PlayerRespawn")
+
+[node name="PlayerRespawn" type="Marker2D" parent="Game/Player" index="1"]
+position = Vector2(16, 68)
+metadata/_edit_lock_ = true
+
+[node name="PlayerInit" type="Marker2D" parent="Game/Player" index="2"]
+position = Vector2(-38, 68)
+metadata/_edit_lock_ = true
+
+[connection signal="add_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_add_weapon"]
+[connection signal="current_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_current_weapon"]
+[connection signal="hit" from="Game/Player/Player" to="Game/Hud/HudHealth" method="_on_player_hit"]
+[connection signal="remove_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_remove_weapon"]
