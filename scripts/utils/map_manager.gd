@@ -1,10 +1,8 @@
 @icon("res://assets/icons/gear.svg")
 extends Node2D
+## Background control
+class_name BackgroundManager
 
-''' Instructions
-	- add tilemap components as children
-	- add tiles in List Map on Inspector
-'''
 
 @export var list_map: Array[MapChunk] = []
 

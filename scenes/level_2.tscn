@@ -1,14 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://bse3clbf784ak"]
+[gd_scene load_steps=21 format=3 uid="uid://bse3clbf784ak"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_4iprt"]
-[ext_resource type="PackedScene" uid="uid://dvccawcbgcnj7" path="res://levels/level_2/background_manager.tscn" id="2_3wt1b"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="2_jj21j"]
 [ext_resource type="Script" path="res://scripts/utils/hud_player.gd" id="3_2trpj"]
+[ext_resource type="PackedScene" uid="uid://dt3xkmptd0jxl" path="res://levels/level_2/tile_map.tscn" id="3_8gn27"]
+[ext_resource type="Script" path="res://scripts/utils/map_manager.gd" id="3_qk44x"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="3_vard1"]
-[ext_resource type="PackedScene" uid="uid://12i2qachdu1p" path="res://levels/level_1/enemy_manager.tscn" id="4_whtcc"]
+[ext_resource type="PackedScene" uid="uid://culrxypygkbve" path="res://levels/level_2/tile_map_1.tscn" id="4_jjwqs"]
+[ext_resource type="PackedScene" uid="uid://ctkub4l1p7ki7" path="res://levels/level_2/tile_map2.tscn" id="5_aenha"]
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="5_gsjib"]
 [ext_resource type="PackedScene" uid="uid://caasmbolvwk0n" path="res://levels/level_2/enemy_chunk_0.tscn" id="5_ogfs4"]
 [ext_resource type="PackedScene" uid="uid://c1bcxhijj1cwo" path="res://levels/level_2/enemy_chunk_1.tscn" id="5_xni45"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_manager.gd" id="7_c07sx"]
 [ext_resource type="PackedScene" uid="uid://dmb1acg6lojr5" path="res://control/menu_pause.tscn" id="8_7xj5j"]
 [ext_resource type="PackedScene" uid="uid://dmugjoqf0v7q6" path="res://levels/level_2/enemy_chunk_2.tscn" id="8_ssvme"]
 [ext_resource type="PackedScene" uid="uid://cjyg54our4k2k" path="res://levels/level_2/enemy_chunk_3.tscn" id="9_lwjuy"]
@@ -20,7 +23,7 @@
 
 [node name="Level-2" type="Node2D" node_paths=PackedStringArray("enemy_manager", "menu_pause")]
 script = ExtResource("1_4iprt")
-enemy_manager = NodePath("Game/Enemy/EnemyManagertest")
+enemy_manager = NodePath("Game/Enemy/EnemyManager")
 menu_pause = NodePath("MenuPause")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -32,7 +35,15 @@ color = Color(0.12549, 0.113725, 0.141176, 1)
 
 [node name="BG" type="Node2D" parent="Game"]
 
-[node name="BackgroundManager" parent="Game/BG" instance=ExtResource("2_3wt1b")]
+[node name="BackgroundManager2" type="Node2D" parent="Game/BG" node_paths=PackedStringArray("list_map")]
+script = ExtResource("3_qk44x")
+list_map = [NodePath("TileMap"), NodePath("TileMap2"), NodePath("TileMap3")]
+
+[node name="TileMap" parent="Game/BG/BackgroundManager2" instance=ExtResource("3_8gn27")]
+
+[node name="TileMap2" parent="Game/BG/BackgroundManager2" instance=ExtResource("4_jjwqs")]
+
+[node name="TileMap3" parent="Game/BG/BackgroundManager2" instance=ExtResource("5_aenha")]
 
 [node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
 position = Vector2(0, -12)
@@ -69,14 +80,15 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="Game"]
 
-[node name="EnemyManagertest" parent="Game/Enemy" node_paths=PackedStringArray("game_music") instance=ExtResource("4_whtcc")]
+[node name="EnemyManager" type="Node2D" parent="Game/Enemy" node_paths=PackedStringArray("game_music")]
+script = ExtResource("7_c07sx")
 game_music = [NodePath("GameMusic"), NodePath("BossMusic")]
 enemies_chunk = Array[PackedScene]([ExtResource("5_ogfs4"), ExtResource("5_xni45"), ExtResource("8_ssvme"), ExtResource("8_ssvme"), ExtResource("9_lwjuy"), ExtResource("10_2bjc5")])
 boss_chunk = ExtResource("10_qoqc0")
 
-[node name="GameMusic" parent="Game/Enemy/EnemyManagertest" instance=ExtResource("14_e4rrs")]
+[node name="GameMusic" parent="Game/Enemy/EnemyManager" instance=ExtResource("14_e4rrs")]
 
-[node name="BossMusic" parent="Game/Enemy/EnemyManagertest" instance=ExtResource("15_20xpb")]
+[node name="BossMusic" parent="Game/Enemy/EnemyManager" instance=ExtResource("15_20xpb")]
 
 [node name="MenuPause" parent="." instance=ExtResource("8_7xj5j")]
 visible = false

@@ -1,5 +1,6 @@
 @icon("res://assets/icons/gear.svg")
 extends Node2D
+## Control of enemy chunk
 class_name EnemyManager
 
 

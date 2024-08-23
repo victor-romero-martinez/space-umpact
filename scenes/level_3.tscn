@@ -1,15 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://b57aq8mq723ou"]
+[gd_scene load_steps=11 format=3 uid="uid://b57aq8mq723ou"]
 
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_afp8x"]
-[ext_resource type="PackedScene" uid="uid://bym8b2dme3ydw" path="res://levels/level_3/background_manager.tscn" id="2_l04l2"]
+[ext_resource type="Script" path="res://scripts/utils/map_manager.gd" id="2_brkgf"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="3_87jow"]
+[ext_resource type="PackedScene" uid="uid://vgg76yarswi5" path="res://levels/level_3/tile_map.tscn" id="3_llnhv"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="3_wvm7h"]
+[ext_resource type="PackedScene" uid="uid://cwhhgb35gs4j" path="res://levels/level_3/tile_map_1.tscn" id="4_1ea3h"]
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="4_cien6"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_manager.gd" id="6_3l0ug"]
+[ext_resource type="PackedScene" uid="uid://diid8siliqbiu" path="res://scenes/music/game_music.tscn" id="7_er1kw"]
+[ext_resource type="PackedScene" uid="uid://cx8ian2j1oj0e" path="res://scenes/music/boss_music.tscn" id="8_do6ar"]
 
 [node name="Level-3" node_paths=PackedStringArray("menu_pause") instance=ExtResource("1_afp8x")]
 menu_pause = NodePath("MenuPause")
 
-[node name="BackgroundManager" parent="Game/BG" index="0" instance=ExtResource("2_l04l2")]
+[node name="BackgroundManager" type="Node2D" parent="Game/BG" index="0" node_paths=PackedStringArray("list_map")]
+script = ExtResource("2_brkgf")
+list_map = [NodePath("TileMap"), NodePath("TileMap2")]
+
+[node name="TileMap" parent="Game/BG/BackgroundManager" index="0" instance=ExtResource("3_llnhv")]
+
+[node name="TileMap2" parent="Game/BG/BackgroundManager" index="1" instance=ExtResource("4_1ea3h")]
 
 [node name="Hud" parent="Game" index="1" node_paths=PackedStringArray("final_position")]
 final_position = NodePath("HudPosition")
@@ -38,6 +49,14 @@ metadata/_edit_lock_ = true
 [node name="PlayerInit" type="Marker2D" parent="Game/Player" index="2"]
 position = Vector2(-38, 68)
 metadata/_edit_lock_ = true
+
+[node name="EnemyManager" type="Node2D" parent="Game/Enemy" index="0" node_paths=PackedStringArray("game_music")]
+script = ExtResource("6_3l0ug")
+game_music = [NodePath("GameMusic"), NodePath("BossMusic")]
+
+[node name="GameMusic" parent="Game/Enemy/EnemyManager" index="0" instance=ExtResource("7_er1kw")]
+
+[node name="BossMusic" parent="Game/Enemy/EnemyManager" index="1" instance=ExtResource("8_do6ar")]
 
 [connection signal="add_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_add_weapon"]
 [connection signal="current_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_current_weapon"]
