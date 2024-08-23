@@ -43,13 +43,17 @@ metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="Game"]
 
-[node name="Player" parent="Game/Player" node_paths=PackedStringArray("respawn") instance=ExtResource("2_b2s5v")]
-position = Vector2(-26, 78)
+[node name="Player" parent="Game/Player" node_paths=PackedStringArray("initial_position", "respawn") instance=ExtResource("2_b2s5v")]
+position = Vector2(-57, 53)
+initial_position = NodePath("../PlayerInit")
 respawn = NodePath("../PlayerRespawn")
-metadata/_edit_lock_ = true
 
 [node name="PlayerRespawn" type="Marker2D" parent="Game/Player"]
-position = Vector2(12, 78)
+position = Vector2(16, 78)
+metadata/_edit_lock_ = true
+
+[node name="PlayerInit" type="Marker2D" parent="Game/Player"]
+position = Vector2(-39, 78)
 metadata/_edit_lock_ = true
 
 [node name="BossChunk" parent="Game" instance=ExtResource("5_7qg75")]

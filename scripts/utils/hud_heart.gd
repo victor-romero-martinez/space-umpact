@@ -25,3 +25,4 @@ func _remove_heart():
 func _on_player_hit():
 	global.game_data.heart -= 1
 	_remove_heart()
+

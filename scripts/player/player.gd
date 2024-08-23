@@ -24,6 +24,8 @@ signal remove_weapon(val: int)
 @export_group('Settings')
 ## Player velocity
 @export var speed = 50.0
+## Player initial position
+@export var initial_position: Marker2D
 ## Player respawn position
 @export var respawn: Marker2D
 ## Explotion effects scene
@@ -35,13 +37,14 @@ signal remove_weapon(val: int)
 enum TState { IMMUNITY, MOVE, FREEZE }
 enum TBullet { bullet, rocket, laser_h, laser_v }
 
-## List of guns
+#region List of guns
 var GUNS = {
 	'bullet': load('res://scenes/utilities/bullet.tscn'),
 	'rocket': load('res://scenes/utilities/rocket.tscn'),
 	'laser_h': load('res://scenes/utilities/laser_h.tscn'),
 	'laser_v': load("res://scenes/utilities/laser_v.tscn")
 }
+#endregion
 
 ## Limit to prevent the player from leaving the screen
 var offset: float = 10.0
@@ -52,15 +55,16 @@ var state: TState = TState.IMMUNITY
 
 
 func _ready():
-	_animation_spawn()
-	_start_combat()
+	global_position = initial_position.position
 	current_weapon.emit(TBullet.bullet)
+	_start_combat()
 	
 
 func _physics_process(delta):
 	if state == TState.MOVE or state == TState.IMMUNITY:
 		_move(delta)
-		move_and_slide()
+	
+	move_and_slide()
 	
 	if is_on_wall() or is_on_floor(): make_boom()
 	if Input.is_action_just_pressed('change_weapon'): _next_weapon()
@@ -72,43 +76,12 @@ func _move(delta):
 	var direction = Input.get_vector('ui_left', 'ui_right', 'ui_up', 'ui_down')
 	velocity = direction.normalized() * speed
 
-	if state == TState.MOVE or state == TState.IMMUNITY:
-		# limits movement on the screen
-		#WARNING: hace un pequeño movimineto
-		position += velocity * delta
-		position = position.clamp(Vector2(offset, offset), (Global.screen_size - Vector2(offset, offset)))
-
-# enter from outside
-func _start_combat():
-	var t = create_tween()
-	t.tween_property(self, 'global_position', respawn.position, .45)\
-		.set_trans(Tween.TRANS_LINEAR)\
-		.set_ease(Tween.EASE_OUT)
-	t.tween_callback(func (): state = TState.MOVE)
-	
-	
-# change level when finish fight 
-func _finish_combat():
-	state = TState.FREEZE
-	%PlayerCollision.disabled = true
-	velocity.x = speed * 2
-	if global_position.x > global.screen_size.x: global.hidden_player = true
-	move_and_slide()
-	
-	
-## Applies damage, explosion effect and resets position when not immunity
-func make_boom():
-	#if not IMMUNITY OR FREEZE:
-	if state == TState.MOVE:
-		visible = false
-		_apply_explotion()
-		global_position = respawn.position
-		
-		hit.emit()
-		
-		await get_tree().create_timer(1.0).timeout
-		visible = true
-		_animation_spawn()
+	# limits movement on the screen
+	#WARNING: hace un pequeño movimineto
+	position += velocity * delta
+	position = position.clamp(
+		Vector2(offset, offset), (Global.screen_size - Vector2(offset, offset))
+	)
 
 
 # apply animation
@@ -120,6 +93,38 @@ func _animation_spawn():
 	state = TState.MOVE
 	$AnimatedSprite2D.play('default')
 	$ShieldSfx.stop()
+
+
+# enter from outside
+func _start_combat():
+	var t = create_tween()
+	t.tween_property(self, 'global_position', respawn.position, .45)\
+		.set_trans(Tween.TRANS_LINEAR)\
+		.set_ease(Tween.EASE_OUT)
+	_animation_spawn()
+	t.tween_callback(func (): state = TState.MOVE)
+	
+	
+# change level when finish fight 
+func _finish_combat():
+	state = TState.FREEZE
+	%PlayerCollision.disabled = true
+	velocity.x = speed * 2
+	if global_position.x > global.screen_size.x: global.hidden_player = true
+	
+	
+## Applies damage, explosion effect and resets position when not immunity
+func make_boom():
+	#if not IMMUNITY OR FREEZE:
+	if state == TState.MOVE:
+		state = TState.FREEZE # NOTICE: change state before, after change position
+		_apply_explotion()
+		global_position = initial_position.position
+		
+		hit.emit()
+		
+		await get_tree().create_timer(1.0).timeout
+		_start_combat()
 
 
 # Select ammunition type and shoot

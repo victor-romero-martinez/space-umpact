@@ -53,13 +53,18 @@ metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="Game"]
 
-[node name="Player" parent="Game/Player" node_paths=PackedStringArray("respawn") instance=ExtResource("2_do623")]
+[node name="Player" parent="Game/Player" node_paths=PackedStringArray("initial_position", "respawn") instance=ExtResource("2_do623")]
 position = Vector2(-32, 68)
+initial_position = NodePath("../PlayerInit")
 respawn = NodePath("../PlayerRespawn")
 metadata/_edit_lock_ = true
 
 [node name="PlayerRespawn" type="Marker2D" parent="Game/Player"]
 position = Vector2(16, 68)
+metadata/_edit_lock_ = true
+
+[node name="PlayerInit" type="Marker2D" parent="Game/Player"]
+position = Vector2(-38, 68)
 metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="Game"]
