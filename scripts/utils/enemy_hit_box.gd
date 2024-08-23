@@ -1,9 +1,7 @@
 @icon("res://assets/icons/crossed-swords.svg")
 extends Area2D
-class_name EnemyHitBox
-
-
 ## DANGER: Be sure to set the collisions as follows: [b]Layer[/b] [b][color=#d58b8b]unassigned[/color][/b] and [b]Mask[/b] assigned to [b][color=#d58b8b]player[/color][/b]
+class_name EnemyHitBox
 
 
 func _ready():

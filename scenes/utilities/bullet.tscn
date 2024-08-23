@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/utils/bullet.gd" id="1_rlf4v"]
 [ext_resource type="Texture2D" uid="uid://4txxjkpo453e" path="res://assets/bullet.png" id="2_vqrpj"]
-[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="3_rxtf5"]
 [ext_resource type="PackedScene" uid="uid://ddfaojuimki2i" path="res://scenes/sfx/bullet_sfx.tscn" id="4_ojjte"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="5_8moje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr26n"]
 size = Vector2(4, 2)
@@ -34,13 +34,16 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_vhig7")
 debug_color = Color(0.32248, 0.596711, 0.522435, 0.42)
 
-[node name="Destroyer" parent="." instance=ExtResource("3_rxtf5")]
-position = Vector2(-1, 0)
+[node name="BulletSound" parent="." instance=ExtResource("4_ojjte")]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Destroyer"]
+[node name="Destroyer2" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 1536
+script = ExtResource("5_8moje")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Destroyer2"]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_vhig7")
 debug_color = Color(0.32248, 0.596711, 0.522435, 0.42)
-
-[node name="BulletSound" parent="." instance=ExtResource("4_ojjte")]
 
 [connection signal="area_entered" from="BulletHitBox" to="." method="_on_area_2d_area_entered"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://rqviagvnfuef" path="res://assets/laser_v.png" id="1_eft6y"]
 [ext_resource type="Script" path="res://scripts/utils/laser_v.gd" id="1_rv3j7"]
-[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="3_mjgw2"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="4_al68a"]
 [ext_resource type="PackedScene" uid="uid://cu0cyef6b243p" path="res://scenes/sfx/laser_v_sfx.tscn" id="4_urb11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_alrnc"]
@@ -92,12 +92,15 @@ shape = SubResource("RectangleShape2D_w8h2i")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Destroyer" parent="." instance=ExtResource("3_mjgw2")]
+[node name="LaserVVfx" parent="." instance=ExtResource("4_urb11")]
+
+[node name="Destroyer" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 1536
+script = ExtResource("4_al68a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destroyer"]
 shape = SubResource("RectangleShape2D_htnqn")
-
-[node name="LaserVVfx" parent="." instance=ExtResource("4_urb11")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

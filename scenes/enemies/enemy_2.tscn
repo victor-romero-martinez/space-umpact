@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpmgkh4ooe0w1"]
+[gd_scene load_steps=15 format=3 uid="uid://cpmgkh4ooe0w1"]
 
 [ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_0yv0j"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="2_psruq"]
 [ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="3_c27mm"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_im4p6"]
-[ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="5_85sxa"]
-[ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="6_n7rsk"]
-[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="7_mpcgb"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_hit_box.gd" id="5_eglkl"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="6_l723l"]
+[ext_resource type="PackedScene" uid="uid://c1gcr1nbuajbx" path="res://scenes/sfx/hit_sfx.tscn" id="7_w30k1"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="8_mgsyl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ahlic"]
 atlas = ExtResource("3_c27mm")
@@ -58,27 +59,39 @@ visible = false
 shape = SubResource("CircleShape2D_tldru")
 debug_color = Color(0.90718, 0.217955, 0.529591, 0.42)
 
-[node name="EnemyHitBox" parent="." index="2" instance=ExtResource("5_85sxa")]
+[node name="EnemyHitBox" type="Area2D" parent="." index="2"]
 visible = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_eglkl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
 rotation = 1.58239
+scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_hbbi7")
 debug_color = Color(0.356406, 0.517358, 0.891147, 0.42)
 
-[node name="EnemyHealthBox" parent="." index="3" instance=ExtResource("6_n7rsk")]
+[node name="EnemyHealthBox" type="Area2D" parent="." index="3" node_paths=PackedStringArray("hit_sound")]
 visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_l723l")
+hit_sound = NodePath("HitSfx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
+[node name="HitSfx" parent="EnemyHealthBox" index="0" instance=ExtResource("7_w30k1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox" index="1"]
 rotation = 1.60507
 shape = SubResource("CapsuleShape2D_xq43l")
 debug_color = Color(0.389372, 0.491653, 0.944514, 0.42)
 
-[node name="Destroyer" parent="." index="4" instance=ExtResource("7_mpcgb")]
+[node name="Destroyer2" type="Area2D" parent="." index="4"]
 visible = false
 collision_layer = 2048
+collision_mask = 512
+script = ExtResource("8_mgsyl")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Destroyer" index="0"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Destroyer2" index="0"]
 rotation = 1.60507
 shape = SubResource("CapsuleShape2D_xq43l")
 debug_color = Color(0.389372, 0.491653, 0.944514, 0.42)

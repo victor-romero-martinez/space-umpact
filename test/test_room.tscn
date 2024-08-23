@@ -63,6 +63,7 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy3" parent="Game/Enemies" instance=ExtResource("7_mlwkf")]
 position = Vector2(191, 113)
+health = 6
 
 [node name="Enemy4" parent="Game/Enemies" instance=ExtResource("7_mlwkf")]
 position = Vector2(206, 78)

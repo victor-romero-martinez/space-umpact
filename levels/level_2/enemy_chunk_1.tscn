@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bi5ybcjsks1j8" path="res://scenes/enemies/enemy_1.tscn" id="2_8jggn"]
 [ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="4_vpoyr"]
 [ext_resource type="Script" path="res://scripts/state/move_up.gd" id="5_7kxxa"]
-[ext_resource type="PackedScene" uid="uid://dtvagb04p7db5" path="res://scenes/utilities/destroyer.tscn" id="6_eypu7"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="6_d24f1"]
 [ext_resource type="Script" path="res://scripts/state/move_down.gd" id="6_rumyg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5yw4i"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8agfd"]
 
 [node name="Enemy_Chunk" instance=ExtResource("1_sitfv")]
 metadata/_edit_lock_ = true
@@ -144,9 +144,11 @@ script = ExtResource("5_7kxxa")
 max_move = 8.0
 actor = NodePath("../..")
 
-[node name="Destroyer" parent="." index="6" instance=ExtResource("6_eypu7")]
+[node name="Destroyer" type="Area2D" parent="." index="6"]
 collision_layer = 2048
+collision_mask = 512
+script = ExtResource("6_d24f1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destroyer" index="0"]
 position = Vector2(342, 0)
-shape = SubResource("RectangleShape2D_5yw4i")
+shape = SubResource("RectangleShape2D_8agfd")

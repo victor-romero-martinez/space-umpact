@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://2s814b5rdr10"]
+[gd_scene load_steps=6 format=3 uid="uid://2s814b5rdr10"]
 
 [ext_resource type="Script" path="res://scripts/enemy/boss.gd" id="1_l86ic"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_hit_box.gd" id="3_0q62r"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_jh1xv"]
-[ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="4_0xqel"]
-[ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="5_y41on"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="4_b66dh"]
+[ext_resource type="PackedScene" uid="uid://c1gcr1nbuajbx" path="res://scenes/sfx/hit_sfx.tscn" id="5_muxkx"]
 
 [node name="Boss1" type="CharacterBody2D"]
 collision_layer = 0
@@ -13,11 +14,20 @@ explotion_scene = ExtResource("3_jh1xv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
-[node name="EnemyHealthBox" parent="." instance=ExtResource("4_0xqel")]
+[node name="EnemyHitBox2" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_0q62r")
 
-[node name="EnemyHitBox" parent="." instance=ExtResource("5_y41on")]
+[node name="EnemyHealthBox2" type="Area2D" parent="." node_paths=PackedStringArray("hit_sound")]
 visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_b66dh")
+hit_sound = NodePath("HitSfx")
+
+[node name="HitSfx" parent="EnemyHealthBox2" instance=ExtResource("5_muxkx")]
 
 [node name="ExploitTrigger" type="Timer" parent="."]
 unique_name_in_owner = true

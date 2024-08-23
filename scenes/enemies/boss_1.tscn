@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c88ev1so4wvv1"]
+[gd_scene load_steps=14 format=3 uid="uid://c88ev1so4wvv1"]
 
 [ext_resource type="Script" path="res://scripts/enemy/boss.gd" id="2_fcshl"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_pqo2t"]
-[ext_resource type="PackedScene" uid="uid://by7lrbpcv54q0" path="res://scenes/utilities/enemy_health_box.tscn" id="3_yd4ll"]
-[ext_resource type="PackedScene" uid="uid://dh3wvochtm054" path="res://scenes/utilities/enemy_hit_box.tscn" id="4_6iuw8"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="4_7o8cd"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_hit_box.gd" id="6_55mv4"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="7_c13ic"]
+[ext_resource type="PackedScene" uid="uid://c1gcr1nbuajbx" path="res://scenes/sfx/hit_sfx.tscn" id="8_8vee8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k34ol"]
 atlas = ExtResource("2_pqo2t")
@@ -42,13 +43,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krlev"]
-radius = 17.0
-height = 42.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s5r1f"]
 radius = 18.0
 height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krlev"]
+radius = 17.0
+height = 42.0
 
 [node name="Boss1" type="CharacterBody2D"]
 collision_layer = 8
@@ -68,24 +69,32 @@ metadata/_edit_lock_ = true
 visible = false
 polygon = PackedVector2Array(-12, -8, -15, -17, -6, -26, -6, -26, 14, -26, 24, -14, 23, -1, 10, 15, -2, 14, -8, 12, -8, -3)
 
-[node name="EnemyHealthBox" parent="." instance=ExtResource("3_yd4ll")]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox"]
-position = Vector2(5, -5)
-shape = SubResource("CapsuleShape2D_krlev")
-debug_color = Color(0.59863, 0.376395, 0.987965, 0.42)
-
-[node name="EnemyHitBox" parent="." instance=ExtResource("4_6iuw8")]
-visible = false
-collision_mask = 34
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
-position = Vector2(5, -5)
-shape = SubResource("CapsuleShape2D_s5r1f")
-
 [node name="ExploitTrigger" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.25
+
+[node name="EnemyHitBox2" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_55mv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox2"]
+position = Vector2(5, -5)
+shape = SubResource("CapsuleShape2D_s5r1f")
+
+[node name="EnemyHealthBox2" type="Area2D" parent="." node_paths=PackedStringArray("hit_sound")]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("7_c13ic")
+hit_sound = NodePath("HitSfx")
+
+[node name="HitSfx" parent="EnemyHealthBox2" instance=ExtResource("8_8vee8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHealthBox2"]
+position = Vector2(5, -5)
+shape = SubResource("CapsuleShape2D_krlev")
+debug_color = Color(0.59863, 0.376395, 0.987965, 0.42)
 
 [connection signal="timeout" from="ExploitTrigger" to="." method="_on_timer_timeout"]

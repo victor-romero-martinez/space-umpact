@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="2_c5j55"]
 [ext_resource type="Texture2D" uid="uid://bc7h6qwx3d7bi" path="res://assets/ship.png" id="2_wxiv3"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="4_gyihd"]
-[ext_resource type="PackedScene" uid="uid://b6kwgfottfx6k" path="res://scenes/utilities/player_hit_box.tscn" id="6_1htvj"]
+[ext_resource type="Script" path="res://scripts/player/player_health_box.gd" id="6_gxj05"]
 [ext_resource type="PackedScene" uid="uid://c2i63t0qw4v5n" path="res://scenes/sfx/shield_sfx.tscn" id="7_68ugx"]
 [ext_resource type="Script" path="res://scripts/player/colector_item.gd" id="7_gowpx"]
-[ext_resource type="PackedScene" uid="uid://dfew3tjdbt8e5" path="res://scenes/utilities/player_health_box.tscn" id="7_j7iap"]
+[ext_resource type="Script" path="res://scripts/player/player_hit_box.gd" id="7_uhceh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0jf1"]
 atlas = ExtResource("2_wxiv3")
@@ -46,17 +46,17 @@ animations = [{
 radius = 5.9942
 height = 19.9997
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdn0y"]
-radius = 4.18514
-height = 12.9232
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phk82"]
+radius = 5.99996
+height = 21.9999
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sg50y"]
 radius = 6.99987
 height = 22.0118
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phk82"]
-radius = 5.99996
-height = 21.9999
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdn0y"]
+radius = 4.18514
+height = 12.9232
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -74,24 +74,8 @@ visible = false
 rotation = 1.56509
 shape = SubResource("CapsuleShape2D_af115")
 
-[node name="PlayerHitBox" parent="." instance=ExtResource("6_1htvj")]
-visible = false
-scale = Vector2(1.70215, 1.67611)
-collision_mask = 92
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
-rotation = 1.58667
-shape = SubResource("CapsuleShape2D_fdn0y")
-debug_color = Color(0.228476, 0.627522, 0.338528, 0.42)
-
-[node name="PlayerHealthBox" parent="." instance=ExtResource("7_j7iap")]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealthBox"]
-rotation = 1.57692
-shape = SubResource("CapsuleShape2D_sg50y")
-
 [node name="ColectorItem" type="Area2D" parent="."]
+visible = false
 collision_layer = 256
 collision_mask = 64
 script = ExtResource("7_gowpx")
@@ -101,3 +85,27 @@ rotation = -1.57421
 shape = SubResource("CapsuleShape2D_phk82")
 
 [node name="ShieldSfx" parent="." instance=ExtResource("7_68ugx")]
+
+[node name="PlayerHealthBox2" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_gxj05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealthBox2"]
+rotation = 1.57692
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_sg50y")
+
+[node name="PlayerHitBox2" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 28
+script = ExtResource("7_uhceh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox2"]
+rotation = 1.58692
+scale = Vector2(1.67612, 1.70214)
+skew = -0.000489473
+shape = SubResource("CapsuleShape2D_fdn0y")
+debug_color = Color(0.228476, 0.627522, 0.338528, 0.42)

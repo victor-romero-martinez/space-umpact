@@ -5,6 +5,8 @@ class_name EnemyHealthBox
 
 ## DANGER: Be sure to set the collisions as follows: [b]Layer[/b] assigned to [b][color=#d58b8b]enemy[/color][/b] and [b]Mask[/b]  [b][color=#d58b8b]unassigned[/color][/b]
 
+@export var hit_sound: AudioStreamPlayer
+
 var health: int = 0
 
 func _ready():
@@ -18,7 +20,7 @@ func _ready():
 func take_damage(damage: int = 1):
 	health -= damage
 	get_parent().set_blinking(damage)
-	$HitSfx.play()
+	hit_sound.play()
 	
 	if health < 1:
 		get_parent().defeated.emit()
