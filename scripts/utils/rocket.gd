@@ -17,19 +17,18 @@ enum Direction { LEFT = -1, RIGHT = 1 }
 
 var _collitions: Array[CollisionObject2D] = []
 
-var _handler_zigzag_y: bool = true
+var _handler_zigzag_y = randi_range(0, 1)
+var _aux_dir: Direction = Direction.RIGHT
+
 
 func _ready():
 	if directon == Direction.LEFT:
-		$Sprite2D.flip_h = true
-		$Sensor.rotation_degrees = 180
-		$HitBox.rotation_degrees = 180
+		go_negative()
 
 
 func _physics_process(_delta):
-	velocity.x = directon * speed
+	velocity.x = _aux_dir * speed
 		
-	
 	if _collitions.is_empty():
 		if _handler_zigzag_y:
 			velocity.y = speed * 1
@@ -54,6 +53,13 @@ func _make_boom():
 		var boom = explotion.instantiate()
 		boom.position = global_position
 		add_sibling(boom)
+
+
+func go_negative():
+	_aux_dir = Direction.LEFT
+	$Sprite2D.flip_h = true
+	$Sensor.rotation_degrees = 180
+	$HitBox.rotation_degrees = 180
 
 
 # add

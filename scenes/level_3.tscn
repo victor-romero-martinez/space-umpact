@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b57aq8mq723ou"]
+[gd_scene load_steps=15 format=3 uid="uid://b57aq8mq723ou"]
 
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_afp8x"]
 [ext_resource type="Script" path="res://scripts/utils/map_manager.gd" id="2_brkgf"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cku34ulcamr5u" path="res://levels/level_3/enemy_chunk.tscn" id="9_4bosb"]
 [ext_resource type="PackedScene" uid="uid://dja255rciejxv" path="res://levels/level_3/enemy_chunk_1.tscn" id="10_rhcff"]
 [ext_resource type="PackedScene" uid="uid://bhddbyuaaux36" path="res://levels/level_3/enemy_chunk_2.tscn" id="11_ftd5v"]
+[ext_resource type="PackedScene" uid="uid://co38ulydssxh6" path="res://levels/level_3/boss_chunk.tscn" id="12_qexgr"]
 
 [node name="Level-3" node_paths=PackedStringArray("enemy_manager", "menu_pause") instance=ExtResource("1_afp8x")]
 enemy_manager = NodePath("Game/Enemy/EnemyManager")
@@ -59,6 +60,7 @@ position = Vector2(0, 1)
 script = ExtResource("6_3l0ug")
 game_music = [NodePath("GameMusic"), NodePath("BossMusic")]
 enemies_chunk = Array[PackedScene]([ExtResource("9_4bosb"), ExtResource("10_rhcff"), ExtResource("11_ftd5v"), ExtResource("9_4bosb")])
+boss_chunk = ExtResource("12_qexgr")
 
 [node name="GameMusic" parent="Game/Enemy/EnemyManager" index="0" instance=ExtResource("7_er1kw")]
 

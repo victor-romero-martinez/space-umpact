@@ -47,6 +47,7 @@ animations = [{
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_llluu")
+health = 80
 explotion_scene = ExtResource("2_xppea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

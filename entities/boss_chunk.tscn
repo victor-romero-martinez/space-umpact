@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://di4g8rw3ut8l0"]
+
+[ext_resource type="Script" path="res://scripts/utils/bosss_chunk.gd" id="1_es2wg"]
+[ext_resource type="PackedScene" uid="uid://d175njosf45c7" path="res://scenes/utilities/health_bar.tscn" id="2_6ennw"]
+
+[node name="BossChunk" type="Node2D"]
+script = ExtResource("1_es2wg")
+metadata/_edit_lock_ = true
+
+[node name="HealthFinalPos" type="Marker2D" parent="."]
+position = Vector2(264, 0)
+metadata/_edit_lock_ = true
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("pos_in_game") instance=ExtResource("2_6ennw")]
+position = Vector2(265, -12)
+pos_in_game = NodePath("../HealthFinalPos")
+metadata/_edit_lock_ = true

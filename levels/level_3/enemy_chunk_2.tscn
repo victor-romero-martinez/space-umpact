@@ -14,7 +14,7 @@
 [node name="Enemy_Chunk" instance=ExtResource("1_mkdub")]
 
 [node name="Enemy" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_l4jo6")]
-position = Vector2(229, 81)
+position = Vector2(185, 81)
 health = 25
 speed = 12.0
 fsm = NodePath("EnemyStateMachine")
@@ -51,5 +51,5 @@ script = ExtResource("8_54gfi")
 wait_time = 14.0
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StopMovement" index="0"]
-position = Vector2(297, 1)
+position = Vector2(253, 1)
 shape = SubResource("RectangleShape2D_v7l6o")

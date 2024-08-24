@@ -27,7 +27,6 @@ metadata/_edit_lock_ = true
 
 [node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("2_o4mp2")]
 position = Vector2(371, 81)
-health = 80
 timer_attack = 2.0
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
