@@ -1,9 +1,15 @@
 extends Node2D
 class_name ChunkEnemy
 
-@export var speed: float = 30.0
+signal next_chunk
+
+var speed: float = 0.0
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready():
+	speed = get_parent().speed
+
+
 func _process(delta):
 	position.x -= speed * delta
+

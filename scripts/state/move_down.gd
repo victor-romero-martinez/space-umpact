@@ -4,6 +4,7 @@ class_name EnemyMoveDown
 
 ## active for move
 @export var max_move: float = 0.0
+## Enemy attack by bullet
 @export var actor: Enemy
 
 

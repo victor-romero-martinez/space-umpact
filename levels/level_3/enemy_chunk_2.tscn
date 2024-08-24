@@ -1,12 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhddbyuaaux36"]
+[gd_scene load_steps=10 format=3 uid="uid://bhddbyuaaux36"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_mkdub"]
 [ext_resource type="PackedScene" uid="uid://5solvkojlpwa" path="res://scenes/enemies/enemy_8.tscn" id="2_l4jo6"]
+[ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="3_iwao1"]
+[ext_resource type="Script" path="res://scripts/state/move_up.gd" id="4_iwtbk"]
+[ext_resource type="Script" path="res://scripts/state/move_down.gd" id="5_pfn6n"]
+[ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="6_hs3pf"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="7_vednh"]
+[ext_resource type="Script" path="res://scripts/utils/stop_chunk_movement.gd" id="8_54gfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7l6o"]
 
 [node name="Enemy_Chunk" instance=ExtResource("1_mkdub")]
 
-[node name="Enemy" parent="." index="0" instance=ExtResource("2_l4jo6")]
-position = Vector2(35, 66)
+[node name="Enemy" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_l4jo6")]
+position = Vector2(229, 81)
+health = 25
+speed = 12.0
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("3_iwao1")
+state = NodePath("EnemyMoveUp")
+
+[node name="EnemyMoveUp" type="Node" parent="Enemy/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("4_iwtbk")
+max_move = 40.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Enemy/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_pfn6n")
+max_move = 30.0
+actor = NodePath("../..")
+
+[node name="EnemyShots" type="Node" parent="Enemy/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_hs3pf")
+actor = NodePath("../..")
+bullet_scene = ExtResource("7_vednh")
 
 [node name="Destroyer" parent="." index="1"]
 metadata/_edit_lock_ = true
+
+[node name="StopMovement" type="Area2D" parent="." index="3"]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("8_54gfi")
+wait_time = 14.0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StopMovement" index="0"]
+position = Vector2(297, 1)
+shape = SubResource("RectangleShape2D_v7l6o")

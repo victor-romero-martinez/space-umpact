@@ -3,9 +3,12 @@ extends Node2D
 ## Control of enemy chunk
 class_name EnemyManager
 
+
 ## List of music to play
 @export var game_music: Array[AudioStreamPlayer]
 @export_group('enemies_collections List')
+## Velocity of chunk
+@export var speed: float = 30.0
 ## List of enemy pack
 @export var enemies_chunk: Array[PackedScene] = []
 ## Boss scene fight
@@ -14,6 +17,7 @@ class_name EnemyManager
 
 var _screen_width: float
 var _chunk_counter: int = 0
+var _current_chunk: int = 0
 var _current_music:int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +25,14 @@ func _ready():
 	_screen_width = Global.screen_size.x
 	game_music[_current_music].play()
 	
-	_make_enemy_chunk()
+	#region enemies chunk check
+	if enemies_chunk.is_empty():
+		push_error('Enemy chunk scene is missing')
+	else:
+		_chunk_counter = enemies_chunk.size()
+	#endregion
+	
+	_make_enemy_chunk(_current_chunk)
 
 	
 func _decrement_chunk():
@@ -31,19 +42,20 @@ func _decrement_chunk():
 		_trans_music()
 		_make_boos_chunk()
 	
-	
-func _make_enemy_chunk():
-	if enemies_chunk.is_empty():
-		push_error('Enemy chunk scene is missing')
-	else:
-		_chunk_counter = enemies_chunk.size()
+
+func _next_chunk():
+	if _current_chunk < enemies_chunk.size():
+		call_deferred("_make_enemy_chunk", _current_chunk)
+
+
+func _make_enemy_chunk(idx: int):
+	var chunk = enemies_chunk[idx].instantiate() as ChunkEnemy
+	chunk.position.x = _screen_width
+	chunk.tree_exiting.connect(_decrement_chunk)
+	chunk.next_chunk.connect(_next_chunk)
 		
-		for i in _chunk_counter:
-			var chunk = enemies_chunk[i].instantiate()
-			chunk.position.x = _screen_width * (i + 1)
-			chunk.tree_exiting.connect(_decrement_chunk)
-			
-			add_child(chunk)
+	add_child(chunk)
+	_current_chunk += 1
 
 
 func _make_boos_chunk():

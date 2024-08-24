@@ -70,6 +70,7 @@ change_weapon={
 2d_physics/layer_10="off_x_left"
 2d_physics/layer_11="off_x_rigth"
 2d_physics/layer_12="destroyer_x_left"
+2d_physics/layer_13="right viewport detector"
 
 [rendering]
 

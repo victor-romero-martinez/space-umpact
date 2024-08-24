@@ -66,11 +66,12 @@ frame_progress = 0.644117
 visible = false
 shape = SubResource("CapsuleShape2D_b5l04")
 
-[node name="EnemyHealthBox" type="Area2D" parent="." index="2"]
+[node name="EnemyHealthBox" type="Area2D" parent="." index="2" node_paths=PackedStringArray("hit_sound")]
 visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("5_had4y")
+hit_sound = NodePath("HitSfx")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
 shape = SubResource("CapsuleShape2D_b5l04")

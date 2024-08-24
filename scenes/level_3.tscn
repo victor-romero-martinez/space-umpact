@@ -55,9 +55,10 @@ position = Vector2(-38, 68)
 metadata/_edit_lock_ = true
 
 [node name="EnemyManager" type="Node2D" parent="Game/Enemy" index="0" node_paths=PackedStringArray("game_music")]
+position = Vector2(0, 1)
 script = ExtResource("6_3l0ug")
 game_music = [NodePath("GameMusic"), NodePath("BossMusic")]
-enemies_chunk = Array[PackedScene]([ExtResource("9_4bosb"), ExtResource("10_rhcff"), ExtResource("11_ftd5v")])
+enemies_chunk = Array[PackedScene]([ExtResource("9_4bosb"), ExtResource("10_rhcff"), ExtResource("11_ftd5v"), ExtResource("9_4bosb")])
 
 [node name="GameMusic" parent="Game/Enemy/EnemyManager" index="0" instance=ExtResource("7_er1kw")]
 

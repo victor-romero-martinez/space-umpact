@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvhb412hqr1q3"]
+[gd_scene load_steps=7 format=3 uid="uid://dvhb412hqr1q3"]
 
 [ext_resource type="PackedScene" uid="uid://bi5ybcjsks1j8" path="res://scenes/enemies/enemy_1.tscn" id="1_qjpef"]
 [ext_resource type="Script" path="res://scripts/utils/chunk-enemy.gd" id="1_tphy8"]
 [ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="3_q38ul"]
+[ext_resource type="Script" path="res://scripts/utils/next_chunk.gd" id="4_oco0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ns2n2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cb7ig"]
 
 [node name="Chunk" type="Node2D"]
 script = ExtResource("1_tphy8")
@@ -41,3 +44,12 @@ script = ExtResource("3_q38ul")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destroyer"]
 position = Vector2(342, 0)
 shape = SubResource("RectangleShape2D_ns2n2")
+
+[node name="RightViewport" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("4_oco0q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RightViewport"]
+position = Vector2(341, 26)
+shape = SubResource("RectangleShape2D_cb7ig")

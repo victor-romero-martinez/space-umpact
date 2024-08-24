@@ -9,7 +9,7 @@ extends Enemy
 
 ## initial health
 @export var health: int = 1
-## positive value in float
+## use on state machine
 @export var speed: float = 0.0
 ## active for can_shoot mode
 @export var can_shoot: bool = false
@@ -38,10 +38,11 @@ func _ready():
 	connect('defeated', _make_boom)
 	$AnimatedSprite2D.play("default")
 
+
 func _physics_process(_delta):
 	if global_position.x < global.screen_size.x:
 		on_viewport.emit()
-	
+		
 
 func set_blinking(_damage: int):
 	var _tween_timer: float = 0.25

@@ -4,5 +4,6 @@ extends Area2D
 class_name Destroyer
 
 
-func remove_me():
+## Remove parent
+func do_something():
 	get_parent().queue_free()

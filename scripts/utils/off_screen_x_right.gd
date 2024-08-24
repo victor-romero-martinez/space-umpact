@@ -3,5 +3,5 @@ class_name XRight
 
 
 func _on_area_exited(area):
-	if area is Destroyer:
-		area.remove_me()
+	if area is Destroyer or area is ViewportDetector:
+		area.do_something()
