@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0mooo2exfrn7"]
+
+[ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_j6bgv"]
+[ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="2_3kwaq"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="2_p7ow8"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_hit_box.gd" id="3_fcx3r"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_p80g3"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="4_25i32"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pic3p"]
+atlas = ExtResource("2_3kwaq")
+region = Rect2(0, 104, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbdbb"]
+atlas = ExtResource("2_3kwaq")
+region = Rect2(16, 104, 16, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3g47j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pic3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbdbb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd4wb"]
+size = Vector2(20.5, 10)
+
+[node name="Enemy" instance=ExtResource("1_j6bgv")]
+script = ExtResource("2_p7ow8")
+health = 3
+explotion_scene = ExtResource("3_p80g3")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3g47j")
+autoplay = "default"
+frame = 1
+frame_progress = 0.261172
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_bd4wb")
+
+[node name="EnemyHitBox" type="Area2D" parent="." index="2"]
+visible = false
+script = ExtResource("3_fcx3r")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
+position = Vector2(1.75, 0)
+shape = SubResource("RectangleShape2D_bd4wb")
+
+[node name="EnemyHealthBox" type="Area2D" parent="." index="3"]
+visible = false
+script = ExtResource("4_25i32")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_bd4wb")
