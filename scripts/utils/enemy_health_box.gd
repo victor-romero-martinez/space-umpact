@@ -1,10 +1,12 @@
 @icon("res://assets/icons/heavy-black-heart.svg")
 extends Area2D
+## Control enemy life
 class_name EnemyHealthBox
 
 
 ## DANGER: Be sure to set the collisions as follows: [b]Layer[/b] assigned to [b][color=#d58b8b]enemy[/color][/b] and [b]Mask[/b]  [b][color=#d58b8b]unassigned[/color][/b]
 
+## Play sound when receive a hit
 @export var hit_sound: AudioStreamPlayer
 
 var health: int = 0

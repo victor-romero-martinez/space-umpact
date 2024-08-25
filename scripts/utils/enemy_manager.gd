@@ -1,6 +1,6 @@
 @icon("res://assets/icons/gear.svg")
 extends Node2D
-## Control of enemy chunk
+## [color=GREEN]Control of enemy chunk[/color]
 class_name EnemyManager
 
 
@@ -30,17 +30,16 @@ func _ready():
 		push_error('Enemy chunk scene is missing')
 	else:
 		_chunk_counter = enemies_chunk.size()
+		_make_enemy_chunk(_current_chunk)
 	#endregion
 	
-	_make_enemy_chunk(_current_chunk)
-
 	
 func _decrement_chunk():
 	_chunk_counter -= 1
 	
 	if _chunk_counter == 0:
 		_trans_music()
-		_make_boos_chunk()
+		_make_boss_chunk()
 	
 
 func _next_chunk():
@@ -58,7 +57,7 @@ func _make_enemy_chunk(idx: int):
 	_current_chunk += 1
 
 
-func _make_boos_chunk():
+func _make_boss_chunk():
 	if not boss_chunk:
 		push_error('Boss chunk scene is missing')
 	else:

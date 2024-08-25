@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dvhb412hqr1q3" path="res://levels/level_1/enemy_chunk_0.tscn" id="7_h7mse"]
 [ext_resource type="PackedScene" uid="uid://2empk7mtmylg" path="res://levels/level_1/enemy_chunk_1.tscn" id="8_dcy32"]
 [ext_resource type="PackedScene" uid="uid://bsewqcenmlwa3" path="res://levels/level_1/enemy_chunk_2.tscn" id="9_cq6gh"]
-[ext_resource type="PackedScene" uid="uid://bv2iye5c1uo01" path="res://levels/level_1/enemy_chunk_3.tscn" id="10_486us"]
+[ext_resource type="PackedScene" uid="uid://gy4mcq45ayub" path="res://levels/level_1/enemy_chunk_3.tscn" id="10_486us"]
 [ext_resource type="Script" path="res://scripts/utils/enemy_manager.gd" id="10_fd4aj"]
 [ext_resource type="PackedScene" uid="uid://dmb1acg6lojr5" path="res://control/menu_pause.tscn" id="11_ew1lc"]
 [ext_resource type="PackedScene" uid="uid://dxdtonhgxyoh8" path="res://levels/level_1/boss_chunk.tscn" id="11_y36ey"]

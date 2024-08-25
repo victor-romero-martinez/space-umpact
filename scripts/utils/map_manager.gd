@@ -1,6 +1,6 @@
 @icon("res://assets/icons/gear.svg")
 extends Node2D
-## Background control
+## [color=GREEN]Background control[/color]
 class_name BackgroundManager
 
 
