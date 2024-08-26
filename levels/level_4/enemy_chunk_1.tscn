@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2aieh7yg8cd3"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_q0r16"]
+[ext_resource type="PackedScene" uid="uid://r4ii1e118cbt" path="res://scenes/enemies/enemy_7.tscn" id="2_1kil1"]
+[ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="3_c8o0m"]
+
+[node name="Enemy_Chunk" instance=ExtResource("1_q0r16")]
+metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." index="0" instance=ExtResource("2_1kil1")]
+position = Vector2(24, 73)
+
+[node name="Enemy2" parent="." index="1" instance=ExtResource("2_1kil1")]
+position = Vector2(49, 49)
+
+[node name="Enemy3" parent="." index="2" instance=ExtResource("2_1kil1")]
+position = Vector2(82, 20)
+
+[node name="Enemy4" parent="." index="3" instance=ExtResource("2_1kil1")]
+position = Vector2(147, 73)
+
+[node name="Enemy5" parent="." index="4" instance=ExtResource("2_1kil1")]
+position = Vector2(178, 49)
+
+[node name="Enemy6" parent="." index="5" instance=ExtResource("2_1kil1")]
+position = Vector2(208, 26)
+
+[node name="Enemy7" parent="." index="6" instance=ExtResource("2_1kil1")]
+position = Vector2(264, 73)
+
+[node name="Enemy8" parent="." index="7" instance=ExtResource("2_1kil1")]
+position = Vector2(295, 49)
+
+[node name="Enemy9" parent="." index="8" instance=ExtResource("2_1kil1")]
+position = Vector2(325, 26)
+
+[node name="RightViewport" parent="." index="10"]
+metadata/_edit_lock_ = true
+
+[node name="RespawnReload" parent="." index="11" instance=ExtResource("3_c8o0m")]
+position = Vector2(20, 29)
+speed = 0.0
+gun_type = 0
+respown = false
