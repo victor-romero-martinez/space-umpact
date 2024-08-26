@@ -24,6 +24,10 @@ func _apply_damage():
 	_target.take_damage(3)
 	
 
+func go_negative():
+	pass
+
+
 func _on_area_area_entered(area):
 	if area is EnemyHealthBox or area is PlayerHealthBox:
 		_target = area

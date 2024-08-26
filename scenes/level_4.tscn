@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bppt3ujyrh11b"]
+[gd_scene load_steps=11 format=3 uid="uid://bppt3ujyrh11b"]
 
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_l2v8g"]
 [ext_resource type="PackedScene" uid="uid://c0g40otyxbv3h" path="res://levels/level_4/tile_map.tscn" id="2_2vbuk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cx8ian2j1oj0e" path="res://scenes/music/boss_music.tscn" id="5_ixmmh"]
 [ext_resource type="PackedScene" uid="uid://c2aieh7yg8cd3" path="res://levels/level_4/enemy_chunk_1.tscn" id="6_ubs14"]
 [ext_resource type="PackedScene" uid="uid://bi6xxysq8dx3h" path="res://levels/level_4/enemy_chunk_2.tscn" id="7_t57qo"]
+[ext_resource type="PackedScene" uid="uid://bs71rlmnqjxfu" path="res://levels/level_4/boss_chunk.tscn" id="8_us4bw"]
 
 [node name="Level-4" instance=ExtResource("1_l2v8g")]
 
@@ -22,6 +23,7 @@ list_map = [NodePath("TileMap"), NodePath("TileMap2")]
 [node name="EnemyManager" parent="Game/Enemy" index="0" node_paths=PackedStringArray("game_music")]
 game_music = [NodePath("GameMusic"), NodePath("BossMusic")]
 enemies_chunk = Array[PackedScene]([ExtResource("4_lmu5a"), ExtResource("5_0d6no"), ExtResource("5_0d6no"), ExtResource("6_ubs14"), ExtResource("7_t57qo")])
+boss_chunk = ExtResource("8_us4bw")
 
 [node name="GameMusic" parent="Game/Enemy/EnemyManager" index="0" instance=ExtResource("4_2m3qb")]
 

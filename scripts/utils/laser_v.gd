@@ -18,6 +18,10 @@ func _apply_damage():
 	taget.take_damage(3)
 	
 
+func go_negative():
+	pass
+
+
 func _on_area_2d_area_entered(area):
 	if area is EnemyHealthBox or area is PlayerHealthBox:
 		taget = area
