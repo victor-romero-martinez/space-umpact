@@ -16,9 +16,10 @@ enemy_manager = NodePath("Game/Enemy/EnemyManager")
 menu_pause = NodePath("MenuPause")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 352.0
 offset_bottom = 198.0
-color = Color(0.12549, 0.113725, 0.141176, 1)
+color = Color(1, 1, 0.960784, 1)
 
 [node name="Game" type="Node2D" parent="."]
 
@@ -73,4 +74,4 @@ visible = false
 [connection signal="current_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_current_weapon"]
 [connection signal="hit" from="Game/Player/Player" to="Game/Hud/HudHealth" method="_on_player_hit"]
 [connection signal="remove_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_remove_weapon"]
-[connection signal="resume" from="MenuPause" to="." method="_on_menu_pause_resume"]
+[connection signal="resume" from="MenuPause" to="." method="_on_pause"]

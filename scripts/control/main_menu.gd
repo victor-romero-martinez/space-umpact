@@ -16,6 +16,7 @@ func _ready():
 		%ContinueBtn.disabled = true
 	
 	# app settings
+	$ColorRect.visible = true
 	$MarginContainer/Main.visible = true
 	$MarginContainer/Settings.visible = false
 	$MarginContainer/Level.visible = false

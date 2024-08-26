@@ -102,7 +102,7 @@ func _start_combat():
 		.set_trans(Tween.TRANS_LINEAR)\
 		.set_ease(Tween.EASE_OUT)
 	_animation_spawn()
-	t.tween_callback(func (): state = TState.MOVE)
+	t.tween_callback(func (): state = TState.IMMUNITY)
 	
 	
 # change level when finish fight 

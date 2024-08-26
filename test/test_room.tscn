@@ -16,9 +16,9 @@ script = ExtResource("1_odhxs")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 352.0
 offset_bottom = 198.0
-color = Color(0.12549, 0.113725, 0.141176, 1)
 metadata/_edit_lock_ = true
 
 [node name="Game" type="Node2D" parent="."]
@@ -60,6 +60,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="Game"]
+position = Vector2(-132, 13)
 
 [node name="Enemy3" parent="Game/Enemies" instance=ExtResource("7_mlwkf")]
 position = Vector2(191, 113)
@@ -69,6 +70,7 @@ health = 6
 position = Vector2(206, 78)
 
 [node name="RespawnReload" parent="Game" instance=ExtResource("10_scsta")]
+position = Vector2(93, 146)
 
 [node name="MenuPause" parent="." instance=ExtResource("2_51vey")]
 visible = false

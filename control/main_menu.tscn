@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsqspqaej2x7i"]
+[gd_scene load_steps=10 format=3 uid="uid://dsqspqaej2x7i"]
 
 [ext_resource type="Script" path="res://scripts/control/main_menu.gd" id="1_4txhe"]
 [ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/pink_theme.tres" id="1_tq4my"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bse3clbf784ak" path="res://scenes/level_2.tscn" id="4_mjsxg"]
 [ext_resource type="PackedScene" uid="uid://b57aq8mq723ou" path="res://scenes/level_3.tscn" id="5_f4ihx"]
 [ext_resource type="PackedScene" uid="uid://b3nuxs564es82" path="res://scenes/music/main_music.tscn" id="5_kvi5w"]
+[ext_resource type="PackedScene" uid="uid://bppt3ujyrh11b" path="res://scenes/level_4.tscn" id="6_2b6st"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,16 +19,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_tq4my")
 script = ExtResource("1_4txhe")
-levels = Array[PackedScene]([ExtResource("3_divir"), ExtResource("4_mjsxg"), ExtResource("5_f4ihx")])
+levels = Array[PackedScene]([ExtResource("3_divir"), ExtResource("4_mjsxg"), ExtResource("5_f4ihx"), ExtResource("6_2b6st")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.12549, 0.113725, 0.141176, 1)
 metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

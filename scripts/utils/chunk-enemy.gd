@@ -7,7 +7,8 @@ var speed: float = 0.0
 
 
 func _ready():
-	speed = get_parent().speed
+	if get_parent() is EnemyManager:
+		speed = get_parent().speed
 
 
 func _process(delta):

@@ -17,6 +17,7 @@ func _ready():
 	# set color shema
 	if global.game_data.theme:
 		$ColorRect.color = global.game_data.theme[1]
+		$ColorRect.visible = true
 		$Game.modulate = global.game_data.theme[2]
 		
 	connect('tree_exited', _on_tree_exited)

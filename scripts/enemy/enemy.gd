@@ -15,9 +15,11 @@ extends Enemy
 @export var can_shoot: bool = false
 @export var explotion_scene: PackedScene
 @export_category('State')
+## State machine controller
 @export var fsm: EnemyStateMachine
 @export var move_down: EnemyMoveDown
 @export var move_up: EnemyMoveUp
+## Attack State
 @export var attack: EnemyAttack
 
 

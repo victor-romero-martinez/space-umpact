@@ -3,6 +3,7 @@ extends Node
 ## [color=GREEN]State machine manager[/color]
 class_name EnemyStateMachine
 
+## Initial State
 @export var state: State
 
 

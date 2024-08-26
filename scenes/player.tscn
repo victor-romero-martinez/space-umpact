@@ -94,7 +94,6 @@ script = ExtResource("6_gxj05")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealthBox2"]
 rotation = 1.57692
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_sg50y")
 
 [node name="PlayerHitBox2" type="Area2D" parent="."]

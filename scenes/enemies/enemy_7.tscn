@@ -35,8 +35,10 @@ animations = [{
 radius = 9.0
 
 [node name="Enemy" instance=ExtResource("1_xgr0i")]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_0dqxv")
-health = 6
+health = 3
 explotion_scene = ExtResource("3_v6n1w")
 
 [node name="AnimatedSprite2D" parent="." index="0"]

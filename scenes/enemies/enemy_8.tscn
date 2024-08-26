@@ -50,6 +50,8 @@ radius = 7.0
 height = 22.0
 
 [node name="Enemy" instance=ExtResource("1_v18pa")]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_vtm0v")
 can_shoot = true
 explotion_scene = ExtResource("3_s2n0i")

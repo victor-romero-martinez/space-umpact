@@ -7,7 +7,6 @@
 radius = 2.23607
 
 [node name="RespawnReload" type="Node2D"]
-position = Vector2(98, 163)
 script = ExtResource("1_q2lej")
 respown = true
 metadata/_edit_lock_ = true

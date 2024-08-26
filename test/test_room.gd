@@ -1,7 +1,7 @@
 @icon("res://assets/icons/round-test-tube.svg")
 extends Node2D
 
-@export_range(-20, 0) var vol_vfx = -10
+@export_range(-20, 0, 1) var vol_vfx = -10
 
 
 @onready var menu_pause = $MenuPause
@@ -15,6 +15,7 @@ func _ready():
 	# set color shema
 	if global.game_data.theme:
 		$ColorRect.color = global.game_data.theme[1]
+		$ColorRect.visible = true
 		$Game.modulate = global.game_data.theme[2]
 	
 	AudioServer.set_bus_volume_db(1, vol_vfx)
