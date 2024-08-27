@@ -13,7 +13,7 @@ b = Vector2(0, 198)
 
 [node name="Left" type="Area2D" parent="."]
 collision_layer = 512
-collision_mask = 2176
+collision_mask = 2240
 script = ExtResource("1_2pi1v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]

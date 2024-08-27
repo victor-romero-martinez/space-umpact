@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs71rlmnqjxfu"]
+[gd_scene load_steps=13 format=3 uid="uid://bs71rlmnqjxfu"]
 
 [ext_resource type="PackedScene" uid="uid://di4g8rw3ut8l0" path="res://entities/boss_chunk.tscn" id="1_7u1d5"]
 [ext_resource type="PackedScene" uid="uid://dkf7xfsucfpbd" path="res://scenes/enemies/boss_4.tscn" id="2_cn5f7"]
@@ -9,6 +9,11 @@
 [ext_resource type="Script" path="res://scripts/state/boss_shots.gd" id="7_rofxj"]
 [ext_resource type="PackedScene" uid="uid://43uly46lm3op" path="res://scenes/utilities/laser_h.tscn" id="8_c8rw1"]
 [ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="8_qnnqv"]
+[ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="10_iqms3"]
+[ext_resource type="Script" path="res://scripts/utils/return_x_right.gd" id="11_6xabe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x25jw"]
+radius = 4.47214
 
 [node name="BossChunk" node_paths=PackedStringArray("boss") instance=ExtResource("1_7u1d5")]
 boss = NodePath("boss4")
@@ -50,3 +55,17 @@ bullet_scene = ExtResource("8_c8rw1")
 [node name="DeadBoss" type="Node" parent="boss4/EnemyStateMachine" index="4" node_paths=PackedStringArray("actor")]
 script = ExtResource("8_qnnqv")
 actor = NodePath("../..")
+
+[node name="RespawnReload" parent="." index="3" instance=ExtResource("10_iqms3")]
+position = Vector2(371, 103)
+direction = -1
+gun_type = 0
+respawn = true
+
+[node name="left" type="Area2D" parent="RespawnReload" index="1"]
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("11_6xabe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnReload/left" index="0"]
+shape = SubResource("CircleShape2D_x25jw")

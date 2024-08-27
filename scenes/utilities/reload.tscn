@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8c2extoj0v8v"]
+[gd_scene load_steps=13 format=3 uid="uid://c8c2extoj0v8v"]
 
 [ext_resource type="Script" path="res://scripts/utils/reload.gd" id="1_s0vvb"]
 [ext_resource type="Texture2D" uid="uid://cpvg5t4ua7e58" path="res://assets/reload.png" id="1_u3i5h"]
 [ext_resource type="PackedScene" uid="uid://byfimwkmh4occ" path="res://scenes/sfx/pick_item_sfx.tscn" id="3_ier7m"]
+[ext_resource type="Script" path="res://scripts/utils/free_x.gd" id="4_teo0d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqqbg"]
 atlas = ExtResource("1_u3i5h")
@@ -86,11 +87,20 @@ shape = SubResource("RectangleShape2D_lkd5n")
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
 collision_layer = 64
-collision_mask = 256
+collision_mask = 768
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_lkd5n")
 
 [node name="PickItemSfx" parent="." instance=ExtResource("3_ier7m")]
+
+[node name="FreeX" type="Area2D" parent="."]
+visible = false
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("4_teo0d")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="FreeX"]
+shape = SubResource("RectangleShape2D_lkd5n")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://36dxqie8350f"]
+[gd_scene load_steps=10 format=3 uid="uid://36dxqie8350f"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_0at85"]
 [ext_resource type="PackedScene" uid="uid://c0mooo2exfrn7" path="res://scenes/enemies/enemy_9.tscn" id="2_y6kyg"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="5_qhfue"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="6_32p08"]
 [ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="7_uhj77"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="8_jtgpg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rpjv"]
+radius = 2.23607
 
 [node name="Enemy_Chunk" instance=ExtResource("1_0at85")]
 metadata/_edit_lock_ = true
@@ -112,3 +116,11 @@ position = Vector2(170, 50)
 speed = 0.0
 gun_type = 0
 respown = false
+
+[node name="Destroyer" type="Area2D" parent="RespawnReload" index="1"]
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("8_jtgpg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnReload/Destroyer" index="0"]
+shape = SubResource("CircleShape2D_8rpjv")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf75tmh3rpht1"]
+[gd_scene load_steps=13 format=3 uid="uid://cf75tmh3rpht1"]
 
 [ext_resource type="Script" path="res://test/test_room.gd" id="1_odhxs"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="1_qhkwd"]
@@ -8,11 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="3_jusy6"]
 [ext_resource type="PackedScene" uid="uid://dxdtonhgxyoh8" path="res://levels/level_1/boss_chunk.tscn" id="5_7qg75"]
 [ext_resource type="PackedScene" uid="uid://3jrsb7a53rbs" path="res://scenes/enemies/enemy_3.tscn" id="7_mlwkf"]
+[ext_resource type="Script" path="res://scripts/utils/return_x_right.gd" id="9_4kgpm"]
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="10_4vub1"]
 [ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="10_scsta"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kr8d5"]
+radius = 4.47214
+
 [node name="TestRoom" type="Node2D"]
 script = ExtResource("1_odhxs")
+vol_vfx = -9.0
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -70,7 +75,18 @@ health = 6
 position = Vector2(206, 78)
 
 [node name="RespawnReload" parent="Game" instance=ExtResource("10_scsta")]
-position = Vector2(93, 146)
+position = Vector2(314, 151)
+direction = -1
+wait_time_relad = 10.0
+respawn = true
+
+[node name="left" type="Area2D" parent="Game/RespawnReload"]
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("9_4kgpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/RespawnReload/left"]
+shape = SubResource("CircleShape2D_kr8d5")
 
 [node name="MenuPause" parent="." instance=ExtResource("2_51vey")]
 visible = false
