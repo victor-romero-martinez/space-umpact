@@ -30,7 +30,7 @@ collision_layer = 12
 health = 120
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(18, 0)
+position = Vector2(12, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_j4mvi")
 autoplay = "default"

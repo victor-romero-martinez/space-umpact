@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://43uly46lm3op" path="res://scenes/utilities/laser_h.tscn" id="8_c8rw1"]
 [ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="8_qnnqv"]
 
-[node name="BossChunk" instance=ExtResource("1_7u1d5")]
+[node name="BossChunk" node_paths=PackedStringArray("boss") instance=ExtResource("1_7u1d5")]
+boss = NodePath("boss4")
 
 [node name="boss4" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("2_cn5f7")]
 position = Vector2(379, 87)

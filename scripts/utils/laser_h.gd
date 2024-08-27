@@ -25,7 +25,7 @@ func _apply_damage():
 	
 
 func go_negative():
-	pass
+	rotation_degrees = 180
 
 
 func _on_area_area_entered(area):
