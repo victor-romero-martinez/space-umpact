@@ -13,4 +13,3 @@ func _ready():
 
 func _process(delta):
 	position.x -= speed * delta
-

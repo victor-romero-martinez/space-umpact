@@ -12,9 +12,9 @@
 metadata/_edit_lock_ = true
 
 [node name="Enemy5" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(36, 17)
+position = Vector2(53, 58)
 health = 2
-speed = 8.0
+speed = 16.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -27,12 +27,12 @@ state = NodePath("EnemyMoveDown")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy5/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_1f6i6")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy5/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_qa1vt")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyShots" type="Node" parent="Enemy5/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
@@ -41,9 +41,9 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy8" parent="." index="1" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(264, 17)
+position = Vector2(281, 58)
 health = 2
-speed = 8.0
+speed = 16.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -56,12 +56,12 @@ state = NodePath("EnemyMoveDown")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy8/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_1f6i6")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy8/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_qa1vt")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyShots" type="Node" parent="Enemy8/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
@@ -70,9 +70,9 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy9" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(217, 17)
+position = Vector2(234, 58)
 health = 2
-speed = 8.0
+speed = 16.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -85,12 +85,12 @@ state = NodePath("EnemyMoveDown")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy9/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_1f6i6")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy9/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_qa1vt")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyShots" type="Node" parent="Enemy9/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
@@ -99,9 +99,9 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy10" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(166, 17)
+position = Vector2(183, 58)
 health = 2
-speed = 8.0
+speed = 16.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -114,12 +114,12 @@ state = NodePath("EnemyMoveDown")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy10/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_1f6i6")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy10/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_qa1vt")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyShots" type="Node" parent="Enemy10/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
@@ -128,9 +128,9 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy11" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(119, 17)
+position = Vector2(136, 58)
 health = 2
-speed = 8.0
+speed = 16.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -143,12 +143,12 @@ state = NodePath("EnemyMoveDown")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy11/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_1f6i6")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy11/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_qa1vt")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyShots" type="Node" parent="Enemy11/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
@@ -157,9 +157,9 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy12" parent="." index="5" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(78, 17)
+position = Vector2(95, 58)
 health = 2
-speed = 8.0
+speed = 16.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -172,12 +172,12 @@ state = NodePath("EnemyMoveDown")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy12/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_1f6i6")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy12/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_qa1vt")
-max_move = 100.0
+max_move = 50.0
 actor = NodePath("../..")
 
 [node name="EnemyShots" type="Node" parent="Enemy12/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
