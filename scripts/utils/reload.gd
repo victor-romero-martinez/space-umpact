@@ -28,7 +28,7 @@ func _on_area_2d_area_entered(area):
 		
 		area.received_item(_gun_name)
 		$PickItemSfx.play()
-		$Area2D.monitorable = false
+		$Area2D.set_deferred('monitorable', false)
 		visible = false
 			
 
