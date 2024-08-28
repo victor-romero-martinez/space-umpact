@@ -20,9 +20,6 @@ func _ready():
 		_gun_name = TBullet.keys()[bullet_type]
 		
 	%AnimatedSprite.play(_gun_name)
-	$PickItemSfx.finished.connect(func (): queue_free())
-
-
 
 
 func _on_area_2d_area_entered(area):
@@ -31,6 +28,10 @@ func _on_area_2d_area_entered(area):
 		
 		area.received_item(_gun_name)
 		$PickItemSfx.play()
-		queue_free()
+		$Area2D.monitorable = false
+		visible = false
 			
 
+func _on_pick_item_sfx_finished() -> void:
+	queue_free()
+	
