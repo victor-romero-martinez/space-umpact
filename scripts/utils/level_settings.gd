@@ -73,4 +73,3 @@ func _on_pause():
 
 func _on_tree_exited():
 	Engine.time_scale = 1
-

@@ -4,8 +4,7 @@ extends Node2D
 class_name EnemyManager
 
 
-## List of music to play
-@export var game_music: Array[AudioStreamPlayer]
+
 @export_group('enemies_collections List')
 ## Velocity of chunk
 @export var speed: float = 30.0
@@ -15,15 +14,16 @@ class_name EnemyManager
 @export var boss_chunk:PackedScene
 
 
+@onready var music: AudioStreamPlaybackInteractive = $AudioStreamPlayer2D.get_stream_playback()
+
+
 var _screen_width: float
 var _chunk_counter: int = 0
 var _current_chunk: int = 0
-var _current_music:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_screen_width = Global.screen_size.x
-	game_music[_current_music].play()
 	
 	#region enemies chunk check
 	if enemies_chunk.is_empty():
@@ -38,7 +38,6 @@ func _decrement_chunk():
 	_chunk_counter -= 1
 	
 	if _chunk_counter == 0:
-		_trans_music()
 		_make_boss_chunk()
 	
 
@@ -63,28 +62,24 @@ func _make_boss_chunk():
 	else:
 		var boss_c = boss_chunk.instantiate()
 		boss_c.position = position
-		boss_c.boss.defeated.connect(_stop_boss_music) #NOTICE
+		boss_c.boss.defeated.connect(_stop_boss_music)
 		add_child.call_deferred(boss_c)
+		_change_music()
+	
 	
 ## Pause or resume current music
 func pause_music(val: bool):
-	game_music[_current_music].stream_paused = val
+	$AudioStreamPlayer2D.stream_paused = val
 	
 	
 func _change_music():
-	game_music[_current_music].stop()
-	_current_music += 1
-	game_music[_current_music].play()
+	music.switch_to_clip_by_name(&'boss')
 	
-			 
-func _trans_music():
-	var t = create_tween()
-	t.set_trans(Tween.TRANS_QUAD)
-	t.tween_property(game_music[_current_music], "volume_db", -60, 2.0)
-	t.tween_callback(_change_music)
 	
-
 func _stop_boss_music():
-	var t_b = create_tween()
-	t_b.set_trans(Tween.TRANS_QUAD)
-	t_b.tween_property(game_music[-1], "volume_db", -60, 4.0)
+	var t = create_tween()
+	t.tween_property($AudioStreamPlayer2D, "volume_db", -60.0, 4.0)\
+		.set_trans(Tween.TRANS_LINEAR)\
+		.set_ease(Tween.EASE_IN)
+	t.tween_callback(func (): $AudioStreamPlayer2D.playing = false)
+	

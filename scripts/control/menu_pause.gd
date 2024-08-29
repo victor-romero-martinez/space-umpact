@@ -29,7 +29,10 @@ func _on_resume_pressed():
 
 func _on_main_menu_pressed():
 	$Beep1.play()
-	$Beep1.finished.connect(func (): get_tree().change_scene_to_file("res://control/main_menu.tscn"))
+	$Beep1.finished.connect(
+		func (): get_tree()\
+			.change_scene_to_file("res://control/main_menu.tscn")
+		)
 	
 
 func _on_quit_pressed():

@@ -30,6 +30,3 @@ func _tween_end_move_left():
 	end_move_left.emit()
 	actor.activate_fight.emit()
 	actor.set_health.emit(actor.health)
-
-
-

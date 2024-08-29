@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bse3clbf784ak"]
+[gd_scene load_steps=22 format=3 uid="uid://bse3clbf784ak"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_4iprt"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="2_jj21j"]
@@ -17,9 +17,32 @@
 [ext_resource type="PackedScene" uid="uid://cjyg54our4k2k" path="res://levels/level_2/enemy_chunk_3.tscn" id="9_lwjuy"]
 [ext_resource type="PackedScene" uid="uid://dt7bvlg0x5jaw" path="res://levels/level_2/enemy_chunk_4.tscn" id="10_2bjc5"]
 [ext_resource type="PackedScene" uid="uid://ci2la4bi3xwb3" path="res://levels/level_2/bosss_chunk.tscn" id="10_qoqc0"]
-[ext_resource type="PackedScene" uid="uid://diid8siliqbiu" path="res://scenes/music/game_music.tscn" id="14_e4rrs"]
-[ext_resource type="PackedScene" uid="uid://cx8ian2j1oj0e" path="res://scenes/music/boss_music.tscn" id="15_20xpb"]
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="15_yfs6h"]
+[ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="17_0p3qf"]
+[ext_resource type="AudioStream" uid="uid://b356a6s6snqe2" path="res://assets/music/random-boss-fight-music.ogg" id="18_rdoer"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_qlnek"]
+clip_count = 2
+clip_0/name = &"space"
+clip_0/stream = ExtResource("17_0p3qf")
+clip_0/auto_advance = 0
+clip_1/name = &"boss"
+clip_1/stream = ExtResource("18_rdoer")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, 0): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(-1, 1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+}
+}
 
 [node name="Level-2" type="Node2D" node_paths=PackedStringArray("enemy_manager", "menu_pause")]
 script = ExtResource("1_4iprt")
@@ -80,15 +103,15 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="Game"]
 
-[node name="EnemyManager" type="Node2D" parent="Game/Enemy" node_paths=PackedStringArray("game_music")]
+[node name="EnemyManager" type="Node2D" parent="Game/Enemy"]
 script = ExtResource("7_c07sx")
-game_music = [NodePath("GameMusic"), NodePath("BossMusic")]
 enemies_chunk = Array[PackedScene]([ExtResource("5_ogfs4"), ExtResource("5_xni45"), ExtResource("8_ssvme"), ExtResource("8_ssvme"), ExtResource("9_lwjuy"), ExtResource("10_2bjc5")])
 boss_chunk = ExtResource("10_qoqc0")
 
-[node name="GameMusic" parent="Game/Enemy/EnemyManager" instance=ExtResource("14_e4rrs")]
-
-[node name="BossMusic" parent="Game/Enemy/EnemyManager" instance=ExtResource("15_20xpb")]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Game/Enemy/EnemyManager"]
+stream = SubResource("AudioStreamInteractive_qlnek")
+autoplay = true
+bus = &"music"
 
 [node name="MenuPause" parent="." instance=ExtResource("8_7xj5j")]
 visible = false

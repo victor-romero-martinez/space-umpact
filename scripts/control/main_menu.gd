@@ -15,13 +15,17 @@ func _ready():
 	else:
 		%ContinueBtn.disabled = true
 	
-	# app settings
+	#region App settings
 	$ColorRect.visible = true
 	$MarginContainer/Main.visible = true
 	$MarginContainer/Settings.visible = false
 	$MarginContainer/Level.visible = false
+	$MainMusic.volume_db = global.game_data.music
+	$Beep2.volume_db = global.game_data.sfx
+	$Beep1.volume_db = global.game_data.sfx
 	$MarginContainer/Settings/Music/MusicSlide.value = global.game_data.music
 	$MarginContainer/Settings/SFX/SFXSlide.value = global.game_data.sfx
+	#endregion
 	
 	_set_theme()
 	_level_creen()
@@ -59,7 +63,10 @@ func _on_new_game_pressed():
 func _on_continue_pressed():
 	if global.game_data.level:
 		$Beep1.play()
-		$Beep1.finished.connect(func (): get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %global.game_data.level))
+		$Beep1.finished.connect(
+			func (): get_tree()\
+				.change_scene_to_file("res://scenes/level_%d.tscn" %global.game_data.level)
+			)
 	else:
 		%ContinueBtn.disabled = true
 		

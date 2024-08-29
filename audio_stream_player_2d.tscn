@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://76w40g1i4aaq"]
+
+[ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="1_e0mud"]
+[ext_resource type="AudioStream" uid="uid://b356a6s6snqe2" path="res://assets/music/random-boss-fight-music.ogg" id="2_008cv"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ul33v"]
+clip_count = 2
+clip_0/name = &"space"
+clip_0/stream = ExtResource("1_e0mud")
+clip_0/auto_advance = 0
+clip_1/name = &"boss"
+clip_1/stream = ExtResource("2_008cv")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, 0): {
+"fade_beats": 1,
+"fade_mode": 2,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(-1, 1): {
+"fade_beats": 1,
+"fade_mode": 2,
+"from_time": 1,
+"to_time": 1
+},
+Vector2i(0, 0): {
+"fade_beats": 1,
+"fade_mode": 1,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(1, 0): {
+"fade_beats": 1,
+"fade_mode": 2,
+"from_time": 1,
+"to_time": 0
+},
+Vector2i(1, 1): {
+"fade_beats": 1,
+"fade_mode": 1,
+"from_time": 3,
+"to_time": 1
+}
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamInteractive_ul33v")
+autoplay = true
+bus = &"music"

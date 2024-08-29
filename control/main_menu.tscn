@@ -102,8 +102,8 @@ layout_mode = 2
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Pink"
 popup/item_0/id = 1
 popup/item_1/text = "Classic"
@@ -212,7 +212,6 @@ text = "Back
 "
 
 [node name="Beep1" parent="." instance=ExtResource("3_d12y8")]
-visible = false
 
 [node name="Beep2" parent="." instance=ExtResource("4_5mh6q")]
 

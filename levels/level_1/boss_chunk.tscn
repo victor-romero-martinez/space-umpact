@@ -18,6 +18,7 @@ boss = NodePath("Boss1")
 [node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("1_6kwli")]
 position = Vector2(385, 87)
 collision_mask = 0
+speed = 8.0
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")

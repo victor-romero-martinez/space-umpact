@@ -1,6 +1,7 @@
 extends Node2D
 class_name ChunkEnemy
 
+@warning_ignore("unused_signal")
 signal next_chunk
 
 var speed: float = 0.0
