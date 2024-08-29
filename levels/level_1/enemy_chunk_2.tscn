@@ -6,15 +6,15 @@
 [node name="Chunk" instance=ExtResource("1_6edj4")]
 
 [node name="Enemy2" parent="." index="0" instance=ExtResource("2_gxvia")]
-position = Vector2(60, 55)
+position = Vector2(98, 55)
 health = 2
 
 [node name="Enemy3" parent="." index="1" instance=ExtResource("2_gxvia")]
-position = Vector2(98, 13)
+position = Vector2(136, 13)
 health = 2
 
 [node name="Enemy4" parent="." index="2" instance=ExtResource("2_gxvia")]
-position = Vector2(25, 99)
+position = Vector2(63, 99)
 health = 2
 
 [node name="Enemy5" parent="." index="3" instance=ExtResource("2_gxvia")]
@@ -22,19 +22,19 @@ position = Vector2(130, 103)
 health = 2
 
 [node name="Enemy6" parent="." index="4" instance=ExtResource("2_gxvia")]
-position = Vector2(322, 12)
+position = Vector2(280, 12)
 health = 2
 
 [node name="Enemy7" parent="." index="5" instance=ExtResource("2_gxvia")]
-position = Vector2(240, 110)
+position = Vector2(199, 102)
 health = 2
 
 [node name="Enemy8" parent="." index="6" instance=ExtResource("2_gxvia")]
-position = Vector2(277, 66)
+position = Vector2(235, 55)
 health = 2
 
 [node name="Enemy9" parent="." index="7" instance=ExtResource("2_gxvia")]
-position = Vector2(216, 12)
+position = Vector2(214, 12)
 health = 2
 
 [node name="Enemy10" parent="." index="8" instance=ExtResource("2_gxvia")]

@@ -17,7 +17,7 @@
 script = ExtResource("1_rhntr")
 
 [node name="Enemy1" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(40, 68)
+position = Vector2(74, 68)
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
 
@@ -51,7 +51,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("6_4a5tp")
 
 [node name="Enemy3" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(91, 29)
+position = Vector2(125, 29)
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
 
@@ -68,7 +68,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("6_4a5tp")
 
 [node name="Enemy4" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(208, 14)
+position = Vector2(195, 14)
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
 
@@ -85,7 +85,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("6_4a5tp")
 
 [node name="Enemy5" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(248, 89)
+position = Vector2(235, 89)
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
 
@@ -102,7 +102,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("6_4a5tp")
 
 [node name="Enemy6" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(327, 53)
+position = Vector2(278, 53)
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
 

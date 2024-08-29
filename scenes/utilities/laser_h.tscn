@@ -68,11 +68,11 @@ collision_mask = 14
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Area" type="Area2D" parent="."]
+[node name="BulletHitBox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 14
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHitBox"]
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_ul3qc")
 
@@ -91,7 +91,7 @@ frame_progress = 0.754139
 
 [node name="LaserHVfx" parent="." instance=ExtResource("4_w3jjp")]
 
-[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
-[connection signal="area_exited" from="Area" to="." method="_on_area_area_exited"]
+[connection signal="area_entered" from="BulletHitBox" to="." method="_on_area_area_entered"]
+[connection signal="area_exited" from="BulletHitBox" to="." method="_on_area_area_exited"]
 [connection signal="timeout" from="Distroyer" to="." method="_on_distroyer_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_timer_timeout"]

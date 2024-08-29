@@ -12,7 +12,7 @@
 metadata/_edit_lock_ = true
 
 [node name="Enemy5" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(53, 58)
+position = Vector2(117, 58)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -41,7 +41,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy8" parent="." index="1" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(281, 58)
+position = Vector2(223, 58)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -70,7 +70,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy9" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(234, 58)
+position = Vector2(202, 58)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -99,7 +99,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy10" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(183, 58)
+position = Vector2(181, 58)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -128,7 +128,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy11" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(136, 58)
+position = Vector2(160, 58)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -157,7 +157,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_pkicg")
 
 [node name="Enemy12" parent="." index="5" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(95, 58)
+position = Vector2(139, 58)
 health = 2
 speed = 16.0
 can_shoot = true

@@ -1,3 +1,4 @@
+@icon("res://assets/icons/crossed-swords.svg")
 extends Node2D
 
 @export var explotion_scene: PackedScene
@@ -26,7 +27,8 @@ func _apply_damage():
 
 func go_negative():
 	rotation_degrees = 180
-
+	$BulletHitBox.set_collision_mask_value(3, false)
+	$BulletHitBox.set_collision_mask_value(4, false)
 
 func _on_area_area_entered(area):
 	if area is EnemyHealthBox or area is PlayerHealthBox:
@@ -50,4 +52,3 @@ func _on_distroyer_timeout():
 func _on_area_area_exited(_area):
 	_target = null
 	$DamageTimer.stop()
-

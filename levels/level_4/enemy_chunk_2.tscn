@@ -17,7 +17,7 @@ radius = 2.23607
 metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
-position = Vector2(35, 32)
+position = Vector2(84, 32)
 speed = 8.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
@@ -45,7 +45,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_c34j4")
 
 [node name="Enemy2" parent="." index="1" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
-position = Vector2(88, 90)
+position = Vector2(137, 90)
 speed = 8.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine2")
@@ -101,7 +101,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_c34j4")
 
 [node name="Enemy4" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
-position = Vector2(259, 27)
+position = Vector2(203, 27)
 speed = 8.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine4")
@@ -129,7 +129,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_c34j4")
 
 [node name="Enemy5" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
-position = Vector2(311, 86)
+position = Vector2(255, 86)
 speed = 8.0
 can_shoot = true
 fsm = NodePath("EnemyStateMachine5")
@@ -157,10 +157,9 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("7_c34j4")
 
 [node name="RespawnReload" parent="." index="5" instance=ExtResource("8_8e0id")]
-position = Vector2(87, 57)
+position = Vector2(136, 57)
 speed = 0.0
 gun_type = 0
-respown = false
 
 [node name="Destroyer" type="Area2D" parent="RespawnReload" index="1"]
 collision_layer = 2048

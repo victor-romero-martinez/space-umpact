@@ -9,13 +9,13 @@
 position = Vector2(86, 18)
 
 [node name="Enemy4" parent="." index="1" instance=ExtResource("2_mjldl")]
-position = Vector2(171, 72)
+position = Vector2(144, 72)
 
 [node name="Enemy5" parent="." index="2" instance=ExtResource("2_mjldl")]
-position = Vector2(268, 29)
+position = Vector2(223, 29)
 
 [node name="Enemy6" parent="." index="3" instance=ExtResource("2_mjldl")]
-position = Vector2(334, 114)
+position = Vector2(272, 114)
 
 [node name="Destroyer" parent="." index="4"]
 metadata/_edit_lock_ = true

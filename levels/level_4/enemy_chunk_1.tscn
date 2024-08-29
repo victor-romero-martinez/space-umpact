@@ -12,13 +12,13 @@ radius = 2.23607
 metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." index="0" instance=ExtResource("2_1kil1")]
-position = Vector2(24, 73)
+position = Vector2(71, 73)
 
 [node name="Enemy2" parent="." index="1" instance=ExtResource("2_1kil1")]
-position = Vector2(49, 49)
+position = Vector2(96, 49)
 
 [node name="Enemy3" parent="." index="2" instance=ExtResource("2_1kil1")]
-position = Vector2(82, 20)
+position = Vector2(129, 20)
 
 [node name="Enemy4" parent="." index="3" instance=ExtResource("2_1kil1")]
 position = Vector2(147, 73)
@@ -30,22 +30,21 @@ position = Vector2(178, 49)
 position = Vector2(208, 26)
 
 [node name="Enemy7" parent="." index="6" instance=ExtResource("2_1kil1")]
-position = Vector2(264, 73)
+position = Vector2(222, 73)
 
 [node name="Enemy8" parent="." index="7" instance=ExtResource("2_1kil1")]
-position = Vector2(295, 49)
+position = Vector2(253, 49)
 
 [node name="Enemy9" parent="." index="8" instance=ExtResource("2_1kil1")]
-position = Vector2(325, 26)
+position = Vector2(283, 26)
 
 [node name="RightViewport" parent="." index="10"]
 metadata/_edit_lock_ = true
 
 [node name="RespawnReload" parent="." index="11" instance=ExtResource("3_c8o0m")]
-position = Vector2(20, 29)
+position = Vector2(67, 29)
 speed = 0.0
 gun_type = 0
-respown = false
 
 [node name="Destroyer" type="Area2D" parent="RespawnReload" index="1"]
 collision_layer = 2048

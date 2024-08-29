@@ -10,7 +10,7 @@
 metadata/_edit_lock_ = true
 
 [node name="Enemy1" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up") instance=ExtResource("2_8jggn")]
-position = Vector2(53, 37)
+position = Vector2(70, 37)
 health = 2
 speed = 8.0
 fsm = NodePath("EnemyStateMachine")
@@ -76,7 +76,7 @@ max_move = 8.0
 actor = NodePath("../..")
 
 [node name="Enemy4" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up") instance=ExtResource("2_8jggn")]
-position = Vector2(254, 86)
+position = Vector2(241, 86)
 health = 2
 speed = 8.0
 fsm = NodePath("EnemyStateMachine")
@@ -98,7 +98,7 @@ max_move = 8.0
 actor = NodePath("../..")
 
 [node name="Enemy5" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up") instance=ExtResource("2_8jggn")]
-position = Vector2(141, 36)
+position = Vector2(127, 36)
 health = 2
 speed = 8.0
 fsm = NodePath("EnemyStateMachine")
@@ -120,7 +120,7 @@ max_move = 8.0
 actor = NodePath("../..")
 
 [node name="Enemy6" parent="." index="5" node_paths=PackedStringArray("fsm", "move_down", "move_up") instance=ExtResource("2_8jggn")]
-position = Vector2(289, 86)
+position = Vector2(267, 86)
 health = 2
 speed = 8.0
 fsm = NodePath("EnemyStateMachine")

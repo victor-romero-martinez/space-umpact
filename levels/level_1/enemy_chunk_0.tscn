@@ -13,28 +13,31 @@
 script = ExtResource("1_tphy8")
 
 [node name="Enemy1" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(13, 16)
+position = Vector2(56, 20)
 
 [node name="Enemy2" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(89, 102)
+position = Vector2(122, 93)
 
 [node name="Enemy3" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(55, 66)
+position = Vector2(88, 57)
 
 [node name="Enemy4" parent="." instance=ExtResource("1_qjpef")]
 position = Vector2(131, 20)
 
 [node name="Enemy5" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(169, 66)
+position = Vector2(169, 57)
 
 [node name="Enemy6" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(226, 101)
+position = Vector2(210, 92)
 
 [node name="Enemy7" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(263, 23)
+position = Vector2(208, 23)
 
 [node name="Enemy8" parent="." instance=ExtResource("1_qjpef")]
-position = Vector2(317, 70)
+position = Vector2(256, 61)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_qjpef")]
+position = Vector2(287, 91)
 
 [node name="Destroyer" type="Area2D" parent="."]
 collision_layer = 2048

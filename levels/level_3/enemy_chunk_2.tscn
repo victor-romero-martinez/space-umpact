@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhddbyuaaux36"]
+[gd_scene load_steps=11 format=3 uid="uid://bhddbyuaaux36"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_mkdub"]
 [ext_resource type="PackedScene" uid="uid://5solvkojlpwa" path="res://scenes/enemies/enemy_8.tscn" id="2_l4jo6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="6_hs3pf"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="7_vednh"]
 [ext_resource type="Script" path="res://scripts/utils/stop_chunk_movement.gd" id="8_54gfi"]
+[ext_resource type="Script" path="res://scripts/state/enemy_attack.gd" id="8_q2lwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7l6o"]
 
@@ -24,7 +25,7 @@ attack = NodePath("EnemyStateMachine/EnemyShots")
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy" index="5" node_paths=PackedStringArray("state")]
 script = ExtResource("3_iwao1")
-state = NodePath("EnemyMoveUp")
+state = NodePath("EnemyAttack")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_iwtbk")
@@ -41,14 +42,19 @@ script = ExtResource("6_hs3pf")
 actor = NodePath("../..")
 bullet_scene = ExtResource("7_vednh")
 
+[node name="EnemyAttack" type="Node" parent="Enemy/EnemyStateMachine" index="3"]
+script = ExtResource("8_q2lwt")
+
 [node name="Destroyer" parent="." index="1"]
 metadata/_edit_lock_ = true
 
-[node name="StopMovement" type="Area2D" parent="." index="3"]
+[node name="StopMovement" type="Area2D" parent="." index="3" node_paths=PackedStringArray("state_manager", "activate_state")]
 collision_layer = 4096
 collision_mask = 1024
 script = ExtResource("8_54gfi")
 wait_time = 14.0
+state_manager = NodePath("../Enemy/EnemyStateMachine")
+activate_state = NodePath("../Enemy/EnemyStateMachine/EnemyMoveUp")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StopMovement" index="0"]
 position = Vector2(253, 1)

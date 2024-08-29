@@ -11,7 +11,7 @@
 [node name="Enemy_Chunk" instance=ExtResource("1_tmqf2")]
 
 [node name="Enemy5" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_et7xo")]
-position = Vector2(90, 83)
+position = Vector2(131, 83)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -40,7 +40,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_w0jfd")
 
 [node name="Enemy8" parent="." index="1" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_et7xo")]
-position = Vector2(318, 83)
+position = Vector2(241, 83)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -69,7 +69,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_w0jfd")
 
 [node name="Enemy9" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_et7xo")]
-position = Vector2(271, 83)
+position = Vector2(219, 83)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -98,7 +98,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_w0jfd")
 
 [node name="Enemy10" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_et7xo")]
-position = Vector2(220, 83)
+position = Vector2(197, 83)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -127,7 +127,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_w0jfd")
 
 [node name="Enemy11" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_et7xo")]
-position = Vector2(173, 83)
+position = Vector2(175, 83)
 health = 2
 speed = 16.0
 can_shoot = true
@@ -156,7 +156,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_w0jfd")
 
 [node name="Enemy12" parent="." index="5" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_et7xo")]
-position = Vector2(132, 83)
+position = Vector2(153, 83)
 health = 2
 speed = 16.0
 can_shoot = true

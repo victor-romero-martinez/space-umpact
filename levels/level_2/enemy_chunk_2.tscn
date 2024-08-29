@@ -10,7 +10,7 @@
 [node name="Enemy_Chunk" instance=ExtResource("1_qf0sk")]
 
 [node name="Enemy4" parent="." index="0" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
-position = Vector2(33, 55)
+position = Vector2(74, 55)
 health = 2
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
@@ -29,7 +29,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")
 
 [node name="Enemy5" parent="." index="1" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
-position = Vector2(123, 33)
+position = Vector2(131, 33)
 health = 2
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
@@ -48,7 +48,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")
 
 [node name="Enemy6" parent="." index="2" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
-position = Vector2(199, 93)
+position = Vector2(177, 77)
 health = 2
 can_shoot = true
 fsm = NodePath("EnemyStateMachine2")
@@ -67,7 +67,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")
 
 [node name="Enemy7" parent="." index="3" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
-position = Vector2(247, 21)
+position = Vector2(224, 21)
 health = 2
 can_shoot = true
 fsm = NodePath("EnemyStateMachine3")
@@ -86,7 +86,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("3_jb1o1")
 
 [node name="Enemy8" parent="." index="4" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_0xmlv")]
-position = Vector2(312, 71)
+position = Vector2(267, 71)
 health = 2
 can_shoot = true
 fsm = NodePath("EnemyStateMachine4")

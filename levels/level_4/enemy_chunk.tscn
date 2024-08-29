@@ -16,7 +16,7 @@ radius = 2.23607
 metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." index="0" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
-position = Vector2(46, 30)
+position = Vector2(83, 30)
 can_shoot = true
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
@@ -34,7 +34,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("6_32p08")
 
 [node name="Enemy2" parent="." index="1" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
-position = Vector2(98, 98)
+position = Vector2(135, 98)
 can_shoot = true
 fsm = NodePath("EnemyStateMachine2")
 attack = NodePath("EnemyStateMachine2/EnemyShots")
@@ -52,7 +52,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("6_32p08")
 
 [node name="Enemy3" parent="." index="2" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
-position = Vector2(193, 49)
+position = Vector2(171, 49)
 can_shoot = true
 fsm = NodePath("EnemyStateMachine3")
 attack = NodePath("EnemyStateMachine3/EnemyShots")
@@ -70,7 +70,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("6_32p08")
 
 [node name="Enemy4" parent="." index="3" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
-position = Vector2(243, 98)
+position = Vector2(217, 98)
 can_shoot = true
 fsm = NodePath("EnemyStateMachine4")
 attack = NodePath("EnemyStateMachine4/EnemyShots")
@@ -88,7 +88,7 @@ actor = NodePath("../..")
 bullet_scene = ExtResource("6_32p08")
 
 [node name="Enemy5" parent="." index="4" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
-position = Vector2(292, 21)
+position = Vector2(266, 21)
 can_shoot = true
 fsm = NodePath("EnemyStateMachine5")
 attack = NodePath("EnemyStateMachine5/EnemyShots")
@@ -112,10 +112,9 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="RespawnReload" parent="." index="7" instance=ExtResource("7_uhj77")]
-position = Vector2(170, 50)
+position = Vector2(152, 50)
 speed = 0.0
 gun_type = 0
-respown = false
 
 [node name="Destroyer" type="Area2D" parent="RespawnReload" index="1"]
 collision_layer = 2048

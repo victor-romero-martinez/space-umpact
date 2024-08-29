@@ -8,7 +8,7 @@ extends Enemy
 
 
 ## initial health
-@export var health: int = 1
+@export var health: int = 2
 ## use on state machine
 @export var speed: float = 0.0
 ## active for can_shoot mode

@@ -83,11 +83,11 @@ frame = 3
 frame_progress = 0.328778
 flip_v = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="BulletHitBox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 14
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHitBox"]
 shape = SubResource("RectangleShape2D_w8h2i")
 
 [node name="Timer" type="Timer" parent="."]
@@ -102,6 +102,6 @@ script = ExtResource("4_al68a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destroyer"]
 shape = SubResource("RectangleShape2D_htnqn")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="BulletHitBox" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="BulletHitBox" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
