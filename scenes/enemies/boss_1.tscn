@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://c88ev1so4wvv1"]
+[gd_scene load_steps=15 format=3 uid="uid://c88ev1so4wvv1"]
 
 [ext_resource type="Script" path="res://scripts/enemy/boss.gd" id="2_fcshl"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_pqo2t"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_wdan4"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="4_7o8cd"]
 [ext_resource type="Script" path="res://scripts/utils/enemy_hit_box.gd" id="6_55mv4"]
 [ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="7_c13ic"]
@@ -56,6 +57,7 @@ collision_layer = 8
 collision_mask = 32
 script = ExtResource("2_fcshl")
 explotion_scene = ExtResource("4_7o8cd")
+type_gun = ExtResource("3_wdan4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -70,7 +72,7 @@ polygon = PackedVector2Array(-12, -8, -15, -17, -6, -26, -6, -26, 14, -26, 24, -
 
 [node name="ExploitTrigger" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.45
 
 [node name="EnemyHitBox2" type="Area2D" parent="."]
 visible = false

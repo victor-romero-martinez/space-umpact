@@ -1,7 +1,7 @@
 @icon("res://assets/icons/round-test-tube.svg")
 extends Node2D
 
-@export_range(-20, 0, 1) var vol_vfx: float = -10
+@export_range(-20, 0) var vol: float = -10
 
 
 @onready var menu_pause = $MenuPause
@@ -18,7 +18,8 @@ func _ready():
 		$ColorRect.visible = true
 		$Game.modulate = global.game_data.theme[2]
 	
-	AudioServer.set_bus_volume_db(1, vol_vfx)
+	AudioServer.set_bus_volume_db(1, vol)
+	AudioServer.set_bus_volume_db(2, vol)
 		
 
 func _process(_delta):

@@ -3,10 +3,12 @@ extends Enemy
 
 
 @export var health: int = 60
-@export var speed: float = 8.0
+@export var speed: float = 14.0
 ## time elapsed between shots
 @export var timer_attack: float = 4.0
 @export var explotion_scene: PackedScene
+@export var type_gun: PackedScene
+
 @export_category('State')
 @export var fsm: EnemyStateMachine
 @export var move_down: EnemyMoveDown
@@ -31,12 +33,6 @@ func _ready():
 	
 	$AnimatedSprite2D.play("default")
 
-
-func _physics_process(_delta):
-	if global_position.x < global.screen_size.x\
-	and global_position.y < global.screen_size.y:
-		on_viewport.emit()
-	
 	
 # Start fight
 func _activate_figth():
@@ -48,15 +44,33 @@ func _activate_figth():
 	_spetial_timer.connect('timeout', Callable(self, '_on_special_action'))
 	_spetial_timer.start()
 
+
+# gun instantiate
+func make_bullet():
+	var rand_y = randf_range(-8, 8)
+	var pos = position
+	pos.x -= 16.0
+	pos.y += rand_y
+	
+	var bullet = type_gun.instantiate()
+	bullet.position = pos
+	bullet.go_negative()
+
+	add_sibling(bullet)
+
+
 # attack
 func _on_special_action():
 	var last_state = fsm.current_state()
 	
 	fsm.change_state(attack)
 	
-	attack.end_attack.connect(fsm.change_state.bind(last_state))
+	#attack.end_attack.connect(fsm.change_state.bind(last_state))
 	# CAUTION: It must be reset to avoid state bug
-	attack.end_attack.disconnect(fsm.change_state)
+	if attack.end_attack.is_connected(fsm.change_state):
+		attack.end_attack.disconnect(fsm.change_state)
+	
+	fsm.change_state(last_state)
 
 func _rand_explotion():
 	var rand_position_x = randf_range(-12.0, 12.0)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1q2eiml6en8m"]
+[gd_scene load_steps=11 format=3 uid="uid://d1q2eiml6en8m"]
 
 [ext_resource type="PackedScene" uid="uid://2s814b5rdr10" path="res://entities/boss.tscn" id="1_txlic"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_5y8w2"]
+[ext_resource type="PackedScene" uid="uid://b6o73s0pkyk7x" path="res://scenes/utilities/rocket.tscn" id="2_podae"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1wsi"]
 atlas = ExtResource("2_5y8w2")
@@ -56,6 +57,7 @@ animations = [{
 [node name="Boss" instance=ExtResource("1_txlic")]
 collision_layer = 8
 health = 100
+type_gun = ExtResource("2_podae")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(11, 0)

@@ -14,6 +14,8 @@ extends Enemy
 ## active for can_shoot mode
 @export var can_shoot: bool = false
 @export var explotion_scene: PackedScene
+@export var bullet_scene: PackedScene
+
 @export_category('State')
 ## State machine controller
 @export var fsm: EnemyStateMachine
@@ -26,13 +28,10 @@ extends Enemy
 #WARNING: must be initialite before use on _make_bullets
 @onready var global = Global
 
+var _is_already_timer: bool = false
 
-var _timer_off: bool = true
 
 func _ready():
-	if can_shoot and attack:
-		connect('on_viewport', _start_timer)
-	
 	if fsm and move_down and move_up:
 		move_down.end_move_down.connect(fsm.change_state.bind(move_up))
 		move_up.end_move_up.connect(fsm.change_state.bind(move_down))
@@ -40,11 +39,6 @@ func _ready():
 	connect('defeated', _make_boom)
 	$AnimatedSprite2D.play("default")
 
-
-func _physics_process(_delta):
-	if global_position.x < global.screen_size.x:
-		on_viewport.emit()
-		
 
 func set_blinking(_damage: int):
 	var _tween_timer: float = 0.25
@@ -65,33 +59,41 @@ func _make_boom():
 		queue_free()
 
 
+func _make_bullet():
+	if bullet_scene:
+		var bullet = bullet_scene.instantiate()
+		bullet.position = position + Vector2(-16.0, 0)
+		bullet.go_negative()
+	
+		add_sibling(bullet)
+	else:
+		printerr('Bullet Scene is missing')
+
+
 # setting the timer
-func _make_timer():
-	var rand_time = randf_range(2.5, 5.0)
-	var timer: Timer
-	
-	timer = Timer.new()
-	timer.wait_time = rand_time
-	timer.autostart = true
-	timer.timeout.connect(_on_attack)
-	
-	add_child(timer)
-	
-
-# launch the timer
-func _start_timer():
-	if _timer_off:
-		_make_timer()
+func start_timer():
+	if not _is_already_timer:
+		var rand_time = randf_range(2.5, 5.0)
+		var _timer: Timer
+		_timer = Timer.new()
+		_timer.wait_time = rand_time
+		_timer.autostart = true
+		_timer.timeout.connect(_on_attack)
 		
-	_timer_off = false
-
-
+		add_child(_timer)
+		_is_already_timer = true
+	
+	
 # attack
 func _on_attack():
 	var last_state = fsm.current_state()
 	
 	fsm.change_state(attack)
 	
-	attack.end_attack.connect(fsm.change_state.bind(last_state))
+	#attack.end_attack.connect(fsm.change_state.bind(last_state))
 	# CAUTION: It must be reset to avoid state bug
-	attack.end_attack.disconnect(fsm.change_state)
+	if attack.end_attack.is_connected(fsm.change_state):
+		attack.end_attack.disconnect(fsm.change_state)
+		
+	fsm.change_state(last_state)
+	_make_bullet()

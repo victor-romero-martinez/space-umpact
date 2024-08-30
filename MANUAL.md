@@ -38,6 +38,8 @@ Estructura del directorio
 
 - Presione <kbd>Ctrl+Shift+A</kbd> y seleccione `res://entities/level.tscn` luego guardar en su respectiva carpeta `res://scenes/level_numero.tscn`.
 
+> <span style='color: #ffcc32'>⚠️ __IMPORTANTE:__ Renombar en nodo con el formato `Level-1`.</span>
+
 Notaras que ya están instaciado con algunos componentes.
 
 ![Vista del Nodo](assets/docs/Screenshot-from-2024-08-25-14-28-21.png)

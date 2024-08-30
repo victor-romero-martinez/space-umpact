@@ -21,6 +21,7 @@ boss = NodePath("boss4")
 [node name="boss4" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("2_cn5f7")]
 position = Vector2(379, 87)
 timer_attack = 7.0
+type_gun = ExtResource("8_c8rw1")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
@@ -39,7 +40,7 @@ actor = NodePath("../..")
 
 [node name="EnemyMoveDown" type="Node" parent="boss4/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_0h33a")
-max_move = 40.0
+max_move = 120.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveLeft" type="Node" parent="boss4/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
@@ -50,7 +51,6 @@ actor = NodePath("../..")
 [node name="BossShots" type="Node" parent="boss4/EnemyStateMachine" index="3" node_paths=PackedStringArray("actor")]
 script = ExtResource("7_rofxj")
 actor = NodePath("../..")
-bullet_scene = ExtResource("8_c8rw1")
 
 [node name="DeadBoss" type="Node" parent="boss4/EnemyStateMachine" index="4" node_paths=PackedStringArray("actor")]
 script = ExtResource("8_qnnqv")

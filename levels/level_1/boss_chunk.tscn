@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxdtonhgxyoh8"]
+[gd_scene load_steps=10 format=3 uid="uid://dxdtonhgxyoh8"]
 
 [ext_resource type="PackedScene" uid="uid://c88ev1so4wvv1" path="res://scenes/enemies/boss_1.tscn" id="1_6kwli"]
 [ext_resource type="PackedScene" uid="uid://d175njosf45c7" path="res://scenes/utilities/health_bar.tscn" id="1_8wj5q"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/state/move_down.gd" id="4_ssmxr"]
 [ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="6_oiw3h"]
 [ext_resource type="Script" path="res://scripts/state/boss_shots.gd" id="7_nebfx"]
-[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="8_6cfwa"]
 
 [node name="BossChunk" type="Node2D" node_paths=PackedStringArray("boss")]
 script = ExtResource("1_ykc7j")
@@ -18,7 +17,6 @@ boss = NodePath("Boss1")
 [node name="Boss1" parent="." node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("1_6kwli")]
 position = Vector2(385, 87)
 collision_mask = 0
-speed = 8.0
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
@@ -42,7 +40,7 @@ actor = NodePath("../..")
 
 [node name="EnemyMoveDown" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_ssmxr")
-max_move = 40.0
+max_move = 120.0
 actor = NodePath("../..")
 
 [node name="DeadBoss" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
@@ -52,7 +50,6 @@ actor = NodePath("../..")
 [node name="EnemyShots" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("7_nebfx")
 actor = NodePath("../..")
-bullet_scene = ExtResource("8_6cfwa")
 
 [node name="HealthFinalPos" type="Marker2D" parent="."]
 position = Vector2(264, 9.53674e-07)

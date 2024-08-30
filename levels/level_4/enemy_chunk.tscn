@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://36dxqie8350f"]
+[gd_scene load_steps=12 format=3 uid="uid://36dxqie8350f"]
 
 [ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_0at85"]
 [ext_resource type="PackedScene" uid="uid://c0mooo2exfrn7" path="res://scenes/enemies/enemy_9.tscn" id="2_y6kyg"]
@@ -6,8 +6,12 @@
 [ext_resource type="Script" path="res://scripts/state/enemy_attack.gd" id="4_wwhi0"]
 [ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="5_qhfue"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="6_32p08"]
+[ext_resource type="Script" path="res://scripts/utils/active_state.gd" id="7_6mb0y"]
 [ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="7_uhj77"]
 [ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="8_jtgpg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2psw"]
+radius = 6.32456
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rpjv"]
 radius = 2.23607
@@ -18,6 +22,7 @@ metadata/_edit_lock_ = true
 [node name="Enemy" parent="." index="0" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
 position = Vector2(83, 30)
 can_shoot = true
+bullet_scene = ExtResource("6_32p08")
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
 
@@ -31,11 +36,21 @@ script = ExtResource("4_wwhi0")
 [node name="EnemyShots" type="Node" parent="Enemy/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_qhfue")
 actor = NodePath("../..")
-bullet_scene = ExtResource("6_32p08")
+
+[node name="Area2D" type="Area2D" parent="Enemy" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_6mb0y")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D" index="0"]
+shape = SubResource("CircleShape2D_n2psw")
 
 [node name="Enemy2" parent="." index="1" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
 position = Vector2(135, 98)
 can_shoot = true
+bullet_scene = ExtResource("6_32p08")
 fsm = NodePath("EnemyStateMachine2")
 attack = NodePath("EnemyStateMachine2/EnemyShots")
 
@@ -49,11 +64,21 @@ script = ExtResource("4_wwhi0")
 [node name="EnemyShots" type="Node" parent="Enemy2/EnemyStateMachine2" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_qhfue")
 actor = NodePath("../..")
-bullet_scene = ExtResource("6_32p08")
+
+[node name="Area2D" type="Area2D" parent="Enemy2" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_6mb0y")
+state_manager = NodePath("../EnemyStateMachine2")
+next_state = NodePath("../EnemyStateMachine2/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/Area2D" index="0"]
+shape = SubResource("CircleShape2D_n2psw")
 
 [node name="Enemy3" parent="." index="2" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
 position = Vector2(171, 49)
 can_shoot = true
+bullet_scene = ExtResource("6_32p08")
 fsm = NodePath("EnemyStateMachine3")
 attack = NodePath("EnemyStateMachine3/EnemyShots")
 
@@ -67,11 +92,21 @@ script = ExtResource("4_wwhi0")
 [node name="EnemyShots" type="Node" parent="Enemy3/EnemyStateMachine3" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_qhfue")
 actor = NodePath("../..")
-bullet_scene = ExtResource("6_32p08")
+
+[node name="Area2D" type="Area2D" parent="Enemy3" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_6mb0y")
+state_manager = NodePath("../EnemyStateMachine3")
+next_state = NodePath("../EnemyStateMachine3/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/Area2D" index="0"]
+shape = SubResource("CircleShape2D_n2psw")
 
 [node name="Enemy4" parent="." index="3" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
 position = Vector2(217, 98)
 can_shoot = true
+bullet_scene = ExtResource("6_32p08")
 fsm = NodePath("EnemyStateMachine4")
 attack = NodePath("EnemyStateMachine4/EnemyShots")
 
@@ -85,11 +120,21 @@ script = ExtResource("4_wwhi0")
 [node name="EnemyShots" type="Node" parent="Enemy4/EnemyStateMachine4" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_qhfue")
 actor = NodePath("../..")
-bullet_scene = ExtResource("6_32p08")
+
+[node name="Area2D" type="Area2D" parent="Enemy4" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_6mb0y")
+state_manager = NodePath("../EnemyStateMachine4")
+next_state = NodePath("../EnemyStateMachine4/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy4/Area2D" index="0"]
+shape = SubResource("CircleShape2D_n2psw")
 
 [node name="Enemy5" parent="." index="4" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_y6kyg")]
 position = Vector2(266, 21)
 can_shoot = true
+bullet_scene = ExtResource("6_32p08")
 fsm = NodePath("EnemyStateMachine5")
 attack = NodePath("EnemyStateMachine5/EnemyShots")
 
@@ -103,7 +148,16 @@ script = ExtResource("4_wwhi0")
 [node name="EnemyShots" type="Node" parent="Enemy5/EnemyStateMachine5" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_qhfue")
 actor = NodePath("../..")
-bullet_scene = ExtResource("6_32p08")
+
+[node name="Area2D" type="Area2D" parent="Enemy5" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_6mb0y")
+state_manager = NodePath("../EnemyStateMachine5")
+next_state = NodePath("../EnemyStateMachine5/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy5/Area2D" index="0"]
+shape = SubResource("CircleShape2D_n2psw")
 
 [node name="Destroyer" parent="." index="5"]
 metadata/_edit_lock_ = true

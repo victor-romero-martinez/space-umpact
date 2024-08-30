@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkf7xfsucfpbd"]
+[gd_scene load_steps=7 format=3 uid="uid://dkf7xfsucfpbd"]
 
 [ext_resource type="PackedScene" uid="uid://2s814b5rdr10" path="res://entities/boss.tscn" id="1_e1lek"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_cnf2h"]
+[ext_resource type="PackedScene" uid="uid://jjef1gjl445n" path="res://scenes/sfx/laser_h_sfx.tscn" id="2_iipgw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3iao"]
 atlas = ExtResource("2_cnf2h")
@@ -28,6 +29,7 @@ animations = [{
 [node name="boss4" instance=ExtResource("1_e1lek")]
 collision_layer = 12
 health = 120
+type_gun = ExtResource("2_iipgw")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(12, 0)

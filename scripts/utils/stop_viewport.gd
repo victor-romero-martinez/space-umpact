@@ -3,7 +3,7 @@ extends ViewportDetector
 
 @export var wait_time: float = 6.0
 @export var state_manager: EnemyStateMachine
-@export var activate_state: State
+@export var next_state: State
 
 
 func do_something():
@@ -15,5 +15,5 @@ func do_something():
 	
 
 func _has_state():
-	if state_manager and activate_state:
-		state_manager.change_state(activate_state)
+	if state_manager and next_state:
+		state_manager.change_state(next_state)

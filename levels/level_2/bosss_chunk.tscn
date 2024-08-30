@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci2la4bi3xwb3"]
+[gd_scene load_steps=10 format=3 uid="uid://ci2la4bi3xwb3"]
 
 [ext_resource type="PackedScene" uid="uid://d175njosf45c7" path="res://scenes/utilities/health_bar.tscn" id="1_4s5pr"]
 [ext_resource type="Script" path="res://scripts/utils/bosss_chunk.gd" id="1_gh3b7"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/state/move_left.gd" id="6_dn64y"]
 [ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="7_560to"]
 [ext_resource type="Script" path="res://scripts/state/boss_shots.gd" id="8_0dhmd"]
-[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="9_qv2no"]
 
 [node name="BosssChunk" type="Node2D" node_paths=PackedStringArray("boss")]
 script = ExtResource("1_gh3b7")
@@ -42,7 +41,7 @@ state = NodePath("EnemyMoveLeft")
 
 [node name="EnemyMoveDown" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_hivsr")
-max_move = 40.0
+max_move = 120.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveUp" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
@@ -52,7 +51,7 @@ actor = NodePath("../..")
 
 [node name="EnemyMoveLeft" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_dn64y")
-max_move = 60.0
+max_move = 80.0
 actor = NodePath("../..")
 
 [node name="DeadBoss" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
@@ -62,4 +61,3 @@ actor = NodePath("../..")
 [node name="EnemyShots" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("8_0dhmd")
 actor = NodePath("../..")
-bullet_scene = ExtResource("9_qv2no")

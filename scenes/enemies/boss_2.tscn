@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2758ggun2sww"]
+[gd_scene load_steps=13 format=3 uid="uid://d2758ggun2sww"]
 
 [ext_resource type="Script" path="res://scripts/enemy/boss.gd" id="1_llluu"]
 [ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_ucuar"]
 [ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="2_xppea"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_chdh4"]
 [ext_resource type="Script" path="res://scripts/utils/enemy_hit_box.gd" id="4_64vjx"]
 [ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="5_ltjh5"]
 [ext_resource type="PackedScene" uid="uid://c1gcr1nbuajbx" path="res://scenes/sfx/hit_sfx.tscn" id="6_ypkof"]
@@ -49,6 +50,7 @@ collision_mask = 0
 script = ExtResource("1_llluu")
 health = 80
 explotion_scene = ExtResource("2_xppea")
+type_gun = ExtResource("3_chdh4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(6, 0)
