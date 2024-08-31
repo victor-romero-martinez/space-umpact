@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx8midp6n2gbn"]
+[gd_scene load_steps=4 format=3 uid="uid://bx8midp6n2gbn"]
 
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_f1ycl"]
+[ext_resource type="PackedScene" uid="uid://bjj7d0gwsdowd" path="res://levels/level_5/tile_map.tscn" id="2_gqo82"]
+[ext_resource type="PackedScene" uid="uid://bwl16xkctem2n" path="res://levels/level_5/tile_1.tscn" id="3_8i0hx"]
 
 [node name="Level-5" instance=ExtResource("1_f1ycl")]
+
+[node name="BackgroundManager" parent="Game/BG" index="0" node_paths=PackedStringArray("list_map")]
+list_map = [NodePath("Tile"), NodePath("Tile1")]
+
+[node name="Tile" parent="Game/BG/BackgroundManager" index="0" instance=ExtResource("2_gqo82")]
+
+[node name="Tile1" parent="Game/BG/BackgroundManager" index="1" instance=ExtResource("3_8i0hx")]
 
 [node name="Hud" parent="Game" index="1"]
 position = Vector2(0, 199)

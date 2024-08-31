@@ -12,4 +12,3 @@ func _physics_process(delta):
 	
 	if position.x < screen_size: # screen_size is negative value (e.g. -176)
 		off_screen.emit(self)
-
