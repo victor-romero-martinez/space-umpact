@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccicmq4fxxy5o"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_tx7un"]
+[ext_resource type="PackedScene" uid="uid://bi5ybcjsks1j8" path="res://scenes/enemies/enemy_1.tscn" id="2_5voh4"]
+
+[node name="Enemy_Chunk" instance=ExtResource("1_tx7un")]
+
+[node name="Enemy1" parent="." index="0" instance=ExtResource("2_5voh4")]
+position = Vector2(60, 91)
+
+[node name="Enemy2" parent="." index="1" instance=ExtResource("2_5voh4")]
+position = Vector2(126, 164)
+
+[node name="Enemy3" parent="." index="2" instance=ExtResource("2_5voh4")]
+position = Vector2(92, 128)
+
+[node name="Enemy4" parent="." index="3" instance=ExtResource("2_5voh4")]
+position = Vector2(135, 91)
+
+[node name="Enemy5" parent="." index="4" instance=ExtResource("2_5voh4")]
+position = Vector2(173, 128)
+
+[node name="Enemy6" parent="." index="5" instance=ExtResource("2_5voh4")]
+position = Vector2(214, 163)
+
+[node name="Enemy7" parent="." index="6" instance=ExtResource("2_5voh4")]
+position = Vector2(212, 91)
+
+[node name="Enemy8" parent="." index="7" instance=ExtResource("2_5voh4")]
+position = Vector2(260, 128)
+
+[node name="Enemy9" parent="." index="8" instance=ExtResource("2_5voh4")]
+position = Vector2(291, 162)

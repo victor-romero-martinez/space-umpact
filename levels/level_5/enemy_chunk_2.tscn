@@ -1,0 +1,176 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4nsrk7px7ac5"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_d3py8"]
+[ext_resource type="PackedScene" uid="uid://db3lspumuuhio" path="res://scenes/enemies/enemy_6.tscn" id="2_w4jeg"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_6pt51"]
+[ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="4_j3itf"]
+[ext_resource type="Script" path="res://scripts/state/enemy_attack.gd" id="5_djm8y"]
+[ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="6_m75fu"]
+[ext_resource type="Script" path="res://scripts/utils/active_state.gd" id="7_jkc4f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wd0b"]
+radius = 5.0
+
+[node name="Enemy_Chunk" instance=ExtResource("1_d3py8")]
+
+[node name="Enemy1" parent="." index="2" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_w4jeg")]
+position = Vector2(74, 127)
+bullet_scene = ExtResource("3_6pt51")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy1" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_j3itf")
+state = NodePath("EnemyAttack")
+
+[node name="EnemyAttack" type="Node" parent="Enemy1/EnemyStateMachine" index="0"]
+script = ExtResource("5_djm8y")
+
+[node name="EnemyShots" type="Node" parent="Enemy1/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_m75fu")
+actor = NodePath("../..")
+
+[node name="Active_state" type="Area2D" parent="Enemy1" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_jkc4f")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1/Active_state" index="0"]
+shape = SubResource("CircleShape2D_8wd0b")
+
+[node name="Enemy2" parent="." index="3" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_w4jeg")]
+position = Vector2(135, 180)
+bullet_scene = ExtResource("3_6pt51")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy2" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_j3itf")
+state = NodePath("EnemyAttack")
+
+[node name="EnemyAttack" type="Node" parent="Enemy2/EnemyStateMachine" index="0"]
+script = ExtResource("5_djm8y")
+
+[node name="EnemyShots" type="Node" parent="Enemy2/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_m75fu")
+actor = NodePath("../..")
+
+[node name="Active_state" type="Area2D" parent="Enemy2" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_jkc4f")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/Active_state" index="0"]
+shape = SubResource("CircleShape2D_8wd0b")
+
+[node name="Enemy3" parent="." index="4" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_w4jeg")]
+position = Vector2(135, 88)
+bullet_scene = ExtResource("3_6pt51")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy3" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_j3itf")
+state = NodePath("EnemyAttack")
+
+[node name="EnemyAttack" type="Node" parent="Enemy3/EnemyStateMachine" index="0"]
+script = ExtResource("5_djm8y")
+
+[node name="EnemyShots" type="Node" parent="Enemy3/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_m75fu")
+actor = NodePath("../..")
+
+[node name="Active_state" type="Area2D" parent="Enemy3" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_jkc4f")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/Active_state" index="0"]
+shape = SubResource("CircleShape2D_8wd0b")
+
+[node name="Enemy4" parent="." index="5" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_w4jeg")]
+position = Vector2(205, 88)
+bullet_scene = ExtResource("3_6pt51")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy4" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_j3itf")
+state = NodePath("EnemyAttack")
+
+[node name="EnemyAttack" type="Node" parent="Enemy4/EnemyStateMachine" index="0"]
+script = ExtResource("5_djm8y")
+
+[node name="EnemyShots" type="Node" parent="Enemy4/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_m75fu")
+actor = NodePath("../..")
+
+[node name="Active_state" type="Area2D" parent="Enemy4" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_jkc4f")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy4/Active_state" index="0"]
+shape = SubResource("CircleShape2D_8wd0b")
+
+[node name="Enemy5" parent="." index="6" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_w4jeg")]
+position = Vector2(205, 180)
+bullet_scene = ExtResource("3_6pt51")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy5" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_j3itf")
+state = NodePath("EnemyAttack")
+
+[node name="EnemyAttack" type="Node" parent="Enemy5/EnemyStateMachine" index="0"]
+script = ExtResource("5_djm8y")
+
+[node name="EnemyShots" type="Node" parent="Enemy5/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_m75fu")
+actor = NodePath("../..")
+
+[node name="Active_state" type="Area2D" parent="Enemy5" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_jkc4f")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy5/Active_state" index="0"]
+shape = SubResource("CircleShape2D_8wd0b")
+
+[node name="Enemy6" parent="." index="7" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_w4jeg")]
+position = Vector2(278, 127)
+bullet_scene = ExtResource("3_6pt51")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy6" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_j3itf")
+state = NodePath("EnemyAttack")
+
+[node name="EnemyAttack" type="Node" parent="Enemy6/EnemyStateMachine" index="0"]
+script = ExtResource("5_djm8y")
+
+[node name="EnemyShots" type="Node" parent="Enemy6/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_m75fu")
+actor = NodePath("../..")
+
+[node name="Active_state" type="Area2D" parent="Enemy6" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_jkc4f")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy6/Active_state" index="0"]
+shape = SubResource("CircleShape2D_8wd0b")

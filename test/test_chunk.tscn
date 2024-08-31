@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="6_4iq1t"]
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="6_y3xs7"]
 [ext_resource type="Script" path="res://scripts/utils/enemy_manager.gd" id="7_h56mr"]
-[ext_resource type="PackedScene" uid="uid://36dxqie8350f" path="res://levels/level_4/enemy_chunk.tscn" id="8_bd3po"]
 [ext_resource type="PackedScene" uid="uid://bhddbyuaaux36" path="res://levels/level_3/enemy_chunk_2.tscn" id="8_j5ry5"]
+[ext_resource type="PackedScene" uid="uid://dlbbh6h1wbed5" path="res://levels/level_5/enemy_chunk_4.tscn" id="9_k7ngj"]
 [ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="9_l7xru"]
 [ext_resource type="AudioStream" uid="uid://b356a6s6snqe2" path="res://assets/music/random-boss-fight-music.ogg" id="10_o1cxq"]
 
@@ -90,7 +90,7 @@ metadata/_edit_lock_ = true
 
 [node name="EnemyManager" type="Node2D" parent="Game"]
 script = ExtResource("7_h56mr")
-enemies_chunk = Array[PackedScene]([ExtResource("8_bd3po"), ExtResource("8_j5ry5")])
+enemies_chunk = Array[PackedScene]([ExtResource("9_k7ngj"), ExtResource("8_j5ry5")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Game/EnemyManager"]
 stream = SubResource("AudioStreamInteractive_df1p4")

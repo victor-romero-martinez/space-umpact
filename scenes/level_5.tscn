@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx8midp6n2gbn"]
+[gd_scene load_steps=9 format=3 uid="uid://bx8midp6n2gbn"]
 
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_f1ycl"]
 [ext_resource type="PackedScene" uid="uid://bjj7d0gwsdowd" path="res://levels/level_5/tile_map.tscn" id="2_gqo82"]
 [ext_resource type="PackedScene" uid="uid://bwl16xkctem2n" path="res://levels/level_5/tile_1.tscn" id="3_8i0hx"]
+[ext_resource type="PackedScene" uid="uid://ccicmq4fxxy5o" path="res://levels/level_5/enemy_chunk.tscn" id="4_1him7"]
+[ext_resource type="PackedScene" uid="uid://dytec6mbj2cfn" path="res://levels/level_5/enemy_chunk_1.tscn" id="5_rf6ll"]
+[ext_resource type="PackedScene" uid="uid://b4nsrk7px7ac5" path="res://levels/level_5/enemy_chunk_2.tscn" id="6_jma7l"]
+[ext_resource type="PackedScene" uid="uid://jn3brmr4603s" path="res://levels/level_5/enemy_chunk_3.tscn" id="7_gcm2p"]
+[ext_resource type="PackedScene" uid="uid://dlbbh6h1wbed5" path="res://levels/level_5/enemy_chunk_4.tscn" id="8_swrnm"]
 
 [node name="Level-5" instance=ExtResource("1_f1ycl")]
 
@@ -18,3 +23,15 @@ position = Vector2(0, 199)
 
 [node name="HudPosition" parent="Game" index="2"]
 position = Vector2(0, 191)
+
+[node name="Player" parent="Game/Player" index="0"]
+position = Vector2(-50, 112)
+
+[node name="PlayerRespawn" parent="Game/Player" index="1"]
+position = Vector2(16, 108)
+
+[node name="PlayerInit" parent="Game/Player" index="2"]
+position = Vector2(-38, 108)
+
+[node name="EnemyManager" parent="Game/Enemy" index="0"]
+enemies_chunk = Array[PackedScene]([ExtResource("4_1him7"), ExtResource("5_rf6ll"), ExtResource("6_jma7l"), ExtResource("7_gcm2p"), ExtResource("8_swrnm")])

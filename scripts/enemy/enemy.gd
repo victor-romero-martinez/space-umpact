@@ -13,6 +13,7 @@ extends Enemy
 @export var speed: float = 0.0
 ## active for can_shoot mode
 @export var can_shoot: bool = false
+@export var timer_range: Vector2 = Vector2(2.5, 5.0)
 @export var explotion_scene: PackedScene
 @export var bullet_scene: PackedScene
 
@@ -73,7 +74,7 @@ func _make_bullet():
 # setting the timer
 func start_timer():
 	if not _is_already_timer:
-		var rand_time = randf_range(2.5, 5.0)
+		var rand_time = randf_range(timer_range.x, timer_range.y)
 		var _timer: Timer
 		_timer = Timer.new()
 		_timer.wait_time = rand_time
