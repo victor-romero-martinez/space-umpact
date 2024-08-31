@@ -21,7 +21,7 @@ radius = 5.0
 script = ExtResource("1_rhntr")
 
 [node name="Enemy1" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(74, 68)
+position = Vector2(94, 77)
 bullet_scene = ExtResource("6_4a5tp")
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
@@ -48,7 +48,7 @@ next_state = NodePath("../EnemyStateMachine/EnemyShots")
 shape = SubResource("CircleShape2D_anvmq")
 
 [node name="Enemy2" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(164, 121)
+position = Vector2(145, 116)
 bullet_scene = ExtResource("6_4a5tp")
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
@@ -75,7 +75,7 @@ next_state = NodePath("../EnemyStateMachine/EnemyShots")
 shape = SubResource("CircleShape2D_anvmq")
 
 [node name="Enemy3" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(125, 29)
+position = Vector2(145, 45)
 bullet_scene = ExtResource("6_4a5tp")
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
@@ -102,7 +102,7 @@ next_state = NodePath("../EnemyStateMachine/EnemyShots")
 shape = SubResource("CircleShape2D_anvmq")
 
 [node name="Enemy4" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(195, 14)
+position = Vector2(215, 14)
 bullet_scene = ExtResource("6_4a5tp")
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
@@ -129,7 +129,7 @@ next_state = NodePath("../EnemyStateMachine/EnemyShots")
 shape = SubResource("CircleShape2D_anvmq")
 
 [node name="Enemy5" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(235, 89)
+position = Vector2(215, 77)
 bullet_scene = ExtResource("6_4a5tp")
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")
@@ -156,7 +156,7 @@ next_state = NodePath("../EnemyStateMachine/EnemyShots")
 shape = SubResource("CircleShape2D_anvmq")
 
 [node name="Enemy6" parent="." node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_sofdy")]
-position = Vector2(278, 53)
+position = Vector2(273, 45)
 bullet_scene = ExtResource("6_4a5tp")
 fsm = NodePath("EnemyStateMachine")
 attack = NodePath("EnemyStateMachine/EnemyShots")

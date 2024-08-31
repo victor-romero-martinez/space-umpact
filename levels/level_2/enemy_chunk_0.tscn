@@ -7,28 +7,21 @@
 
 [node name="Enemy3" parent="." index="0" instance=ExtResource("2_siir8")]
 position = Vector2(92, 50)
-health = 2
 
 [node name="Enemy4" parent="." index="1" instance=ExtResource("2_siir8")]
 position = Vector2(139, 13)
-health = 2
 
 [node name="Enemy5" parent="." index="2" instance=ExtResource("2_siir8")]
-position = Vector2(154, 95)
-health = 2
+position = Vector2(139, 95)
 
 [node name="Enemy6" parent="." index="3" instance=ExtResource("2_siir8")]
 position = Vector2(182, 48)
-health = 2
 
 [node name="Enemy7" parent="." index="4" instance=ExtResource("2_siir8")]
-position = Vector2(241, 94)
-health = 2
+position = Vector2(227, 94)
 
 [node name="Enemy8" parent="." index="5" instance=ExtResource("2_siir8")]
 position = Vector2(227, 16)
-health = 2
 
 [node name="Enemy9" parent="." index="6" instance=ExtResource("2_siir8")]
 position = Vector2(269, 49)
-health = 2

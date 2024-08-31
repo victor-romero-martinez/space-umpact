@@ -6,16 +6,19 @@
 [node name="Enemy_Chunk" instance=ExtResource("1_g4tde")]
 
 [node name="Enemy3" parent="." index="0" instance=ExtResource("2_mjldl")]
-position = Vector2(86, 18)
+position = Vector2(114, 18)
 
 [node name="Enemy4" parent="." index="1" instance=ExtResource("2_mjldl")]
-position = Vector2(144, 72)
+position = Vector2(174, 66)
 
 [node name="Enemy5" parent="." index="2" instance=ExtResource("2_mjldl")]
-position = Vector2(223, 29)
+position = Vector2(248, 18)
 
 [node name="Enemy6" parent="." index="3" instance=ExtResource("2_mjldl")]
-position = Vector2(272, 114)
+position = Vector2(248, 114)
 
-[node name="Destroyer" parent="." index="4"]
+[node name="Enemy7" parent="." index="4" instance=ExtResource("2_mjldl")]
+position = Vector2(114, 114)
+
+[node name="Destroyer" parent="." index="5"]
 metadata/_edit_lock_ = true
