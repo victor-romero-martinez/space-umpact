@@ -17,7 +17,6 @@ radius = 4.47214
 
 [node name="TestRoom" type="Node2D"]
 script = ExtResource("1_odhxs")
-vol_vfx = -14.828
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -31,7 +30,7 @@ metadata/_edit_lock_ = true
 [node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
 position = Vector2(0, -12)
 script = ExtResource("2_6484b")
-final_position = NodePath("HudPosition")
+final_position = NodePath("../HudPosition")
 metadata/_edit_lock_ = true
 
 [node name="HudHealth" parent="Game/Hud" instance=ExtResource("1_qhkwd")]
@@ -40,10 +39,6 @@ metadata/_edit_lock_ = true
 
 [node name="GunHud" parent="Game/Hud" instance=ExtResource("3_jusy6")]
 position = Vector2(53, 0)
-metadata/_edit_lock_ = true
-
-[node name="HudPosition" type="Marker2D" parent="Game/Hud"]
-position = Vector2(9, 5)
 metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="Game"]
@@ -87,6 +82,9 @@ script = ExtResource("9_4kgpm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/RespawnReload/left"]
 shape = SubResource("CircleShape2D_kr8d5")
+
+[node name="HudPosition" type="Marker2D" parent="Game"]
+position = Vector2(0, 5)
 
 [node name="MenuPause" parent="." instance=ExtResource("2_51vey")]
 visible = false

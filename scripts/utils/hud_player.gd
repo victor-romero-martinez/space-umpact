@@ -19,7 +19,7 @@ func _process(_delta):
 		
 func _show():
 	var t = create_tween()
-	t.tween_property(self, 'position', final_position.position, .45)\
+	t.tween_property(self, 'global_position', final_position.position, .45)\
 		.set_trans(Tween.TRANS_EXPO)\
 		.set_ease(Tween.EASE_OUT)
 		

@@ -56,7 +56,7 @@ script = ExtResource("2_c2dfu")
 [node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
 position = Vector2(0, -12)
 script = ExtResource("2_kux8c")
-final_position = NodePath("HudPosition")
+final_position = NodePath("../HudPosition")
 
 [node name="HudHealth" parent="Game/Hud" instance=ExtResource("3_ww1qg")]
 position = Vector2(4, 0)
@@ -66,8 +66,8 @@ metadata/_edit_lock_ = true
 position = Vector2(53, 0)
 metadata/_edit_lock_ = true
 
-[node name="HudPosition" type="Marker2D" parent="Game/Hud"]
-position = Vector2(9, 5)
+[node name="HudPosition" type="Marker2D" parent="Game"]
+position = Vector2(0, 5)
 metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="Game"]

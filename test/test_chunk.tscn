@@ -1,19 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqrfdj3ojw6oj"]
+[gd_scene load_steps=17 format=3 uid="uid://cqrfdj3ojw6oj"]
 
 [ext_resource type="Script" path="res://test/test_room.gd" id="1_o8au3"]
 [ext_resource type="PackedScene" uid="uid://dmb1acg6lojr5" path="res://control/menu_pause.tscn" id="2_qsa7l"]
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="3_ec3br"]
+[ext_resource type="Script" path="res://scripts/utils/hud_player.gd" id="4_13cyu"]
 [ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="4_fhnji"]
 [ext_resource type="Script" path="res://scripts/utils/return_x_right.gd" id="5_361xn"]
+[ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="5_keyqw"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="6_4iq1t"]
+[ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="6_y3xs7"]
 [ext_resource type="Script" path="res://scripts/utils/enemy_manager.gd" id="7_h56mr"]
 [ext_resource type="PackedScene" uid="uid://36dxqie8350f" path="res://levels/level_4/enemy_chunk.tscn" id="8_bd3po"]
 [ext_resource type="PackedScene" uid="uid://bhddbyuaaux36" path="res://levels/level_3/enemy_chunk_2.tscn" id="8_j5ry5"]
 [ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="9_l7xru"]
 [ext_resource type="AudioStream" uid="uid://b356a6s6snqe2" path="res://assets/music/random-boss-fight-music.ogg" id="10_o1cxq"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_drx64"]
-radius = 4.47214
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_df1p4"]
 clip_count = 2
@@ -38,6 +38,9 @@ Vector2i(-1, 1): {
 }
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_drx64"]
+radius = 4.47214
+
 [node name="TestChunk" type="Node2D"]
 script = ExtResource("1_o8au3")
 
@@ -54,18 +57,21 @@ visible = false
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="RespawnReload" parent="Game" instance=ExtResource("4_fhnji")]
-direction = -1
-wait_time_relad = 10.0
-respawn = true
+[node name="hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
+position = Vector2(0, 199)
+script = ExtResource("4_13cyu")
+final_position = NodePath("../HudPositionFinal")
+metadata/_edit_lock_ = true
 
-[node name="left" type="Area2D" parent="Game/RespawnReload"]
-collision_layer = 2048
-collision_mask = 512
-script = ExtResource("5_361xn")
+[node name="HudHealth" parent="Game/hud" instance=ExtResource("5_keyqw")]
+position = Vector2(4, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/RespawnReload/left"]
-shape = SubResource("CircleShape2D_drx64")
+[node name="GunHud" parent="Game/hud" instance=ExtResource("6_y3xs7")]
+position = Vector2(53, 0)
+
+[node name="HudPositionFinal" type="Marker2D" parent="Game"]
+position = Vector2(0, 191)
+metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="Game"]
 
@@ -82,11 +88,29 @@ metadata/_edit_lock_ = true
 position = Vector2(-39, 78)
 metadata/_edit_lock_ = true
 
-[node name="EnemyManager" type="Node2D" parent="."]
+[node name="EnemyManager" type="Node2D" parent="Game"]
 script = ExtResource("7_h56mr")
 enemies_chunk = Array[PackedScene]([ExtResource("8_bd3po"), ExtResource("8_j5ry5")])
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="EnemyManager"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Game/EnemyManager"]
 stream = SubResource("AudioStreamInteractive_df1p4")
 autoplay = true
 bus = &"music"
+
+[node name="RespawnReload" parent="Game" instance=ExtResource("4_fhnji")]
+direction = -1
+wait_time_relad = 10.0
+respawn = true
+
+[node name="left" type="Area2D" parent="Game/RespawnReload"]
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("5_361xn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/RespawnReload/left"]
+shape = SubResource("CircleShape2D_drx64")
+
+[connection signal="add_weapon" from="Game/Player/Player" to="Game/hud/GunHud" method="_on_player_add_weapon"]
+[connection signal="current_weapon" from="Game/Player/Player" to="Game/hud/GunHud" method="_on_player_current_weapon"]
+[connection signal="hit" from="Game/Player/Player" to="Game/hud/HudHealth" method="_on_player_hit"]
+[connection signal="remove_weapon" from="Game/Player/Player" to="Game/hud/GunHud" method="_on_player_remove_weapon"]

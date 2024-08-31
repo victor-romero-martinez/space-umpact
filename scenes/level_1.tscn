@@ -71,7 +71,7 @@ list_map = [NodePath("TileMap"), NodePath("TileMap1"), NodePath("TileMap2")]
 [node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
 position = Vector2(0, -12)
 script = ExtResource("3_uc5tk")
-final_position = NodePath("HudPosition")
+final_position = NodePath("../HudPosition")
 
 [node name="HudHealth" parent="Game/Hud" instance=ExtResource("3_ks5nd")]
 position = Vector2(4, 0)
@@ -80,8 +80,8 @@ metadata/_edit_lock_ = true
 [node name="GunHud" parent="Game/Hud" instance=ExtResource("5_14x4r")]
 position = Vector2(53, 0)
 
-[node name="HudPosition" type="Marker2D" parent="Game/Hud"]
-position = Vector2(9, 5)
+[node name="HudPosition" type="Marker2D" parent="Game"]
+position = Vector2(0, 5)
 metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="Game"]

@@ -3,3 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_f1ycl"]
 
 [node name="Level-5" instance=ExtResource("1_f1ycl")]
+
+[node name="Hud" parent="Game" index="1"]
+position = Vector2(0, 199)
+
+[node name="HudPosition" parent="Game" index="2"]
+position = Vector2(0, 191)
