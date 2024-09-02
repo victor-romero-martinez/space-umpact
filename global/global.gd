@@ -4,6 +4,9 @@ extends Node2D
 const DEFAULT_SETTINGS = {
 		'level': 1,
 		'heart': 3,
+		'waepons': [
+			'bullet'
+		],
 		'theme': null,
 		'music': 0,
 		'sfx': 0
@@ -28,7 +31,6 @@ var screen_size = Vector2(
 #endregion
 
 #region Status game
-var player_arsenal: Array[String] = ['bullet']
 var defeated_boss: bool = false
 ## call after hiding boss
 var queue_boss: bool = false
@@ -65,5 +67,3 @@ func _load_data():
 		game_data = data
 	else :
 		push_error('Unexpected data')
-
-

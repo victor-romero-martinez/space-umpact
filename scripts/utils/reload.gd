@@ -24,7 +24,7 @@ func _ready():
 
 func _on_area_2d_area_entered(area):
 	if area is PlayerCollectorItem:
-		if global.player_arsenal.has(_gun_name): return
+		if global.game_data.weapons.has(_gun_name): return
 		
 		area.received_item(_gun_name)
 		$PickItemSfx.play()

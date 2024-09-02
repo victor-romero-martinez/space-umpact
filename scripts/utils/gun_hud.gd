@@ -13,8 +13,8 @@ var _next_position_x: float = 0
 
 
 func _ready():
-	for w in global.player_arsenal:
-		var sprite = _make_sprite(Vector2(1, 0), _next_position_x)
+	for i in global.game_data.weapons.size():
+		var sprite = _make_sprite(Vector2(1, i), _next_position_x)
 		add_child(sprite)
 		_next_position_x += 12
 

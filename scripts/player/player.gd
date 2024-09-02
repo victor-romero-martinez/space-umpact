@@ -131,13 +131,13 @@ func make_boom():
 func _fire():
 	if _can_shoot:
 		for _b in bullet_by_shoot:
-			var bullet = GUNS[global.player_arsenal[_weapon_idx]].instantiate()
+			var bullet = GUNS[global.game_data.weapons[_weapon_idx]].instantiate()
 			bullet.position = global_position + Vector2(20.0, 0)
 			add_sibling(bullet)
 			
 			
 			if _weapon_idx != 0:
-				global.player_arsenal.remove_at(_weapon_idx)
+				global.game_data.weapons.remove_at(_weapon_idx)
 				
 				var temp = _weapon_idx
 				_weapon_idx = 0
@@ -149,17 +149,17 @@ func _fire():
 		_shoot_handle()
 
 
-## Add gun type on [u]global.player_arsenal[/u]
+## Add gun type on [u]global.game_data.weapons[/u]
 func add_arsenal(arg: String):
-	if not global.player_arsenal.has(arg):
-		global.player_arsenal.append(arg)
+	if not global.game_data.weapons.has(arg):
+		global.game_data.weapons.append(arg)
 		add_weapon.emit(TBullet.get(arg))
 		
 
 # Set nex weapon
 func _next_weapon():
 	# [].size() -> base 1
-	if (global.player_arsenal.size() - 1) > _weapon_idx:
+	if (global.game_data.weapons.size() - 1) > _weapon_idx:
 		_weapon_idx += 1
 		current_weapon.emit(_weapon_idx)
 	else:
@@ -179,4 +179,3 @@ func _shoot_handle():
 	_can_shoot = false
 	await get_tree().create_timer(wait_seconds).timeout
 	_can_shoot = true
-
