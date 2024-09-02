@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://scripts/state/move_down.gd" id="5_pfn6n"]
 [ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="6_hs3pf"]
 [ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="7_vednh"]
+[ext_resource type="Script" path="res://scripts/state/idle.gd" id="8_0slrk"]
 [ext_resource type="Script" path="res://scripts/utils/stop_viewport.gd" id="8_54gfi"]
-[ext_resource type="Script" path="res://scripts/state/enemy_attack.gd" id="8_q2lwt"]
 [ext_resource type="Script" path="res://scripts/utils/activate_attack.gd" id="9_nk132"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epr8n"]
@@ -30,7 +30,7 @@ attack = NodePath("EnemyStateMachine/EnemyShots")
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy" index="5" node_paths=PackedStringArray("state")]
 script = ExtResource("3_iwao1")
-state = NodePath("EnemyAttack")
+state = NodePath("Idle")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_iwtbk")
@@ -46,8 +46,8 @@ actor = NodePath("../..")
 script = ExtResource("6_hs3pf")
 actor = NodePath("../..")
 
-[node name="EnemyAttack" type="Node" parent="Enemy/EnemyStateMachine" index="3"]
-script = ExtResource("8_q2lwt")
+[node name="Idle" type="Node" parent="Enemy/EnemyStateMachine" index="3"]
+script = ExtResource("8_0slrk")
 
 [node name="AtivateTimerAttack" type="Area2D" parent="Enemy" index="6"]
 collision_layer = 4096

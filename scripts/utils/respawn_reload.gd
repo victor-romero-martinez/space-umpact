@@ -6,12 +6,14 @@ enum TBullet { rocket, laser_h, laser_v, random }
 
 ## Direction to movement
 @export var direction:Movement = Movement.NONE
-## Velocity
-@export var speed: float = 30.0
 ## Select type gun
 @export var gun_type: TBullet = TBullet.random
+## Velocity
+@export var speed: float = 30.0
 ## Time
 @export var wait_time_relad: float = 15.0
+## Limit respawn position
+@export var range_position: Vector2 = Vector2(10, 119)
 ## For respaown
 @export var respawn: bool = false
 
@@ -46,7 +48,7 @@ func _on_make_scene():
 	
 
 func _rand_position():
-	var rand_y = randf_range(10, (_screen.y - 80))
+	var rand_y = randf_range(range_position.x, range_position.y)
 	position = Vector2((_screen.x + 20), rand_y)
 
 	

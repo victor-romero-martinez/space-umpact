@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bi5ybcjsks1j8" path="res://scenes/enemies/enemy_1.tscn" id="2_8jggn"]
 [ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="4_vpoyr"]
 [ext_resource type="Script" path="res://scripts/state/move_up.gd" id="5_7kxxa"]
-[ext_resource type="Script" path="res://scripts/state/enemy_attack.gd" id="6_f2epd"]
+[ext_resource type="Script" path="res://scripts/state/idle.gd" id="6_1vj1h"]
 [ext_resource type="Script" path="res://scripts/state/move_down.gd" id="6_rumyg"]
 [ext_resource type="Script" path="res://scripts/utils/active_state.gd" id="7_ige8j"]
 
@@ -23,7 +23,7 @@ move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy1" index="4" node_paths=PackedStringArray("state")]
 script = ExtResource("4_vpoyr")
-state = NodePath("EnemyAttack")
+state = NodePath("Idle")
 
 [node name="EnemyMoveUp" type="Node" parent="Enemy1/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_7kxxa")
@@ -35,8 +35,8 @@ script = ExtResource("6_rumyg")
 max_move = 29.0
 actor = NodePath("../..")
 
-[node name="EnemyAttack" type="Node" parent="Enemy1/EnemyStateMachine" index="2"]
-script = ExtResource("6_f2epd")
+[node name="Idle" type="Node" parent="Enemy1/EnemyStateMachine" index="2"]
+script = ExtResource("6_1vj1h")
 
 [node name="Active_state" type="Area2D" parent="Enemy1" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
 collision_layer = 4096
@@ -57,7 +57,7 @@ move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy3" index="4" node_paths=PackedStringArray("state")]
 script = ExtResource("4_vpoyr")
-state = NodePath("EnemyAttack")
+state = NodePath("Idle")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy3/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_rumyg")
@@ -69,8 +69,8 @@ script = ExtResource("5_7kxxa")
 max_move = 19.0
 actor = NodePath("../..")
 
-[node name="EnemyAttack" type="Node" parent="Enemy3/EnemyStateMachine" index="2"]
-script = ExtResource("6_f2epd")
+[node name="Idle" type="Node" parent="Enemy3/EnemyStateMachine" index="2"]
+script = ExtResource("6_1vj1h")
 
 [node name="Active_state" type="Area2D" parent="Enemy3" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
 collision_layer = 4096
@@ -91,7 +91,7 @@ move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy5" index="4" node_paths=PackedStringArray("state")]
 script = ExtResource("4_vpoyr")
-state = NodePath("EnemyAttack")
+state = NodePath("Idle")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy5/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_rumyg")
@@ -103,8 +103,8 @@ script = ExtResource("5_7kxxa")
 max_move = 19.0
 actor = NodePath("../..")
 
-[node name="EnemyAttack" type="Node" parent="Enemy5/EnemyStateMachine" index="2"]
-script = ExtResource("6_f2epd")
+[node name="Idle" type="Node" parent="Enemy5/EnemyStateMachine" index="2"]
+script = ExtResource("6_1vj1h")
 
 [node name="Active_state" type="Area2D" parent="Enemy5" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
 collision_layer = 4096
@@ -125,7 +125,7 @@ move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy2" index="4" node_paths=PackedStringArray("state")]
 script = ExtResource("4_vpoyr")
-state = NodePath("EnemyAttack")
+state = NodePath("Idle")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy2/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_rumyg")
@@ -137,8 +137,8 @@ script = ExtResource("5_7kxxa")
 max_move = 93.0
 actor = NodePath("../..")
 
-[node name="EnemyAttack" type="Node" parent="Enemy2/EnemyStateMachine" index="2"]
-script = ExtResource("6_f2epd")
+[node name="Idle" type="Node" parent="Enemy2/EnemyStateMachine" index="2"]
+script = ExtResource("6_1vj1h")
 
 [node name="Active_state" type="Area2D" parent="Enemy2" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
 collision_layer = 4096
@@ -159,7 +159,7 @@ move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy4" index="4" node_paths=PackedStringArray("state")]
 script = ExtResource("4_vpoyr")
-state = NodePath("EnemyAttack")
+state = NodePath("Idle")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy4/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_rumyg")
@@ -171,8 +171,8 @@ script = ExtResource("5_7kxxa")
 max_move = 93.0
 actor = NodePath("../..")
 
-[node name="EnemyAttack" type="Node" parent="Enemy4/EnemyStateMachine" index="2"]
-script = ExtResource("6_f2epd")
+[node name="Idle" type="Node" parent="Enemy4/EnemyStateMachine" index="2"]
+script = ExtResource("6_1vj1h")
 
 [node name="Active_state" type="Area2D" parent="Enemy4" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
 collision_layer = 4096
@@ -193,7 +193,7 @@ move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy6" index="4" node_paths=PackedStringArray("state")]
 script = ExtResource("4_vpoyr")
-state = NodePath("EnemyAttack")
+state = NodePath("Idle")
 
 [node name="EnemyMoveDown" type="Node" parent="Enemy6/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_rumyg")
@@ -205,8 +205,8 @@ script = ExtResource("5_7kxxa")
 max_move = 93.0
 actor = NodePath("../..")
 
-[node name="EnemyAttack" type="Node" parent="Enemy6/EnemyStateMachine" index="2"]
-script = ExtResource("6_f2epd")
+[node name="Idle" type="Node" parent="Enemy6/EnemyStateMachine" index="2"]
+script = ExtResource("6_1vj1h")
 
 [node name="Active_state" type="Area2D" parent="Enemy6" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
 collision_layer = 4096

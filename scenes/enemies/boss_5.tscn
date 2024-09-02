@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnykhyvrccrg0"]
+
+[ext_resource type="PackedScene" uid="uid://2s814b5rdr10" path="res://entities/boss.tscn" id="1_eqjpy"]
+[ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="3_mjk3u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2g5f"]
+atlas = ExtResource("3_mjk3u")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nmhe"]
+atlas = ExtResource("3_mjk3u")
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rfuw"]
+atlas = ExtResource("3_mjk3u")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ha63e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2g5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nmhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rfuw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Boss" instance=ExtResource("1_eqjpy")]
+health = 150
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ha63e")
+autoplay = "default"
+frame = 2
+frame_progress = 0.615304
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+visible = false
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-9.5, -1, -3.5, -8, -3.5, -11.5, 1.5, -11, 7.5, -11, 14, -5.5, 13.5, 7, 4.5, 9, -6, 9, -9.5, 1.5)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="EnemyHitBox2" index="0"]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-9.5, -1, -3.5, -8, -3.5, -11.5, 1.5, -11, 7.5, -11, 14, -5.5, 13.5, 7, 4.5, 9, -6, 9, -9.5, 1.5)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="EnemyHealthBox2" index="1"]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-9.5, -1, -3.5, -8, -3.5, -11.5, 1.5, -11, 7.5, -11, 14, -5.5, 13.5, 7, 4.5, 9, -6, 9, -9.5, 1.5)

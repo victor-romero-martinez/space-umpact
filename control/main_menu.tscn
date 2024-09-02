@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsqspqaej2x7i"]
+[gd_scene load_steps=11 format=3 uid="uid://dsqspqaej2x7i"]
 
 [ext_resource type="Script" path="res://scripts/control/main_menu.gd" id="1_4txhe"]
 [ext_resource type="Theme" uid="uid://bpw54qrjueliy" path="res://control/theme/pink_theme.tres" id="1_tq4my"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b57aq8mq723ou" path="res://scenes/level_3.tscn" id="5_f4ihx"]
 [ext_resource type="PackedScene" uid="uid://b3nuxs564es82" path="res://scenes/music/main_music.tscn" id="5_kvi5w"]
 [ext_resource type="PackedScene" uid="uid://bppt3ujyrh11b" path="res://scenes/level_4.tscn" id="6_2b6st"]
+[ext_resource type="PackedScene" uid="uid://bx8midp6n2gbn" path="res://scenes/level_5.tscn" id="7_u5v1g"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_tq4my")
 script = ExtResource("1_4txhe")
-levels = Array[PackedScene]([ExtResource("3_divir"), ExtResource("4_mjsxg"), ExtResource("5_f4ihx"), ExtResource("6_2b6st")])
+levels = Array[PackedScene]([ExtResource("3_divir"), ExtResource("4_mjsxg"), ExtResource("5_f4ihx"), ExtResource("6_2b6st"), ExtResource("7_u5v1g")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

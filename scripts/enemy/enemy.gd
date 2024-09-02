@@ -81,7 +81,7 @@ func start_timer():
 		_timer.autostart = true
 		_timer.timeout.connect(_on_attack)
 		
-		add_child(_timer)
+		add_child.call_deferred(_timer)
 		_is_already_timer = true
 	
 	
