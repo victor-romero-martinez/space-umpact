@@ -1,0 +1,280 @@
+[gd_scene load_steps=14 format=3 uid="uid://cmlsvsxco878t"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_7k0wj"]
+[ext_resource type="PackedScene" uid="uid://c0mooo2exfrn7" path="res://scenes/enemies/enemy_9.tscn" id="2_hwy5g"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_f260n"]
+[ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="4_tpau5"]
+[ext_resource type="Script" path="res://scripts/state/move_up.gd" id="5_hw4jn"]
+[ext_resource type="Script" path="res://scripts/state/move_down.gd" id="6_64o2f"]
+[ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="7_g75a6"]
+[ext_resource type="Script" path="res://scripts/state/idle.gd" id="8_53loo"]
+[ext_resource type="Script" path="res://scripts/utils/activate_attack.gd" id="9_h6hyx"]
+[ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="10_2l4u3"]
+[ext_resource type="Script" path="res://scripts/utils/return_x_right.gd" id="11_l0rp7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7n35"]
+radius = 6.32456
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_do0st"]
+radius = 4.47214
+
+[node name="Enemy_Chunk" instance=ExtResource("1_7k0wj")]
+
+[node name="Enemy" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_hwy5g")]
+position = Vector2(89, 100)
+speed = 30.0
+can_shoot = true
+bullet_scene = ExtResource("3_f260n")
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy" index="4" node_paths=PackedStringArray("state")]
+script = ExtResource("4_tpau5")
+state = NodePath("Idle")
+
+[node name="EnemyMoveUp" type="Node" parent="Enemy/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_hw4jn")
+max_move = 100.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Enemy/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_64o2f")
+max_move = 120.0
+actor = NodePath("../..")
+
+[node name="EnemyShots" type="Node" parent="Enemy/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_g75a6")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy/EnemyStateMachine" index="3"]
+script = ExtResource("8_53loo")
+
+[node name="Area2D" type="Area2D" parent="Enemy" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("9_h6hyx")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyMoveDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D" index="0"]
+shape = SubResource("CircleShape2D_l7n35")
+
+[node name="Enemy2" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_hwy5g")]
+position = Vector2(113, 100)
+speed = 30.0
+can_shoot = true
+bullet_scene = ExtResource("3_f260n")
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy2" index="4" node_paths=PackedStringArray("state")]
+script = ExtResource("4_tpau5")
+state = NodePath("Idle")
+
+[node name="EnemyMoveUp" type="Node" parent="Enemy2/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_hw4jn")
+max_move = 100.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Enemy2/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_64o2f")
+max_move = 120.0
+actor = NodePath("../..")
+
+[node name="EnemyShots" type="Node" parent="Enemy2/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_g75a6")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy2/EnemyStateMachine" index="3"]
+script = ExtResource("8_53loo")
+
+[node name="Area2D" type="Area2D" parent="Enemy2" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("9_h6hyx")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyMoveDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/Area2D" index="0"]
+shape = SubResource("CircleShape2D_l7n35")
+
+[node name="Enemy3" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_hwy5g")]
+position = Vector2(137, 100)
+speed = 30.0
+can_shoot = true
+bullet_scene = ExtResource("3_f260n")
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy3" index="4" node_paths=PackedStringArray("state")]
+script = ExtResource("4_tpau5")
+state = NodePath("Idle")
+
+[node name="EnemyMoveUp" type="Node" parent="Enemy3/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_hw4jn")
+max_move = 100.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Enemy3/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_64o2f")
+max_move = 120.0
+actor = NodePath("../..")
+
+[node name="EnemyShots" type="Node" parent="Enemy3/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_g75a6")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy3/EnemyStateMachine" index="3"]
+script = ExtResource("8_53loo")
+
+[node name="Area2D" type="Area2D" parent="Enemy3" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("9_h6hyx")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyMoveDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/Area2D" index="0"]
+shape = SubResource("CircleShape2D_l7n35")
+
+[node name="Enemy4" parent="." index="5" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_hwy5g")]
+position = Vector2(209, 140)
+speed = 30.0
+can_shoot = true
+bullet_scene = ExtResource("3_f260n")
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy4" index="4" node_paths=PackedStringArray("state")]
+script = ExtResource("4_tpau5")
+state = NodePath("Idle")
+
+[node name="EnemyMoveUp" type="Node" parent="Enemy4/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_hw4jn")
+max_move = 140.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Enemy4/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_64o2f")
+max_move = 160.0
+actor = NodePath("../..")
+
+[node name="EnemyShots" type="Node" parent="Enemy4/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_g75a6")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy4/EnemyStateMachine" index="3"]
+script = ExtResource("8_53loo")
+
+[node name="Area2D" type="Area2D" parent="Enemy4" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("9_h6hyx")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyMoveDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy4/Area2D" index="0"]
+shape = SubResource("CircleShape2D_l7n35")
+
+[node name="Enemy5" parent="." index="6" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_hwy5g")]
+position = Vector2(233, 140)
+speed = 30.0
+can_shoot = true
+bullet_scene = ExtResource("3_f260n")
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy5" index="4" node_paths=PackedStringArray("state")]
+script = ExtResource("4_tpau5")
+state = NodePath("Idle")
+
+[node name="EnemyMoveUp" type="Node" parent="Enemy5/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_hw4jn")
+max_move = 140.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Enemy5/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_64o2f")
+max_move = 160.0
+actor = NodePath("../..")
+
+[node name="EnemyShots" type="Node" parent="Enemy5/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_g75a6")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy5/EnemyStateMachine" index="3"]
+script = ExtResource("8_53loo")
+
+[node name="Area2D" type="Area2D" parent="Enemy5" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("9_h6hyx")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyMoveDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy5/Area2D" index="0"]
+shape = SubResource("CircleShape2D_l7n35")
+
+[node name="Enemy6" parent="." index="7" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_hwy5g")]
+position = Vector2(257, 140)
+speed = 30.0
+can_shoot = true
+bullet_scene = ExtResource("3_f260n")
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy6" index="4" node_paths=PackedStringArray("state")]
+script = ExtResource("4_tpau5")
+state = NodePath("Idle")
+
+[node name="EnemyMoveUp" type="Node" parent="Enemy6/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_hw4jn")
+max_move = 140.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Enemy6/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_64o2f")
+max_move = 160.0
+actor = NodePath("../..")
+
+[node name="EnemyShots" type="Node" parent="Enemy6/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_g75a6")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy6/EnemyStateMachine" index="3"]
+script = ExtResource("8_53loo")
+
+[node name="Area2D" type="Area2D" parent="Enemy6" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("9_h6hyx")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyMoveDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy6/Area2D" index="0"]
+shape = SubResource("CircleShape2D_l7n35")
+
+[node name="RespawnReload" parent="." index="8" instance=ExtResource("10_2l4u3")]
+position = Vector2(61, 121)
+speed = 0.0
+range_position = Vector2(80, 170)
+
+[node name="left" type="Area2D" parent="RespawnReload" index="1"]
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("11_l0rp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnReload/left" index="0"]
+shape = SubResource("CircleShape2D_do0st")

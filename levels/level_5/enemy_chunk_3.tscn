@@ -22,7 +22,7 @@ radius = 4.47214
 
 [node name="Enemy" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_de3jb")]
 position = Vector2(139, 90)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("3_k13g0")
 fsm = NodePath("EnemyStateMachine")
@@ -63,7 +63,7 @@ shape = SubResource("CircleShape2D_l2fxt")
 
 [node name="Enemy2" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_de3jb")]
 position = Vector2(139, 170)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("3_k13g0")
 fsm = NodePath("EnemyStateMachine2")
@@ -104,7 +104,7 @@ shape = SubResource("CircleShape2D_l2fxt")
 
 [node name="Enemy3" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_de3jb")]
 position = Vector2(184, 110)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("3_k13g0")
 fsm = NodePath("EnemyStateMachine3")
@@ -145,7 +145,7 @@ shape = SubResource("CircleShape2D_l2fxt")
 
 [node name="Enemy6" parent="." index="5" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_de3jb")]
 position = Vector2(184, 152)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("3_k13g0")
 fsm = NodePath("EnemyStateMachine3")
@@ -186,7 +186,7 @@ shape = SubResource("CircleShape2D_l2fxt")
 
 [node name="Enemy4" parent="." index="6" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_de3jb")]
 position = Vector2(228, 90)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("3_k13g0")
 fsm = NodePath("EnemyStateMachine4")
@@ -227,7 +227,7 @@ shape = SubResource("CircleShape2D_l2fxt")
 
 [node name="Enemy5" parent="." index="7" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_de3jb")]
 position = Vector2(228, 170)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("3_k13g0")
 fsm = NodePath("EnemyStateMachine5")

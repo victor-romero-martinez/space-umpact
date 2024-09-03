@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://cl0234y7mcsvo"]
+
+[ext_resource type="PackedScene" uid="uid://di4g8rw3ut8l0" path="res://entities/boss_chunk.tscn" id="1_tk4b3"]
+[ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="2_m3o4t"]
+[ext_resource type="Script" path="res://scripts/utils/return_x_right.gd" id="3_fpxmg"]
+[ext_resource type="PackedScene" uid="uid://bxqm6da4m0fxp" path="res://scenes/enemies/boss_6.tscn" id="4_eskng"]
+[ext_resource type="PackedScene" uid="uid://b6o73s0pkyk7x" path="res://scenes/utilities/rocket.tscn" id="5_kj87b"]
+[ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="6_2cf1k"]
+[ext_resource type="Script" path="res://scripts/state/move_left.gd" id="7_4fhgl"]
+[ext_resource type="Script" path="res://scripts/state/move_up.gd" id="8_tbev0"]
+[ext_resource type="Script" path="res://scripts/state/move_down.gd" id="9_prbo0"]
+[ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="10_1jphf"]
+[ext_resource type="Script" path="res://scripts/state/boss_shots.gd" id="11_md3q5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rev1"]
+radius = 4.47214
+
+[node name="BossChunk" node_paths=PackedStringArray("boss") instance=ExtResource("1_tk4b3")]
+boss = NodePath("Boss")
+
+[node name="HealthFinalPos" parent="." index="0"]
+position = Vector2(264, 187)
+
+[node name="HealthBar" parent="." index="1"]
+position = Vector2(265, 199)
+
+[node name="RespawnReload" parent="." index="2" instance=ExtResource("2_m3o4t")]
+position = Vector2(371, 103)
+direction = -1
+range_position = Vector2(80, 170)
+respawn = true
+
+[node name="left" type="Area2D" parent="RespawnReload" index="1"]
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("3_fpxmg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnReload/left" index="0"]
+shape = SubResource("CircleShape2D_8rev1")
+
+[node name="Boss" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("4_eskng")]
+position = Vector2(377, 147)
+type_gun = ExtResource("5_kj87b")
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+move_left = NodePath("EnemyStateMachine/EnemyMoveLeft")
+attack = NodePath("EnemyStateMachine/BossShots")
+dead_move = NodePath("EnemyStateMachine/DeadBoss")
+
+[node name="EnemyStateMachine" type="Node" parent="Boss" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("6_2cf1k")
+state = NodePath("EnemyMoveLeft")
+
+[node name="EnemyMoveLeft" type="Node" parent="Boss/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_4fhgl")
+max_move = 80.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveUp" type="Node" parent="Boss/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("8_tbev0")
+max_move = 80.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Boss/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_prbo0")
+max_move = 180.0
+actor = NodePath("../..")
+
+[node name="DeadBoss" type="Node" parent="Boss/EnemyStateMachine" index="3" node_paths=PackedStringArray("actor")]
+script = ExtResource("10_1jphf")
+actor = NodePath("../..")
+
+[node name="BossShots" type="Node" parent="Boss/EnemyStateMachine" index="4" node_paths=PackedStringArray("actor")]
+script = ExtResource("11_md3q5")
+actor = NodePath("../..")

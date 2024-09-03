@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1lvr7devp4ex"]
+
+[ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_n86hn"]
+[ext_resource type="PackedScene" uid="uid://co4h5yvamo4fo" path="res://levels/level_6/tile.tscn" id="2_yew1r"]
+[ext_resource type="PackedScene" uid="uid://dhq5liwcdpd37" path="res://levels/level_6/tile_1.tscn" id="3_58gar"]
+[ext_resource type="PackedScene" uid="uid://drw5iq266pa71" path="res://levels/level_6/tile_2.tscn" id="4_hsxsw"]
+[ext_resource type="PackedScene" uid="uid://drpd55khe2lee" path="res://levels/level_6/enemy_chunk.tscn" id="5_2sd3y"]
+[ext_resource type="PackedScene" uid="uid://bb0yjgc126btr" path="res://levels/level_6/enemy_chunk_1.tscn" id="6_ybfoe"]
+[ext_resource type="PackedScene" uid="uid://8uf7rvqm0fjf" path="res://levels/level_6/enemy_chunk_2.tscn" id="7_ypbo5"]
+[ext_resource type="PackedScene" uid="uid://cmlsvsxco878t" path="res://levels/level_6/enemy_chunk_3.tscn" id="8_14ry5"]
+[ext_resource type="PackedScene" uid="uid://cl0234y7mcsvo" path="res://levels/level_6/boss_chunk.tscn" id="9_51pc5"]
+
+[node name="Level" instance=ExtResource("1_n86hn")]
+
+[node name="BackgroundManager" parent="Game/BG" index="0" node_paths=PackedStringArray("list_map")]
+list_map = [NodePath("Tile"), NodePath("Tile2"), NodePath("Tile3")]
+
+[node name="Tile" parent="Game/BG/BackgroundManager" index="0" instance=ExtResource("2_yew1r")]
+
+[node name="Tile2" parent="Game/BG/BackgroundManager" index="1" instance=ExtResource("3_58gar")]
+
+[node name="Tile3" parent="Game/BG/BackgroundManager" index="2" instance=ExtResource("4_hsxsw")]
+
+[node name="Hud" parent="Game" index="1"]
+position = Vector2(0, 199)
+
+[node name="HudPosition" parent="Game" index="2"]
+position = Vector2(0, 191)
+
+[node name="Player" parent="Game" index="3"]
+position = Vector2(0, 114)
+
+[node name="EnemyManager" parent="Game/Enemy" index="0"]
+enemies_chunk = Array[PackedScene]([ExtResource("5_2sd3y"), ExtResource("6_ybfoe"), ExtResource("7_ypbo5"), ExtResource("8_14ry5"), ExtResource("6_ybfoe"), ExtResource("7_ypbo5")])
+boss_chunk = ExtResource("9_51pc5")

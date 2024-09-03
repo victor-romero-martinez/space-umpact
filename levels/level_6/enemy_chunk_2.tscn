@@ -1,0 +1,228 @@
+[gd_scene load_steps=12 format=3 uid="uid://8uf7rvqm0fjf"]
+
+[ext_resource type="PackedScene" uid="uid://d3fxayscwydfo" path="res://entities/enemy_chunk.tscn" id="1_ldvw6"]
+[ext_resource type="PackedScene" uid="uid://owst6smqhoks" path="res://scenes/enemies/enemy_4.tscn" id="2_pjdr5"]
+[ext_resource type="PackedScene" uid="uid://cwj4d2ay65k5w" path="res://scenes/utilities/bullet.tscn" id="3_u8t7t"]
+[ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="4_d5sol"]
+[ext_resource type="Script" path="res://scripts/state/enemy_shots.gd" id="5_bqlu4"]
+[ext_resource type="Script" path="res://scripts/state/idle.gd" id="6_sc00i"]
+[ext_resource type="Script" path="res://scripts/utils/active_state.gd" id="7_w5lim"]
+[ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="8_baax7"]
+[ext_resource type="Script" path="res://scripts/utils/return_x_right.gd" id="9_ljibq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrcyp"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gdsq6"]
+radius = 4.47214
+
+[node name="Enemy_Chunk" instance=ExtResource("1_ldvw6")]
+
+[node name="Enemy4" parent="." index="2" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_pjdr5")]
+position = Vector2(74, 100)
+can_shoot = true
+bullet_scene = ExtResource("3_u8t7t")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy4" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_d5sol")
+state = NodePath("Idle")
+
+[node name="EnemyShots" type="Node" parent="Enemy4/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_bqlu4")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy4/EnemyStateMachine" index="1"]
+script = ExtResource("6_sc00i")
+
+[node name="Active_state" type="Area2D" parent="Enemy4" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_w5lim")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy4/Active_state" index="0"]
+shape = SubResource("CircleShape2D_jrcyp")
+
+[node name="Enemy5" parent="." index="3" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_pjdr5")]
+position = Vector2(106, 130)
+can_shoot = true
+bullet_scene = ExtResource("3_u8t7t")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy5" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_d5sol")
+state = NodePath("Idle")
+
+[node name="EnemyShots" type="Node" parent="Enemy5/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_bqlu4")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy5/EnemyStateMachine" index="1"]
+script = ExtResource("6_sc00i")
+
+[node name="Active_state" type="Area2D" parent="Enemy5" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_w5lim")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy5/Active_state" index="0"]
+shape = SubResource("CircleShape2D_jrcyp")
+
+[node name="Enemy6" parent="." index="4" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_pjdr5")]
+position = Vector2(138, 160)
+can_shoot = true
+bullet_scene = ExtResource("3_u8t7t")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy6" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_d5sol")
+state = NodePath("Idle")
+
+[node name="EnemyShots" type="Node" parent="Enemy6/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_bqlu4")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy6/EnemyStateMachine" index="1"]
+script = ExtResource("6_sc00i")
+
+[node name="Active_state" type="Area2D" parent="Enemy6" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_w5lim")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy6/Active_state" index="0"]
+shape = SubResource("CircleShape2D_jrcyp")
+
+[node name="Enemy7" parent="." index="5" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_pjdr5")]
+position = Vector2(170, 130)
+can_shoot = true
+bullet_scene = ExtResource("3_u8t7t")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy7" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_d5sol")
+state = NodePath("Idle")
+
+[node name="EnemyShots" type="Node" parent="Enemy7/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_bqlu4")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy7/EnemyStateMachine" index="1"]
+script = ExtResource("6_sc00i")
+
+[node name="Active_state" type="Area2D" parent="Enemy7" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_w5lim")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy7/Active_state" index="0"]
+shape = SubResource("CircleShape2D_jrcyp")
+
+[node name="Enemy8" parent="." index="6" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_pjdr5")]
+position = Vector2(202, 100)
+can_shoot = true
+bullet_scene = ExtResource("3_u8t7t")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy8" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_d5sol")
+state = NodePath("Idle")
+
+[node name="EnemyShots" type="Node" parent="Enemy8/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_bqlu4")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy8/EnemyStateMachine" index="1"]
+script = ExtResource("6_sc00i")
+
+[node name="Active_state" type="Area2D" parent="Enemy8" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_w5lim")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy8/Active_state" index="0"]
+shape = SubResource("CircleShape2D_jrcyp")
+
+[node name="Enemy9" parent="." index="7" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_pjdr5")]
+position = Vector2(234, 130)
+can_shoot = true
+bullet_scene = ExtResource("3_u8t7t")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy9" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_d5sol")
+state = NodePath("Idle")
+
+[node name="EnemyShots" type="Node" parent="Enemy9/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_bqlu4")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy9/EnemyStateMachine" index="1"]
+script = ExtResource("6_sc00i")
+
+[node name="Active_state" type="Area2D" parent="Enemy9" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_w5lim")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy9/Active_state" index="0"]
+shape = SubResource("CircleShape2D_jrcyp")
+
+[node name="Enemy10" parent="." index="8" node_paths=PackedStringArray("fsm", "attack") instance=ExtResource("2_pjdr5")]
+position = Vector2(266, 160)
+can_shoot = true
+bullet_scene = ExtResource("3_u8t7t")
+fsm = NodePath("EnemyStateMachine")
+attack = NodePath("EnemyStateMachine/EnemyShots")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy10" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_d5sol")
+state = NodePath("Idle")
+
+[node name="EnemyShots" type="Node" parent="Enemy10/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_bqlu4")
+actor = NodePath("../..")
+
+[node name="Idle" type="Node" parent="Enemy10/EnemyStateMachine" index="1"]
+script = ExtResource("6_sc00i")
+
+[node name="Active_state" type="Area2D" parent="Enemy10" index="6" node_paths=PackedStringArray("state_manager", "next_state")]
+collision_layer = 4096
+collision_mask = 1024
+script = ExtResource("7_w5lim")
+state_manager = NodePath("../EnemyStateMachine")
+next_state = NodePath("../EnemyStateMachine/EnemyShots")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy10/Active_state" index="0"]
+shape = SubResource("CircleShape2D_jrcyp")
+
+[node name="RespawnReload" parent="." index="9" instance=ExtResource("8_baax7")]
+position = Vector2(130, 121)
+speed = 0.0
+range_position = Vector2(80, 170)
+
+[node name="left" type="Area2D" parent="RespawnReload" index="1"]
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("9_ljibq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnReload/left" index="0"]
+shape = SubResource("CircleShape2D_gdsq6")

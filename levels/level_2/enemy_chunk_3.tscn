@@ -17,9 +17,10 @@ radius = 5.09902
 metadata/_edit_lock_ = true
 
 [node name="Enemy5" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(117, 58)
-speed = 16.0
+position = Vector2(117, 90)
+speed = 30.0
 can_shoot = true
+timer_range = Vector2(3, 5)
 bullet_scene = ExtResource("7_pkicg")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -58,9 +59,10 @@ next_state = NodePath("../EnemyStateMachine/EnemyMoveUp")
 shape = SubResource("CircleShape2D_5akuw")
 
 [node name="Enemy8" parent="." index="1" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(223, 58)
-speed = 16.0
+position = Vector2(223, 90)
+speed = 30.0
 can_shoot = true
+timer_range = Vector2(3, 5)
 bullet_scene = ExtResource("7_pkicg")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -99,9 +101,10 @@ next_state = NodePath("../EnemyStateMachine/EnemyMoveUp")
 shape = SubResource("CircleShape2D_5akuw")
 
 [node name="Enemy9" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(202, 58)
-speed = 16.0
+position = Vector2(202, 90)
+speed = 30.0
 can_shoot = true
+timer_range = Vector2(3, 5)
 bullet_scene = ExtResource("7_pkicg")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -140,9 +143,10 @@ next_state = NodePath("../EnemyStateMachine/EnemyMoveUp")
 shape = SubResource("CircleShape2D_5akuw")
 
 [node name="Enemy10" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(181, 58)
-speed = 16.0
+position = Vector2(181, 90)
+speed = 30.0
 can_shoot = true
+timer_range = Vector2(3, 5)
 bullet_scene = ExtResource("7_pkicg")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -181,9 +185,10 @@ next_state = NodePath("../EnemyStateMachine/EnemyMoveUp")
 shape = SubResource("CircleShape2D_5akuw")
 
 [node name="Enemy11" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(160, 58)
-speed = 16.0
+position = Vector2(160, 90)
+speed = 30.0
 can_shoot = true
+timer_range = Vector2(3, 5)
 bullet_scene = ExtResource("7_pkicg")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
@@ -222,9 +227,10 @@ next_state = NodePath("../EnemyStateMachine/EnemyMoveUp")
 shape = SubResource("CircleShape2D_5akuw")
 
 [node name="Enemy12" parent="." index="5" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_d6x5d")]
-position = Vector2(139, 58)
-speed = 16.0
+position = Vector2(139, 90)
+speed = 30.0
 can_shoot = true
+timer_range = Vector2(3, 5)
 bullet_scene = ExtResource("7_pkicg")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")

@@ -23,7 +23,7 @@ metadata/_edit_lock_ = true
 
 [node name="Enemy" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
 position = Vector2(89, 19)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("7_c34j4")
 fsm = NodePath("EnemyStateMachine")
@@ -64,7 +64,7 @@ shape = SubResource("CircleShape2D_h4deg")
 
 [node name="Enemy2" parent="." index="1" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
 position = Vector2(137, 100)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("7_c34j4")
 fsm = NodePath("EnemyStateMachine2")
@@ -105,7 +105,7 @@ shape = SubResource("CircleShape2D_h4deg")
 
 [node name="Enemy3" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
 position = Vector2(183, 47)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("7_c34j4")
 fsm = NodePath("EnemyStateMachine3")
@@ -146,7 +146,7 @@ shape = SubResource("CircleShape2D_h4deg")
 
 [node name="Enemy4" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
 position = Vector2(234, 19)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("7_c34j4")
 fsm = NodePath("EnemyStateMachine4")
@@ -187,7 +187,7 @@ shape = SubResource("CircleShape2D_h4deg")
 
 [node name="Enemy5" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rdfaa")]
 position = Vector2(274, 100)
-speed = 16.0
+speed = 30.0
 can_shoot = true
 bullet_scene = ExtResource("7_c34j4")
 fsm = NodePath("EnemyStateMachine5")
@@ -228,8 +228,8 @@ shape = SubResource("CircleShape2D_h4deg")
 
 [node name="RespawnReload" parent="." index="5" instance=ExtResource("8_8e0id")]
 position = Vector2(136, 57)
-speed = 0.0
 gun_type = 0
+speed = 0.0
 
 [node name="Destroyer" type="Area2D" parent="RespawnReload" index="1"]
 collision_layer = 2048

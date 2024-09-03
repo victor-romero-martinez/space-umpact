@@ -55,7 +55,7 @@ var state: TState = TState.IMMUNITY
 
 
 func _ready():
-	global_position = initial_position.position
+	position = initial_position.position
 	current_weapon.emit(TBullet.bullet)
 	_start_combat()
 	
@@ -79,7 +79,7 @@ func _move(delta):
 	# limits movement on the screen
 	#WARNING: hace un pequeño movimineto
 	position += velocity * delta
-	position = position.clamp(
+	global_position = global_position.clamp(
 		Vector2(offset, offset), (Global.screen_size - Vector2(offset, offset))
 	)
 
@@ -98,7 +98,7 @@ func _animation_spawn():
 # enter from outside
 func _start_combat():
 	var t = create_tween()
-	t.tween_property(self, 'global_position', respawn.position, .45)\
+	t.tween_property(self, 'position:x', respawn.position.x, .45)\
 		.set_trans(Tween.TRANS_LINEAR)\
 		.set_ease(Tween.EASE_OUT)
 	_animation_spawn()
@@ -119,7 +119,7 @@ func make_boom():
 	if state == TState.MOVE:
 		state = TState.FREEZE # NOTICE: change state before, after change position
 		_apply_explotion()
-		global_position = initial_position.position
+		position = initial_position.position
 		
 		hit.emit()
 		
@@ -132,7 +132,7 @@ func _fire():
 	if _can_shoot:
 		for _b in bullet_by_shoot:
 			var bullet = GUNS[global.game_data.weapons[_weapon_idx]].instantiate()
-			bullet.position = global_position + Vector2(20.0, 0)
+			bullet.position = position + Vector2(20.0, 0)
 			add_sibling(bullet)
 			
 			
@@ -170,7 +170,7 @@ func _next_weapon():
 # add explotion as sibling 
 func _apply_explotion():
 	var boom = explotion_scene.instantiate()
-	boom.position = global_position
+	boom.position = position
 	add_sibling(boom)
 
 

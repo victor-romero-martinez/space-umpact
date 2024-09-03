@@ -18,12 +18,6 @@ enum Direction { LEFT = -1, RIGHT = 1 }
 var _collitions: Array[CollisionObject2D] = []
 
 var _handler_zigzag_y = randi_range(0, 1)
-#var _aux_dir: Direction = Direction.RIGHT
-
-
-#func _ready():
-	#if directon == Direction.LEFT:
-		#go_negative()
 
 
 func _physics_process(_delta):
@@ -51,7 +45,7 @@ func _scan():
 func _make_boom():
 	if explotion:
 		var boom = explotion.instantiate()
-		boom.position = global_position
+		boom.position = position
 		add_sibling(boom)
 
 

@@ -25,14 +25,17 @@ position = Vector2(0, 199)
 [node name="HudPosition" parent="Game" index="2"]
 position = Vector2(0, 191)
 
+[node name="Player" parent="Game" index="3"]
+position = Vector2(0, 108)
+
 [node name="Player" parent="Game/Player" index="0"]
-position = Vector2(-50, 112)
+position = Vector2(-50, 0)
 
 [node name="PlayerRespawn" parent="Game/Player" index="1"]
-position = Vector2(16, 108)
+position = Vector2(16, 0)
 
 [node name="PlayerInit" parent="Game/Player" index="2"]
-position = Vector2(-38, 108)
+position = Vector2(-38, 0)
 
 [node name="EnemyManager" parent="Game/Enemy" index="0"]
 position = Vector2(0, 1)

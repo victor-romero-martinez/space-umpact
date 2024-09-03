@@ -21,7 +21,7 @@ radius = 5.09902
 [node name="Enemy" parent="." index="0" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_l4jo6")]
 position = Vector2(185, 81)
 health = 25
-speed = 12.0
+speed = 30.0
 bullet_scene = ExtResource("7_vednh")
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")

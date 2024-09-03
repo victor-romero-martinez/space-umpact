@@ -17,7 +17,7 @@ radius = 6.0
 
 [node name="Enemy" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rliim")]
 position = Vector2(108, 100)
-speed = 24.0
+speed = 30.0
 can_shoot = true
 timer_range = Vector2(4, 5)
 bullet_scene = ExtResource("3_577u1")
@@ -60,7 +60,7 @@ shape = SubResource("CircleShape2D_8jjtx")
 
 [node name="Enemy2" parent="." index="3" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rliim")]
 position = Vector2(108, 160)
-speed = 24.0
+speed = 30.0
 can_shoot = true
 timer_range = Vector2(4, 5)
 bullet_scene = ExtResource("3_577u1")
@@ -103,7 +103,7 @@ shape = SubResource("CircleShape2D_8jjtx")
 
 [node name="Enemy3" parent="." index="4" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rliim")]
 position = Vector2(147, 100)
-speed = 24.0
+speed = 30.0
 can_shoot = true
 timer_range = Vector2(4, 5)
 bullet_scene = ExtResource("3_577u1")
@@ -146,7 +146,7 @@ shape = SubResource("CircleShape2D_8jjtx")
 
 [node name="Enemy4" parent="." index="5" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rliim")]
 position = Vector2(147, 160)
-speed = 24.0
+speed = 30.0
 can_shoot = true
 timer_range = Vector2(4, 5)
 bullet_scene = ExtResource("3_577u1")
@@ -189,7 +189,7 @@ shape = SubResource("CircleShape2D_8jjtx")
 
 [node name="Enemy5" parent="." index="6" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rliim")]
 position = Vector2(185, 100)
-speed = 24.0
+speed = 30.0
 can_shoot = true
 timer_range = Vector2(4, 5)
 bullet_scene = ExtResource("3_577u1")
@@ -232,7 +232,7 @@ shape = SubResource("CircleShape2D_8jjtx")
 
 [node name="Enemy6" parent="." index="7" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rliim")]
 position = Vector2(185, 160)
-speed = 24.0
+speed = 30.0
 can_shoot = true
 timer_range = Vector2(4, 5)
 bullet_scene = ExtResource("3_577u1")
@@ -275,7 +275,7 @@ shape = SubResource("CircleShape2D_8jjtx")
 
 [node name="Enemy7" parent="." index="8" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rliim")]
 position = Vector2(223, 100)
-speed = 24.0
+speed = 30.0
 can_shoot = true
 timer_range = Vector2(4, 5)
 bullet_scene = ExtResource("3_577u1")
@@ -318,7 +318,7 @@ shape = SubResource("CircleShape2D_8jjtx")
 
 [node name="Enemy8" parent="." index="9" node_paths=PackedStringArray("fsm", "move_down", "move_up", "attack") instance=ExtResource("2_rliim")]
 position = Vector2(223, 160)
-speed = 24.0
+speed = 30.0
 can_shoot = true
 timer_range = Vector2(4, 5)
 bullet_scene = ExtResource("3_577u1")

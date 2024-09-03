@@ -63,6 +63,7 @@ size = Vector2(8, 46)
 
 [node name="laser_v" type="Node2D"]
 script = ExtResource("1_rv3j7")
+speed = 30.0
 
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(0, -17.5)

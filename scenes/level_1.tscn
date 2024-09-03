@@ -85,19 +85,20 @@ position = Vector2(0, 5)
 metadata/_edit_lock_ = true
 
 [node name="Player" type="Node2D" parent="Game"]
+position = Vector2(0, 80)
 
 [node name="Player" parent="Game/Player" node_paths=PackedStringArray("initial_position", "respawn") instance=ExtResource("2_do623")]
-position = Vector2(-32, 68)
+position = Vector2(-32, 0)
 initial_position = NodePath("../PlayerInit")
 respawn = NodePath("../PlayerRespawn")
 metadata/_edit_lock_ = true
 
 [node name="PlayerRespawn" type="Marker2D" parent="Game/Player"]
-position = Vector2(16, 68)
+position = Vector2(16, 0)
 metadata/_edit_lock_ = true
 
 [node name="PlayerInit" type="Marker2D" parent="Game/Player"]
-position = Vector2(-38, 68)
+position = Vector2(-38, 0)
 metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="Game"]
