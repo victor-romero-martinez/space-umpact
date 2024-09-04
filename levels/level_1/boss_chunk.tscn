@@ -30,7 +30,6 @@ state = NodePath("EnemyMoveLeft")
 
 [node name="EnemyMoveLeft" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("3_t1oet")
-max_move = 80.0
 actor = NodePath("../..")
 
 [node name="EnemyMoveUp" type="Node" parent="Boss1/EnemyStateMachine" node_paths=PackedStringArray("actor")]

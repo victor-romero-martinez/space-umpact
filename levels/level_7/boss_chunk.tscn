@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://trd45io14j1b"]
+
+[ext_resource type="PackedScene" uid="uid://di4g8rw3ut8l0" path="res://entities/boss_chunk.tscn" id="1_k63xu"]
+[ext_resource type="PackedScene" uid="uid://bwa3hrm2mcube" path="res://scenes/enemies/boss_7.tscn" id="2_hwq5a"]
+[ext_resource type="PackedScene" uid="uid://43uly46lm3op" path="res://scenes/utilities/laser_h.tscn" id="3_xrffb"]
+[ext_resource type="Script" path="res://scripts/state/enemy_fsm.gd" id="4_kh3ee"]
+[ext_resource type="Script" path="res://scripts/state/move_up.gd" id="5_wm0mb"]
+[ext_resource type="Script" path="res://scripts/state/move_down.gd" id="6_haroc"]
+[ext_resource type="Script" path="res://scripts/state/boss_shots.gd" id="7_0xyun"]
+[ext_resource type="Script" path="res://scripts/state/move_left.gd" id="8_11bgo"]
+[ext_resource type="Script" path="res://scripts/state/dead_boss.gd" id="9_d3nl2"]
+[ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="10_8y70g"]
+[ext_resource type="Script" path="res://scripts/utils/return_x_right.gd" id="11_5jlmw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwi1n"]
+radius = 4.47214
+
+[node name="BossChunk" node_paths=PackedStringArray("boss") instance=ExtResource("1_k63xu")]
+boss = NodePath("Boss")
+
+[node name="HealthFinalPos" parent="." index="0"]
+position = Vector2(264, 187)
+
+[node name="HealthBar" parent="." index="1"]
+position = Vector2(265, 199)
+
+[node name="Boss" parent="." index="2" node_paths=PackedStringArray("fsm", "move_down", "move_up", "move_left", "attack", "dead_move") instance=ExtResource("2_hwq5a")]
+position = Vector2(393, 126)
+timer_attack = 7.0
+type_gun = ExtResource("3_xrffb")
+fsm = NodePath("EnemyStateMachine")
+move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
+move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
+move_left = NodePath("EnemyStateMachine/EnemyMoveLeft")
+attack = NodePath("EnemyStateMachine/BossShots")
+dead_move = NodePath("EnemyStateMachine/DeadBoss")
+
+[node name="EnemyStateMachine" type="Node" parent="Boss" index="5" node_paths=PackedStringArray("state")]
+script = ExtResource("4_kh3ee")
+state = NodePath("EnemyMoveLeft")
+
+[node name="EnemyMoveUp" type="Node" parent="Boss/EnemyStateMachine" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_wm0mb")
+max_move = 80.0
+actor = NodePath("../..")
+
+[node name="EnemyMoveDown" type="Node" parent="Boss/EnemyStateMachine" index="1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_haroc")
+max_move = 160.0
+actor = NodePath("../..")
+
+[node name="BossShots" type="Node" parent="Boss/EnemyStateMachine" index="2" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_0xyun")
+actor = NodePath("../..")
+
+[node name="EnemyMoveLeft" type="Node" parent="Boss/EnemyStateMachine" index="3" node_paths=PackedStringArray("actor")]
+script = ExtResource("8_11bgo")
+actor = NodePath("../..")
+
+[node name="DeadBoss" type="Node" parent="Boss/EnemyStateMachine" index="4" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_d3nl2")
+actor = NodePath("../..")
+
+[node name="RespawnReload" parent="." index="3" instance=ExtResource("10_8y70g")]
+position = Vector2(371, 103)
+direction = -1
+range_position = Vector2(80, 170)
+respawn = true
+
+[node name="left" type="Area2D" parent="RespawnReload" index="1"]
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("11_5jlmw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnReload/left" index="0"]
+shape = SubResource("CircleShape2D_nwi1n")

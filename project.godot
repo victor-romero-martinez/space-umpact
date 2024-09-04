@@ -70,7 +70,7 @@ change_weapon={
 2d_physics/layer_8="destroyer_x"
 2d_physics/layer_9="player_colectable"
 2d_physics/layer_10="off_x_left"
-2d_physics/layer_11="off_x_rigth"
+2d_physics/layer_11="off_x_right"
 2d_physics/layer_12="x_left"
 2d_physics/layer_13="x_right"
 

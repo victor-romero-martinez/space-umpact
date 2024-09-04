@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://jjef1gjl445n"]
 
-[ext_resource type="AudioStream" uid="uid://iiyg8dg5626t" path="res://assets/sfx/laser_sfx.mp3" id="1_nuk0e"]
+[ext_resource type="AudioStream" uid="uid://524w52bx5yqu" path="res://assets/sfx/weird_01.ogg" id="1_6w1aw"]
 
 [node name="LaserHVfx" type="AudioStreamPlayer"]
-stream = ExtResource("1_nuk0e")
+stream = ExtResource("1_6w1aw")
 autoplay = true
 bus = &"sfx"

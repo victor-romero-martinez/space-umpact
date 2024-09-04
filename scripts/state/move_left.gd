@@ -1,24 +1,21 @@
 extends State
 class_name EnemyMoveLeft
 
-
-## active for move
-@export var max_move: float = 0.0
-@export var actor: Enemy
-
 signal end_move_left
 
-var to_positon_x: float
+## active for move
+@export var max_move: float = 290.0
+@export var actor: Enemy
+
 
 func _ready():
 	set_physics_process(false)
-	to_positon_x = actor.global_position.x - max_move
 	
 
 func enter_state():
 	#set_physics_process(true)
 	var t = create_tween()
-	t.tween_property(actor, 'position:x', to_positon_x, 2.0)
+	t.tween_property(actor, 'position:x', max_move, 2.0)
 	t.tween_callback(_tween_end_move_left)
 
 

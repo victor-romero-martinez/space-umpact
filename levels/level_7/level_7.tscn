@@ -1,0 +1,29 @@
+[gd_scene load_steps=9 format=3 uid="uid://dboyoewdbulqn"]
+
+[ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_n3m65"]
+[ext_resource type="PackedScene" uid="uid://deq5t1ui7x3ci" path="res://levels/level_7/tile.tscn" id="2_sfbda"]
+[ext_resource type="PackedScene" uid="uid://bclh4l0cdhiam" path="res://levels/level_7/tile_1.tscn" id="3_7fcb6"]
+[ext_resource type="PackedScene" uid="uid://cla1e03mvhyg8" path="res://levels/level_7/enemy_chunk.tscn" id="4_iido8"]
+[ext_resource type="PackedScene" uid="uid://dk3b6u2ygyat" path="res://levels/level_7/enemy_chunk_1.tscn" id="5_meyxy"]
+[ext_resource type="PackedScene" uid="uid://bw55jf2wpquu1" path="res://levels/level_7/enemy_chunk_2.tscn" id="6_blijd"]
+[ext_resource type="PackedScene" uid="uid://c0a1vivee1yxl" path="res://levels/level_7/enemy_chunk_3.tscn" id="7_cqtax"]
+[ext_resource type="PackedScene" uid="uid://trd45io14j1b" path="res://levels/level_7/boss_chunk.tscn" id="8_hidtr"]
+
+[node name="Level-7" instance=ExtResource("1_n3m65")]
+
+[node name="BackgroundManager" parent="Game/BG" index="0" node_paths=PackedStringArray("list_map")]
+list_map = [NodePath("Tile"), NodePath("Tile2")]
+
+[node name="Tile" parent="Game/BG/BackgroundManager" index="0" instance=ExtResource("2_sfbda")]
+
+[node name="Tile2" parent="Game/BG/BackgroundManager" index="1" instance=ExtResource("3_7fcb6")]
+
+[node name="Hud" parent="Game" index="1"]
+position = Vector2(0, 199)
+
+[node name="HudPosition" parent="Game" index="2"]
+position = Vector2(0, 191)
+
+[node name="EnemyManager" parent="Game/Enemy" index="0"]
+enemies_chunk = Array[PackedScene]([ExtResource("4_iido8"), ExtResource("5_meyxy"), ExtResource("6_blijd"), ExtResource("5_meyxy"), ExtResource("7_cqtax")])
+boss_chunk = ExtResource("8_hidtr")

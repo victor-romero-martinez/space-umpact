@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxiqifjmsoxkj"]
+
+[ext_resource type="PackedScene" uid="uid://b2jnic4ytfvg3" path="res://entities/actors.tscn" id="1_0rny1"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="2_8h7ma"]
+[ext_resource type="PackedScene" uid="uid://b4ag2vyg2jj2y" path="res://scenes/utilities/explotion.tscn" id="3_f0ehm"]
+[ext_resource type="Texture2D" uid="uid://c6i3osmuy0eah" path="res://assets/enemy_small.png" id="4_bi3sl"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_health_box.gd" id="5_1edq2"]
+[ext_resource type="PackedScene" uid="uid://c1gcr1nbuajbx" path="res://scenes/sfx/hit_sfx.tscn" id="6_mftid"]
+[ext_resource type="Script" path="res://scripts/utils/enemy_hit_box.gd" id="7_t6tm3"]
+[ext_resource type="Script" path="res://scripts/utils/destroyer.gd" id="8_apd5l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyax7"]
+atlas = ExtResource("4_bi3sl")
+region = Rect2(0, 117, 16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4jiq"]
+atlas = ExtResource("4_bi3sl")
+region = Rect2(16, 117, 16, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nchfs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyax7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4jiq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpqik"]
+size = Vector2(14, 14)
+
+[node name="Enemy" instance=ExtResource("1_0rny1")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_8h7ma")
+explotion_scene = ExtResource("3_f0ehm")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_nchfs")
+frame_progress = 0.881342
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_lpqik")
+
+[node name="EnemyHealthBox" type="Area2D" parent="." index="2" node_paths=PackedStringArray("hit_sound")]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_1edq2")
+hit_sound = NodePath("HitSfx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="EnemyHealthBox" index="0"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_lpqik")
+
+[node name="HitSfx" parent="EnemyHealthBox" index="1" instance=ExtResource("6_mftid")]
+
+[node name="EnemyHitBox" type="Area2D" parent="." index="3"]
+visible = false
+collision_layer = 0
+collision_mask = 18
+script = ExtResource("7_t6tm3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHitBox" index="0"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_lpqik")
+
+[node name="Destroyer" type="Area2D" parent="." index="4"]
+visible = false
+collision_layer = 2048
+collision_mask = 512
+script = ExtResource("8_apd5l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Destroyer" index="0"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_lpqik")

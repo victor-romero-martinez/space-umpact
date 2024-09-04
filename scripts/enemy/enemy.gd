@@ -89,7 +89,7 @@ func start_timer():
 func _on_attack():
 	var last_state = fsm.current_state()
 	
-	fsm.change_state(attack)
+	if is_instance_valid(attack): fsm.change_state(attack)
 	
 	#attack.end_attack.connect(fsm.change_state.bind(last_state))
 	# CAUTION: It must be reset to avoid state bug

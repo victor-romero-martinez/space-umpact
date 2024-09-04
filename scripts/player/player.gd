@@ -66,7 +66,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	if is_on_wall() or is_on_floor(): make_boom()
+	if is_on_wall() or is_on_floor() or is_on_ceiling(): make_boom()
 	if Input.is_action_just_pressed('change_weapon'): _next_weapon()
 	if Input.is_action_just_pressed("ui_accept"): _fire()
 	if global.queue_boss: _finish_combat()
