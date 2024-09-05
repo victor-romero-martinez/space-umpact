@@ -1,6 +1,6 @@
 @icon("res://assets/icons/heavy-black-heart.svg")
 extends Area2D
-## Control enemy life
+## [color=GREEN]Control enemy life[/color]
 class_name EnemyHealthBox
 
 

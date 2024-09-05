@@ -1,0 +1,34 @@
+[gd_scene load_steps=12 format=3 uid="uid://djcd3oiq7jrai"]
+
+[ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_dwri2"]
+[ext_resource type="PackedScene" uid="uid://mg3ihhtglya2" path="res://levels/level_8/tile.tscn" id="2_vouxo"]
+[ext_resource type="PackedScene" uid="uid://ju0tlo55ri2w" path="res://levels/level_8/tile_1.tscn" id="3_spyrs"]
+[ext_resource type="PackedScene" uid="uid://cw3fuk8cabr6y" path="res://levels/level_8/tile_2.tscn" id="4_lrncn"]
+[ext_resource type="PackedScene" uid="uid://qj5ri78n6uax" path="res://levels/level_8/enemy_chunk.tscn" id="5_7s7yy"]
+[ext_resource type="PackedScene" uid="uid://bw55jf2wpquu1" path="res://levels/level_7/enemy_chunk_2.tscn" id="6_778vf"]
+[ext_resource type="PackedScene" uid="uid://b4nsrk7px7ac5" path="res://levels/level_5/enemy_chunk_2.tscn" id="7_bxjme"]
+[ext_resource type="PackedScene" uid="uid://8uf7rvqm0fjf" path="res://levels/level_6/enemy_chunk_2.tscn" id="8_2rrdh"]
+[ext_resource type="PackedScene" uid="uid://dlbbh6h1wbed5" path="res://levels/level_5/enemy_chunk_4.tscn" id="9_uj3li"]
+[ext_resource type="PackedScene" uid="uid://c0a1vivee1yxl" path="res://levels/level_7/enemy_chunk_3.tscn" id="10_qrafu"]
+[ext_resource type="PackedScene" uid="uid://cp3chwxdjp3xd" path="res://levels/level_8/boss_chunk.tscn" id="11_wuank"]
+
+[node name="Level-8" instance=ExtResource("1_dwri2")]
+
+[node name="BackgroundManager" parent="Game/BG" index="0" node_paths=PackedStringArray("list_map")]
+list_map = [NodePath("Tile"), NodePath("Tile2"), NodePath("Tile3")]
+
+[node name="Tile" parent="Game/BG/BackgroundManager" index="0" instance=ExtResource("2_vouxo")]
+
+[node name="Tile2" parent="Game/BG/BackgroundManager" index="1" instance=ExtResource("3_spyrs")]
+
+[node name="Tile3" parent="Game/BG/BackgroundManager" index="2" instance=ExtResource("4_lrncn")]
+
+[node name="Hud" parent="Game" index="1"]
+position = Vector2(0, 199)
+
+[node name="HudPosition" parent="Game" index="2"]
+position = Vector2(0, 191)
+
+[node name="EnemyManager" parent="Game/Enemy" index="0"]
+enemies_chunk = Array[PackedScene]([ExtResource("5_7s7yy"), ExtResource("6_778vf"), ExtResource("7_bxjme"), ExtResource("5_7s7yy"), ExtResource("8_2rrdh"), ExtResource("9_uj3li"), ExtResource("10_qrafu"), ExtResource("5_7s7yy")])
+boss_chunk = ExtResource("11_wuank")

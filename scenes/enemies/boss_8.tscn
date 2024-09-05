@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6c1ss72phin5"]
+
+[ext_resource type="PackedScene" uid="uid://2s814b5rdr10" path="res://entities/boss.tscn" id="1_4b44s"]
+[ext_resource type="Texture2D" uid="uid://c8obpupy8uofa" path="res://assets/boss.png" id="2_i2vh3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw4ci"]
+atlas = ExtResource("2_i2vh3")
+region = Rect2(0, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aifri"]
+atlas = ExtResource("2_i2vh3")
+region = Rect2(64, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3jlw"]
+atlas = ExtResource("2_i2vh3")
+region = Rect2(128, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3sja"]
+atlas = ExtResource("2_i2vh3")
+region = Rect2(192, 576, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kincl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw4ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aifri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3jlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3sja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Boss" instance=ExtResource("1_4b44s")]
+health = 230
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_kincl")
+frame_progress = 0.912333
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+visible = false
+polygon = PackedVector2Array(-23, -12, -9, -23, -15, -34, 24, -36, 43, -43, 66, -29, 65, 28, 32, 37, 12, 31, -2, 38, -6, 31, 7, 18, 19, 19, 21, 14, 2, 14, -2, 5, 17, 5, 17, -4, -1, -4, 0, -11, 15, -13, 17, -21, -16, -13)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="EnemyHitBox2" index="0"]
+polygon = PackedVector2Array(-23, -12, -9, -23, -15, -34, 24, -36, 43, -43, 66, -29, 65, 28, 32, 37, 12, 31, -2, 38, -6, 31, 7, 18, 19, 19, 21, 14, 2, 14, -2, 5, 17, 5, 17, -4, -1, -4, 0, -11, 15, -13, 17, -21, -16, -13)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="EnemyHealthBox2" index="1"]
+polygon = PackedVector2Array(-23, -12, -9, -23, -15, -34, 24, -36, 43, -43, 66, -29, 65, 28, 32, 37, 12, 31, -2, 38, -6, 31, 7, 18, 19, 19, 21, 14, 2, 14, -2, 5, 17, 5, 17, -4, -1, -4, 0, -11, 15, -13, 17, -21, -16, -13)
