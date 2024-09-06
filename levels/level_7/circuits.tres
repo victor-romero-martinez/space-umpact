@@ -44,7 +44,13 @@ texture = ExtResource("1_hc26m")
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.625, -4, 5.5, -4.5, 8, -1.5, 8, 1.125, 6.375, 4, -5.25, 4.625, -8, 1.75, -8, -1.75)
 6:1/0 = 0
-6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -1.5, 8, 1.125, 2.375, 8, -1.75, 8)
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -1.125, 8, 2.125, 2.125, 8, -2.125, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, -8, 3, -8, 8, -1.875, 8, 2)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.125, -8, -2.125, 2.125, 8, -2.125, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.25, 0.25, 0.75, -3.625, 3.875, 0.125, -0.25, 3.625)
 
 [resource]
 physics_layer_0/collision_layer = 1

@@ -390,7 +390,7 @@ shape = SubResource("CircleShape2D_hlb3n")
 
 [node name="Enemy13" parent="." index="11" node_paths=PackedStringArray("fsm", "move_down", "move_up") instance=ExtResource("2_p4m4v")]
 position = Vector2(277.2, 71)
-speed = 16.0
+speed = 30.0
 fsm = NodePath("EnemyStateMachine")
 move_down = NodePath("EnemyStateMachine/EnemyMoveDown")
 move_up = NodePath("EnemyStateMachine/EnemyMoveUp")
