@@ -79,6 +79,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_c6knp")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_2e7ht")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_dyrl6")
 Label/colors/font_color = Color(0.12549, 0.113725, 0.141176, 1)
+Label/font_sizes/font_size = 8
 OptionButton/colors/font_color = Color(0.12549, 0.113725, 0.141176, 1)
 OptionButton/colors/font_hover_color = Color(0.454902, 0.647059, 0.513726, 1)
 OptionButton/colors/font_pressed_color = Color(0.12549, 0.113725, 0.141176, 1)

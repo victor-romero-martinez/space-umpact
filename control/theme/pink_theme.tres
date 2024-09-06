@@ -89,6 +89,7 @@ CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_adptv")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_1k5n2")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_yjor8")
 Label/colors/font_color = Color(0.964706, 0.188235, 0.564706, 1)
+Label/font_sizes/font_size = 8
 OptionButton/font_sizes/font_size = 8
 OptionButton/styles/focus = SubResource("StyleBoxEmpty_2j8hg")
 OptionButton/styles/hover = SubResource("StyleBoxTexture_e7l77")

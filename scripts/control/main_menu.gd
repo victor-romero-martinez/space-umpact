@@ -23,20 +23,11 @@ func _ready():
 	$MainMusic.volume_db = global.game_data.music
 	$Beep2.volume_db = global.game_data.sfx
 	$Beep1.volume_db = global.game_data.sfx
-	$MarginContainer/Settings/Music/MusicSlide.value = global.game_data.music
-	$MarginContainer/Settings/SFX/SFXSlide.value = global.game_data.sfx
+	$MarginContainer/Settings/VBoxContainer/Music/MusicSlide.value = global.game_data.music
+	$MarginContainer/Settings/VBoxContainer/SFX/SFXSlide.value = global.game_data.sfx
 	#endregion
 	
-	_set_theme()
 	_level_creen()
-	
-	
-## set color shema
-func _set_theme():
-	if global.game_data.theme:
-		theme = load(global.game_data.theme[0])
-		$ColorRect.color = global.game_data.theme[1]
-		$MarginContainer/Settings/Theme/OptionButton.select(global.game_data.theme[3])
 	
 	
 ## set levels

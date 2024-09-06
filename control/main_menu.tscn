@@ -33,6 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.129412, 0.0235294, 0.0745098, 1)
 metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -89,20 +90,29 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Theme" type="HBoxContainer" parent="MarginContainer/Settings"]
+[node name="VSeparator2" type="HSeparator" parent="MarginContainer/Settings"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Settings"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Theme" type="HBoxContainer" parent="MarginContainer/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Settings/Theme"]
+[node name="Label" type="Label" parent="MarginContainer/Settings/VBoxContainer/Theme"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 8
 text = "Theme"
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/Settings/Theme"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/Settings/VBoxContainer/Theme"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/Settings/Theme"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/Settings/VBoxContainer/Theme"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -115,40 +125,40 @@ popup/item_1/id = 2
 popup/item_2/text = "Modern"
 popup/item_2/id = 2
 
-[node name="Music" type="HBoxContainer" parent="MarginContainer/Settings"]
+[node name="Music" type="HBoxContainer" parent="MarginContainer/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Settings/Music"]
+[node name="Label" type="Label" parent="MarginContainer/Settings/VBoxContainer/Music"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Music"
 
-[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Settings/Music"]
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Settings/VBoxContainer/Music"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MusicSlide" type="HSlider" parent="MarginContainer/Settings/Music"]
+[node name="MusicSlide" type="HSlider" parent="MarginContainer/Settings/VBoxContainer/Music"]
 clip_contents = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 min_value = -20.0
 max_value = 0.0
 
-[node name="SFX" type="HBoxContainer" parent="MarginContainer/Settings"]
+[node name="SFX" type="HBoxContainer" parent="MarginContainer/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Settings/SFX"]
+[node name="Label" type="Label" parent="MarginContainer/Settings/VBoxContainer/SFX"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Sfx"
 
-[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Settings/SFX"]
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Settings/VBoxContainer/SFX"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="SFXSlide" type="HSlider" parent="MarginContainer/Settings/SFX"]
+[node name="SFXSlide" type="HSlider" parent="MarginContainer/Settings/VBoxContainer/SFX"]
 clip_contents = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -226,11 +236,11 @@ text = "Back
 [connection signal="pressed" from="MarginContainer/Main/Level" to="." method="_on_level_pressed"]
 [connection signal="pressed" from="MarginContainer/Main/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/Main/Quit" to="." method="_on_quit_pressed"]
-[connection signal="item_selected" from="MarginContainer/Settings/Theme/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="drag_ended" from="MarginContainer/Settings/Music/MusicSlide" to="." method="_on_music_slide_drag_ended"]
-[connection signal="value_changed" from="MarginContainer/Settings/Music/MusicSlide" to="." method="_on_music"]
-[connection signal="drag_ended" from="MarginContainer/Settings/SFX/SFXSlide" to="." method="_on_sfx_slide_drag_ended"]
-[connection signal="value_changed" from="MarginContainer/Settings/SFX/SFXSlide" to="." method="_on_sfx"]
+[connection signal="item_selected" from="MarginContainer/Settings/VBoxContainer/Theme/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="drag_ended" from="MarginContainer/Settings/VBoxContainer/Music/MusicSlide" to="." method="_on_music_slide_drag_ended"]
+[connection signal="value_changed" from="MarginContainer/Settings/VBoxContainer/Music/MusicSlide" to="." method="_on_music"]
+[connection signal="drag_ended" from="MarginContainer/Settings/VBoxContainer/SFX/SFXSlide" to="." method="_on_sfx_slide_drag_ended"]
+[connection signal="value_changed" from="MarginContainer/Settings/VBoxContainer/SFX/SFXSlide" to="." method="_on_sfx"]
 [connection signal="pressed" from="MarginContainer/Settings/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Level/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/Level/VBoxContainer/Back" to="." method="_on_back_pressed"]
