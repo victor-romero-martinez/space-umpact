@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bse3clbf784ak"]
+[gd_scene load_steps=23 format=3 uid="uid://bse3clbf784ak"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_4iprt"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="2_jj21j"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="15_yfs6h"]
 [ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="17_0p3qf"]
 [ext_resource type="AudioStream" uid="uid://b356a6s6snqe2" path="res://assets/music/random-boss-fight-music.ogg" id="18_rdoer"]
+[ext_resource type="PackedScene" uid="uid://sqm0g0ec7ual" path="res://control/gui.tscn" id="21_t45s4"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_qlnek"]
 clip_count = 2
@@ -119,6 +120,8 @@ visible = false
 metadata/_edit_lock_ = true
 
 [node name="OffScreenX" parent="." instance=ExtResource("15_yfs6h")]
+
+[node name="Gui" parent="." instance=ExtResource("21_t45s4")]
 
 [connection signal="add_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_add_weapon"]
 [connection signal="current_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_current_weapon"]

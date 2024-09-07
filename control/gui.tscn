@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=3 uid="uid://sqm0g0ec7ual"]
+
+[ext_resource type="Script" path="res://scripts/control/gui.gd" id="1_4i8df"]
+[ext_resource type="Texture2D" uid="uid://cfxpmnfkylhti" path="res://assets/controller-input/Up_dark_32.png" id="1_ggk2g"]
+[ext_resource type="Texture2D" uid="uid://barqckkdnnkur" path="res://assets/controller-input/Up_light_32.png" id="2_hndpl"]
+[ext_resource type="Texture2D" uid="uid://v88eve1dl3ub" path="res://assets/controller-input/Right_dark_32.png" id="2_tdxo5"]
+[ext_resource type="Texture2D" uid="uid://do13blwpyxe4v" path="res://assets/controller-input/Down_dark_32.png" id="3_wapld"]
+[ext_resource type="Texture2D" uid="uid://cs0ce16vdlhvm" path="res://assets/controller-input/Right_light_32.png" id="4_du35t"]
+[ext_resource type="Texture2D" uid="uid://dsqmo4wrj6cdd" path="res://assets/controller-input/Left_dark_32.png" id="4_s7aqx"]
+[ext_resource type="Texture2D" uid="uid://ybvvspjrtvwr" path="res://assets/controller-input/A_dark_light_32.png" id="5_eus66"]
+[ext_resource type="Texture2D" uid="uid://u4gvpcwfy3d4" path="res://assets/controller-input/Down_light_32.png" id="6_g4fid"]
+[ext_resource type="Texture2D" uid="uid://dbfnj4uushrys" path="res://assets/controller-input/B_dark_light_32.png" id="6_lbkrk"]
+[ext_resource type="Texture2D" uid="uid://cvk0qm11mbqin" path="res://assets/controller-input/Left_light_32.png" id="8_j2gbi"]
+[ext_resource type="Texture2D" uid="uid://belhvppqbs6h4" path="res://assets/controller-input/A_light_dark_32.png" id="10_ww8pv"]
+[ext_resource type="Texture2D" uid="uid://ddytgdse4vtim" path="res://assets/controller-input/B_light_dark_32.png" id="12_syq03"]
+[ext_resource type="Texture2D" uid="uid://b22ktc0p0wymc" path="res://assets/controller-input/Menu_dark_32.png" id="14_dc5kn"]
+[ext_resource type="Texture2D" uid="uid://d08tryo7b2eme" path="res://assets/controller-input/Menu_light_32.png" id="15_r3ksn"]
+
+[node name="Gui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4i8df")
+metadata/_edit_lock_ = true
+
+[node name="Up" type="TouchScreenButton" parent="."]
+position = Vector2(53, 106)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("1_ggk2g")
+texture_pressed = ExtResource("2_hndpl")
+action = "ui_up"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2(89, 135)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("2_tdxo5")
+texture_pressed = ExtResource("4_du35t")
+action = "ui_right"
+visibility_mode = 1
+
+[node name="Down" type="TouchScreenButton" parent="."]
+position = Vector2(53, 167)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("3_wapld")
+texture_pressed = ExtResource("6_g4fid")
+action = "ui_down"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(16, 135)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("4_s7aqx")
+texture_pressed = ExtResource("8_j2gbi")
+action = "ui_left"
+visibility_mode = 1
+
+[node name="A" type="TouchScreenButton" parent="."]
+position = Vector2(299, 106)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("5_eus66")
+texture_pressed = ExtResource("10_ww8pv")
+action = "ui_accept"
+visibility_mode = 1
+
+[node name="B" type="TouchScreenButton" parent="."]
+position = Vector2(269, 150)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("6_lbkrk")
+texture_pressed = ExtResource("12_syq03")
+action = "change_weapon"
+visibility_mode = 1
+
+[node name="Menu" type="TouchScreenButton" parent="."]
+position = Vector2(189, 171)
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("14_dc5kn")
+texture_pressed = ExtResource("15_r3ksn")
+action = "ui_pause"
+visibility_mode = 1

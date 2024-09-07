@@ -11,11 +11,13 @@ config_version=5
 [application]
 
 config/name="space impact"
+config/description="A fangame of Space Impact"
 config/version="0.1"
 run/main_scene="res://control/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.129412, 0.0235294, 0.0745098, 1)
+config/icon="res://ship_icon.png"
 
 [autoload]
 
@@ -57,6 +59,10 @@ change_weapon={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [layer_names]
 
 2d_physics/layer_1="obstacle"
@@ -78,4 +84,5 @@ change_weapon={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.129412, 0.0235294, 0.0745098, 1)
