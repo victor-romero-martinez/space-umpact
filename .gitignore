@@ -7,3 +7,9 @@
 # temporary ignore
 #assets/music/
 #assets/sfx/
+
+
+# build folder
+android/
+build/
+
