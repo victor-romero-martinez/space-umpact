@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="space impact"
+config/name="space_umpact"
 config/description="A fangame of Space Impact"
 config/version="0.1"
 run/main_scene="res://control/main_menu.tscn"
