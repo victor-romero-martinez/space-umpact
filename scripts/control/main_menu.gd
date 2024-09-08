@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 
@@ -37,9 +38,13 @@ func _level_creen():
 			var button = Button.new()
 			button.text = str(i + 1)
 			button.focus_mode = Control.FOCUS_NONE
-			button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-
-			button.pressed.connect(func (): self.on_emit_level(i))
+			button.disabled = true
+			
+			# activate buttons
+			if (i + 1) <= global.game_data.level:
+				button.disabled = false
+				button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+				button.pressed.connect(func (): self.on_emit_level(i))
 
 			$MarginContainer/Level/LevelContainer.add_child(button)
 	else:
