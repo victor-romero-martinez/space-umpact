@@ -5,20 +5,22 @@ extends CharacterBody2D
 ## 2. Attach dragging in Player node.
 class_name Player
 
-
+#region Signals
+@warning_ignore("unused_signal")
 signal hit
+@warning_ignore("unused_signal")
 signal current_weapon(idx: int)
+@warning_ignore("unused_signal")
 signal add_weapon(idx: int)
+@warning_ignore("unused_signal")
 signal remove_weapon(val: int)
+#endregion
 
 #region Gun settings
 @export_group('Gun Settings')
-## How many bullets can shots
-@export var bullet_by_shoot: int = 3
 ## How many time wait for the next shooting
-@export var wait_seconds: float = .5
+@export var wait_seconds: float = .1
 #endregion
-
 
 #region Settings
 @export_group('Settings')
@@ -108,6 +110,7 @@ func _start_combat():
 # change level when finish fight 
 func _finish_combat():
 	state = TState.FREEZE
+	_can_shoot = false
 	%PlayerCollision.disabled = true
 	velocity.x = speed * 2
 	if global_position.x > global.screen_size.x: global.hidden_player = true
@@ -130,25 +133,13 @@ func make_boom():
 # Select ammunition type and shoot
 func _fire():
 	if _can_shoot:
-		for _b in bullet_by_shoot:
-			var bullet = GUNS[global.game_data.weapons[_weapon_idx]].instantiate()
-			bullet.position = position + Vector2(20.0, 0)
-			add_sibling(bullet)
-			
-			
-			if _weapon_idx != 0:
-				global.game_data.weapons.remove_at(_weapon_idx)
-				
-				var temp = _weapon_idx
-				_weapon_idx = 0
-				current_weapon.emit(_weapon_idx)
-				remove_weapon.emit(temp)
-				break
-			await get_tree().create_timer(0.06).timeout #WARNING: no estoy seguro de esto
-			
+		var bullet = GUNS[global.game_data.weapons[_weapon_idx]].instantiate()
+		bullet.position = position + Vector2(20.0, 0)
+		add_sibling(bullet)
+		
 		_shoot_handle()
-
-
+			
+			
 ## Add gun type on [u]global.game_data.weapons[/u]
 func add_arsenal(arg: String):
 	if not global.game_data.weapons.has(arg):
