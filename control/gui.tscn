@@ -27,28 +27,31 @@ script = ExtResource("1_4i8df")
 metadata/_edit_lock_ = true
 
 [node name="Up" type="TouchScreenButton" parent="."]
-position = Vector2(53, 106)
+position = Vector2(47, 104)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("1_ggk2g")
 texture_pressed = ExtResource("2_hndpl")
 action = "ui_up"
 visibility_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(89, 135)
+position = Vector2(77, 135)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("2_tdxo5")
 texture_pressed = ExtResource("4_du35t")
 action = "ui_right"
 visibility_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Down" type="TouchScreenButton" parent="."]
-position = Vector2(53, 167)
+position = Vector2(47, 166)
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("3_wapld")
 texture_pressed = ExtResource("6_g4fid")
 action = "ui_down"
 visibility_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Left" type="TouchScreenButton" parent="."]
 position = Vector2(16, 135)
@@ -57,6 +60,7 @@ texture_normal = ExtResource("4_s7aqx")
 texture_pressed = ExtResource("8_j2gbi")
 action = "ui_left"
 visibility_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="A" type="TouchScreenButton" parent="."]
 position = Vector2(299, 106)
@@ -65,6 +69,7 @@ texture_normal = ExtResource("5_eus66")
 texture_pressed = ExtResource("10_ww8pv")
 action = "ui_accept"
 visibility_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="B" type="TouchScreenButton" parent="."]
 position = Vector2(269, 150)
@@ -73,11 +78,13 @@ texture_normal = ExtResource("6_lbkrk")
 texture_pressed = ExtResource("12_syq03")
 action = "change_weapon"
 visibility_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Menu" type="TouchScreenButton" parent="."]
-position = Vector2(189, 171)
+position = Vector2(166, 171)
 scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("14_dc5kn")
 texture_pressed = ExtResource("15_r3ksn")
 action = "ui_pause"
 visibility_mode = 1
+metadata/_edit_lock_ = true
