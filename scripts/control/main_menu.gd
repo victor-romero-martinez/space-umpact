@@ -1,4 +1,3 @@
-@tool
 extends Control
 
 
@@ -18,6 +17,9 @@ func _ready():
 	
 	#region App settings
 	$ColorRect.visible = true
+	$ColorRect.color = Color(global.game_data.theme[1])
+	theme = load(global.game_data.theme[0])
+	$MarginContainer/Settings/VBoxContainer/Theme/OptionButton.select(global.game_data.theme[3])
 	$MarginContainer/Main.visible = true
 	$MarginContainer/Settings.visible = false
 	$MarginContainer/Level.visible = false
@@ -154,9 +156,16 @@ func _on_back_pressed():
 	$MarginContainer/Main.visible = true
 
 
+func _remove_all_level_container():
+	for l in $MarginContainer/Level/LevelContainer.get_children():
+		$MarginContainer/Level/LevelContainer.remove_child(l)
+		
+		
 func _on_restart_pressed():
 	$Beep1.play()
 	global.game_data.level = 1
 	global.update_data()
+	_remove_all_level_container()
+	_level_creen()
 	%ContinueBtn.disabled = true
 	

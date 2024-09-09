@@ -3,7 +3,7 @@ extends Node2D
 
 #region Constants
 ## User directory
-const PATH = 'user://data.json'
+const PATH = 'user://data.save'
 const SECRET = 'd41d8cd98f00b204e9800998ecf8427e'
 const DEFAULT_SETTINGS = {
 		'level': 1,

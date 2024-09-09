@@ -1,5 +1,7 @@
 extends Node2D
 
+
+@export var next_level: PackedScene
 @export var enemy_manager: EnemyManager
 @export var menu_pause: MenuPause
 
@@ -38,17 +40,14 @@ func _restore_global_var():
 
 
 func _next_level():
-	_restore_global_var()
-	var next_value = global.game_data.level + 1
-	var next_level = 'res://scenes/level_%d.tscn' %next_value
-	
-	if FileAccess.file_exists(next_level):
-		global.game_data.level = next_value
+	if next_level:
+		global.game_data.level = global.game_data.level + 1
+		_restore_global_var()
 		global.update_data()
-		get_tree().change_scene_to_file(next_level)
+		get_tree().change_scene_to_packed(next_level)
 	else:
+		#get_tree().call_deferred('change_scene_to_file', 'res://control/credit.tscn')
 		get_tree().change_scene_to_file('res://control/credit.tscn')
-
 
 func _lose_scene():
 	global.game_data.heart = global.DEFAULT_SETTINGS.heart

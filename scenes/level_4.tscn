@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bppt3ujyrh11b"]
+[gd_scene load_steps=10 format=3 uid="uid://bppt3ujyrh11b"]
 
 [ext_resource type="PackedScene" uid="uid://dm5gcd3osutb1" path="res://entities/level.tscn" id="1_l2v8g"]
 [ext_resource type="PackedScene" uid="uid://c0g40otyxbv3h" path="res://levels/level_4/tile_map.tscn" id="2_2vbuk"]
+[ext_resource type="PackedScene" uid="uid://bx8midp6n2gbn" path="res://scenes/level_5.tscn" id="2_xy2oq"]
 [ext_resource type="PackedScene" uid="uid://cqcf0x03k4xlu" path="res://levels/level_4/tile_map_1.tscn" id="3_eub8i"]
 [ext_resource type="PackedScene" uid="uid://36dxqie8350f" path="res://levels/level_4/enemy_chunk.tscn" id="4_lmu5a"]
 [ext_resource type="PackedScene" uid="uid://dmugjoqf0v7q6" path="res://levels/level_2/enemy_chunk_2.tscn" id="5_0d6no"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bs71rlmnqjxfu" path="res://levels/level_4/boss_chunk.tscn" id="8_us4bw"]
 
 [node name="Level-4" instance=ExtResource("1_l2v8g")]
+next_level = ExtResource("2_xy2oq")
 
 [node name="BackgroundManager" parent="Game/BG" index="0" node_paths=PackedStringArray("list_map")]
 list_map = [NodePath("TileMap"), NodePath("TileMap2")]
