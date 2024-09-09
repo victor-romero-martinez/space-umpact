@@ -17,7 +17,7 @@ run/main_scene="res://control/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.129412, 0.0235294, 0.0745098, 1)
-config/icon="res://ship_icon.png"
+config/icon="res://icons/icon.png"
 
 [autoload]
 
