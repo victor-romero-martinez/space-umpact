@@ -137,6 +137,13 @@ func _fire():
 		bullet.position = position + Vector2(20.0, 0)
 		add_sibling(bullet)
 		
+		if _weapon_idx != 0:
+			var temp = _weapon_idx
+			_weapon_idx = 0
+			current_weapon.emit(_weapon_idx)
+			remove_weapon.emit(temp)
+			global.game_data.weapons.remove_at(temp)
+			
 		_shoot_handle()
 			
 			

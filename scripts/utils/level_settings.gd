@@ -16,11 +16,25 @@ func _ready():
 	if not global.game_data.level:
 		push_error('Make sure the node is named as follows Node-1')
 		
-	# set color shema
+	#region Os matcher
+	match OS.get_name():
+		"Android":
+			$Game/Hud. position.x = 75.0
+			$Game/HudPosition. position.x = 75.0
+		"iOS":
+			$Game/Hud. position.x = 75.0
+			$Game/HudPosition. position.x = 75.0
+		_:
+			$Game/Hud. position.x = 0
+			$Game/HudPosition. position.x = 0
+	#endregion
+			
+	#region Color schema
 	if global.game_data.theme:
 		$ColorRect.color = global.game_data.theme[1]
 		$ColorRect.visible = true
 		$Game.modulate = global.game_data.theme[2]
+	#endregion
 		
 	connect('tree_exited', _on_tree_exited)
 
