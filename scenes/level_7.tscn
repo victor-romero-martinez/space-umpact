@@ -20,12 +20,6 @@ list_map = [NodePath("Tile"), NodePath("Tile2")]
 
 [node name="Tile2" parent="Game/BG/BackgroundManager" index="1" instance=ExtResource("3_7fcb6")]
 
-[node name="Hud" parent="Game" index="1"]
-position = Vector2(0, 199)
-
-[node name="HudPosition" parent="Game" index="2"]
-position = Vector2(0, 191)
-
 [node name="EnemyManager" parent="Game/Enemy" index="0"]
 enemies_chunk = Array[PackedScene]([ExtResource("4_iido8"), ExtResource("5_meyxy"), ExtResource("6_blijd"), ExtResource("5_meyxy"), ExtResource("7_cqtax")])
 boss_chunk = ExtResource("8_hidtr")

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cmlsvsxco878t" path="res://levels/level_6/enemy_chunk_3.tscn" id="8_14ry5"]
 [ext_resource type="PackedScene" uid="uid://cl0234y7mcsvo" path="res://levels/level_6/boss_chunk.tscn" id="9_51pc5"]
 
-[node name="Level" instance=ExtResource("1_n86hn")]
+[node name="Level-6" instance=ExtResource("1_n86hn")]
 next_level = ExtResource("2_foyy1")
 
 [node name="BackgroundManager" parent="Game/BG" index="0" node_paths=PackedStringArray("list_map")]
@@ -22,12 +22,6 @@ list_map = [NodePath("Tile"), NodePath("Tile2"), NodePath("Tile3")]
 [node name="Tile2" parent="Game/BG/BackgroundManager" index="1" instance=ExtResource("3_58gar")]
 
 [node name="Tile3" parent="Game/BG/BackgroundManager" index="2" instance=ExtResource("4_hsxsw")]
-
-[node name="Hud" parent="Game" index="1"]
-position = Vector2(0, 199)
-
-[node name="HudPosition" parent="Game" index="2"]
-position = Vector2(0, 191)
 
 [node name="Player" parent="Game" index="3"]
 position = Vector2(0, 114)

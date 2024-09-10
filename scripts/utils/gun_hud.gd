@@ -7,6 +7,7 @@ class_name HudGun
 @onready var global = Global
 
 
+var _outline_shader = load("res://scenes/utilities/outline.gdshader")
 var _img = load('res://assets/gun_select.png')
 # position between items
 var _next_position_x: float = 0
@@ -15,6 +16,18 @@ var _next_position_x: float = 0
 func _ready():
 	for i in global.game_data.weapons.size():
 		var sprite = _make_sprite(Vector2(1, i), _next_position_x)
+		var new_material = ShaderMaterial.new()
+		
+		new_material.shader = _outline_shader
+		new_material.set_shader_parameter(
+			'outline_color', Color(global.game_data.theme[1])
+		)
+		new_material.set_shader_parameter(
+			'sprite_tint', Color(global.game_data.theme[2])
+		)
+		
+		sprite.material = new_material
+
 		add_child(sprite)
 		_next_position_x += 12
 
@@ -34,6 +47,18 @@ func _make_sprite(frames: Vector2, pos_x: float) -> Sprite2D:
 
 func _on_player_add_weapon(val: int):
 	var child = _make_sprite(Vector2(0, val), _next_position_x)
+	var new_material = ShaderMaterial.new()
+	
+	new_material.shader = _outline_shader
+	new_material.set_shader_parameter(
+		'outline_color', Color(global.game_data.theme[1])
+	)
+	new_material.set_shader_parameter(
+		'sprite_tint', Color(global.game_data.theme[2])
+	)
+	
+	child.material = new_material
+	child.modulate = Color(global.game_data.theme[2])
 	add_child(child)
 	_next_position_x += 12
 

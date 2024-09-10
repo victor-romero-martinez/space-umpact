@@ -21,12 +21,6 @@ list_map = [NodePath("Tile"), NodePath("Tile1")]
 
 [node name="Tile1" parent="Game/BG/BackgroundManager" index="1" instance=ExtResource("3_8i0hx")]
 
-[node name="Hud" parent="Game" index="1"]
-position = Vector2(0, 199)
-
-[node name="HudPosition" parent="Game" index="2"]
-position = Vector2(0, 191)
-
 [node name="Player" parent="Game" index="3"]
 position = Vector2(0, 108)
 
