@@ -29,8 +29,9 @@ func _on_resume_pressed():
 
 func _on_main_menu_pressed():
 	$Beep1.play()
+	global.refresh_data()
 	$Beep1.finished.connect(
-		func (): get_tree()\
+		func ():get_tree()\
 			.change_scene_to_file("res://control/main_menu.tscn")
 		)
 	

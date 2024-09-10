@@ -58,7 +58,6 @@ func _ready():
 		_create_data(DEFAULT_SETTINGS)
 
 
-
 func _create_data(data):
 	#var file = FileAccess.open(PATH, FileAccess.WRITE)
 	var file = FileAccess.open_encrypted(
@@ -68,8 +67,13 @@ func _create_data(data):
 	file.store_string(JSON.stringify(data, '\t'))
 	file.close()
 	
+	
 func update_data():
 	_create_data(game_data)
+	
+	
+func refresh_data():
+	_load_data()
 	
 	
 func _load_data():
