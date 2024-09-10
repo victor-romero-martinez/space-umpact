@@ -16,18 +16,6 @@ func _ready():
 	if not global.game_data.level:
 		push_error('Make sure the node is named as follows Node-1')
 		
-	#region Os matcher
-	match OS.get_name():
-		"Android":
-			$Game/Hud. position.x = 75.0
-			$Game/HudPosition. position.x = 75.0
-		"iOS":
-			$Game/Hud. position.x = 75.0
-			$Game/HudPosition. position.x = 75.0
-		_:
-			$Game/Hud. position.x = 0
-			$Game/HudPosition. position.x = 0
-	#endregion
 			
 	#region Color schema
 	if global.game_data.theme:
