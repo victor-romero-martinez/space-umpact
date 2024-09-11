@@ -13,7 +13,8 @@ const DEFAULT_SETTINGS = {
 		],
 		'theme': ['res://control/theme/pink_theme.tres', '#210613', '#f63090', 0],
 		'music': -10.0,
-		'sfx': -10.0
+		'sfx': -10.0,
+		'score': 0
 	}
 #endregion
 
@@ -26,7 +27,8 @@ var game_data: Dictionary = {
 		],
 		'theme': ['res://control/theme/pink_theme.tres', '#210613', '#f63090', 0],
 		'music': -10.0,
-		'sfx': -10.0
+		'sfx': -10.0,
+		'score': 0
 	}
 ## Theme colors
 var theme_schema := {

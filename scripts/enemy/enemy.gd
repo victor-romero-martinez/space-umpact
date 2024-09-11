@@ -50,6 +50,8 @@ func set_blinking(_damage: int):
 
 
 func _make_boom():
+	global.game_data.score += health
+	
 	if not explotion_scene:
 		push_error('Explotion PackScene is missing')
 	else:

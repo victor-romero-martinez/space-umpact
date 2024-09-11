@@ -82,6 +82,7 @@ func _rand_explotion():
 
 
 func _make_boom():
+	global.game_data.score += health
 	global.defeated_boss = true
 	_spetial_timer.stop()
 	%ExploitTrigger.start()

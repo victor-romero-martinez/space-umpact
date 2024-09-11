@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dm5gcd3osutb1"]
+[gd_scene load_steps=17 format=3 uid="uid://dm5gcd3osutb1"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_y4lnm"]
 [ext_resource type="Script" path="res://scripts/utils/map_manager.gd" id="2_c2dfu"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="4_dsjeo"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="6_ago1p"]
 [ext_resource type="Script" path="res://scripts/utils/enemy_manager.gd" id="7_8qwnp"]
+[ext_resource type="Script" path="res://scripts/utils/score.gd" id="7_fueri"]
+[ext_resource type="Shader" path="res://scenes/utilities/outline.gdshader" id="7_qd558"]
 [ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="8_4dwar"]
 [ext_resource type="AudioStream" uid="uid://b356a6s6snqe2" path="res://assets/music/random-boss-fight-music.ogg" id="9_5b65n"]
 [ext_resource type="PackedScene" uid="uid://sqm0g0ec7ual" path="res://control/gui.tscn" id="12_0tqv0"]
@@ -35,6 +37,12 @@ Vector2i(-1, 1): {
 "to_time": 0
 }
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5e6g4"]
+shader = ExtResource("7_qd558")
+shader_parameter/outline_color = Color(0.129412, 0.0235294, 0.0745098, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/sprite_tint = Color(1, 1, 1, 1)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("enemy_manager", "menu_pause")]
 script = ExtResource("1_y4lnm")
@@ -70,6 +78,17 @@ metadata/_edit_lock_ = true
 position = Vector2(-38, 0)
 metadata/_edit_lock_ = true
 
+[node name="Enemy" type="Node2D" parent="Game"]
+position = Vector2(0, -1)
+
+[node name="EnemyManager" type="Node2D" parent="Game/Enemy"]
+script = ExtResource("7_8qwnp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Game/Enemy/EnemyManager"]
+stream = SubResource("AudioStreamInteractive_tv6nk")
+autoplay = true
+bus = &"music"
+
 [node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
 position = Vector2(0, -12)
 script = ExtResource("2_kux8c")
@@ -83,19 +102,18 @@ metadata/_edit_lock_ = true
 position = Vector2(53, 0)
 metadata/_edit_lock_ = true
 
+[node name="Score" type="Label" parent="Game/Hud"]
+material = SubResource("ShaderMaterial_5e6g4")
+offset_left = 152.0
+offset_top = -4.0
+offset_right = 215.0
+offset_bottom = 6.0
+theme_override_font_sizes/font_size = 8
+script = ExtResource("7_fueri")
+
 [node name="HudPosition" type="Marker2D" parent="Game"]
 position = Vector2(0, 5)
 metadata/_edit_lock_ = true
-
-[node name="Enemy" type="Node2D" parent="Game"]
-
-[node name="EnemyManager" type="Node2D" parent="Game/Enemy"]
-script = ExtResource("7_8qwnp")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Game/Enemy/EnemyManager"]
-stream = SubResource("AudioStreamInteractive_tv6nk")
-autoplay = true
-bus = &"music"
 
 [node name="MenuPause" parent="." instance=ExtResource("2_vb0de")]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf75tmh3rpht1"]
+[gd_scene load_steps=16 format=3 uid="uid://cf75tmh3rpht1"]
 
 [ext_resource type="Script" path="res://test/test_room.gd" id="1_odhxs"]
 [ext_resource type="PackedScene" uid="uid://73nbxcjdyc8b" path="res://scenes/utilities/hud_health.tscn" id="1_qhkwd"]
@@ -7,10 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="2_b2s5v"]
 [ext_resource type="PackedScene" uid="uid://bei2gam4iv8m6" path="res://scenes/utilities/gun_hud.tscn" id="3_jusy6"]
 [ext_resource type="PackedScene" uid="uid://dxdtonhgxyoh8" path="res://levels/level_1/boss_chunk.tscn" id="5_7qg75"]
+[ext_resource type="Shader" path="res://scenes/utilities/outline.gdshader" id="6_x3x6b"]
+[ext_resource type="Script" path="res://scripts/utils/score.gd" id="7_lsdeu"]
 [ext_resource type="PackedScene" uid="uid://3jrsb7a53rbs" path="res://scenes/enemies/enemy_3.tscn" id="7_mlwkf"]
 [ext_resource type="Script" path="res://scripts/utils/return_x_right.gd" id="9_4kgpm"]
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="10_4vub1"]
 [ext_resource type="PackedScene" uid="uid://vv3i651s575k" path="res://scenes/utilities/respawn_reload.tscn" id="10_scsta"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3b3kq"]
+shader = ExtResource("6_x3x6b")
+shader_parameter/outline_color = Color(0.129412, 0.0235294, 0.0745098, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/sprite_tint = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kr8d5"]
 radius = 4.47214
@@ -61,6 +69,15 @@ metadata/_edit_lock_ = true
 [node name="GunHud" parent="Game/Hud" instance=ExtResource("3_jusy6")]
 position = Vector2(53, 0)
 metadata/_edit_lock_ = true
+
+[node name="Score" type="Label" parent="Game/Hud"]
+material = SubResource("ShaderMaterial_3b3kq")
+offset_left = 152.0
+offset_top = -5.0
+offset_right = 218.0
+offset_bottom = 7.0
+theme_override_font_sizes/font_size = 8
+script = ExtResource("7_lsdeu")
 
 [node name="BossChunk" parent="Game" instance=ExtResource("5_7qg75")]
 metadata/_edit_lock_ = true

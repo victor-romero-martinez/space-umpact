@@ -1,11 +1,12 @@
 shader_type canvas_item;
 
 uniform vec4 outline_color: source_color;
+uniform float outline_size = 1.0;
 uniform vec4 sprite_tint: source_color;
 
 void fragment() {
-	float zise_x = 1.0/float(textureSize(TEXTURE, 0).x);
-	float zise_y = 1.0/float(textureSize(TEXTURE, 0).y);
+	float zise_x = outline_size/float(textureSize(TEXTURE, 0).x);
+	float zise_y = outline_size/float(textureSize(TEXTURE, 0).y);
 	vec4 sprite_color = texture(TEXTURE, UV);
 	sprite_color.rgb *= sprite_tint.rgb;
 	float alpha = -4.0 * sprite_color.a;
