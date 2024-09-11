@@ -50,8 +50,9 @@ func _next_level():
 		#get_tree().call_deferred('change_scene_to_file', 'res://control/credit.tscn')
 		get_tree().change_scene_to_file('res://control/credit.tscn')
 
+
 func _lose_scene():
-	global.game_data.heart = global.DEFAULT_SETTINGS.heart
+	global.refresh_data()
 	_restore_global_var()
 	get_tree().change_scene_to_file("res://control/dead_menu.tscn")
 
