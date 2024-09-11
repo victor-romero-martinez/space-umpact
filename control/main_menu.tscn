@@ -142,6 +142,7 @@ size_flags_horizontal = 3
 clip_contents = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 min_value = -20.0
 max_value = 0.0
 
@@ -164,8 +165,25 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 min_value = -20.0
 max_value = 0.0
+
+[node name="Controls" type="VBoxContainer" parent="MarginContainer/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/Settings/VBoxContainer/Controls"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "How to play"
+
+[node name="Credit" type="VBoxContainer" parent="MarginContainer/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/Settings/VBoxContainer/Credit"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Credits"
 
 [node name="VSeparator" type="HSeparator" parent="MarginContainer/Settings"]
 modulate = Color(1, 1, 1, 0)
@@ -225,6 +243,51 @@ mouse_default_cursor_shape = 2
 text = "Back
 "
 
+[node name="HowToPlay" type="Control" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HowToPlay"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -74.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "[center]How to play[/center]
+
+[ul] Move up 			[img=16]res://assets/controller-input/Up_dark_32.png[/img][/ul]
+[ul] Move down			[img=16]res://assets/controller-input/Down_dark_32.png[/img][/ul]
+[ul] Move left			[img=16]res://assets/controller-input/Left_dark_32.png[/img][/ul]
+[ul] Move right 		[img=16]res://assets/controller-input/Right_dark_32.png[/img][/ul]
+[ul] Shoot				[img=16]res://assets/controller-input/A_dark_light_32.png[/img] or [img=24]res://assets/controller-input/Space_Key_Dark.png[/img][/ul]
+[ul] Change weapo	 	[img=16]res://assets/controller-input/B_dark_light_32.png[/img][/ul]
+[ul] Pause the game 	[img=16]res://assets/controller-input/Menu_dark_32.png[/img] or [img=24]res://assets/controller-input/Esc_Key_Dark.png[/img][/ul]"
+
+[node name="Button" type="Button" parent="MarginContainer/HowToPlay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -12.0
+offset_right = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Back"
+
 [node name="Beep1" parent="." instance=ExtResource("3_d12y8")]
 
 [node name="Beep2" parent="." instance=ExtResource("4_5mh6q")]
@@ -241,6 +304,9 @@ text = "Back
 [connection signal="value_changed" from="MarginContainer/Settings/VBoxContainer/Music/MusicSlide" to="." method="_on_music"]
 [connection signal="drag_ended" from="MarginContainer/Settings/VBoxContainer/SFX/SFXSlide" to="." method="_on_sfx_slide_drag_ended"]
 [connection signal="value_changed" from="MarginContainer/Settings/VBoxContainer/SFX/SFXSlide" to="." method="_on_sfx"]
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/Controls/Button" to="." method="_on_vew_controls"]
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/Credit/Button" to="." method="_on_go_credit"]
 [connection signal="pressed" from="MarginContainer/Settings/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Level/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/Level/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/HowToPlay/Button" to="." method="_on_from_controls_to_settings"]

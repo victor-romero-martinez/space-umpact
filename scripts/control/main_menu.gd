@@ -169,3 +169,20 @@ func _on_restart_pressed():
 	_remove_all_level_container()
 	%ContinueBtn.disabled = true
 	
+	
+func _on_vew_controls():
+	$Beep1.play()
+	$MarginContainer/Settings.visible = false
+	$MarginContainer/HowToPlay.visible = true
+	
+	
+func _on_go_credit():
+	$Beep1.play()
+	$Beep1.finished.connect(func (): get_tree().change_scene_to_file("res://control/credit.tscn"))
+	
+
+func _on_from_controls_to_settings():
+	$Beep1.play()
+	$MarginContainer/HowToPlay.visible = false
+	$MarginContainer/Settings.visible = true
+	
