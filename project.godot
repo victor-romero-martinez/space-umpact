@@ -12,7 +12,7 @@ config_version=5
 
 config/name="space_umpact"
 config/description="A fangame of Space Impact"
-config/version="0.1"
+config/version="0.2.1"
 run/main_scene="res://control/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
