@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d175njosf45c7"]
+[gd_scene load_steps=6 format=3 uid="uid://d175njosf45c7"]
 
 [ext_resource type="Script" path="res://scripts/utils/health_bar.gd" id="1_sp1ta"]
+[ext_resource type="Shader" path="res://scenes/utilities/outline.gdshader" id="2_a6kca"]
 [ext_resource type="Texture2D" uid="uid://y2kp3v0fqqmu" path="res://assets/progresbar.png" id="2_bjx3l"]
 [ext_resource type="Texture2D" uid="uid://cccesyulwctp1" path="res://assets/progresbar_inner.png" id="3_bt2o7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y525n"]
+shader = ExtResource("2_a6kca")
+shader_parameter/outline_color = Color(0.129412, 0.0235294, 0.0745098, 1)
+shader_parameter/sprite_tint = Color(1, 1, 1, 1)
 
 [node name="HealthBar" type="Node2D"]
 scale = Vector2(0.997754, 0.985561)
@@ -10,6 +16,7 @@ script = ExtResource("1_sp1ta")
 
 [node name="Health" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_y525n")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

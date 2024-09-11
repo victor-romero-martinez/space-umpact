@@ -17,6 +17,7 @@ func _ready():
 		$ColorRect.color = global.game_data.theme[1]
 		$ColorRect.visible = true
 		$Game.modulate = global.game_data.theme[2]
+		$TestOutline.color = global.game_data.theme[2]
 	
 	AudioServer.set_bus_volume_db(1, vol)
 	AudioServer.set_bus_volume_db(2, vol)

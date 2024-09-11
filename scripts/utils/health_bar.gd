@@ -6,25 +6,27 @@ extends Node2D
 
 var _status_health_bar: int = 0
 var _initial_position: Vector2
+var _boss: Enemy
 
 
 func _ready():
 	_initial_position = position # set position to hide
+	health_bar.material.set("shader_parameter/outline_color", Color(Global.game_data.theme[1]))
+	health_bar.material.set("shader_parameter/sprite_tint", Color(Global.game_data.theme[2]))
 	
-	#var boss = get_parent().get_children().filter(func (c): return c is BossEenemy)[0]
-	var boss: Enemy
+	#var _boss = get_parent().get_children().filter(func (c): return c is BossEenemy)[0]
 	var children = get_parent().get_children()
 	
 	for c in children:
 		if c is Enemy:
-			boss = c
+			_boss = c
 			break
 	
-	if boss:
-		boss.set_health.connect(_on_set_health_bar)
-		boss.activate_fight.connect(_on_activate_fight)
-		boss.hit.connect(_on_hit)
-		boss.defeated.connect(_hide_health_bar)
+	if _boss:
+		_boss.set_health.connect(_on_set_health_bar)
+		_boss.activate_fight.connect(_on_activate_fight)
+		_boss.hit.connect(_on_hit)
+		_boss.defeated.connect(_hide_health_bar)
 	else:
 		push_warning('Boss is missing')
 

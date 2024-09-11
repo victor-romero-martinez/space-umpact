@@ -25,6 +25,11 @@ offset_right = 352.0
 offset_bottom = 198.0
 metadata/_edit_lock_ = true
 
+[node name="TestOutline" type="ColorRect" parent="."]
+offset_right = 350.0
+offset_bottom = 12.0
+color = Color(0.129412, 0.0235294, 0.0745098, 1)
+
 [node name="Game" type="Node2D" parent="."]
 
 [node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
