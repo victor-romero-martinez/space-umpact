@@ -72,7 +72,7 @@ position = Vector2(206, 78)
 [node name="RespawnReload" parent="Game" instance=ExtResource("10_scsta")]
 position = Vector2(314, 151)
 direction = -1
-wait_time_relad = 10.0
+wait_time_relad = 3.0
 respawn = true
 
 [node name="left" type="Area2D" parent="Game/RespawnReload"]

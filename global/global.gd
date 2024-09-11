@@ -9,7 +9,7 @@ const DEFAULT_SETTINGS = {
 		'level': 1,
 		'heart': 3,
 		'weapons': [
-			'bullet'
+			['bullet', 0]
 		],
 		'theme': ['res://control/theme/pink_theme.tres', '#210613', '#f63090', 0],
 		'music': -10.0,
@@ -22,7 +22,7 @@ var game_data: Dictionary = {
 		'level': 1,
 		'heart': 3,
 		'weapons': [
-			'bullet'
+			['bullet', 0]
 		],
 		'theme': ['res://control/theme/pink_theme.tres', '#210613', '#f63090', 0],
 		'music': -10.0,

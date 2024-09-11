@@ -133,7 +133,7 @@ func make_boom():
 # Select ammunition type and shoot
 func _fire():
 	if _can_shoot:
-		var bullet = GUNS[global.game_data.weapons[_weapon_idx]].instantiate()
+		var bullet = GUNS[global.game_data.weapons[_weapon_idx][0]].instantiate()
 		bullet.position = position + Vector2(20.0, 0)
 		add_sibling(bullet)
 		
@@ -148,10 +148,9 @@ func _fire():
 			
 			
 ## Add gun type on [u]global.game_data.weapons[/u]
-func add_arsenal(arg: String):
-	if not global.game_data.weapons.has(arg):
-		global.game_data.weapons.append(arg)
-		add_weapon.emit(TBullet.get(arg))
+func add_arsenal(arg: Array):	
+	global.game_data.weapons.append(arg)
+	add_weapon.emit(TBullet.get(arg[0]))
 		
 
 # Set nex weapon

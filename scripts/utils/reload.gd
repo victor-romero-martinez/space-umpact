@@ -10,23 +10,23 @@ enum TBullet { rocket, laser_h, laser_v }
 
 @onready var global = Global
 
-var _gun_name: String
+var _weapon_array: Array
 
 func _ready():
 	if random_type:
-		var random_idx = randi_range(0, (TBullet.size() - 1))
-		_gun_name = TBullet.find_key(random_idx)
+		var random_idx = randi_range(1, (TBullet.size()))
+		_weapon_array = [TBullet.find_key(random_idx - 1), random_idx]
 	else:
-		_gun_name = TBullet.keys()[bullet_type]
+		_weapon_array = TBullet.keys()[bullet_type]
 		
-	%AnimatedSprite.play(_gun_name)
+	%AnimatedSprite.play(_weapon_array[0])
 
 
 func _on_area_2d_area_entered(area):
 	if area is PlayerCollectorItem:
-		if global.game_data.weapons.has(_gun_name): return
+		if global.game_data.weapons.has(_weapon_array): return
 		
-		area.received_item(_gun_name)
+		area.received_item(_weapon_array)
 		$PickItemSfx.play()
 		$Area2D.set_deferred('monitorable', false)
 		visible = false
