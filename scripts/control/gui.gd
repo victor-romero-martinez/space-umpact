@@ -17,3 +17,7 @@ func _process(_delta: float) -> void:
 	else:
 		$B.visible = false
 		
+	if Engine.time_scale == 0:
+		visible = false
+	else:
+		visible = true
