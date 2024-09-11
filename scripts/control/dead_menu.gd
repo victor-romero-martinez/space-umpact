@@ -12,6 +12,7 @@ func _ready():
 
 func _on_retry_pressed():
 	$Beep1.play()
+	global.game_data.heart = global.DEFAULT_SETTINGS.heart
 	$Beep1.finished.connect(func (): get_tree().change_scene_to_file("res://scenes/level_%d.tscn" %Global.game_data.level))
 	
 
