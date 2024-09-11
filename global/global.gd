@@ -76,6 +76,17 @@ func refresh_data():
 	_load_data()
 	
 	
+func restart_game():
+	var temp_data = game_data
+	temp_data.heart = DEFAULT_SETTINGS.heart
+	temp_data.level = DEFAULT_SETTINGS.level
+	temp_data.weapons = DEFAULT_SETTINGS.weapons
+	
+	game_data = temp_data
+	
+	_create_data(temp_data)
+	
+	
 func _load_data():
 	#var file = FileAccess.open(PATH, FileAccess.READ)
 	var file = FileAccess.open_encrypted(

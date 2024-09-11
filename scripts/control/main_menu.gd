@@ -160,12 +160,12 @@ func _remove_all_level_container():
 	for l in $MarginContainer/Level/LevelContainer.get_children():
 		$MarginContainer/Level/LevelContainer.remove_child(l)
 		
+	_level_creen()
+		
 		
 func _on_restart_pressed():
 	$Beep1.play()
-	global.game_data.level = 1
-	global.update_data()
+	global.restart_game()
 	_remove_all_level_container()
-	_level_creen()
 	%ContinueBtn.disabled = true
 	
