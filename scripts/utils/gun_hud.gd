@@ -64,11 +64,12 @@ func _on_player_add_weapon(val: int):
 
 
 func _on_player_current_weapon(idx: int):
-	var child_prev = get_child(idx - 1) as Sprite2D
-	child_prev.frame_coords.x = 0
-	
-	var child_curr = get_child(idx) as Sprite2D
-	child_curr.frame_coords.x = 1
+	if not get_children().is_empty():
+		var child_prev = get_child(idx - 1) as Sprite2D
+		child_prev.frame_coords.x = 0
+		
+		var child_curr = get_child(idx) as Sprite2D
+		child_curr.frame_coords.x = 1
 
 
 func _on_player_remove_weapon(val: int):

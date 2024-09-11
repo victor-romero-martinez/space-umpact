@@ -32,21 +32,8 @@ color = Color(0.129412, 0.0235294, 0.0745098, 1)
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
-position = Vector2(0, -12)
-script = ExtResource("2_6484b")
-final_position = NodePath("../HudPosition")
-metadata/_edit_lock_ = true
-
-[node name="HudHealth" parent="Game/Hud" instance=ExtResource("1_qhkwd")]
-position = Vector2(4, 0)
-metadata/_edit_lock_ = true
-
-[node name="GunHud" parent="Game/Hud" instance=ExtResource("3_jusy6")]
-position = Vector2(53, 0)
-metadata/_edit_lock_ = true
-
 [node name="Player" type="Node2D" parent="Game"]
+position = Vector2(0, -1)
 
 [node name="Player" parent="Game/Player" node_paths=PackedStringArray("initial_position", "respawn") instance=ExtResource("2_b2s5v")]
 position = Vector2(-57, 53)
@@ -59,6 +46,20 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerInit" type="Marker2D" parent="Game/Player"]
 position = Vector2(-39, 78)
+metadata/_edit_lock_ = true
+
+[node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
+position = Vector2(0, -12)
+script = ExtResource("2_6484b")
+final_position = NodePath("../HudPosition")
+metadata/_edit_lock_ = true
+
+[node name="HudHealth" parent="Game/Hud" instance=ExtResource("1_qhkwd")]
+position = Vector2(4, 0)
+metadata/_edit_lock_ = true
+
+[node name="GunHud" parent="Game/Hud" instance=ExtResource("3_jusy6")]
+position = Vector2(53, 0)
 metadata/_edit_lock_ = true
 
 [node name="BossChunk" parent="Game" instance=ExtResource("5_7qg75")]

@@ -72,6 +72,19 @@ list_map = [NodePath("TileMap"), NodePath("TileMap1")]
 position = Vector2(16, 80)
 metadata/_edit_lock_ = true
 
+[node name="Player" type="Node2D" parent="Game"]
+position = Vector2(0, 80)
+
+[node name="Player" parent="Game/Player" node_paths=PackedStringArray("initial_position", "respawn") instance=ExtResource("2_do623")]
+position = Vector2(-32, 0)
+initial_position = NodePath("../PlayerInit")
+respawn = NodePath("../../BG/PlayerRespawn")
+metadata/_edit_lock_ = true
+
+[node name="PlayerInit" type="Marker2D" parent="Game/Player"]
+position = Vector2(-38, 0)
+metadata/_edit_lock_ = true
+
 [node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
 position = Vector2(0, -12)
 script = ExtResource("3_uc5tk")
@@ -86,19 +99,6 @@ position = Vector2(53, 0)
 
 [node name="HudPosition" type="Marker2D" parent="Game"]
 position = Vector2(0, 5)
-metadata/_edit_lock_ = true
-
-[node name="Player" type="Node2D" parent="Game"]
-position = Vector2(0, 80)
-
-[node name="Player" parent="Game/Player" node_paths=PackedStringArray("initial_position", "respawn") instance=ExtResource("2_do623")]
-position = Vector2(-32, 0)
-initial_position = NodePath("../PlayerInit")
-respawn = NodePath("../../BG/PlayerRespawn")
-metadata/_edit_lock_ = true
-
-[node name="PlayerInit" type="Marker2D" parent="Game/Player"]
-position = Vector2(-38, 0)
 metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="Game"]

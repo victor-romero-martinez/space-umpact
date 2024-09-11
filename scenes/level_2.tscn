@@ -71,23 +71,6 @@ list_map = [NodePath("TileMap"), NodePath("TileMap2"), NodePath("TileMap3")]
 
 [node name="TileMap3" parent="Game/BG/BackgroundManager2" instance=ExtResource("5_aenha")]
 
-[node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
-position = Vector2(0, -12)
-script = ExtResource("3_2trpj")
-final_position = NodePath("../HudPosition")
-
-[node name="HudHealth" parent="Game/Hud" instance=ExtResource("2_jj21j")]
-position = Vector2(4, 0)
-metadata/_edit_lock_ = true
-
-[node name="GunHud" parent="Game/Hud" instance=ExtResource("5_gsjib")]
-position = Vector2(53, 0)
-metadata/_edit_lock_ = true
-
-[node name="HudPosition" type="Marker2D" parent="Game"]
-position = Vector2(0, 5)
-metadata/_edit_lock_ = true
-
 [node name="Player" type="Node2D" parent="Game"]
 position = Vector2(0, 80)
 
@@ -103,6 +86,23 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerInit" type="Marker2D" parent="Game/Player"]
 position = Vector2(-38, 0)
+metadata/_edit_lock_ = true
+
+[node name="Hud" type="Node2D" parent="Game" node_paths=PackedStringArray("final_position")]
+position = Vector2(0, -12)
+script = ExtResource("3_2trpj")
+final_position = NodePath("../HudPosition")
+
+[node name="HudHealth" parent="Game/Hud" instance=ExtResource("2_jj21j")]
+position = Vector2(4, 0)
+metadata/_edit_lock_ = true
+
+[node name="GunHud" parent="Game/Hud" instance=ExtResource("5_gsjib")]
+position = Vector2(53, 0)
+metadata/_edit_lock_ = true
+
+[node name="HudPosition" type="Marker2D" parent="Game"]
+position = Vector2(0, 5)
 metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="Game"]
