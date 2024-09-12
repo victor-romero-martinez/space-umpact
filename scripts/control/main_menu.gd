@@ -13,7 +13,7 @@ func _ready():
 	else:
 		%ContinueBtn.disabled = true
 		
-	$Version.text = ProjectSettings.get_setting('application/config/version') + 'v'
+	$Version.text = 'v' + ProjectSettings.get_setting('application/config/version')
 	
 	#region App settings
 	$ColorRect.visible = true
