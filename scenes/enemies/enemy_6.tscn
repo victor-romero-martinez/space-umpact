@@ -50,8 +50,8 @@ radius = 4.99997
 height = 19.993
 
 [node name="Enemy6" instance=ExtResource("1_oppx4")]
-collision_layer = 0
-collision_mask = 4
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_u37bh")
 health = 3
 can_shoot = true

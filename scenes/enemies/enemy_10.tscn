@@ -35,7 +35,7 @@ animations = [{
 size = Vector2(14, 14)
 
 [node name="Enemy" instance=ExtResource("1_0rny1")]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_8h7ma")
 explotion_scene = ExtResource("3_f0ehm")
