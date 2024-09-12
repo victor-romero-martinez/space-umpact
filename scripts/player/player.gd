@@ -148,7 +148,7 @@ func _fire():
 			
 			
 ## Add gun type on [u]global.game_data.weapons[/u]
-func add_arsenal(arg: Array):	
+func add_arsenal(arg: Array):
 	global.game_data.weapons.append(arg)
 	add_weapon.emit(TBullet.get(arg[0]))
 		
