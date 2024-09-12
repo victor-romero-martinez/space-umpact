@@ -67,12 +67,6 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Continue"
 
-[node name="Level" type="Button" parent="MarginContainer/Main"]
-layout_mode = 2
-focus_mode = 0
-mouse_default_cursor_shape = 2
-text = "Level"
-
 [node name="Settings" type="Button" parent="MarginContainer/Main"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -88,7 +82,6 @@ text = "Quit
 [node name="Settings" type="VBoxContainer" parent="MarginContainer"]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="VSeparator2" type="HSeparator" parent="MarginContainer/Settings"]
 modulate = Color(1, 1, 1, 0)
@@ -97,6 +90,7 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Settings"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Theme" type="HBoxContainer" parent="MarginContainer/Settings/VBoxContainer"]
@@ -190,52 +184,23 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="MarginContainer/Settings"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="MarginContainer/Settings"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-text = "Back"
-
-[node name="Level" type="Control" parent="MarginContainer"]
-visible = false
-layout_mode = 2
-
-[node name="LevelContainer" type="GridContainer" parent="MarginContainer/Level"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 4
-
-[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/Level"]
-layout_mode = 2
-offset_top = 154.0
-offset_right = 306.0
-offset_bottom = 166.0
 size_flags_vertical = 8
 
-[node name="Restart" type="Button" parent="MarginContainer/Level/VBoxContainer"]
+[node name="Restart" type="Button" parent="MarginContainer/Settings/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-text = "Restart"
+text = "Clear Data"
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/Level/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/Settings/VBoxContainer2"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Back" type="Button" parent="MarginContainer/Level/VBoxContainer"]
+[node name="Back" type="Button" parent="MarginContainer/Settings/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
@@ -296,7 +261,6 @@ text = "Back"
 
 [connection signal="pressed" from="MarginContainer/Main/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MarginContainer/Main/ContinueBtn" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/Main/Level" to="." method="_on_level_pressed"]
 [connection signal="pressed" from="MarginContainer/Main/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/Main/Quit" to="." method="_on_quit_pressed"]
 [connection signal="item_selected" from="MarginContainer/Settings/VBoxContainer/Theme/OptionButton" to="." method="_on_option_button_item_selected"]
@@ -306,7 +270,6 @@ text = "Back"
 [connection signal="value_changed" from="MarginContainer/Settings/VBoxContainer/SFX/SFXSlide" to="." method="_on_sfx"]
 [connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/Controls/Button" to="." method="_on_vew_controls"]
 [connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/Credit/Button" to="." method="_on_go_credit"]
-[connection signal="pressed" from="MarginContainer/Settings/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Level/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="MarginContainer/Level/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer2/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer2/Back" to="." method="_on_go_back_main"]
 [connection signal="pressed" from="MarginContainer/HowToPlay/Button" to="." method="_on_from_controls_to_settings"]
