@@ -15,7 +15,10 @@ var _next_position_x: float = 0
 
 func _ready():
 	for i in global.game_data.weapons.size():
-		var sprite = _make_sprite(Vector2(1, global.game_data.weapons[i][1]), _next_position_x)
+		var sprite = _make_sprite(
+			Vector2(0, global.game_data.weapons[i][1]),\
+			_next_position_x
+		)
 		var new_material = ShaderMaterial.new()
 		
 		new_material.shader = _outline_shader
@@ -30,6 +33,8 @@ func _ready():
 
 		add_child(sprite)
 		_next_position_x += 12
+		
+	_on_player_current_weapon(0)
 
 
 func _make_sprite(frames: Vector2, pos_x: float) -> Sprite2D:
