@@ -22,6 +22,7 @@ func _ready():
 	$MarginContainer/Settings/VBoxContainer/Theme/OptionButton.select(global.game_data.theme[3])
 	$MarginContainer/Main.visible = true
 	$MarginContainer/Settings.visible = false
+	$MarginContainer/HowToPlay.visible = false
 	$MainMusic.volume_db = global.game_data.music
 	$Beep2.volume_db = global.game_data.sfx
 	$Beep1.volume_db = global.game_data.sfx
@@ -81,6 +82,11 @@ func _on_option_button_item_selected(index):
 			$ColorRect.color = Color(global.theme_schema[index][1])
 			global.game_data.theme = global.theme_schema[index]
 			global.update_data()
+		3:
+			self.theme = load(global.theme_schema[index][0])
+			$ColorRect.color = Color(global.theme_schema[index][1])
+			global.game_data.theme = global.theme_schema[index]
+			global.update_data()
 		
 	$Beep1.play()
 	
@@ -120,6 +126,7 @@ func _on_sfx_slide_drag_ended(value_changed):
 func _on_restart_pressed():
 	$Beep1.play()
 	global.restart_game()
+	%ContinueBtn.disabled = true
 	
 	
 func _on_vew_controls():

@@ -35,7 +35,8 @@ var theme_schema := {
 	#index: path_custome_theme, color_rect, sprites_and_tiles, index_namber
 	0: ['res://control/theme/pink_theme.tres', '#210613', '#f63090', 0],
 	1: ['res://control/theme/classic_theme.tres', '#74a583', '#201d24', 1],
-	2: ['res://control/theme/modern_theme.tres', '#252525', '#e4e4e4', 2]
+	2: ['res://control/theme/modern_theme.tres', '#252525', '#e4e4e4', 2],
+	3: ['res://control/theme/gree_theme.tres', '#000000', '#52f552', 3]
 	}
 var screen_size = Vector2(
 	ProjectSettings.get_setting('display/window/size/viewport_width'),\
@@ -83,6 +84,7 @@ func restart_game():
 	temp_data.heart = DEFAULT_SETTINGS.heart
 	temp_data.level = DEFAULT_SETTINGS.level
 	temp_data.weapons = DEFAULT_SETTINGS.weapons
+	temp_data.score = DEFAULT_SETTINGS.score
 	
 	game_data = temp_data
 	
