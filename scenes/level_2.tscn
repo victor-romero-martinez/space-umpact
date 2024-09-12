@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bse3clbf784ak"]
+[gd_scene load_steps=25 format=3 uid="uid://bse3clbf784ak"]
 
 [ext_resource type="Script" path="res://scripts/utils/level_settings.gd" id="1_4iprt"]
 [ext_resource type="PackedScene" uid="uid://b57aq8mq723ou" path="res://scenes/level_3.tscn" id="2_ge8hu"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://cjyg54our4k2k" path="res://levels/level_2/enemy_chunk_3.tscn" id="9_lwjuy"]
 [ext_resource type="PackedScene" uid="uid://dt7bvlg0x5jaw" path="res://levels/level_2/enemy_chunk_4.tscn" id="10_2bjc5"]
 [ext_resource type="PackedScene" uid="uid://ci2la4bi3xwb3" path="res://levels/level_2/bosss_chunk.tscn" id="10_qoqc0"]
-[ext_resource type="Shader" path="res://scenes/utilities/outline.gdshader" id="11_1bxp4"]
 [ext_resource type="Script" path="res://scripts/utils/score.gd" id="11_3sgqq"]
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="15_yfs6h"]
 [ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="17_0p3qf"]
@@ -47,11 +46,6 @@ Vector2i(-1, 1): {
 "to_time": 0
 }
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sx3tv"]
-shader = ExtResource("11_1bxp4")
-shader_parameter/outline_color = Color(0.129412, 0.0235294, 0.0745098, 1)
-shader_parameter/sprite_tint = Color(1, 1, 1, 1)
 
 [node name="Level-2" type="Node2D" node_paths=PackedStringArray("enemy_manager", "menu_pause")]
 script = ExtResource("1_4iprt")
@@ -121,11 +115,12 @@ position = Vector2(53, 0)
 metadata/_edit_lock_ = true
 
 [node name="Score" type="Label" parent="Game/Hud"]
-material = SubResource("ShaderMaterial_sx3tv")
 offset_left = 152.0
-offset_top = -3.0
-offset_right = 215.0
+offset_top = -5.0
+offset_right = 218.0
 offset_bottom = 7.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 8
 script = ExtResource("11_3sgqq")
 

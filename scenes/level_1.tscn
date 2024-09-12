@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://hs2qvsb6w8tj"]
+[gd_scene load_steps=23 format=3 uid="uid://hs2qvsb6w8tj"]
 
 [ext_resource type="PackedScene" uid="uid://bse3clbf784ak" path="res://scenes/level_2.tscn" id="2_0x63b"]
 [ext_resource type="PackedScene" uid="uid://ncfavua7kjnn" path="res://scenes/player.tscn" id="2_do623"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://qlyx656gs0kk" path="res://scenes/utilities/off_screen_x.tscn" id="14_85yuv"]
 [ext_resource type="AudioStream" uid="uid://rr4772siksp" path="res://assets/music/space-chase.ogg" id="16_yj6tu"]
 [ext_resource type="AudioStream" uid="uid://b356a6s6snqe2" path="res://assets/music/random-boss-fight-music.ogg" id="17_n33eq"]
-[ext_resource type="Shader" path="res://scenes/utilities/outline.gdshader" id="18_li7kt"]
 [ext_resource type="PackedScene" uid="uid://sqm0g0ec7ual" path="res://control/gui.tscn" id="19_j13gi"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_yg7xo"]
@@ -45,11 +44,6 @@ Vector2i(-1, 1): {
 "to_time": 0
 }
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_npseb"]
-shader = ExtResource("18_li7kt")
-shader_parameter/outline_color = Color(0.129412, 0.0235294, 0.0745098, 1)
-shader_parameter/sprite_tint = Color(1, 1, 1, 1)
 
 [node name="Level-1" type="Node2D" node_paths=PackedStringArray("enemy_manager", "menu_pause")]
 script = ExtResource("2_yp15v")
@@ -117,11 +111,12 @@ metadata/_edit_lock_ = true
 position = Vector2(53, 0)
 
 [node name="Score" type="Label" parent="Game/Hud"]
-material = SubResource("ShaderMaterial_npseb")
 offset_left = 152.0
-offset_top = -3.0
-offset_right = 215.0
+offset_top = -5.0
+offset_right = 218.0
 offset_bottom = 7.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 8
 script = ExtResource("10_lg4v8")
 
