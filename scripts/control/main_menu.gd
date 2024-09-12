@@ -1,8 +1,6 @@
 extends Control
 
 
-@export var levels: Array[PackedScene] = []
-
 
 @onready var global = Global
 
@@ -48,10 +46,6 @@ func _on_continue_pressed():
 		%ContinueBtn.disabled = true
 		
 
-func on_emit_level(index: int):
-	$Beep2.play()
-	$Beep2.finished.connect(func (): get_tree().change_scene_to_packed(levels[index]))
-	
 	
 func _on_quit_pressed():
 	$Beep2.play()
