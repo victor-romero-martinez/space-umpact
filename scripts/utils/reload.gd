@@ -17,7 +17,7 @@ func _ready():
 		var random_idx = randi_range(1, (TBullet.size()))
 		_weapon_array = [TBullet.find_key(random_idx - 1), random_idx]
 	else:
-		_weapon_array = TBullet.keys()[bullet_type]
+		_weapon_array = [TBullet.keys()[bullet_type], TBullet.values()[bullet_type] + 1]
 		
 	%AnimatedSprite.play(_weapon_array[0])
 
