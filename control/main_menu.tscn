@@ -253,6 +253,15 @@ grow_vertical = 0
 mouse_default_cursor_shape = 2
 text = "Back"
 
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 4.0
+offset_right = 77.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 8
+metadata/_edit_lock_ = true
+
 [node name="Beep1" parent="." instance=ExtResource("3_d12y8")]
 
 [node name="Beep2" parent="." instance=ExtResource("4_5mh6q")]

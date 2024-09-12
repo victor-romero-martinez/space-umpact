@@ -14,6 +14,8 @@ func _ready():
 		%ContinueBtn.disabled = false
 	else:
 		%ContinueBtn.disabled = true
+		
+	$Version.text = ProjectSettings.get_setting('application/config/version') + 'v'
 	
 	#region App settings
 	$ColorRect.visible = true
@@ -22,14 +24,13 @@ func _ready():
 	$MarginContainer/Settings/VBoxContainer/Theme/OptionButton.select(global.game_data.theme[3])
 	$MarginContainer/Main.visible = true
 	$MarginContainer/Settings.visible = false
-	#$MarginContainer/Level.visible = false
 	$MainMusic.volume_db = global.game_data.music
 	$Beep2.volume_db = global.game_data.sfx
 	$Beep1.volume_db = global.game_data.sfx
 	$MarginContainer/Settings/VBoxContainer/Music/MusicSlide.value = global.game_data.music
 	$MarginContainer/Settings/VBoxContainer/SFX/SFXSlide.value = global.game_data.sfx
 	#endregion
-
+	
 	
 func _on_new_game_pressed():
 	$Beep1.play()
