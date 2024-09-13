@@ -21,9 +21,10 @@ func _ready():
 ##	[/code]
 func take_damage(damage: int = 1):
 	health -= damage
-	get_parent().set_blinking(damage)
-	hit_sound.play()
 	
 	if health < 1:
 		get_parent().defeated.emit()
+	else:
+		get_parent().set_blinking(damage)
+		hit_sound.play()
 		

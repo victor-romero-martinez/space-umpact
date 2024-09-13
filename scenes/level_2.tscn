@@ -140,4 +140,4 @@ metadata/_edit_lock_ = true
 [connection signal="current_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_current_weapon"]
 [connection signal="hit" from="Game/Player/Player" to="Game/Hud/HudHealth" method="_on_player_hit"]
 [connection signal="remove_weapon" from="Game/Player/Player" to="Game/Hud/GunHud" method="_on_player_remove_weapon"]
-[connection signal="resume" from="MenuPause" to="." method="_on_menu_pause_resume"]
+[connection signal="resume" from="MenuPause" to="." method="_on_pause"]
