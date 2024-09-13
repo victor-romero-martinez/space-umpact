@@ -53,7 +53,8 @@ func _rand_position():
 
 	
 func respawner_fn():
-	_aux_speed = 0
-	_rand_position()
-	$Timer.wait_time = wait_time_relad
-	$Timer.start()
+	if respawn:
+		_aux_speed = 0
+		_rand_position()
+		$Timer.wait_time = wait_time_relad
+		$Timer.start()
