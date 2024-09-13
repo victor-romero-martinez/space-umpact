@@ -5,3 +5,4 @@
 [node name="BossMusic" type="AudioStreamPlayer"]
 stream = ExtResource("1_rsp2u")
 bus = &"music"
+parameters/looping = true

@@ -5,3 +5,4 @@
 [node name="GameMusic" type="AudioStreamPlayer"]
 stream = ExtResource("1_y2unk")
 bus = &"music"
+parameters/looping = true
