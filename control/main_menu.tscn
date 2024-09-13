@@ -41,6 +41,7 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="Main" type="VBoxContainer" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -71,7 +72,6 @@ text = "Quit
 "
 
 [node name="Settings" type="VBoxContainer" parent="MarginContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VSeparator2" type="HSeparator" parent="MarginContainer/Settings"]
@@ -177,23 +177,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="MarginContainer/Settings"]
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="Restart" type="Button" parent="MarginContainer/Settings/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 0
-mouse_default_cursor_shape = 2
-text = "Clear Data"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/Settings/VBoxContainer2"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Back" type="Button" parent="MarginContainer/Settings/VBoxContainer2"]
+[node name="Back" type="Button" parent="MarginContainer/Settings"]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
@@ -272,6 +256,5 @@ metadata/_edit_lock_ = true
 [connection signal="value_changed" from="MarginContainer/Settings/VBoxContainer/SFX/SFXSlide" to="." method="_on_sfx"]
 [connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/Controls/Button" to="." method="_on_vew_controls"]
 [connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/Credit/Button" to="." method="_on_go_credit"]
-[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer2/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer2/Back" to="." method="_on_go_back_main"]
+[connection signal="pressed" from="MarginContainer/Settings/Back" to="." method="_on_go_back_main"]
 [connection signal="pressed" from="MarginContainer/HowToPlay/Button" to="." method="_on_from_controls_to_settings"]
